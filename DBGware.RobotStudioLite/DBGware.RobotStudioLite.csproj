@@ -9,6 +9,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\DBGware.RobotStudioLite.UI\DBGware.RobotStudioLite.UI.csproj" />
+    <ProjectReference Include="..\DBGware.RobotStudioLite.UI.Themes.AvalonDock\DBGware.RobotStudioLite.UI.Themes.AvalonDock.csproj" />
   </ItemGroup>
 
 </Project>

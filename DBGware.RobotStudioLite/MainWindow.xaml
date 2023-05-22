@@ -1,4 +1,4 @@
-﻿<Window x:Class="DBGware.RobotStudioLite.MainWindow"
+﻿<CustomChromeWindow x:Class="DBGware.RobotStudioLite.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -7,6 +7,108 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <Grid
+            Grid.Row="0"
+            Background="Transparent" />
+        <Menu
+            Grid.Row="0"
+            Margin="2,4"
+            HorizontalAlignment="Left"
+            Background="Transparent">
+            <MenuItem Header="File">
+                <MenuItem.ItemContainerStyle>
+                    <Style TargetType="{x:Type MenuItem}">
+                        <Setter Property="DynamicStyleProvider.BasedOn" Value="{DynamicResource MenuItemBaseStyle}" />
+                        <Setter Property="DynamicStyleProvider.Derived" Value="{DynamicResource BindingCommandsMenuItem}" />
+                    </Style>
+                </MenuItem.ItemContainerStyle>
+                <MenuItem Header="New" />
+                <MenuItem Header="Open" />
+                <Separator />
+                <MenuItem Header="Close" IsEnabled="False" />
+            </MenuItem>
+            <MenuItem Header="Edit">
+                <MenuItem Header="Undo" />
+                <MenuItem Header="Redo" />
+            </MenuItem>
+            <MenuItem Header="View" />
+            <MenuItem Header="Tools">
+                <MenuItem Header="Settings" />
+                <MenuItem Header="Options">
+                    <MenuItem Header="Option 1" />
+                    <Separator />
+                    <MenuItem Header="Checkable 1" IsCheckable="True" />
+                    <MenuItem
+                        Header="Checkable 2"
+                        IsCheckable="True"
+                        IsChecked="True" />
+                </MenuItem>
+                <MenuItem Header="disabled" IsEnabled="False">
+                    <MenuItem Header="Option 1" />
+                </MenuItem>
+            </MenuItem>
+            <MenuItem
+                x:Name="ThemesMenu"
+                Header="Themes">
+                <Separator />
+                <MenuItem
+                    Click="ThemeItem_Click"
+                    Header="Visual Studio 2022 Blue"
+                    Tag="0" />
+                <MenuItem
+                    Click="ThemeItem_Click"
+                    Header="Visual Studio 2022 Dark"
+                    Tag="1" />
+                <MenuItem
+                    Click="ThemeItem_Click"
+                    Header="Visual Studio 2022 Light"
+                    Tag="2" />
+            </MenuItem>
+        </Menu>
+        <DockingManager
+            x:Name="dockingManager"
+            Grid.Row="1"
+            ShowSystemMenu="False">
+            <LayoutRoot>
+                <LayoutPanel Orientation="Horizontal">
+                    <LayoutDocumentPaneGroup>
+                        <LayoutDocumentPane>
+                            <LayoutDocument Title="Doc1">
+                                <StackPanel>
+                                    <CheckBox Content="CheckBox" HorizontalAlignment="Left" Height="18" VerticalAlignment="Top" Width="85" Grid.Row="1"/>
+                                    <Slider HorizontalAlignment="Left" VerticalAlignment="Top" Width="120"/>
+                                </StackPanel>
+                            </LayoutDocument>
+                            <LayoutDocument Title="Doc2">
+                            </LayoutDocument>
+                        </LayoutDocumentPane>
+                        <LayoutDocumentPane>
+                            <LayoutDocument Title="Doc3" />
+                        </LayoutDocumentPane>
+                    </LayoutDocumentPaneGroup>
+                    <LayoutAnchorablePaneGroup DockWidth="150" Orientation="Vertical">
+                        <LayoutAnchorablePane>
+                            <LayoutAnchorable Title="Tool 1" CanShowOnHover="True" />
+                            <LayoutAnchorable Title="Tool 2" CanShowOnHover="True" />
+                        </LayoutAnchorablePane>
+                        <LayoutAnchorablePane>
+                            <LayoutAnchorable Title="Tool 3" />
+                            <LayoutAnchorable Title="Tool 4" />
+                        </LayoutAnchorablePane>
+                    </LayoutAnchorablePaneGroup>
+                </LayoutPanel>
+                <LayoutRoot.LeftSide>
+                    <LayoutAnchorSide>
+                        <LayoutAnchorGroup>
+                            <LayoutAnchorable Title="Autohidden Content" />
+                        </LayoutAnchorGroup>
+                    </LayoutAnchorSide>
+                </LayoutRoot.LeftSide>
+            </LayoutRoot>
+        </DockingManager>
     </Grid>
-</Window>
+</CustomChromeWindow>
