@@ -1,9 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Automation.Peers;
+﻿using System.Windows.Automation.Peers;
+
 using DBGware.RobotStudioLite.UI.Controls;
 
 namespace DBGware.RobotStudioLite.UI.Automation.Peers

@@ -261,4 +261,5 @@
             </Style>
         </avalonDockControls:ContextMenuEx.ItemContainerStyle>
     </avalonDockControls:ContextMenuEx>
+
 </ResourceDictionary>

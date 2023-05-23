@@ -1,11 +1,9 @@
-﻿using Microsoft.Xaml.Behaviors;
-using System;
-using System.Collections.Generic;
+﻿using System;
 using System.Linq;
 using System.Runtime.CompilerServices;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
+
+using Microsoft.Xaml.Behaviors;
 
 namespace DBGware.RobotStudioLite.UI.Themes.AvalonDock.Attachs
 {

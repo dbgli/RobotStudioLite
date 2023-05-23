@@ -1,6 +1,6 @@
 using System.Runtime.InteropServices;
-using System.Windows.Markup;
 using System.Windows;
+using System.Windows.Markup;
 
 // In SDK-style projects such as this one, several assembly attributes that were historically
 // defined in this file are now automatically added during build and populated with

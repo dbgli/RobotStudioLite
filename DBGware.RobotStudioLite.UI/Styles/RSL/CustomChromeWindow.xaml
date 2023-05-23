@@ -3,6 +3,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:controlzEx="urn:controlzex"
     xmlns:ctrls="clr-namespace:DBGware.RobotStudioLite.UI.Controls">
+
     <ControlTemplate x:Key="CustomChromeWindowBaseTemplate" TargetType="{x:Type ctrls:CustomChromeWindow}">
         <Border
             x:Name="PART_Border"
@@ -143,4 +144,5 @@
         <Setter Property="BorderBrush" Value="{DynamicResource EnvironmentMainWindowActiveDefaultBorder}" />
         <Setter Property="Template" Value="{DynamicResource CustomChromeWindowBaseTemplate}" />
     </Style>
+
 </ResourceDictionary>

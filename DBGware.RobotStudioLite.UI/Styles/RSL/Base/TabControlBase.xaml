@@ -1,5 +1,7 @@
-﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
     <Thickness
         x:Key="LeftStaticBorderThickness"
         Bottom="1"
@@ -433,4 +435,5 @@
             </Setter.Value>
         </Setter>
     </Style>
+
 </ResourceDictionary>

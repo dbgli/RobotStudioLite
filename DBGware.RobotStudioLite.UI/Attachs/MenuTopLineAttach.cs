@@ -1,12 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Runtime.InteropServices;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Controls.Primitives;
-using System.Windows.Controls;
 using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Controls.Primitives;
 
 using DBGware.RobotStudioLite.UI.Controls;
 using DBGware.RobotStudioLite.UI.Helpers;
@@ -42,7 +38,7 @@ namespace DBGware.RobotStudioLite.UI.Attachs
             }
         }
 
-        // 这个填充在所有windows系统上都是相同的。（也许？或者 Win10+）
+        // 这个填充在所有Windows系统上都是相同的。（也许？或者 Win10+）
         private const double SystemPopupRightPadding = 6.0d;
 
         public static readonly DependencyProperty PopupProperty =
@@ -131,7 +127,7 @@ namespace DBGware.RobotStudioLite.UI.Attachs
                     double left, top, width;
                     top = -menuItem.BorderThickness.Top;
 
-                    // High Dpi
+                    // High DPI
                     var remainderDpi = matrix.M11 - 1;
 
                     popup.HorizontalOffset = -1;
@@ -175,7 +171,7 @@ namespace DBGware.RobotStudioLite.UI.Attachs
                     }
 
 
-                    // Fix High Dpi ( >= 1.5)
+                    // Fix High DPI ( >= 1.5)
                     if (remainderDpi >= 0.5)
                     {
                         popup.HorizontalOffset = -remainderDpi;

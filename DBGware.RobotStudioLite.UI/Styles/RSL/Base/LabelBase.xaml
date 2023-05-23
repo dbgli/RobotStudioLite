@@ -1,5 +1,7 @@
-﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
     <Style x:Key="LabelBaseStyle" TargetType="{x:Type Label}">
         <Setter Property="Foreground" Value="{DynamicResource LabelText}" />
         <Setter Property="Background" Value="Transparent" />
@@ -30,4 +32,5 @@
             </Setter.Value>
         </Setter>
     </Style>
+
 </ResourceDictionary>

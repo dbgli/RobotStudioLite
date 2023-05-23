@@ -3,6 +3,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:controlzEx="urn:controlzex"
     xmlns:ctrls="clr-namespace:DBGware.RobotStudioLite.UI.Controls">
+
     <Style x:Key="WindowSystemButtonBaseStyle" TargetType="{x:Type ctrls:WindowSystemButton}">
         <Setter Property="FocusVisualStyle" Value="{x:Null}" />
         <Setter Property="Background" Value="{DynamicResource EnvironmentMainWindowButtonActive}" />
@@ -123,4 +124,5 @@
             </Setter.Value>
         </Setter>
     </Style>
+
 </ResourceDictionary>

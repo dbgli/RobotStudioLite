@@ -1,5 +1,7 @@
-﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
     <BorderGapMaskConverter x:Key="BorderGapMaskConverter" />
     <Style x:Key="GroupBoxBaseStyle" TargetType="{x:Type GroupBox}">
         <Setter Property="Background" Value="{DynamicResource GroupBoxBackground}" />
@@ -73,4 +75,5 @@
             </Setter.Value>
         </Setter>
     </Style>
+
 </ResourceDictionary>

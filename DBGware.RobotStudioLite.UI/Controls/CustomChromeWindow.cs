@@ -1,16 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.ComponentModel;
+using System.Windows;
 using System.Windows.Automation.Peers;
-using System.Windows.Controls.Primitives;
 using System.Windows.Controls;
+using System.Windows.Controls.Primitives;
 using System.Windows.Data;
 using System.Windows.Media;
-using System.Windows;
-using System.Xml.Linq;
+
 using Microsoft.Xaml.Behaviors;
 using DBGware.RobotStudioLite.UI.Automation.Peers;
 
