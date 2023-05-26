@@ -1,0 +1,34 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:sys="clr-namespace:System;assembly=mscorlib">
+
+    <!--#region AvalonDock-->
+    <sys:String x:Key="Active_Files">激活文件</sys:String>
+    <sys:String x:Key="Active_ToolWindows">活动工具窗口</sys:String>
+    <sys:String x:Key="Anchorable_AutoHide">自动隐藏</sys:String>
+    <sys:String x:Key="Anchorable_BtnAutoHide_Hint">自动隐藏</sys:String>
+    <sys:String x:Key="Anchorable_BtnClose_Hint">隐藏</sys:String>
+    <sys:String x:Key="Anchorable_CxMenu_Hint">窗口位置</sys:String>
+    <sys:String x:Key="Anchorable_Dock">停靠</sys:String>
+    <sys:String x:Key="Anchorable_DockAsDocument">作为选项卡式停靠</sys:String>
+    <sys:String x:Key="Anchorable_Float">浮动</sys:String>
+    <sys:String x:Key="Anchorable_Hide">隐藏</sys:String>
+    <sys:String x:Key="Document_BtnPinned_Hint">切换固定状态</sys:String>
+    <sys:String x:Key="Document_Close">关闭</sys:String>
+    <sys:String x:Key="Document_CloseAll">关闭所有</sys:String>
+    <sys:String x:Key="Document_CloseAllButThis">除此之外全部关闭</sys:String>
+    <sys:String x:Key="Document_CxMenu_Hint">窗口位置</sys:String>
+    <sys:String x:Key="Document_DockAsDocument">作为选项卡式停靠</sys:String>
+    <sys:String x:Key="Document_Float">浮动</sys:String>
+    <sys:String x:Key="Document_MoveToNextTabGroup">移到下一标签组</sys:String>
+    <sys:String x:Key="Document_MoveToPreviousTabGroup">移到上一标签组</sys:String>
+    <sys:String x:Key="Document_NewHorizontalTabGroup">新建水平标签组</sys:String>
+    <sys:String x:Key="Document_NewVerticalTabGroup">新建垂直标签组</sys:String>
+    <sys:String x:Key="Window_Maximize">最大化</sys:String>
+    <sys:String x:Key="Window_Restore">还原</sys:String>
+    <!--#endregion-->
+
+    <sys:String x:Key="Theme">主题</sys:String>
+    <sys:String x:Key="Language">语言</sys:String>
+
+</ResourceDictionary>

@@ -134,7 +134,7 @@
                                         Command="{x:Static shell:SystemCommands.MinimizeWindowCommand}"
                                         CommandParameter="{Binding RelativeSource={RelativeSource TemplatedParent}}"
                                         Style="{StaticResource DocumentFloatingWindowSystemButton}"
-                                        ToolTip="{x:Static avalonDockProperties:Resources.Window_Maximize}"
+                                        ToolTip="{DynamicResource Window_Maximize}"
                                         Visibility="{Binding Path=AllowMinimize, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay, Converter={avalonDockConverters:BoolToVisibilityConverter}}">
                                         <Path
                                             Width="9"
@@ -152,7 +152,7 @@
                                         Command="{x:Static shell:SystemCommands.MaximizeWindowCommand}"
                                         CommandParameter="{Binding RelativeSource={RelativeSource TemplatedParent}}"
                                         Style="{StaticResource DocumentFloatingWindowSystemButton}"
-                                        ToolTip="{x:Static avalonDockProperties:Resources.Window_Maximize}"
+                                        ToolTip="{DynamicResource Window_Maximize}"
                                         Visibility="{Binding IsMaximized, RelativeSource={RelativeSource TemplatedParent}, Converter={avalonDockConverters:InverseBoolToVisibilityConverter}}">
                                         <Path
                                             Width="9"
@@ -170,7 +170,7 @@
                                         Command="{x:Static shell:SystemCommands.RestoreWindowCommand}"
                                         CommandParameter="{Binding RelativeSource={RelativeSource TemplatedParent}}"
                                         Style="{StaticResource DocumentFloatingWindowSystemButton}"
-                                        ToolTip="{x:Static avalonDockProperties:Resources.Window_Restore}"
+                                        ToolTip="{DynamicResource Window_Restore}"
                                         Visibility="{Binding IsMaximized, RelativeSource={RelativeSource TemplatedParent}, Converter={avalonDockConverters:BoolToVisibilityConverter}}">
                                         <Path
                                             Width="10"
@@ -186,7 +186,7 @@
                                         controlz:NonClientControlProperties.HitTestResult="CLOSE"
                                         Command="{Binding Path=CloseWindowCommand, RelativeSource={RelativeSource TemplatedParent}}"
                                         Style="{StaticResource DocumentFloatingWindowSystemButton}"
-                                        ToolTip="{x:Static avalonDockProperties:Resources.Document_Close}"
+                                        ToolTip="{DynamicResource Document_Close}"
                                         Visibility="{Binding Path=IsEnabled, RelativeSource={RelativeSource Self}, Mode=OneWay, Converter={avalonDockConverters:BoolToVisibilityConverter}}">
                                         <Path
                                             Width="10"

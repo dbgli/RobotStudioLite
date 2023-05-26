@@ -198,7 +198,7 @@
                                     Margin="4,4,4,2"
                                     Command="{Binding Path=LayoutItem.CloseCommand, RelativeSource={RelativeSource TemplatedParent}}"
                                     Style="{StaticResource DocumentWellItemCloseButtonBaseStyle}"
-                                    ToolTip="{x:Static avalonDockProperties:Resources.Document_Close}"
+                                    ToolTip="{DynamicResource Document_Close}"
                                     Visibility="Hidden">
                                     <Path
                                         Width="10"
@@ -234,7 +234,7 @@
                                 <Condition Binding="{Binding Path=CanHide}" Value="true" />
                             </MultiDataTrigger.Conditions>
                             <Setter TargetName="DocumentCloseButton" Property="Command" Value="{Binding Path=LayoutItem.HideCommand, RelativeSource={RelativeSource TemplatedParent}}" />
-                            <Setter TargetName="DocumentCloseButton" Property="ToolTip" Value="{x:Static avalonDockProperties:Resources.Anchorable_Hide}" />
+                            <Setter TargetName="DocumentCloseButton" Property="ToolTip" Value="{DynamicResource Anchorable_Hide}" />
                         </MultiDataTrigger>
                         <!--  MainBorder: hide button if both CanClose=false and CanHide=false  -->
                         <MultiDataTrigger>

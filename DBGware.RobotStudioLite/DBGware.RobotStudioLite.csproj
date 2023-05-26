@@ -11,6 +11,7 @@
   <ItemGroup>
     <ProjectReference Include="..\DBGware.RobotStudioLite.UI\DBGware.RobotStudioLite.UI.csproj" />
     <ProjectReference Include="..\DBGware.RobotStudioLite.UI.Themes.AvalonDock\DBGware.RobotStudioLite.UI.Themes.AvalonDock.csproj" />
+    <ProjectReference Include="..\DBGware.RobotStudioLite.Localization\DBGware.RobotStudioLite.Localization.csproj" />
   </ItemGroup>
 
 </Project>

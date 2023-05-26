@@ -161,11 +161,11 @@
                                             Margin="0,3,0,4"
                                             FontWeight="Bold"
                                             Foreground="{DynamicResource {x:Static reskeys:ResourceKeys.NavigatorWindowForeground}}"
-                                            Text="{x:Static avalonDockProperties:Resources.Active_ToolWindows}" />
+                                            Text="{DynamicResource Active_ToolWindows}" />
                                         <ListBox
                                             x:Name="PART_AnchorableListBox"
                                             Grid.Row="1"
-                                            AutomationProperties.Name="{x:Static avalonDockProperties:Resources.Active_ToolWindows}"
+                                            AutomationProperties.Name="{DynamicResource Active_ToolWindows}"
                                             ItemsSource="{Binding Anchorables}"
                                             SelectedItem="{Binding SelectedAnchorable, Mode=TwoWay}"
                                             Style="{DynamicResource NavigatorWindowListBoxBaseStyle}" />
@@ -179,11 +179,11 @@
                                             Margin="0,3,0,4"
                                             FontWeight="Bold"
                                             Foreground="{DynamicResource {x:Static reskeys:ResourceKeys.NavigatorWindowForeground}}"
-                                            Text="{x:Static avalonDockProperties:Resources.Active_Files}" />
+                                            Text="{DynamicResource Active_Files}" />
                                         <ListBox
                                             x:Name="PART_DocumentListBox"
                                             Grid.Row="1"
-                                            AutomationProperties.Name="{x:Static avalonDockProperties:Resources.Active_Files}"
+                                            AutomationProperties.Name="{DynamicResource Active_Files}"
                                             ItemsSource="{Binding Documents}"
                                             SelectedItem="{Binding SelectedDocument, Mode=TwoWay}"
                                             Style="{DynamicResource NavigatorWindowListBoxBaseStyle}">

@@ -189,15 +189,15 @@
         Style="{StaticResource {x:Type avalonDockControls:ContextMenuEx}}">
         <MenuItem
             Command="{Binding Path=CloseCommand}"
-            Header="{x:Static avalonDockProperties:Resources.Document_Close}"
+            Header="{DynamicResource Document_Close}"
             Visibility="{Binding Path=IsEnabled, RelativeSource={RelativeSource Self}, Mode=OneWay, Converter={avalonDockConverters:BoolToVisibilityConverter}}" />
-        <MenuItem Command="{Binding Path=CloseAllButThisCommand}" Header="{x:Static avalonDockProperties:Resources.Document_CloseAllButThis}" />
-        <MenuItem Command="{Binding Path=CloseAllCommand}" Header="{x:Static avalonDockProperties:Resources.Document_CloseAll}" />
-        <MenuItem Command="{Binding Path=FloatCommand}" Header="{x:Static avalonDockProperties:Resources.Document_Float}" />
-        <MenuItem Command="{Binding Path=DockAsDocumentCommand}" Header="{x:Static avalonDockProperties:Resources.Document_DockAsDocument}" />
+        <MenuItem Command="{Binding Path=CloseAllButThisCommand}" Header="{DynamicResource Document_CloseAllButThis}" />
+        <MenuItem Command="{Binding Path=CloseAllCommand}" Header="{DynamicResource Document_CloseAll}" />
+        <MenuItem Command="{Binding Path=FloatCommand}" Header="{DynamicResource Document_Float}" />
+        <MenuItem Command="{Binding Path=DockAsDocumentCommand}" Header="{DynamicResource Document_DockAsDocument}" />
         <MenuItem
             Command="{Binding Path=NewHorizontalTabGroupCommand}"
-            Header="{x:Static avalonDockProperties:Resources.Document_NewHorizontalTabGroup}"
+            Header="{DynamicResource Document_NewHorizontalTabGroup}"
             Visibility="{Binding Path=IsEnabled, RelativeSource={RelativeSource Self}, Mode=OneWay, Converter={avalonDockConverters:BoolToVisibilityConverter}}">
             <MenuItem.Icon>
                 <Path
@@ -211,7 +211,7 @@
         </MenuItem>
         <MenuItem
             Command="{Binding Path=NewVerticalTabGroupCommand}"
-            Header="{x:Static avalonDockProperties:Resources.Document_NewVerticalTabGroup}"
+            Header="{DynamicResource Document_NewVerticalTabGroup}"
             Visibility="{Binding Path=IsEnabled, RelativeSource={RelativeSource Self}, Mode=OneWay, Converter={avalonDockConverters:BoolToVisibilityConverter}}">
             <MenuItem.Icon>
                 <Path
@@ -225,11 +225,11 @@
         </MenuItem>
         <MenuItem
             Command="{Binding Path=MoveToNextTabGroupCommand}"
-            Header="{x:Static avalonDockProperties:Resources.Document_MoveToNextTabGroup}"
+            Header="{DynamicResource Document_MoveToNextTabGroup}"
             Visibility="{Binding Path=IsEnabled, RelativeSource={RelativeSource Self}, Mode=OneWay, Converter={avalonDockConverters:BoolToVisibilityConverter}}" />
         <MenuItem
             Command="{Binding Path=MoveToPreviousTabGroupCommand}"
-            Header="{x:Static avalonDockProperties:Resources.Document_MoveToPreviousTabGroup}"
+            Header="{DynamicResource Document_MoveToPreviousTabGroup}"
             Visibility="{Binding Path=IsEnabled, RelativeSource={RelativeSource Self}, Mode=OneWay, Converter={avalonDockConverters:BoolToVisibilityConverter}}" />
     </ContextMenu>
 
@@ -237,13 +237,13 @@
         x:Key="ToolWellContextMenu"
         ItemContainerStyle="{StaticResource {x:Type avalonDockControls:MenuItemEx}}"
         Style="{StaticResource {x:Type avalonDockControls:ContextMenuEx}}">
-        <MenuItem Command="{Binding Path=FloatCommand}" Header="{x:Static avalonDockProperties:Resources.Anchorable_Float}" />
-        <MenuItem Command="{Binding Path=DockCommand}" Header="{x:Static avalonDockProperties:Resources.Anchorable_Dock}" />
-        <MenuItem Command="{Binding Path=DockAsDocumentCommand}" Header="{x:Static avalonDockProperties:Resources.Anchorable_DockAsDocument}" />
-        <MenuItem Command="{Binding Path=AutoHideCommand}" Header="{x:Static avalonDockProperties:Resources.Anchorable_AutoHide}" />
+        <MenuItem Command="{Binding Path=FloatCommand}" Header="{DynamicResource Anchorable_Float}" />
+        <MenuItem Command="{Binding Path=DockCommand}" Header="{DynamicResource Anchorable_Dock}" />
+        <MenuItem Command="{Binding Path=DockAsDocumentCommand}" Header="{DynamicResource Anchorable_DockAsDocument}" />
+        <MenuItem Command="{Binding Path=AutoHideCommand}" Header="{DynamicResource Anchorable_AutoHide}" />
         <MenuItem
             Command="{Binding Path=HideCommand}"
-            Header="{x:Static avalonDockProperties:Resources.Anchorable_Hide}"
+            Header="{DynamicResource Anchorable_Hide}"
             Visibility="{Binding Path=IsEnabled, RelativeSource={RelativeSource Self}, Mode=OneWay, Converter={avalonDockConverters:BoolToVisibilityConverter}}" />
     </ContextMenu>
 

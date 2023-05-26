@@ -10,6 +10,7 @@
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="/DBGware.RobotStudioLite.UI;Component/Themes/DarkTheme.xaml" />
                 <ResourceDictionary Source="/DBGware.RobotStudioLite.UI.Themes.AvalonDock;Component/Themes/DarkTheme.xaml" />
+                <ResourceDictionary Source="/DBGware.RobotStudioLite.Localization;Component/Resources/en-US.xaml" />
             </ResourceDictionary.MergedDictionaries>
 
             <Style x:Key="CustomizeDocumentFloatingWindowStyle" TargetType="{x:Type LayoutDocumentFloatingWindowControl}">

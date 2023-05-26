@@ -258,7 +258,7 @@
                                                 DropDownContextMenu="{Binding Model.Root.Manager.AnchorableContextMenu, RelativeSource={RelativeSource TemplatedParent}}"
                                                 DropDownContextMenuDataContext="{Binding Path=SingleContentLayoutItem, RelativeSource={RelativeSource TemplatedParent}}"
                                                 Style="{StaticResource ToolWellWindowdDropDownButtonBaseStyle}"
-                                                ToolTip="{x:Static avalonDockProperties:Resources.Anchorable_CxMenu_Hint}"
+                                                ToolTip="{DynamicResource Anchorable_CxMenu_Hint}"
                                                 Visibility="{Binding Path=Model.IsSinglePane, RelativeSource={RelativeSource TemplatedParent}, Converter={avalonDockConverters:BoolToVisibilityConverter}}">
                                                 <Path
                                                     Width="8"
@@ -277,7 +277,7 @@
                                                 Command="{x:Static shell:SystemCommands.MaximizeWindowCommand}"
                                                 CommandParameter="{Binding RelativeSource={RelativeSource TemplatedParent}}"
                                                 Style="{StaticResource ToolWellWindowSystemButtonBaseStyle}"
-                                                ToolTip="{x:Static avalonDockProperties:Resources.Window_Maximize}"
+                                                ToolTip="{DynamicResource Window_Maximize}"
                                                 Visibility="{Binding IsMaximized, RelativeSource={RelativeSource TemplatedParent}, Converter={avalonDockConverters:InverseBoolToVisibilityConverter}}">
                                                 <Path
                                                     Width="9"
@@ -297,7 +297,7 @@
                                                 Command="{x:Static shell:SystemCommands.RestoreWindowCommand}"
                                                 CommandParameter="{Binding RelativeSource={RelativeSource TemplatedParent}}"
                                                 Style="{StaticResource ToolWellWindowSystemButtonBaseStyle}"
-                                                ToolTip="{x:Static avalonDockProperties:Resources.Window_Restore}"
+                                                ToolTip="{DynamicResource Window_Restore}"
                                                 Visibility="{Binding IsMaximized, RelativeSource={RelativeSource TemplatedParent}, Converter={avalonDockConverters:BoolToVisibilityConverter}}">
                                                 <Path
                                                     Width="10"
@@ -315,7 +315,7 @@
                                                 controlz:NonClientControlProperties.HitTestResult="CLOSE"
                                                 Command="{Binding HideWindowCommand, RelativeSource={RelativeSource TemplatedParent}}"
                                                 Style="{StaticResource ToolWellWindowSystemButtonBaseStyle}"
-                                                ToolTip="{x:Static avalonDockProperties:Resources.Anchorable_BtnClose_Hint}"
+                                                ToolTip="{DynamicResource Anchorable_BtnClose_Hint}"
                                                 Visibility="{Binding Path=IsEnabled, RelativeSource={RelativeSource Self}, Mode=OneWay, Converter={avalonDockConverters:BoolToVisibilityConverter}}">
                                                 <Path
                                                     Width="10"
@@ -352,7 +352,7 @@
                         </MultiDataTrigger>
                         <DataTrigger Binding="{Binding Model.SinglePane.SelectedContent.CanClose, RelativeSource={RelativeSource Mode=Self}}" Value="true">
                             <Setter TargetName="PART_PinClose" Property="Command" Value="{Binding CloseWindowCommand, RelativeSource={RelativeSource TemplatedParent}}" />
-                            <Setter TargetName="PART_PinClose" Property="ToolTip" Value="{x:Static avalonDockProperties:Resources.Document_Close}" />
+                            <Setter TargetName="PART_PinClose" Property="ToolTip" Value="{DynamicResource Document_Close}" />
                         </DataTrigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
