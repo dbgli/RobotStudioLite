@@ -10,11 +10,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="Icon.ico" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Content Include="Resources\Icons\ICO\Icon.ico" />
+    <Resource Include="Resources\Icons\ICO\Icon.ico" />
   </ItemGroup>
 
   <ItemGroup>
@@ -42,10 +38,6 @@
     <Folder Include="Resources\Icons\PNG\" />
     <Folder Include="Resources\Icons\SVG\" />
     <Folder Include="Resources\Models\" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Resource Include="Icon.ico" />
   </ItemGroup>
 
 </Project>
