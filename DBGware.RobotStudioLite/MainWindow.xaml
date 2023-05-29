@@ -6,7 +6,21 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:local="clr-namespace:DBGware.RobotStudioLite"
     mc:Ignorable="d"
-    Title="RobotStudioLite" Height="450" Width="800">
+    Title="RobotStudioLite" Height="450" Width="800"
+    IsShowTitle="False"
+    IsShowIcon="False">
+    <CustomChromeWindow.LeftWindowCommands>
+        <Grid ShowGridLines="True">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="100"/>
+                <ColumnDefinition Width="100" />
+                <ColumnDefinition Width="100" />
+                <ColumnDefinition Width="100" />
+                <ColumnDefinition Width="100" />
+            </Grid.ColumnDefinitions>
+            
+        </Grid>
+    </CustomChromeWindow.LeftWindowCommands>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
