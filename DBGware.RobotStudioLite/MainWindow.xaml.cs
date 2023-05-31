@@ -74,7 +74,7 @@ namespace DBGware.RobotStudioLite
             if (sender is MenuItem menuItem && !menuItem.IsChecked)
             {
                 themeMenuItem.Items.OfType<MenuItem>().ToList()
-                                .ForEach(item => { if (item.IsChecked) { item.IsChecked = false; } });   // 复位
+                             .ForEach(item => { if (item.IsChecked) { item.IsChecked = false; } });   // 复位
                 menuItem.IsChecked = true;
                 App.CurrentTheme = (string)menuItem.Tag;
             }

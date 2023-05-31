@@ -31,8 +31,8 @@
     <sys:String x:Key="Options">选项</sys:String>
     <sys:String x:Key="Theme">主题</sys:String>
     <sys:String x:Key="Language">语言</sys:String>
-    <sys:String x:Key="Blue">Blue</sys:String>
-    <sys:String x:Key="Dark">Dark</sys:String>
-    <sys:String x:Key="Light">Light</sys:String>
+    <sys:String x:Key="Blue">蓝色</sys:String>
+    <sys:String x:Key="Dark">深色</sys:String>
+    <sys:String x:Key="Light">浅色</sys:String>
 
 </ResourceDictionary>
