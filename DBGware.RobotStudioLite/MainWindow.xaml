@@ -4,6 +4,7 @@
                     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
                     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
                     xmlns:local="clr-namespace:DBGware.RobotStudioLite"
+                    xmlns:icons="clr-namespace:DBGware.RobotStudioLite.Resources.Icons.XAML"
                     mc:Ignorable="d"
 
                     Title="RobotStudioLite"
@@ -22,17 +23,48 @@
                     TextOptions.TextHintingMode="Fixed"
                     TextOptions.TextRenderingMode="ClearType"
 
+                    Loaded="CustomChromeWindow_Loaded"
                     Activated="CustomChromeWindow_Activated">
     <CustomChromeWindow.LeftWindowCommands>
-        <Grid ShowGridLines="True">
+        <Grid Margin="4,6">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="100"/>
-                <ColumnDefinition Width="100" />
-                <ColumnDefinition Width="100" />
-                <ColumnDefinition Width="100" />
-                <ColumnDefinition Width="100" />
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
             </Grid.ColumnDefinitions>
-
+            <Viewbox
+                Grid.Column="0"
+                Width="24" Height="24"
+                Margin="4,2,4,0"
+                VerticalAlignment="Top"
+                IsHitTestVisible="False">
+                <icons:Icon />
+            </Viewbox>
+            <Menu Grid.Column="1" Margin="0,2,0,0">
+                <MenuItem Header="{DynamicResource Options}">
+                    <MenuItem x:Name="languageMenuItem" Header="{DynamicResource Language}">
+                        <MenuItem Header="Deutsch" Tag="de" IsEnabled="False" Click="ChangeLanguage" />
+                        <MenuItem Header="English" Tag="en" IsEnabled="True" Click="ChangeLanguage" />
+                        <MenuItem Header="Español" Tag="es" IsEnabled="False" Click="ChangeLanguage" />
+                        <MenuItem Header="Français" Tag="fr" IsEnabled="False" Click="ChangeLanguage" />
+                        <MenuItem Header="Italiano" Tag="it" IsEnabled="False" Click="ChangeLanguage" />
+                        <MenuItem Header="日本語" Tag="ja" IsEnabled="False" Click="ChangeLanguage" />
+                        <MenuItem Header="한국어" Tag="ko" IsEnabled="False" Click="ChangeLanguage" />
+                        <MenuItem Header="Português" Tag="pt" IsEnabled="False" Click="ChangeLanguage" />
+                        <MenuItem Header="Русский" Tag="ru" IsEnabled="False" Click="ChangeLanguage" />
+                        <MenuItem Header="ไทย" Tag="th" IsEnabled="False" Click="ChangeLanguage" />
+                        <MenuItem Header="Tiếng Việt" Tag="vi" IsEnabled="False" Click="ChangeLanguage" />
+                        <MenuItem Header="简体中文" Tag="zh-CHS" IsEnabled="True" Click="ChangeLanguage" />
+                        <MenuItem Header="繁體中文" Tag="zh-CHT" IsEnabled="False" Click="ChangeLanguage" />
+                    </MenuItem>
+                    <MenuItem x:Name="themeMenuItem" Header="{DynamicResource Theme}">
+                        <MenuItem Header="{DynamicResource Blue}" Tag="Blue" Click="ChangeTheme" />
+                        <MenuItem Header="{DynamicResource Dark}" Tag="Dark" Click="ChangeTheme" />
+                        <MenuItem Header="{DynamicResource Light}" Tag="Light" Click="ChangeTheme" />
+                    </MenuItem>
+                </MenuItem>
+            </Menu>
+            
         </Grid>
     </CustomChromeWindow.LeftWindowCommands>
     <Grid>
@@ -43,61 +75,6 @@
         <Grid
             Grid.Row="0"
             Background="Transparent" />
-        <Menu
-            Grid.Row="0"
-            Margin="2,4"
-            HorizontalAlignment="Left"
-            Background="Transparent">
-            <MenuItem Header="File">
-                <MenuItem.ItemContainerStyle>
-                    <Style TargetType="{x:Type MenuItem}">
-                        <Setter Property="DynamicStyleProvider.BasedOn" Value="{DynamicResource MenuItemBaseStyle}" />
-                        <Setter Property="DynamicStyleProvider.Derived" Value="{DynamicResource BindingCommandsMenuItem}" />
-                    </Style>
-                </MenuItem.ItemContainerStyle>
-                <MenuItem Header="New" />
-                <MenuItem Header="Open" />
-                <Separator />
-                <MenuItem Header="Close" IsEnabled="False" />
-            </MenuItem>
-            <MenuItem Header="Edit">
-                <MenuItem Header="Undo" />
-                <MenuItem Header="Redo" />
-            </MenuItem>
-            <MenuItem Header="View" />
-            <MenuItem Header="Tools">
-                <MenuItem Header="Settings" />
-                <MenuItem Header="Options">
-                    <MenuItem Header="Option 1" />
-                    <Separator />
-                    <MenuItem Header="Checkable 1" IsCheckable="True" />
-                    <MenuItem
-                        Header="Checkable 2"
-                        IsCheckable="True"
-                        IsChecked="True" />
-                </MenuItem>
-                <MenuItem Header="disabled" IsEnabled="False">
-                    <MenuItem Header="Option 1" />
-                </MenuItem>
-            </MenuItem>
-            <MenuItem
-                x:Name="ThemesMenu"
-                Header="Themes">
-                <Separator />
-                <MenuItem
-                    Click="ThemeItem_Click"
-                    Header="Visual Studio 2022 Blue"
-                    Tag="0" />
-                <MenuItem
-                    Click="ThemeItem_Click"
-                    Header="Visual Studio 2022 Dark"
-                    Tag="1" />
-                <MenuItem
-                    Click="ThemeItem_Click"
-                    Header="Visual Studio 2022 Light"
-                    Tag="2" />
-            </MenuItem>
-        </Menu>
         <DockingManager
             x:Name="dockingManager"
             Grid.Row="1"

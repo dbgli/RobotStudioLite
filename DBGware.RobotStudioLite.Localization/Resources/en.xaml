@@ -28,7 +28,11 @@
     <sys:String x:Key="Window_Restore">Restore</sys:String>
     <!--#endregion-->
 
+    <sys:String x:Key="Options">Options</sys:String>
     <sys:String x:Key="Theme">Theme</sys:String>
     <sys:String x:Key="Language">Language</sys:String>
+    <sys:String x:Key="Blue">Blue</sys:String>
+    <sys:String x:Key="Dark">Dark</sys:String>
+    <sys:String x:Key="Light">Light</sys:String>
 
 </ResourceDictionary>

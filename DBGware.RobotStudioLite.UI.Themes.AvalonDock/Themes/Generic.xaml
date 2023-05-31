@@ -1,5 +1,5 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
     <ResourceDictionary.MergedDictionaries>
-        <ResourceDictionary Source="/DBGware.RobotStudioLite.UI.Themes.AvalonDock;Component/Themes/DarkTheme.xaml" />
+        <ResourceDictionary Source="/DBGware.RobotStudioLite.UI.Themes.AvalonDock;Component/Themes/Dark.xaml" />
     </ResourceDictionary.MergedDictionaries>
 </ResourceDictionary>

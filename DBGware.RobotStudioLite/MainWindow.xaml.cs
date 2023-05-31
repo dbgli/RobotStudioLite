@@ -21,15 +21,6 @@ namespace DBGware.RobotStudioLite
             InitializeComponent();
         }
 
-        private void ThemeItem_Click(object sender, RoutedEventArgs e)
-        {
-            if (sender is MenuItem menuItem)
-            {
-                Application.Current.Resources.MergedDictionaries[0].Source = ControlThemeSelector.Themes[int.Parse((string)menuItem.Tag)];
-                Application.Current.Resources.MergedDictionaries[1].Source = AvalonDockThemeSelector.Themes[int.Parse((string)menuItem.Tag)];
-            }
-        }
-
         private void CustomChromeWindow_Activated(object sender, EventArgs e)
         {
             // 当窗口被激活时，激活DockingManager中最后被激活的项
@@ -65,6 +56,39 @@ namespace DBGware.RobotStudioLite
 
                 items[index].IsActive = true;
             }
+        }
+
+        private void ChangeLanguage(object sender, RoutedEventArgs e)
+        {
+            if (sender is MenuItem menuItem && !menuItem.IsChecked)
+            {
+                languageMenuItem.Items.OfType<MenuItem>().ToList()
+                                .ForEach(item => { if (item.IsChecked) { item.IsChecked = false; } });   // 复位
+                menuItem.IsChecked = true;
+                App.CurrentLanguage = (string)menuItem.Tag;
+            }
+        }
+
+        private void ChangeTheme(object sender, RoutedEventArgs e)
+        {
+            if (sender is MenuItem menuItem && !menuItem.IsChecked)
+            {
+                themeMenuItem.Items.OfType<MenuItem>().ToList()
+                                .ForEach(item => { if (item.IsChecked) { item.IsChecked = false; } });   // 复位
+                menuItem.IsChecked = true;
+                App.CurrentTheme = (string)menuItem.Tag;
+            }
+        }
+
+        private void CustomChromeWindow_Loaded(object sender, RoutedEventArgs e)
+        {
+            languageMenuItem.Items.OfType<MenuItem>().ToList()
+                            .FindAll(item => (string)item.Tag == App.CurrentLanguage)
+                            .ForEach(item => item.IsChecked = true);
+
+            themeMenuItem.Items.OfType<MenuItem>().ToList()
+                         .FindAll(item => (string)item.Tag == App.CurrentTheme)
+                         .ForEach(item => item.IsChecked = true);
         }
     }
 }

@@ -28,7 +28,11 @@
     <sys:String x:Key="Window_Restore">还原</sys:String>
     <!--#endregion-->
 
+    <sys:String x:Key="Options">选项</sys:String>
     <sys:String x:Key="Theme">主题</sys:String>
     <sys:String x:Key="Language">语言</sys:String>
+    <sys:String x:Key="Blue">Blue</sys:String>
+    <sys:String x:Key="Dark">Dark</sys:String>
+    <sys:String x:Key="Light">Light</sys:String>
 
 </ResourceDictionary>
