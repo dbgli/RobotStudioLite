@@ -404,4 +404,7 @@
     <SolidColorBrush x:Key="SystemColorsWindowText" Color="#FFFAFAFA" />
     <SolidColorBrush x:Key="SystemColorsWindowPanel" Color="#FF424242" />
 
+    <SolidColorBrush x:Key="MonoIconPathActiveFill" Color="#FFD6D6D6" />
+    <SolidColorBrush x:Key="MonoIconPathInactiveFill" Color="#FF666666" />
+
 </ResourceDictionary>
