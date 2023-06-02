@@ -30,6 +30,15 @@
 
     <!--#endregion-->
 
+    <!--#region TextBox-->
+
+    <sys:String x:Key="Cut">Cut</sys:String>
+    <sys:String x:Key="Copy">Copy</sys:String>
+    <sys:String x:Key="Paste">Paste</sys:String>
+    <sys:String x:Key="SelectAll">Select All</sys:String>
+
+    <!--#endregion-->
+
     <sys:String x:Key="Options">Options</sys:String>
     <sys:String x:Key="Theme">Theme</sys:String>
     <sys:String x:Key="Language">Language</sys:String>

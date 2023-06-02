@@ -36,10 +36,10 @@
         <Setter Property="ContextMenu">
             <Setter.Value>
                 <ContextMenu>
-                    <MenuItem Command="Cut" />
-                    <MenuItem Command="Copy" />
-                    <MenuItem Command="Paste" />
-                    <MenuItem Command="SelectAll" />
+                    <MenuItem Header="{DynamicResource Cut}" Command="Cut" />
+                    <MenuItem Header="{DynamicResource Copy}" Command="Copy" />
+                    <MenuItem Header="{DynamicResource Paste}" Command="Paste" />
+                    <MenuItem Header="{DynamicResource SelectAll}" Command="SelectAll" />
                 </ContextMenu>
             </Setter.Value>
         </Setter>
