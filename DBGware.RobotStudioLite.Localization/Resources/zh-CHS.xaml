@@ -3,6 +3,7 @@
                     xmlns:sys="clr-namespace:System;assembly=mscorlib">
 
     <!--#region AvalonDock-->
+
     <sys:String x:Key="Active_Files">激活文件</sys:String>
     <sys:String x:Key="Active_ToolWindows">活动工具窗口</sys:String>
     <sys:String x:Key="Anchorable_AutoHide">自动隐藏</sys:String>
@@ -26,6 +27,7 @@
     <sys:String x:Key="Document_NewVerticalTabGroup">新建垂直标签组</sys:String>
     <sys:String x:Key="Window_Maximize">最大化</sys:String>
     <sys:String x:Key="Window_Restore">还原</sys:String>
+
     <!--#endregion-->
 
     <sys:String x:Key="Options">选项</sys:String>

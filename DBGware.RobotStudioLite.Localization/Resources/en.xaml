@@ -3,6 +3,7 @@
                     xmlns:sys="clr-namespace:System;assembly=mscorlib">
 
     <!--#region AvalonDock-->
+
     <sys:String x:Key="Active_Files">Active Files</sys:String>
     <sys:String x:Key="Active_ToolWindows">Active Tool Windows</sys:String>
     <sys:String x:Key="Anchorable_AutoHide">Auto Hide</sys:String>
@@ -13,19 +14,20 @@
     <sys:String x:Key="Anchorable_DockAsDocument">Dock as Tabbed Document</sys:String>
     <sys:String x:Key="Anchorable_Float">Float</sys:String>
     <sys:String x:Key="Anchorable_Hide">Hide</sys:String>
-    <sys:String x:Key="Document_BtnPinned_Hint">Toggle Pin status</sys:String>
+    <sys:String x:Key="Document_BtnPinned_Hint">Toggle Pin Status</sys:String>
     <sys:String x:Key="Document_Close">Close</sys:String>
     <sys:String x:Key="Document_CloseAll">Close All</sys:String>
     <sys:String x:Key="Document_CloseAllButThis">Close All But This</sys:String>
     <sys:String x:Key="Document_CxMenu_Hint">Window Position</sys:String>
     <sys:String x:Key="Document_DockAsDocument">Dock as Tabbed Document</sys:String>
     <sys:String x:Key="Document_Float">Float</sys:String>
-    <sys:String x:Key="Document_MoveToNextTabGroup">Move To Next Tab Group</sys:String>
-    <sys:String x:Key="Document_MoveToPreviousTabGroup">Move To Previous Tab Group</sys:String>
+    <sys:String x:Key="Document_MoveToNextTabGroup">Move to Next Tab Group</sys:String>
+    <sys:String x:Key="Document_MoveToPreviousTabGroup">Move to Previous Tab Group</sys:String>
     <sys:String x:Key="Document_NewHorizontalTabGroup">New Horizontal Tab Group</sys:String>
     <sys:String x:Key="Document_NewVerticalTabGroup">New Vertical Tab Group</sys:String>
     <sys:String x:Key="Window_Maximize">Maximize</sys:String>
     <sys:String x:Key="Window_Restore">Restore</sys:String>
+
     <!--#endregion-->
 
     <sys:String x:Key="Options">Options</sys:String>
