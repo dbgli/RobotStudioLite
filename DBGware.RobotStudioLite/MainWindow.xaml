@@ -43,19 +43,19 @@
             <Menu Grid.Column="1" Margin="0,2,0,0">
                 <MenuItem Header="{DynamicResource Options}">
                     <MenuItem x:Name="languageMenuItem" Header="{DynamicResource Language}">
-                        <MenuItem Header="Deutsch" Tag="de" IsEnabled="False" Click="ChangeLanguage" />
-                        <MenuItem Header="English" Tag="en" IsEnabled="True" Click="ChangeLanguage" />
-                        <MenuItem Header="Español" Tag="es" IsEnabled="False" Click="ChangeLanguage" />
-                        <MenuItem Header="Français" Tag="fr" IsEnabled="False" Click="ChangeLanguage" />
-                        <MenuItem Header="Italiano" Tag="it" IsEnabled="False" Click="ChangeLanguage" />
-                        <MenuItem Header="日本語" Tag="ja" IsEnabled="False" Click="ChangeLanguage" />
-                        <MenuItem Header="한국어" Tag="ko" IsEnabled="False" Click="ChangeLanguage" />
-                        <MenuItem Header="Português" Tag="pt" IsEnabled="False" Click="ChangeLanguage" />
-                        <MenuItem Header="Русский" Tag="ru" IsEnabled="False" Click="ChangeLanguage" />
-                        <MenuItem Header="ไทย" Tag="th" IsEnabled="False" Click="ChangeLanguage" />
-                        <MenuItem Header="Tiếng Việt" Tag="vi" IsEnabled="False" Click="ChangeLanguage" />
-                        <MenuItem Header="简体中文" Tag="zh-CHS" IsEnabled="True" Click="ChangeLanguage" />
-                        <MenuItem Header="繁體中文" Tag="zh-CHT" IsEnabled="False" Click="ChangeLanguage" />
+                        <MenuItem Header="Deutsch" Tag="de" Click="ChangeLanguage" />
+                        <MenuItem Header="English" Tag="en" Click="ChangeLanguage" />
+                        <MenuItem Header="Español" Tag="es" Click="ChangeLanguage" />
+                        <MenuItem Header="Français" Tag="fr" Click="ChangeLanguage" />
+                        <MenuItem Header="Italiano" Tag="it" Click="ChangeLanguage" />
+                        <MenuItem Header="日本語" Tag="ja" Click="ChangeLanguage" />
+                        <MenuItem Header="한국어" Tag="ko" Click="ChangeLanguage" />
+                        <MenuItem Header="Português" Tag="pt" Click="ChangeLanguage" />
+                        <MenuItem Header="Русский" Tag="ru" Click="ChangeLanguage" />
+                        <MenuItem Header="ไทย" Tag="th" Click="ChangeLanguage" />
+                        <MenuItem Header="Tiếng Việt" Tag="vi" Click="ChangeLanguage" />
+                        <MenuItem Header="简体中文" Tag="zh-CHS" Click="ChangeLanguage" />
+                        <MenuItem Header="繁體中文" Tag="zh-CHT" Click="ChangeLanguage" />
                     </MenuItem>
                     <MenuItem x:Name="themeMenuItem" Header="{DynamicResource Theme}">
                         <MenuItem Header="{DynamicResource Blue}" Tag="Blue" Click="ChangeTheme" />
@@ -84,16 +84,14 @@
                     <LayoutDocumentPaneGroup>
                         <LayoutDocumentPane>
                             <LayoutDocument Title="Doc1">
-                                <StackPanel>
-                                    <CheckBox Content="CheckBox" HorizontalAlignment="Left" Height="18" VerticalAlignment="Top" Width="85" Grid.Row="1"/>
-                                    <Slider HorizontalAlignment="Left" VerticalAlignment="Top" Width="120"/>
-                                </StackPanel>
                             </LayoutDocument>
                             <LayoutDocument Title="Doc2">
                             </LayoutDocument>
                         </LayoutDocumentPane>
                         <LayoutDocumentPane>
-                            <LayoutDocument Title="Doc3" />
+                            <LayoutDocument Title="Doc3">
+                                <TextBox />
+                            </LayoutDocument>
                         </LayoutDocumentPane>
                     </LayoutDocumentPaneGroup>
                     <LayoutAnchorablePaneGroup DockWidth="150" Orientation="Vertical">

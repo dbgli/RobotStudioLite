@@ -5,9 +5,7 @@ using System.Windows.Controls;
 using System.Collections.Generic;
 
 using AvalonDock.Layout;
-using DBGware.RobotStudioLite.UI;
 using DBGware.RobotStudioLite.UI.Controls;
-using DBGware.RobotStudioLite.UI.Themes.AvalonDock;
 
 namespace DBGware.RobotStudioLite
 {
