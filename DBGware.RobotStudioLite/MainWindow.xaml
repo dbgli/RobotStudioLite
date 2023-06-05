@@ -8,7 +8,7 @@
                     mc:Ignorable="d"
 
                     Title="RobotStudioLite"
-                    Icon="/Resources/Icons/ICO/Icon.ico"
+                    Icon="/Resources/Icons/ICO/AppIcon.ico"
                     Width="1280" Height="720"
                     WindowStartupLocation="CenterScreen"
                     IsShowTitle="False"
@@ -85,6 +85,7 @@
                     <LayoutDocumentPaneGroup>
                         <LayoutDocumentPane>
                             <LayoutDocument Title="Doc1">
+                                <icons:AppIcon />
                             </LayoutDocument>
                             <LayoutDocument Title="Doc2">
                             </LayoutDocument>

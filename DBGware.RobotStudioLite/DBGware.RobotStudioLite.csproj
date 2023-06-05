@@ -6,11 +6,11 @@
     <Nullable>enable</Nullable>
     <UseWPF>true</UseWPF>
     <ApplicationManifest>App.manifest</ApplicationManifest>
-    <ApplicationIcon>Resources\Icons\ICO\Icon.ico</ApplicationIcon>
+    <ApplicationIcon>Resources\Icons\ICO\AppIcon.ico</ApplicationIcon>
   </PropertyGroup>
 
   <ItemGroup>
-    <Resource Include="Resources\Icons\ICO\Icon.ico" />
+    <Resource Include="Resources\Icons\ICO\AppIcon.ico" />
   </ItemGroup>
 
   <ItemGroup>

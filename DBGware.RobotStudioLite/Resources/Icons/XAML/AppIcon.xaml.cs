@@ -16,11 +16,11 @@ using System.Windows.Shapes;
 namespace DBGware.RobotStudioLite.Resources.Icons.XAML
 {
     /// <summary>
-    /// Interaction logic for Icon.xaml
+    /// Interaction logic for AppIcon.xaml
     /// </summary>
-    public partial class Icon : UserControl
+    public partial class AppIcon : UserControl
     {
-        public Icon()
+        public AppIcon()
         {
             InitializeComponent();
         }
