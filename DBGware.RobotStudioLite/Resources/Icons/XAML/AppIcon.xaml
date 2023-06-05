@@ -1,59 +1,120 @@
-﻿<UserControl x:Class="DBGware.RobotStudioLite.Resources.Icons.XAML.AppIcon"
-             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-             xmlns:local="clr-namespace:DBGware.RobotStudioLite.Resources.Icons.XAML"
-             mc:Ignorable="d"
-             d:DesignHeight="768" d:DesignWidth="768">
+﻿<UserControl
+    x:Class="DBGware.RobotStudioLite.Resources.Icons.XAML.AppIcon"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:DBGware.RobotStudioLite.Resources.Icons.XAML"
+    mc:Ignorable="d"
+    d:DesignHeight="768" d:DesignWidth="768">
 
+    <!-- 投影和线性渐变 -->
     <UserControl.Resources>
 
         <DropShadowEffect x:Key="Filter12721" ShadowDepth="0" BlurRadius="20" Opacity="0.5" />
 
-        <GradientStopCollection x:Key="CommonGradientStop">
+        <GradientStopCollection x:Key="CommonGradientStops">
             <GradientStop Color="#FFAE7FE2" Offset="0" />
             <GradientStop Color="#FF9A70D4" Offset="1" />
         </GradientStopCollection>
 
-        <LinearGradientBrush x:Key="LinearGradient1948"
-                             GradientStops="{StaticResource CommonGradientStop}"
-                             MappingMode="Absolute"
-                             StartPoint="661,260" EndPoint="661,342" />
-        <LinearGradientBrush x:Key="LinearGradient5683"
-                             GradientStops="{StaticResource CommonGradientStop}"
-                             MappingMode="Absolute"
-                             StartPoint="492,106" EndPoint="492,327" />
-        <LinearGradientBrush x:Key="LinearGradient5691"
-                             GradientStops="{StaticResource CommonGradientStop}"
-                             MappingMode="Absolute"
-                             StartPoint="396,36" EndPoint="396,199" />
-        <LinearGradientBrush x:Key="LinearGradient5699"
-                             GradientStops="{StaticResource CommonGradientStop}"
-                             MappingMode="Absolute"
-                             StartPoint="139,166" EndPoint="139,546" />
-        <LinearGradientBrush x:Key="LinearGradient5707"
-                             GradientStops="{StaticResource CommonGradientStop}"
-                             MappingMode="Absolute"
-                             StartPoint="253,566" EndPoint="253,607" />
-        <LinearGradientBrush x:Key="LinearGradient5715"
-                             GradientStops="{StaticResource CommonGradientStop}"
-                             MappingMode="Absolute"
-                             StartPoint="253,485" EndPoint="253,733" />
+        <LinearGradientBrush
+            x:Key="LinearGradient1948"
+            GradientStops="{StaticResource CommonGradientStops}"
+            MappingMode="Absolute"
+            StartPoint="660.71631,260.25952" EndPoint="660.71631,341.84665" />
+        <LinearGradientBrush
+            x:Key="LinearGradient5683"
+            GradientStops="{StaticResource CommonGradientStops}"
+            MappingMode="Absolute"
+            StartPoint="492.22278,105.5" EndPoint="492.22278,327.01358" />
+        <LinearGradientBrush
+            x:Key="LinearGradient5691"
+            GradientStops="{StaticResource CommonGradientStops}"
+            MappingMode="Absolute"
+            StartPoint="395.55817,35.894947" EndPoint="395.55817,199.06918" />
+        <LinearGradientBrush
+            x:Key="LinearGradient5699"
+            GradientStops="{StaticResource CommonGradientStops}"
+            MappingMode="Absolute"
+            StartPoint="139.13438,165.93008" EndPoint="139.13438,546.01959" />
+        <LinearGradientBrush
+            x:Key="LinearGradient5707"
+            GradientStops="{StaticResource CommonGradientStops}"
+            MappingMode="Absolute"
+            StartPoint="252.78072,566.21124" EndPoint="252.78072,607.00482" />
+        <LinearGradientBrush
+            x:Key="LinearGradient5715"
+            GradientStops="{StaticResource CommonGradientStops}"
+            MappingMode="Absolute"
+            StartPoint="252.78072,484.62411" EndPoint="252.78072,732.10504" />
 
     </UserControl.Resources>
 
-    <Canvas Width="768" Height="768">
-        <Canvas x:Name="layer1" Effect="{StaticResource Filter12721}">
+    <!-- 动画效果 -->
+    <!-- 不要设置From属性，否则动画未完成时再触发会跳变到From位置 -->
+    <!-- 不要用AutoReverse，因为它不等人 -->
+    <UserControl.Triggers>
+
+        <!-- 抬起机械臂 -->
+        <EventTrigger RoutedEvent="MouseEnter">
+            <EventTrigger.Actions>
+                <BeginStoryboard>
+                    <Storyboard>
+                        <DoubleAnimation
+                            Storyboard.TargetName="canvasRotateTransform"
+                            Storyboard.TargetProperty="Angle"
+                            To="-16"
+                            Duration="0:0:0.25"
+                            AccelerationRatio="0.25"
+                            DecelerationRatio="0.25" />
+                    </Storyboard>
+                </BeginStoryboard>
+            </EventTrigger.Actions>
+        </EventTrigger>
+
+        <!-- 放下机械臂 -->
+        <EventTrigger RoutedEvent="MouseLeave">
+            <EventTrigger.Actions>
+                <BeginStoryboard>
+                    <Storyboard>
+                        <DoubleAnimation
+                            Storyboard.TargetName="canvasRotateTransform"
+                            Storyboard.TargetProperty="Angle"
+                            To="0"
+                            Duration="0:0:0.25"
+                            AccelerationRatio="0.25"
+                            DecelerationRatio="0.25" />
+                    </Storyboard>
+                </BeginStoryboard>
+            </EventTrigger.Actions>
+        </EventTrigger>
+
+    </UserControl.Triggers>
+
+    <!-- 图标 -->
+    <!-- 必须设置背景色，把UserControl撑起来，否则鼠标的进入和退出事件只会在非透明区域触发 -->
+    <!-- 颜色的十六进制简写形式：当每个通道的两位数值相同时，可以只用一个数值表示。例：#FF22AA99可以简写成#F2A9 -->
+    <Canvas Width="768" Height="768" Background="#0000" Effect="{StaticResource Filter12721}">
+
+        <!-- 机械臂 -->
+        <Canvas>
+            <Canvas.RenderTransform>
+                <!-- 旋转中心点 -->
+                <RotateTransform x:Name="canvasRotateTransform" CenterX="252.78072" CenterY="607.00482" />
+            </Canvas.RenderTransform>
             <Path Fill="{StaticResource LinearGradient1948}" Data="M 660.71632 260.25953 C 638.21799 260.25953 619.92275 278.55477 619.92275 301.05309 619.92275 323.55142 638.21867 341.84665 660.71632 341.84665 683.21464 341.84665 701.50988 323.55142 701.50988 301.05309 701.50988 278.55476 683.21464 260.25953 660.71632 260.25953 Z" />
             <Path Fill="{StaticResource LinearGradient5683}" Data="M 656.656 219.87663 517.14338 109.59395 C 518.80912 135.01786 520.04925 116.27866 492.77467 271.29419 L 583.4098 325.89637 C 580.86837 318.01369 579.1292 309.77204 579.1292 301.05309 579.1292 257.44614 613.578 222.04004 656.656 219.87663 Z" />
             <Path Fill="{StaticResource LinearGradient5691}" Data="M 395.55818 35.894947 C 350.56152 35.894947 313.97105 72.485411 313.97105 117.48207 313.97105 162.47873 350.56288 199.06919 395.55818 199.06919 440.55483 199.06919 477.1453 162.47873 477.1453 117.48207 477.1453 72.485411 440.55483 35.894947 395.55818 35.894947 Z" />
             <Path Fill="{StaticResource LinearGradient5699}" Data="M 395.55818 239.86275 C 345.78867 239.86275 303.0479 209.89716 283.94155 167.15503 L 139.59082 489.91504 C 168.96626 461.51048 208.78894 443.83055 252.78071 443.83055 320.51978 443.83055 378.68732 485.3516 403.33207 544.25342 L 460.20509 220.96445 C 441.39654 232.75923 419.3517 239.86275 395.55818 239.86275 Z" />
         </Canvas>
-        <Canvas x:Name="layer2" Effect="{StaticResource Filter12721}">
+
+        <!-- 底座 -->
+        <Canvas>
             <Path Fill="{StaticResource LinearGradient5707}" Data="M 252.78071 566.21124 C 241.52713 566.21124 232.38393 575.35443 232.38393 586.60802 232.38393 597.8616 241.52713 607.0048 252.78071 607.0048 264.0343 607.0048 273.17749 597.8616 273.17749 586.60802 273.17749 575.35443 264.0343 566.21124 252.78071 566.21124 Z" />
             <Path Fill="{StaticResource LinearGradient5715}" Data="M 415.95496 691.31149 H 375.1614 V 607.0048 C 375.1614 539.41531 320.3702 484.62412 252.78071 484.62412 185.19122 484.62412 130.40003 539.41531 130.40003 607.0048 V 691.31149 H 86.886899 C 75.612919 691.31149 66.490119 700.43429 66.490119 711.70827 66.490119 722.98225 75.612919 732.10505 86.886899 732.10505 H 415.95496 C 427.22894 732.10505 436.35174 722.98225 436.35174 711.70827 436.35174 700.43429 427.22894 691.31149 415.95496 691.31149 Z M 252.78071 647.79836 C 219.039 647.79836 191.59037 620.34973 191.59037 586.60802 191.59037 552.8663 219.039 525.41768 252.78071 525.41768 286.52243 525.41768 313.97105 552.8663 313.97105 586.60802 313.97105 620.34973 286.52243 647.79836 252.78071 647.79836 Z" />
         </Canvas>
+
     </Canvas>
 
 </UserControl>
