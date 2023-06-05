@@ -16,11 +16,11 @@ using System.Windows.Shapes;
 namespace DBGware.RobotStudioLite.Resources.Icons.XAML
 {
     /// <summary>
-    /// Interaction logic for MonoIcon.xaml
+    /// Interaction logic for WinIcon.xaml
     /// </summary>
-    public partial class MonoIcon : UserControl
+    public partial class WinIcon : UserControl
     {
-        public MonoIcon()
+        public WinIcon()
         {
             InitializeComponent();
         }

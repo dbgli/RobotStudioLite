@@ -1,0 +1,38 @@
+﻿<UserControl
+    x:Class="DBGware.RobotStudioLite.Resources.Icons.XAML.WinIcon"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:DBGware.RobotStudioLite.Resources.Icons.XAML"
+    mc:Ignorable="d"
+    d:DesignHeight="48" d:DesignWidth="48">
+
+    <!-- 填充色 -->
+    <UserControl.Resources>
+        <Style x:Key="WinIconPathStyle" TargetType="{x:Type Path}">
+
+            <!-- 稳态 -->
+            <Setter Property="Fill" Value="{DynamicResource WinIconPathActiveFill}" />
+
+            <!-- 暂态 -->
+            <Style.Triggers>
+                <DataTrigger Binding="{Binding IsActive, RelativeSource={RelativeSource AncestorType={x:Type Window}}}" Value="False">
+                    <Setter Property="Fill" Value="{DynamicResource WinIconPathInactiveFill}" />
+                </DataTrigger>
+            </Style.Triggers>
+
+        </Style>
+    </UserControl.Resources>
+
+    <!-- 图标 -->
+    <Canvas Width="48" Height="48">
+        <Path Style="{StaticResource WinIconPathStyle}" Data="M 41.29477 16.266221 C 39.888624 16.266221 38.745172 17.409673 38.745172 18.815818 38.745172 20.221964 39.888667 21.365416 41.29477 21.365416 42.700915 21.365416 43.844367 20.221964 43.844367 18.815818 43.844367 17.409672 42.700915 16.266221 41.29477 16.266221 Z" />
+        <Path Style="{StaticResource WinIconPathStyle}" Data="M 41.041 13.742289 32.321461 6.8496219 C 32.42557 8.4386163 32.503078 7.2674162 30.798417 16.955887 L 36.463112 20.368523 C 36.304273 19.875856 36.195575 19.360752 36.195575 18.815818 36.195575 16.090384 38.348625 13.877503 41.041 13.742289 Z" />
+        <Path Style="{StaticResource WinIconPathStyle}" Data="M 24.722386 2.2434342 C 21.910095 2.2434342 19.623191 4.5303382 19.623191 7.3426294 19.623191 10.154921 21.91018 12.441824 24.722386 12.441824 27.534677 12.441824 29.821581 10.154921 29.821581 7.3426294 29.821581 4.5303382 27.534677 2.2434342 24.722386 2.2434342 Z" />
+        <Path Style="{StaticResource WinIconPathStyle}" Data="M 24.722386 14.991422 C 21.611792 14.991422 18.940494 13.118573 17.746347 10.447189 L 8.7244263 30.61969 C 10.560391 28.844405 13.049309 27.739409 15.798794 27.739409 20.032486 27.739409 23.667957 30.334475 25.208254 34.015839 L 28.762818 13.810278 C 27.587284 14.547452 26.209481 14.991422 24.722386 14.991422 Z" />
+        <Path Style="{StaticResource WinIconPathStyle}" Data="M 15.798794 35.388202 C 15.095446 35.388202 14.523996 35.959652 14.523996 36.663001 14.523996 37.36635 15.095446 37.9378 15.798794 37.9378 16.502144 37.9378 17.073593 37.36635 17.073593 36.663001 17.073593 35.959652 16.502144 35.388202 15.798794 35.388202 Z" />
+        <Path Style="{StaticResource WinIconPathStyle}" Data="M 25.997185 43.206968 H 23.447587 V 37.9378 C 23.447587 33.713457 20.023137 30.289007 15.798794 30.289007 11.574451 30.289007 8.1500019 33.713457 8.1500019 37.9378 V 43.206968 H 5.4304312 C 4.7258074 43.206968 4.1556324 43.777143 4.1556324 44.481767 4.1556324 45.186391 4.7258074 45.756566 5.4304312 45.756566 H 25.997185 C 26.701809 45.756566 27.271984 45.186391 27.271984 44.481767 27.271984 43.777143 26.701809 43.206968 25.997185 43.206968 Z M 15.798794 40.487397 C 13.689937 40.487397 11.974398 38.771858 11.974398 36.663001 11.974398 34.554144 13.689937 32.838605 15.798794 32.838605 17.907652 32.838605 19.623191 34.554144 19.623191 36.663001 19.623191 38.771858 17.907652 40.487397 15.798794 40.487397 Z" />
+    </Canvas>
+
+</UserControl>

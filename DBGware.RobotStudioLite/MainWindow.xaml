@@ -36,12 +36,11 @@
             </Grid.ColumnDefinitions>
             <Viewbox
                 Grid.Column="0"
-                Width="23" Height="23"
+                Width="24" Height="24"
                 Margin="4,2,4,0"
                 VerticalAlignment="Top"
                 IsHitTestVisible="False">
-                <!-- 23x23不会失真 -->
-                <icons:MonoIcon />
+                <icons:WinIcon />
             </Viewbox>
             <Menu Grid.Column="1" Margin="0,2,0,0">
                 <MenuItem Header="{DynamicResource Options}">
