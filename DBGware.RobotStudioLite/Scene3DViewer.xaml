@@ -4,12 +4,14 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:ht="http://helix-toolkit.org/wpf"
+             xmlns:g="clr-namespace:DBGware.RobotStudioLite.Graphics3D;assembly=DBGware.RobotStudioLite.Graphics3D"
              xmlns:local="clr-namespace:DBGware.RobotStudioLite"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
         <ht:HelixViewport3D>
-            
+            <ht:DefaultLights />
+            <g:CoordinateSystemVisual3D ArrowLengths="8" />
         </ht:HelixViewport3D>
     </Grid>
 </UserControl>
