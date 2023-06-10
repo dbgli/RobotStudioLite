@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>net6.0-windows</TargetFramework>
@@ -7,7 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="HelixToolkit.Wpf" Version="2.24.0" />
+    <PackageReference Include="HelixToolkit.Wpf" Version="2.24.0" NoWarn="NU1701" />
   </ItemGroup>
 
 </Project>
