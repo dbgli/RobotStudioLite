@@ -89,6 +89,7 @@
                                 <icons:AppIcon />
                             </LayoutDocument>
                             <LayoutDocument Title="Doc2">
+                                <local:Scene3DViewer />
                             </LayoutDocument>
                         </LayoutDocumentPane>
                         <LayoutDocumentPane>

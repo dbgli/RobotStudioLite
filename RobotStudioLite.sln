@@ -6,6 +6,7 @@ MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DBGware.RobotStudioLite", "DBGware.RobotStudioLite\DBGware.RobotStudioLite.csproj", "{4B68A405-D704-454A-B6AF-1CD363E12D1F}"
 	ProjectSection(ProjectDependencies) = postProject
 		{530917FC-B15F-4DA8-BE48-E52DEE1A49D0} = {530917FC-B15F-4DA8-BE48-E52DEE1A49D0}
+		{6C5906E9-D250-4361-9905-E25757057F8B} = {6C5906E9-D250-4361-9905-E25757057F8B}
 		{9F3DA00C-3829-47AC-A738-B3EB99BEBEDB} = {9F3DA00C-3829-47AC-A738-B3EB99BEBEDB}
 	EndProjectSection
 EndProject
@@ -16,7 +17,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DBGware.RobotStudioLite.UI.
 		{9F3DA00C-3829-47AC-A738-B3EB99BEBEDB} = {9F3DA00C-3829-47AC-A738-B3EB99BEBEDB}
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DBGware.RobotStudioLite.Localization", "DBGware.RobotStudioLite.Localization\DBGware.RobotStudioLite.Localization.csproj", "{9F3DA00C-3829-47AC-A738-B3EB99BEBEDB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DBGware.RobotStudioLite.Localization", "DBGware.RobotStudioLite.Localization\DBGware.RobotStudioLite.Localization.csproj", "{9F3DA00C-3829-47AC-A738-B3EB99BEBEDB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DBGware.RobotStudioLite.Graphics3D", "DBGware.RobotStudioLite.Graphics3D\DBGware.RobotStudioLite.Graphics3D.csproj", "{6C5906E9-D250-4361-9905-E25757057F8B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -40,6 +43,10 @@ Global
 		{9F3DA00C-3829-47AC-A738-B3EB99BEBEDB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9F3DA00C-3829-47AC-A738-B3EB99BEBEDB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9F3DA00C-3829-47AC-A738-B3EB99BEBEDB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6C5906E9-D250-4361-9905-E25757057F8B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6C5906E9-D250-4361-9905-E25757057F8B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6C5906E9-D250-4361-9905-E25757057F8B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6C5906E9-D250-4361-9905-E25757057F8B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
