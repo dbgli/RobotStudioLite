@@ -248,7 +248,7 @@ namespace DBGware.RobotStudioLite.Graphics3D
             double d = l * 0.1;
 
             // 创建X轴
-            var xAxis = new ArrowVisual3D();
+            ArrowVisual3D xAxis = new();
             xAxis.BeginEdit();
             xAxis.Point2 = new Point3D(l, 0, 0);
             xAxis.Diameter = d;
@@ -257,7 +257,7 @@ namespace DBGware.RobotStudioLite.Graphics3D
             Children.Add(xAxis);
 
             // 创建Y轴
-            var yAxis = new ArrowVisual3D();
+            ArrowVisual3D yAxis = new();
             yAxis.BeginEdit();
             yAxis.Point2 = new Point3D(0, l, 0);
             yAxis.Diameter = d;
@@ -266,7 +266,7 @@ namespace DBGware.RobotStudioLite.Graphics3D
             Children.Add(yAxis);
 
             // 创建Z轴
-            var zAxis = new ArrowVisual3D();
+            ArrowVisual3D zAxis = new();
             zAxis.BeginEdit();
             zAxis.Point2 = new Point3D(0, 0, l);
             zAxis.Diameter = d;
@@ -275,39 +275,47 @@ namespace DBGware.RobotStudioLite.Graphics3D
             Children.Add(zAxis);
 
             // 创建坐标原点
-            var origin = new SphereVisual3D();
+            SphereVisual3D origin = new();
             origin.BeginEdit();
             origin.Radius = d / 2;
             origin.Material = MaterialHelper(Colors.Black);
             origin.EndEdit();
             Children.Add(origin);
 
+            // 对透明对象排序
+            SortingVisual3D sorting = new()
+            {
+                SortingFrequency = 10
+            };
+
             // 创建X轴标签
-            var xLabel = new BillboardTextVisual3D
+            BillboardTextVisual3D xLabel = new()
             {
                 Position = new Point3D(l * 1.25, 0, 0),
                 Text = XLabelText,
                 Foreground = new SolidColorBrush(XLabelColor)
             };
-            Children.Add(xLabel);
+            sorting.Children.Add(xLabel);
 
             // 创建Y轴标签
-            var yLabel = new BillboardTextVisual3D
+            BillboardTextVisual3D yLabel = new()
             {
                 Position = new Point3D(0, l * 1.25, 0),
                 Text = YLabelText,
                 Foreground = new SolidColorBrush(YLabelColor)
             };
-            Children.Add(yLabel);
+            sorting.Children.Add(yLabel);
 
             // 创建Z轴标签
-            var zLabel = new BillboardTextVisual3D
+            BillboardTextVisual3D zLabel = new()
             {
                 Position = new Point3D(0, 0, l * 1.25),
                 Text = ZLabelText,
                 Foreground = new SolidColorBrush(ZLabelColor)
             };
-            Children.Add(zLabel);
+            sorting.Children.Add(zLabel);
+
+            Children.Add(sorting);
         }
     }
 }
