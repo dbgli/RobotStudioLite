@@ -46,4 +46,14 @@
     <sys:String x:Key="Dark">深色</sys:String>
     <sys:String x:Key="Light">浅色</sys:String>
 
+    <sys:String x:Key="Front">前</sys:String>
+    <sys:String x:Key="Back">后</sys:String>
+    <sys:String x:Key="Left">左</sys:String>
+    <sys:String x:Key="Right">右</sys:String>
+    <sys:String x:Key="Top">上</sys:String>
+    <sys:String x:Key="Bottom">下</sys:String>
+
+    <sys:String x:Key="Dominoes">多米诺骨牌</sys:String>
+    <sys:String x:Key="View1">视图1</sys:String>
+
 </ResourceDictionary>

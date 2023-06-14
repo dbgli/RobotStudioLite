@@ -6,12 +6,368 @@
              xmlns:ht="http://helix-toolkit.org/wpf"
              xmlns:g="clr-namespace:DBGware.RobotStudioLite.Graphics3D;assembly=DBGware.RobotStudioLite.Graphics3D"
              xmlns:local="clr-namespace:DBGware.RobotStudioLite"
-             mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
+             mc:Ignorable="d"
+             d:DesignWidth="800" d:DesignHeight="450">
+
+    <UserControl.Resources>
+
+        <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
+        <ht:NotNullToVisibilityConverter x:Key="NotNullToVisibilityConverter" />
+
+        <Style TargetType="{x:Type ht:HelixViewport3D}">
+            <Setter Property="FocusVisualStyle" Value="{x:Null}" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type ht:HelixViewport3D}">
+                        <Border
+                            Background="{TemplateBinding Background}"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}">
+                            <Grid FocusVisualStyle="{x:Null}">
+
+                                <!-- 相机控制器 -->
+                                <ht:CameraController
+                                    x:Name="PART_CameraController"
+                                    CameraMode="{TemplateBinding CameraMode}"
+                                    CameraRotationMode="{TemplateBinding CameraRotationMode}"
+                                    ChangeFieldOfViewCursor="{TemplateBinding ChangeFieldOfViewCursor}"
+                                    DefaultCamera="{TemplateBinding DefaultCamera}"
+                                    InertiaFactor="{TemplateBinding CameraInertiaFactor}"
+                                    InfiniteSpin="{TemplateBinding InfiniteSpin}"
+                                    IsChangeFieldOfViewEnabled="{TemplateBinding IsChangeFieldOfViewEnabled}"
+                                    IsInertiaEnabled="{TemplateBinding IsInertiaEnabled}"
+                                    IsMoveEnabled="{TemplateBinding IsMoveEnabled}"
+                                    IsPanEnabled="{TemplateBinding IsPanEnabled}"
+                                    IsRotationEnabled="{TemplateBinding IsRotationEnabled}"
+                                    IsTouchZoomEnabled="{TemplateBinding IsTouchZoomEnabled}"
+                                    IsZoomEnabled="{TemplateBinding IsZoomEnabled}"
+                                    LeftRightPanSensitivity="{TemplateBinding LeftRightPanSensitivity}"
+                                    LeftRightRotationSensitivity="{TemplateBinding LeftRightRotationSensitivity}"
+                                    MaximumFieldOfView="{TemplateBinding MaximumFieldOfView}"
+                                    MinimumFieldOfView="{TemplateBinding MinimumFieldOfView}"
+                                    ModelUpDirection="{TemplateBinding ModelUpDirection}"
+                                    PageUpDownZoomSensitivity="{TemplateBinding PageUpDownZoomSensitivity}"
+                                    PanCursor="{TemplateBinding PanCursor}"
+                                    RotateAroundMouseDownPoint="{TemplateBinding RotateAroundMouseDownPoint}"
+                                    RotateCursor="{TemplateBinding RotateCursor}"
+                                    RotationSensitivity="{TemplateBinding RotationSensitivity}"
+                                    ShowCameraTarget="{TemplateBinding ShowCameraTarget}"
+                                    UpDownPanSensitivity="{TemplateBinding UpDownPanSensitivity}"
+                                    UpDownRotationSensitivity="{TemplateBinding UpDownRotationSensitivity}"
+                                    ZoomAroundMouseDownPoint="{TemplateBinding ZoomAroundMouseDownPoint}"
+                                    ZoomCursor="{TemplateBinding ZoomCursor}"
+                                    ZoomRectangleCursor="{TemplateBinding ZoomRectangleCursor}"
+                                    ZoomSensitivity="{TemplateBinding ZoomSensitivity}">
+                                    <ht:CameraController.InputBindings>
+                                        <ht:InputBindingX Command="{x:Static ht:CameraController.ResetCameraCommand}" Gezture="{Binding ResetCameraKeyGesture, RelativeSource={RelativeSource TemplatedParent}}" />
+                                        <ht:InputBindingX Command="{x:Static ht:CameraController.RotateCommand}" Gezture="{Binding RotateGesture, RelativeSource={RelativeSource TemplatedParent}}" />
+                                        <ht:InputBindingX Command="{x:Static ht:CameraController.RotateCommand}" Gezture="{Binding RotateGesture2, RelativeSource={RelativeSource TemplatedParent}}" />
+                                        <ht:InputBindingX Command="{x:Static ht:CameraController.PanCommand}" Gezture="{Binding PanGesture, RelativeSource={RelativeSource TemplatedParent}}" />
+                                        <ht:InputBindingX Command="{x:Static ht:CameraController.PanCommand}" Gezture="{Binding PanGesture2, RelativeSource={RelativeSource TemplatedParent}}" />
+                                        <ht:InputBindingX Command="{x:Static ht:CameraController.ZoomCommand}" Gezture="{Binding ZoomGesture, RelativeSource={RelativeSource TemplatedParent}}" />
+                                        <ht:InputBindingX Command="{x:Static ht:CameraController.ZoomCommand}" Gezture="{Binding ZoomGesture2, RelativeSource={RelativeSource TemplatedParent}}" />
+                                        <ht:InputBindingX Command="{x:Static ht:CameraController.ZoomRectangleCommand}" Gezture="{Binding ZoomRectangleGesture, RelativeSource={RelativeSource TemplatedParent}}" />
+                                        <ht:InputBindingX Command="{x:Static ht:CameraController.ChangeFieldOfViewCommand}" Gezture="{Binding ChangeFieldOfViewGesture, RelativeSource={RelativeSource TemplatedParent}}" />
+                                        <ht:InputBindingX Command="{x:Static ht:CameraController.ChangeLookAtCommand}" Gezture="{Binding ChangeLookAtGesture, RelativeSource={RelativeSource TemplatedParent}}" />
+                                        <ht:InputBindingX Command="{x:Static ht:CameraController.ZoomExtentsCommand}" Gezture="{Binding ZoomExtentsGesture, RelativeSource={RelativeSource TemplatedParent}}" />
+                                        <ht:InputBindingX Command="{x:Static ht:CameraController.ResetCameraCommand}" Gezture="{Binding ResetCameraGesture, RelativeSource={RelativeSource TemplatedParent}}" />
+                                        <ht:InputBindingX Command="{x:Static ht:CameraController.TopViewCommand}" Gezture="{Binding TopViewGesture, RelativeSource={RelativeSource TemplatedParent}}" />
+                                        <ht:InputBindingX Command="{x:Static ht:CameraController.BottomViewCommand}" Gezture="{Binding BottomViewGesture, RelativeSource={RelativeSource TemplatedParent}}" />
+                                        <ht:InputBindingX Command="{x:Static ht:CameraController.LeftViewCommand}" Gezture="{Binding LeftViewGesture, RelativeSource={RelativeSource TemplatedParent}}" />
+                                        <ht:InputBindingX Command="{x:Static ht:CameraController.RightViewCommand}" Gezture="{Binding RightViewGesture, RelativeSource={RelativeSource TemplatedParent}}" />
+                                        <ht:InputBindingX Command="{x:Static ht:CameraController.FrontViewCommand}" Gezture="{Binding FrontViewGesture, RelativeSource={RelativeSource TemplatedParent}}" />
+                                        <ht:InputBindingX Command="{x:Static ht:CameraController.BackViewCommand}" Gezture="{Binding BackViewGesture, RelativeSource={RelativeSource TemplatedParent}}" />
+                                        <ht:InputBindingX Command="{x:Static ht:HelixViewport3D.OrthographicToggleCommand}" Gezture="{Binding OrthographicToggleGesture, RelativeSource={RelativeSource TemplatedParent}}" />
+                                    </ht:CameraController.InputBindings>
+                                    <Grid x:Name="PART_ViewportGrid">
+                                        <AdornerDecorator
+                                            x:Name="PART_AdornerLayer"
+                                            HorizontalAlignment="Stretch"
+                                            VerticalAlignment="Stretch"
+                                            DataContext="{TemplateBinding DataContext}"
+                                            IsHitTestVisible="False" />
+                                        <!-- 主Viewport3D在这里插入 -->
+                                    </Grid>
+                                </ht:CameraController>
+
+                                <!-- 坐标系 -->
+                                <Viewport3D
+                                    x:Name="PART_CoordinateView"
+                                    Width="{TemplateBinding CoordinateSystemWidth}"
+                                    Height="{TemplateBinding CoordinateSystemHeight}"
+                                    Margin="0"
+                                    HorizontalAlignment="{TemplateBinding CoordinateSystemHorizontalPosition}"
+                                    VerticalAlignment="{TemplateBinding CoordinateSystemVerticalPosition}"
+                                    ClipToBounds="False"
+                                    IsHitTestVisible="False"
+                                    Visibility="{TemplateBinding ShowCoordinateSystem,
+                                                                 Converter={StaticResource BooleanToVisibilityConverter}}">
+                                    <!-- 坐标系因为有反射材质，所以必须加光源，而视图立方体则不用 -->
+                                    <ht:DefaultLights />
+                                    <g:CoordinateSystemVisual3D
+                                        ArrowLengths="8"
+                                        XLabelText="{Binding CoordinateSystemLabelX, RelativeSource={RelativeSource TemplatedParent}}"
+                                        YLabelText="{Binding CoordinateSystemLabelY, RelativeSource={RelativeSource TemplatedParent}}"
+                                        ZLabelText="{Binding CoordinateSystemLabelZ, RelativeSource={RelativeSource TemplatedParent}}" />
+                                </Viewport3D>
+
+                                <!-- 文本面板 -->
+                                <Grid IsHitTestVisible="False">
+                                    <!-- 标题面板 -->
+                                    <StackPanel
+                                        Margin="6"
+                                        HorizontalAlignment="Left"
+                                        VerticalAlignment="Top"
+                                        Background="{TemplateBinding TitleBackground}">
+                                        <!-- 标题 -->
+                                        <TextBlock
+                                            FontFamily="{TemplateBinding TitleFontFamily}"
+                                            FontSize="{TemplateBinding TitleSize}"
+                                            FontWeight="Bold"
+                                            Foreground="{TemplateBinding TextBrush}"
+                                            Text="{TemplateBinding Title}"
+                                            Visibility="{TemplateBinding Title,
+                                                                         Converter={StaticResource NotNullToVisibilityConverter}}" />
+                                        <!-- 子标题 -->
+                                        <TextBlock
+                                            FontFamily="{TemplateBinding TitleFontFamily}"
+                                            FontSize="{TemplateBinding SubTitleSize}"
+                                            Foreground="{TemplateBinding TextBrush}"
+                                            Text="{TemplateBinding SubTitle}"
+                                            Visibility="{TemplateBinding SubTitle,
+                                                                         Converter={StaticResource NotNullToVisibilityConverter}}" />
+                                    </StackPanel>
+
+                                    <!-- 详细信息面板 -->
+                                    <StackPanel
+                                        Margin="6"
+                                        HorizontalAlignment="Right"
+                                        VerticalAlignment="Bottom"
+                                        Background="{TemplateBinding InfoBackground}">
+                                        <!-- 相机信息 -->
+                                        <TextBlock
+                                            Padding="4"
+                                            Foreground="{TemplateBinding InfoForeground}"
+                                            Text="{TemplateBinding CameraInfo}"
+                                            Visibility="{TemplateBinding ShowCameraInfo,
+                                                                         Converter={StaticResource BooleanToVisibilityConverter}}" />
+                                        <!-- 三角形计数信息 -->
+                                        <TextBlock
+                                            Padding="4"
+                                            Foreground="{TemplateBinding InfoForeground}"
+                                            Text="{TemplateBinding TriangleCountInfo}"
+                                            Visibility="{TemplateBinding ShowTriangleCountInfo,
+                                                                         Converter={StaticResource BooleanToVisibilityConverter}}" />
+                                        <!-- 自定义调试信息 -->
+                                        <TextBlock
+                                            Padding="4"
+                                            Foreground="{TemplateBinding InfoForeground}"
+                                            Text="{TemplateBinding DebugInfo}"
+                                            Visibility="{TemplateBinding DebugInfo,
+                                                                         Converter={StaticResource NotNullToVisibilityConverter}}" />
+                                    </StackPanel>
+
+                                    <!-- 简略信息面板 -->
+                                    <StackPanel
+                                        Margin="6"
+                                        HorizontalAlignment="Right"
+                                        VerticalAlignment="Bottom">
+                                        <!-- 帧率信息 -->
+                                        <TextBlock
+                                            Padding="4"
+                                            HorizontalAlignment="Right"
+                                            Foreground="{TemplateBinding InfoForeground}"
+                                            Text="{TemplateBinding FrameRateText}"
+                                            Visibility="{TemplateBinding ShowFrameRate,
+                                                                         Converter={StaticResource BooleanToVisibilityConverter}}" />
+                                        <!-- 视野信息 -->
+                                        <TextBlock
+                                            Padding="4"
+                                            HorizontalAlignment="Right"
+                                            Foreground="{TemplateBinding InfoForeground}"
+                                            Text="{TemplateBinding FieldOfViewText}"
+                                            Visibility="{TemplateBinding ShowFieldOfView,
+                                                                         Converter={StaticResource BooleanToVisibilityConverter}}" />
+                                        <!-- 自定义状态信息 -->
+                                        <TextBlock
+                                            Padding="4"
+                                            HorizontalAlignment="Right"
+                                            Foreground="{TemplateBinding InfoForeground}"
+                                            Text="{TemplateBinding Status}"
+                                            Visibility="{TemplateBinding Status,
+                                                                         Converter={StaticResource NotNullToVisibilityConverter}}" />
+                                    </StackPanel>
+                                </Grid>
+
+                                <!-- 视图立方体 -->
+                                <Viewport3D
+                                    x:Name="PART_ViewCubeViewport"
+                                    Width="{TemplateBinding ViewCubeWidth}"
+                                    Height="{TemplateBinding ViewCubeHeight}"
+                                    Margin="0"
+                                    HorizontalAlignment="{TemplateBinding ViewCubeHorizontalPosition}"
+                                    VerticalAlignment="{TemplateBinding ViewCubeVerticalPosition}"
+                                    Opacity="0.5"
+                                    Visibility="{TemplateBinding ShowViewCube,
+                                                                 Converter={StaticResource BooleanToVisibilityConverter}}">
+                                    <ht:ViewCubeVisual3D
+                                        x:Name="PART_ViewCube"
+                                        BackText="{Binding ViewCubeBackText, RelativeSource={RelativeSource TemplatedParent}}"
+                                        BottomText="{Binding ViewCubeBottomText, RelativeSource={RelativeSource TemplatedParent}}"
+                                        EnableEdgeClicks="{Binding IsViewCubeEdgeClicksEnabled, RelativeSource={RelativeSource TemplatedParent}}"
+                                        FrontText="{Binding ViewCubeFrontText, RelativeSource={RelativeSource TemplatedParent}}"
+                                        IsEnabled="{Binding IsRotationEnabled, RelativeSource={RelativeSource TemplatedParent}}"
+                                        IsTopBottomViewOrientedToFrontBack="{Binding IsTopBottomViewOrientedToFrontBack, RelativeSource={RelativeSource TemplatedParent}}"
+                                        LeftText="{Binding ViewCubeLeftText, RelativeSource={RelativeSource TemplatedParent}}"
+                                        ModelUpDirection="{Binding ModelUpDirection, RelativeSource={RelativeSource TemplatedParent}}"
+                                        RightText="{Binding ViewCubeRightText, RelativeSource={RelativeSource TemplatedParent}}"
+                                        TopText="{Binding ViewCubeTopText, RelativeSource={RelativeSource TemplatedParent}}" />
+                                </Viewport3D>
+
+                            </Grid>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+    </UserControl.Resources>
+
     <Grid>
-        <ht:HelixViewport3D>
-            <ht:DefaultLights />
-            <g:CoordinateSystemVisual3D ArrowLengths="8" />
+        <ht:HelixViewport3D
+            Title="{DynamicResource Dominoes}"
+            SubTitle="{DynamicResource View1}"
+            ShowCameraInfo="True"
+            ShowTriangleCountInfo="True"
+            ShowFrameRate="True"
+
+            Background="{DynamicResource Scene3DViewerBackground}"
+            ClipToBounds="False"
+            IsChangeFieldOfViewEnabled="False"
+            ZoomAroundMouseDownPoint="True"
+
+            ShowCoordinateSystem="True"
+            CoordinateSystemWidth="100"
+            CoordinateSystemHeight="100"
+            CoordinateSystemHorizontalPosition="Left"
+            CoordinateSystemVerticalPosition="Bottom"
+
+            ShowViewCube="True"
+            ViewCubeWidth="100"
+            ViewCubeHeight="100"
+            ViewCubeHorizontalPosition="Right"
+            ViewCubeVerticalPosition="Top"
+            ViewCubeFrontText="{DynamicResource Front}"
+            ViewCubeBackText="{DynamicResource Back}"
+            ViewCubeLeftText="{DynamicResource Left}"
+            ViewCubeRightText="{DynamicResource Right}"
+            ViewCubeTopText="{DynamicResource Top}"
+            ViewCubeBottomText="{DynamicResource Bottom}"
+            IsViewCubeEdgeClicksEnabled="True">
+
+            <!--#region 手势-->
+
+            <ht:HelixViewport3D.PanGesture>
+                <MouseGesture MouseAction="LeftClick" Modifiers="Ctrl" />
+            </ht:HelixViewport3D.PanGesture>
+
+            <ht:HelixViewport3D.RotateGesture>
+                <MouseGesture MouseAction="LeftClick" Modifiers="Ctrl+Shift" />
+            </ht:HelixViewport3D.RotateGesture>
+
+            <ht:HelixViewport3D.ZoomRectangleGesture>
+                <MouseGesture MouseAction="RightClick" Modifiers="Shift" />
+            </ht:HelixViewport3D.ZoomRectangleGesture>
+
+            <ht:HelixViewport3D.ZoomGesture2>
+                <MouseGesture MouseAction="MiddleClick" />
+            </ht:HelixViewport3D.ZoomGesture2>
+
+            <!--#endregion-->
+
+            <!--#region 相机-->
+
+            <ht:HelixViewport3D.DefaultCamera>
+                <PerspectiveCamera
+                    LookDirection="0,3000,-3000"
+                    UpDirection="0,0,1"
+                    Position="0,-3000,3000"
+                    NearPlaneDistance="0.1"
+                    FarPlaneDistance="Infinity"
+                    FieldOfView="45" />
+            </ht:HelixViewport3D.DefaultCamera>
+
+            <!--#endregion-->
+
+            <!--#region 光源-->
+
+            <ht:SunLight Ambient="0.5" />
+
+            <!--#endregion-->
+
+            <!--#region 场景主体-->
+
+            <ht:Teapot>
+                <ht:Teapot.Transform>
+                    <ScaleTransform3D ScaleX="100" ScaleY="100" ScaleZ="100" />
+                </ht:Teapot.Transform>
+            </ht:Teapot>
+
+            <!--#endregion-->
+
+            <!--#region 世界坐标系-->
+
+            <ht:LinesVisual3D Thickness="2" Color="#FFFF0000">
+                <ht:LinesVisual3D.Points>
+                    <Point3D X="0" Y="0" Z="0" />
+                    <Point3D X="100" Y="0" Z="0" />
+                </ht:LinesVisual3D.Points>
+            </ht:LinesVisual3D>
+
+            <ht:LinesVisual3D Thickness="2" Color="#FF00FF00">
+                <ht:LinesVisual3D.Points>
+                    <Point3D X="0" Y="0" Z="0" />
+                    <Point3D X="0" Y="100" Z="0" />
+                </ht:LinesVisual3D.Points>
+            </ht:LinesVisual3D>
+
+            <ht:LinesVisual3D Thickness="2" Color="#FF0000FF">
+                <ht:LinesVisual3D.Points>
+                    <Point3D X="0" Y="0" Z="0" />
+                    <Point3D X="0" Y="0" Z="100" />
+                </ht:LinesVisual3D.Points>
+            </ht:LinesVisual3D>
+
+            <!--#endregion-->
+
+            <!--#region 地面-->
+
+            <ht:GridLinesVisual3D
+                Width="2000" Length="2000"
+                MajorDistance="1000"
+                MinorDistance="500"
+                Thickness="2"
+                Fill="#FF000000" />
+
+            <!-- 透明对象放最后渲染 -->
+            <!-- Z轴向下偏移一点避免Z-Fighting -->
+            <!-- 不要用Fill，用Material和BackMaterial分别设置正面和背面材质 -->
+            <ht:RectangleVisual3D
+                Origin="0,0,-0.1"
+                Normal="0,0,1"
+                Width="2000" Length="2000"
+                LengthDirection="0,1,0">
+                <ht:RectangleVisual3D.Material>
+                    <DiffuseMaterial Brush="#80FFFFFF" />
+                </ht:RectangleVisual3D.Material>
+                <ht:RectangleVisual3D.BackMaterial>
+                    <DiffuseMaterial Brush="#00FFFFFF" />
+                </ht:RectangleVisual3D.BackMaterial>
+            </ht:RectangleVisual3D>
+
+            <!--#endregion-->
+
         </ht:HelixViewport3D>
     </Grid>
+
 </UserControl>

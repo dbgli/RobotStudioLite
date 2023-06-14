@@ -46,4 +46,14 @@
     <sys:String x:Key="Dark">Dark</sys:String>
     <sys:String x:Key="Light">Light</sys:String>
 
+    <sys:String x:Key="Front">F</sys:String>
+    <sys:String x:Key="Back">B</sys:String>
+    <sys:String x:Key="Left">L</sys:String>
+    <sys:String x:Key="Right">R</sys:String>
+    <sys:String x:Key="Top">U</sys:String>
+    <sys:String x:Key="Bottom">D</sys:String>
+
+    <sys:String x:Key="Dominoes">Dominoes</sys:String>
+    <sys:String x:Key="View1">View1</sys:String>
+
 </ResourceDictionary>
