@@ -90,7 +90,7 @@ namespace DBGware.RobotStudioLite.Graphics3D
             "YLabelColor",
             typeof(Color),
             typeof(CoordinateSystemVisual3D),
-            new UIPropertyMetadata(Color.FromRgb(0, 221, 0)));
+            new UIPropertyMetadata(Color.FromRgb(0, 221, 0))); // #00DD00 稍微降一点，否则浅色背景下太亮导致对比度不够
 
         /// <summary>
         /// 标识<see cref="ZLabelColor" />依赖属性。
