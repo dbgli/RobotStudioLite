@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Documents;
 using DBGware.RobotStudioLite.Properties;
+using ABB.Robotics.Controllers;
 
 namespace DBGware.RobotStudioLite
 {
@@ -39,6 +40,8 @@ namespace DBGware.RobotStudioLite
 
         public static List<string> SupportedThemes => supportedThemes;
         public static List<string> SupportedLanguages => supportedLanguages;
+
+        public static Controller? Controller { get; set; } = null;
 
         private void Application_Startup(object sender, StartupEventArgs e)
         {

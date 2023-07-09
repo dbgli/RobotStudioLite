@@ -39,6 +39,8 @@
 
     <!--#endregion-->
 
+    <sys:String x:Key="Controller">Controller</sys:String>
+    <sys:String x:Key="ConnectController">Connect Controller</sys:String>
     <sys:String x:Key="Options">Options</sys:String>
     <sys:String x:Key="Theme">Theme</sys:String>
     <sys:String x:Key="Language">Language</sys:String>
@@ -55,5 +57,23 @@
 
     <sys:String x:Key="Dominoes">Dominoes</sys:String>
     <sys:String x:Key="View1">View1</sys:String>
+
+    <sys:String x:Key="AvailableControllersOnTheNetwork">Available controllers on the network:</sys:String>
+    <sys:String x:Key="Name">Name</sys:String>
+    <sys:String x:Key="Location">Location</sys:String>
+    <sys:String x:Key="IPAddress">IP Address</sys:String>
+    <sys:String x:Key="RobotWareVersion">RobotWare Version</sys:String>
+    <sys:String x:Key="IsVirtual">Is Virtual</sys:String>
+
+    <sys:String x:Key="Connect">Connect</sys:String>
+    <sys:String x:Key="Disconnect">Disconnect</sys:String>
+    <sys:String x:Key="Details">Details</sys:String>
+
+    <sys:String x:Key="Refresh">_Refresh</sys:String>
+    <sys:String x:Key="OK">_OK</sys:String>
+    <sys:String x:Key="Cancel">_Cancel</sys:String>
+
+    <sys:String x:Key="ChangeControllerCaption">Change Controller</sys:String>
+    <sys:String x:Key="ChangeControllerMessage">You are currently connected to controller {0}. Do you want to disconnect the existing connection and connect to the new controller {1}?</sys:String>
 
 </ResourceDictionary>

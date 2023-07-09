@@ -14,6 +14,20 @@ namespace DBGware.RobotStudioLite
     /// </summary>
     public partial class MainWindow : CustomChromeWindow
     {
+        public string ConnectedControllerName
+        {
+            get
+            {
+                return connectedControllerNameTextBlock.Text;
+            }
+            set
+            {
+                connectedControllerNameTextBlock.Text = value;
+                connectedControllerNameTextBlock.Visibility = string.IsNullOrEmpty(value) ?
+                                                              Visibility.Hidden : Visibility.Visible;
+            }
+        }
+
         public MainWindow()
         {
             InitializeComponent();
@@ -87,6 +101,11 @@ namespace DBGware.RobotStudioLite
             themeMenuItem.Items.OfType<MenuItem>().ToList()
                          .FindAll(item => (string)item.Tag == App.CurrentTheme)
                          .ForEach(item => item.IsChecked = true);
+        }
+
+        private void ConnectController(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

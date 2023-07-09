@@ -39,6 +39,8 @@
 
     <!--#endregion-->
 
+    <sys:String x:Key="Controller">控制器</sys:String>
+    <sys:String x:Key="ConnectController">连接控制器</sys:String>
     <sys:String x:Key="Options">选项</sys:String>
     <sys:String x:Key="Theme">主题</sys:String>
     <sys:String x:Key="Language">语言</sys:String>
@@ -55,5 +57,23 @@
 
     <sys:String x:Key="Dominoes">多米诺骨牌</sys:String>
     <sys:String x:Key="View1">视图1</sys:String>
+
+    <sys:String x:Key="AvailableControllersOnTheNetwork">网络中的可用控制器：</sys:String>
+    <sys:String x:Key="Name">名称</sys:String>
+    <sys:String x:Key="Location">位置</sys:String>
+    <sys:String x:Key="IPAddress">IP地址</sys:String>
+    <sys:String x:Key="RobotWareVersion">RobotWare版本</sys:String>
+    <sys:String x:Key="IsVirtual">是否虚拟</sys:String>
+
+    <sys:String x:Key="Connect">连接</sys:String>
+    <sys:String x:Key="Disconnect">断开</sys:String>
+    <sys:String x:Key="Details">详情</sys:String>
+
+    <sys:String x:Key="Refresh">刷新(_R)</sys:String>
+    <sys:String x:Key="OK">确定(_O)</sys:String>
+    <sys:String x:Key="Cancel">取消(_C)</sys:String>
+
+    <sys:String x:Key="ChangeControllerCaption">变更控制器</sys:String>
+    <sys:String x:Key="ChangeControllerMessage">您当前已连接到控制器{0}。是否断开现有连接并连接到新控制器{1}？</sys:String>
 
 </ResourceDictionary>

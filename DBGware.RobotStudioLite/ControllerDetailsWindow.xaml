@@ -1,0 +1,60 @@
+﻿<CustomChromeWindow
+    x:Class="DBGware.RobotStudioLite.ControllerDetailsWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:local="clr-namespace:DBGware.RobotStudioLite"
+    xmlns:icons="clr-namespace:DBGware.RobotStudioLite.Resources.Icons.XAML"
+    mc:Ignorable="d"
+
+    Title="ControllerDetailsWindow"
+    Icon="/Resources/Icons/ICO/AppIcon.ico"
+    Width="600" Height="350"
+    WindowStartupLocation="CenterScreen"
+    IsShowTitle="False"
+    IsShowIcon="False"
+    IsShowMinimizeButton="False"
+    IsShowMaximizeButton="False"
+
+    UseLayoutRounding="True"
+    SnapsToDevicePixels="True"
+    RenderOptions.BitmapScalingMode="Fant"
+    TextOptions.TextFormattingMode="Display"
+    TextOptions.TextHintingMode="Fixed"
+    TextOptions.TextRenderingMode="ClearType">
+
+    <CustomChromeWindow.LeftWindowCommands>
+        <Grid Margin="4,6">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+            <Viewbox
+                Grid.Column="0"
+                Width="24" Height="24"
+                Margin="4,2,4,0"
+                VerticalAlignment="Top"
+                IsHitTestVisible="False">
+                <icons:WinIcon />
+            </Viewbox>
+            <TextBlock
+                Grid.Column="1"
+                Margin="6,4"
+                Text="ControllerDetailsWindow"
+                TextTrimming="CharacterEllipsis" />
+        </Grid>
+    </CustomChromeWindow.LeftWindowCommands>
+
+    <Grid>
+        <TextBox
+            x:Name="controllerDetailsTextBox"
+            IsReadOnly="True"
+            Margin="8,0,8,8"
+            VerticalAlignment="Stretch"
+            VerticalContentAlignment="Top"
+            VerticalScrollBarVisibility="Auto"
+            HorizontalScrollBarVisibility="Auto" />
+    </Grid>
+
+</CustomChromeWindow>

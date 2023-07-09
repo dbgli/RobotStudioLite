@@ -34,6 +34,7 @@
                 <ColumnDefinition />
                 <ColumnDefinition />
             </Grid.ColumnDefinitions>
+
             <Viewbox
                 Grid.Column="0"
                 Width="24" Height="24"
@@ -42,7 +43,11 @@
                 IsHitTestVisible="False">
                 <icons:WinIcon />
             </Viewbox>
+
             <Menu Grid.Column="1" Margin="0,2,0,0">
+                <MenuItem Header="{DynamicResource Controller}">
+                    <MenuItem Header="{DynamicResource ConnectController}" Click="ConnectController" />
+                </MenuItem>
                 <MenuItem Header="{DynamicResource Options}">
                     <MenuItem x:Name="languageMenuItem" Header="{DynamicResource Language}">
                         <MenuItem Header="Deutsch" Tag="de" Click="ChangeLanguage" />
@@ -66,34 +71,61 @@
                     </MenuItem>
                 </MenuItem>
             </Menu>
-            
+
+            <Border
+                Grid.Column="2"
+                Margin="5,2,0,0"
+                VerticalAlignment="Top"
+                IsHitTestVisible="False"
+                Visibility="{Binding Path=Visibility, ElementName=connectedControllerNameTextBlock}">
+                <Border.Style>
+                    <Style TargetType="{x:Type Border}">
+                        <Setter Property="Background" Value="{DynamicResource SystemColorsWindowPanel}" />
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding IsActive, RelativeSource={RelativeSource AncestorType={x:Type Window}}}" Value="False">
+                                <Setter Property="Background" Value="Transparent" />
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </Border.Style>
+                <TextBlock
+                    x:Name="connectedControllerNameTextBlock"
+                    Margin="6,4"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    FontWeight="Bold"
+                    TextTrimming="CharacterEllipsis"
+                    Visibility="Hidden">
+                    <TextBlock.Style>
+                        <Style TargetType="{x:Type TextBlock}">
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding IsActive, RelativeSource={RelativeSource AncestorType={x:Type Window}}}" Value="False">
+                                    <Setter Property="TextElement.Foreground" Value="{DynamicResource EnvironmentMainWindowInactiveCaptionText}" />
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </TextBlock.Style>
+                </TextBlock>
+            </Border>
         </Grid>
     </CustomChromeWindow.LeftWindowCommands>
+
     <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="Auto" />
-            <RowDefinition Height="*" />
-        </Grid.RowDefinitions>
-        <Grid
-            Grid.Row="0"
-            Background="Transparent" />
         <DockingManager
             x:Name="dockingManager"
-            Grid.Row="1"
             ShowSystemMenu="False">
             <LayoutRoot>
                 <LayoutPanel Orientation="Horizontal">
                     <LayoutDocumentPaneGroup>
                         <LayoutDocumentPane>
-                            <LayoutDocument Title="Doc1">
+                            <LayoutDocument Title="AppIcon">
                                 <icons:AppIcon />
                             </LayoutDocument>
-                            <LayoutDocument Title="Doc2">
+                            <LayoutDocument Title="Scene3DViewer">
                                 <local:Scene3DViewer />
                             </LayoutDocument>
-                        </LayoutDocumentPane>
-                        <LayoutDocumentPane>
-                            <LayoutDocument Title="Doc3">
+                            <LayoutDocument Title="ControllerScanner">
+                                <local:ControllerScanner />
                             </LayoutDocument>
                         </LayoutDocumentPane>
                     </LayoutDocumentPaneGroup>
