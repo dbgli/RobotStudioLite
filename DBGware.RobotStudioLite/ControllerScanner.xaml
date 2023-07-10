@@ -9,23 +9,23 @@
 
     <UserControl.CommandBindings>
         <CommandBinding
-            Command="{x:Static local:ControllerScanner.RefreshControllerListCommand}"
+            Command="{x:Static local:RSLCommands.RefreshControllerListCommand}"
             Executed="RefreshControllerListCommandExecuted"
             CanExecute="RefreshControllerListCommandCanExecute" />
         <CommandBinding
-            Command="{x:Static local:ControllerScanner.ConnectControllerCommand}"
+            Command="{x:Static local:RSLCommands.ConnectControllerCommand}"
             Executed="ConnectControllerCommandExecuted"
             CanExecute="ConnectControllerCommandCanExecute" />
         <CommandBinding
-            Command="{x:Static local:ControllerScanner.DisconnectControllerCommand}"
+            Command="{x:Static local:RSLCommands.DisconnectControllerCommand}"
             Executed="DisconnectControllerCommandExecuted"
             CanExecute="DisconnectControllerCommandCanExecute" />
         <CommandBinding
-            Command="{x:Static local:ControllerScanner.CopyControllerInfoCommand}"
+            Command="{x:Static local:RSLCommands.CopyControllerInfoCommand}"
             Executed="CopyControllerInfoCommandExecuted"
             CanExecute="CopyControllerInfoCommandCanExecute" />
         <CommandBinding
-            Command="{x:Static local:ControllerScanner.ShowControllerDetailsCommand}"
+            Command="{x:Static local:RSLCommands.ShowControllerDetailsCommand}"
             Executed="ShowControllerDetailsCommandExecuted"
             CanExecute="ShowControllerDetailsCommandCanExecute" />
     </UserControl.CommandBindings>
@@ -46,11 +46,11 @@
                     <Setter Property="ContextMenu">
                         <Setter.Value>
                             <ContextMenu>
-                                <MenuItem Header="{DynamicResource Connect}" Command="{x:Static local:ControllerScanner.ConnectControllerCommand}" CommandParameter="{Binding}" />
-                                <MenuItem Header="{DynamicResource Disconnect}" Command="{x:Static local:ControllerScanner.DisconnectControllerCommand}" CommandParameter="{Binding}" />
+                                <MenuItem Header="{DynamicResource Connect}" Command="{x:Static local:RSLCommands.ConnectControllerCommand}" CommandParameter="{Binding}" />
+                                <MenuItem Header="{DynamicResource Disconnect}" Command="{x:Static local:RSLCommands.DisconnectControllerCommand}" CommandParameter="{Binding}" />
                                 <Separator />
-                                <MenuItem Header="{DynamicResource Copy}" Command="{x:Static local:ControllerScanner.CopyControllerInfoCommand}" CommandParameter="{Binding}" />
-                                <MenuItem Header="{DynamicResource Details}" Command="{x:Static local:ControllerScanner.ShowControllerDetailsCommand}" CommandParameter="{Binding}" />
+                                <MenuItem Header="{DynamicResource Copy}" Command="{x:Static local:RSLCommands.CopyControllerInfoCommand}" CommandParameter="{Binding}" />
+                                <MenuItem Header="{DynamicResource Details}" Command="{x:Static local:RSLCommands.ShowControllerDetailsCommand}" CommandParameter="{Binding}" />
                             </ContextMenu>
                         </Setter.Value>
                     </Setter>
@@ -69,10 +69,10 @@
             </ListView.View>
         </ListView>
 
-        <Button Grid.Row="2" HorizontalAlignment="Left" Content="{DynamicResource Refresh}" MinWidth="80" Command="{x:Static local:ControllerScanner.RefreshControllerListCommand}" />
+        <Button Grid.Row="2" HorizontalAlignment="Left" Content="{DynamicResource Refresh}" MinWidth="80" Command="{x:Static local:RSLCommands.RefreshControllerListCommand}" />
         <StackPanel Grid.Row="2" HorizontalAlignment="Right" Orientation="Horizontal">
-            <Button Content="{DynamicResource Connect}" MinWidth="80" Command="{x:Static local:ControllerScanner.ConnectControllerCommand}" CommandParameter="{Binding Path=SelectedItem, ElementName=controllerListView}" />
-            <Button Content="{DynamicResource Disconnect}" Margin="8,0,0,0" MinWidth="80" Command="{x:Static local:ControllerScanner.DisconnectControllerCommand}" CommandParameter="{Binding Path=SelectedItem, ElementName=controllerListView}" />
+            <Button Content="{DynamicResource Connect}" MinWidth="80" Command="{x:Static local:RSLCommands.ConnectControllerCommand}" CommandParameter="{Binding Path=SelectedItem, ElementName=controllerListView}" />
+            <Button Content="{DynamicResource Disconnect}" Margin="8,0,0,0" MinWidth="80" Command="{x:Static local:RSLCommands.DisconnectControllerCommand}" CommandParameter="{Binding Path=SelectedItem, ElementName=controllerListView}" />
         </StackPanel>
     </Grid>
 </UserControl>

@@ -22,12 +22,6 @@ namespace DBGware.RobotStudioLite
     /// </summary>
     public partial class ControllerScanner : UserControl
     {
-        public static RoutedCommand RefreshControllerListCommand { get; set; } = new();
-        public static RoutedCommand ConnectControllerCommand { get; set; } = new();
-        public static RoutedCommand DisconnectControllerCommand { get; set; } = new();
-        public static RoutedCommand CopyControllerInfoCommand { get; set; } = new();
-        public static RoutedCommand ShowControllerDetailsCommand { get; set; } = new();
-
         public ControllerScanner()
         {
             InitializeComponent();
