@@ -235,6 +235,7 @@
 
     <Grid>
         <ht:HelixViewport3D
+            x:Name="helixViewport3D"
             Title="{DynamicResource Dominoes}"
             SubTitle="{DynamicResource View1}"
             ShowCameraInfo="True"
@@ -263,7 +264,8 @@
             ViewCubeRightText="{DynamicResource Right}"
             ViewCubeTopText="{DynamicResource Top}"
             ViewCubeBottomText="{DynamicResource Bottom}"
-            IsViewCubeEdgeClicksEnabled="True">
+            IsViewCubeEdgeClicksEnabled="True"
+            IsTopBottomViewOrientedToFrontBack="True">
 
             <!--#region 手势-->
 
@@ -307,11 +309,8 @@
 
             <!--#region 场景主体-->
 
-            <ht:Teapot>
-                <ht:Teapot.Transform>
-                    <ScaleTransform3D ScaleX="100" ScaleY="100" ScaleZ="100" />
-                </ht:Teapot.Transform>
-            </ht:Teapot>
+            <!-- 在这里插入3D模型 -->
+            <ht:SortingVisual3D x:Name="sortingVisual3D" SortingFrequency="10" />
 
             <!--#endregion-->
 
@@ -343,20 +342,27 @@
             <!--#region 地面-->
 
             <ht:GridLinesVisual3D
-                Width="2000" Length="2000"
+                x:Name="gridLinesVisual3D"
+                Center="0,-500,0"
+                Normal="0,0,1"
+                Length="3000"
+                Width="2000"
+                LengthDirection="0,1,0"
                 MajorDistance="1000"
-                MinorDistance="500"
-                Thickness="2"
+                MinorDistance="1000"
+                Thickness="3"
                 Fill="#FF000000" />
 
             <!-- 透明对象放最后渲染 -->
             <!-- Z轴向下偏移一点避免Z-Fighting -->
             <!-- 不要用Fill，用Material和BackMaterial分别设置正面和背面材质 -->
+            <!-- ElementName找不到，用Reference -->
             <ht:RectangleVisual3D
-                Origin="0,0,-0.1"
-                Normal="0,0,1"
-                Width="2000" Length="2000"
-                LengthDirection="0,1,0">
+                Origin="0,-500,-0.1"
+                Normal="{Binding Source={x:Reference Name=gridLinesVisual3D}, Path=Normal}"
+                Length="{Binding Source={x:Reference Name=gridLinesVisual3D}, Path=Length}"
+                Width="{Binding Source={x:Reference Name=gridLinesVisual3D}, Path=Width}"
+                LengthDirection="{Binding Source={x:Reference Name=gridLinesVisual3D}, Path=LengthDirection}">
                 <ht:RectangleVisual3D.Material>
                     <DiffuseMaterial Brush="#80FFFFFF" />
                 </ht:RectangleVisual3D.Material>
