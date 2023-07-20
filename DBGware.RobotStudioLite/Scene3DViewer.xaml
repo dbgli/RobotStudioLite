@@ -341,7 +341,7 @@
 
             <!--#region 地面-->
 
-            <ht:GridLinesVisual3D
+            <g:GridLinesVisual3D
                 x:Name="gridLinesVisual3D"
                 Center="0,-500,0"
                 Normal="0,0,1"
