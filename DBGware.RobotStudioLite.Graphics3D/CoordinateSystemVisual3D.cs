@@ -6,7 +6,7 @@ using HelixToolkit.Wpf;
 namespace DBGware.RobotStudioLite.Graphics3D
 {
     /// <summary>
-    /// 显示一个坐标系的视觉元素，带有指示X、Y、Z方向的箭头。
+    /// 一个用于显示坐标系的视觉元素，带有指示X、Y、Z方向的箭头。
     /// </summary>
     public class CoordinateSystemVisual3D : ModelVisual3D
     {
