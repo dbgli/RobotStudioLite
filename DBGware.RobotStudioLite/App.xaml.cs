@@ -41,7 +41,7 @@ namespace DBGware.RobotStudioLite
         public static List<string> SupportedThemes => supportedThemes;
         public static List<string> SupportedLanguages => supportedLanguages;
 
-        public static Controller? Controller { get; set; } = null;
+        public static Robot Robot { get; set; } = new();
 
         private void Application_Startup(object sender, StartupEventArgs e)
         {
