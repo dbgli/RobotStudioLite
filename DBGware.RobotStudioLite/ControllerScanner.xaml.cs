@@ -95,6 +95,7 @@ namespace DBGware.RobotStudioLite
             App.Robot.Controller = Controller.Connect(controllerInfo, ConnectionType.Standalone);
             App.Robot.Controller.Logon(UserInfo.DefaultUser);
             ((MainWindow)App.Current.MainWindow).ConnectedControllerName = App.Robot.Controller.Name;
+            App.Robot.IsRobotJointAnglesSynced = true;
         }
 
         #endregion
@@ -109,6 +110,7 @@ namespace DBGware.RobotStudioLite
                 App.Robot.Controller.Dispose();
                 App.Robot.Controller = null;
                 ((MainWindow)App.Current.MainWindow).ConnectedControllerName = string.Empty;
+                App.Robot.IsRobotJointAnglesSynced = false;
             }
         }
 

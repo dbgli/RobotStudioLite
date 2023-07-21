@@ -9,11 +9,9 @@ using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
-using System.Windows.Media.Imaging;
 using System.Windows.Media.Media3D;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-
 using HelixToolkit.Wpf;
 
 namespace DBGware.RobotStudioLite
@@ -28,9 +26,6 @@ namespace DBGware.RobotStudioLite
             InitializeComponent();
             LoadEnvironment();
             LoadRobot();
-
-            List<double> angles = new() { 0, 0, 0, 0, 90, 0 };
-            App.Robot.CalculateForwardKinematics(angles);
         }
 
         private void LoadEnvironment()

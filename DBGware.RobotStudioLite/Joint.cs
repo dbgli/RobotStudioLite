@@ -15,7 +15,7 @@ namespace DBGware.RobotStudioLite
         public double MaxAngle { get; set; }
         public Vector3D RotationAxis { get; set; }
         public Point3D RotationPoint { get; set; }
-        public Transform3D GlobalTransform { get { return Link.Transform; } set { Link.Transform = value; } }
+        public Transform3D GlobalTransform { get => Link.Transform; set => Link.Transform = value; }
         public Transform3D LocalTransform => new RotateTransform3D(new AxisAngleRotation3D(RotationAxis, Angle), RotationPoint);
 
         public Joint(Model3D link)
