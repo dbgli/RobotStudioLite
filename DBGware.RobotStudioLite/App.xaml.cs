@@ -60,6 +60,15 @@ namespace DBGware.RobotStudioLite
 
         private void Application_Exit(object sender, ExitEventArgs e)
         {
+            // 善后处理
+            if (Robot.Controller != null)
+            {
+                Robot.IsRobotJointAnglesSynced = false;
+                Robot.Controller.Logoff();
+                Robot.Controller.Dispose();
+                Robot.Controller = null;
+            }
+
             try
             {
                 Settings.Default.Theme = currentTheme;

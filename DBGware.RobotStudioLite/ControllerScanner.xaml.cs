@@ -83,6 +83,7 @@ namespace DBGware.RobotStudioLite
                                                                     MessageBoxResult.Yes);
                 if (messageBoxResult == MessageBoxResult.Yes)
                 {
+                    App.Robot.IsRobotJointAnglesSynced = false;
                     App.Robot.Controller.Logoff();
                     App.Robot.Controller.Dispose();
                     App.Robot.Controller = null;
@@ -106,11 +107,11 @@ namespace DBGware.RobotStudioLite
         {
             if (App.Robot.Controller != null)
             {
+                App.Robot.IsRobotJointAnglesSynced = false;
                 App.Robot.Controller.Logoff();
                 App.Robot.Controller.Dispose();
                 App.Robot.Controller = null;
                 ((MainWindow)App.Current.MainWindow).ConnectedControllerName = string.Empty;
-                App.Robot.IsRobotJointAnglesSynced = false;
             }
         }
 
