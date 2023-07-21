@@ -10,37 +10,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="Models\AdjustmentArea_Model.mtl" />
-    <None Remove="Models\AdjustmentArea_Model.obj" />
-    <None Remove="Models\CalibrationDomino_Model.mtl" />
-    <None Remove="Models\CalibrationDomino_Model.obj" />
-    <None Remove="Models\Domino_Model.mtl" />
-    <None Remove="Models\Domino_Model.obj" />
-    <None Remove="Models\LoadingArea_Model.mtl" />
-    <None Remove="Models\LoadingArea_Model.obj" />
-    <None Remove="Models\OmniCore_Model.mtl" />
-    <None Remove="Models\OmniCore_Model.obj" />
-    <None Remove="Models\RobotBase_Model.mtl" />
-    <None Remove="Models\RobotBase_Model.obj" />
-    <None Remove="Models\RobotLink1_Model.mtl" />
-    <None Remove="Models\RobotLink1_Model.obj" />
-    <None Remove="Models\RobotLink2_Model.mtl" />
-    <None Remove="Models\RobotLink2_Model.obj" />
-    <None Remove="Models\RobotLink3_Model.mtl" />
-    <None Remove="Models\RobotLink3_Model.obj" />
-    <None Remove="Models\RobotLink4_Model.mtl" />
-    <None Remove="Models\RobotLink4_Model.obj" />
-    <None Remove="Models\RobotLink5_Model.mtl" />
-    <None Remove="Models\RobotLink5_Model.obj" />
-    <None Remove="Models\RobotLink6_Model.mtl" />
-    <None Remove="Models\RobotLink6_Model.obj" />
-    <None Remove="Models\Table_Model.mtl" />
-    <None Remove="Models\Table_Model.obj" />
-    <None Remove="Models\UnloadingArea_Model.mtl" />
-    <None Remove="Models\UnloadingArea_Model.obj" />
-  </ItemGroup>
-
-  <ItemGroup>
     <Content Include="Models\AdjustmentArea_Model.mtl">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
