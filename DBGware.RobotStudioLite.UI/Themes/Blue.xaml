@@ -407,7 +407,7 @@
     <SolidColorBrush x:Key="WinIconPathActiveFill" Color="#FF854CC7" />
     <SolidColorBrush x:Key="WinIconPathInactiveFill" Color="#FF98A3C6" />
 
-    <LinearGradientBrush x:Key="Scene3DViewerBackground" StartPoint="0.5,0" EndPoint="0.5,1">
+    <LinearGradientBrush x:Key="Scene3DViewerPanelBackground" StartPoint="0.5,0" EndPoint="0.5,1">
         <GradientStop Color="#FFD6E9FF" Offset="0" />
         <GradientStop Color="#FFB3C3D6" Offset="1" />
     </LinearGradientBrush>

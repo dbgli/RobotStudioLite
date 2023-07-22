@@ -18,11 +18,11 @@ using ABB.Robotics.Controllers.Discovery;
 namespace DBGware.RobotStudioLite
 {
     /// <summary>
-    /// Interaction logic for ControllerScanner.xaml
+    /// Interaction logic for ControllerScannerPanel.xaml
     /// </summary>
-    public partial class ControllerScanner : UserControl
+    public partial class ControllerScannerPanel : UserControl
     {
-        public ControllerScanner()
+        public ControllerScannerPanel()
         {
             InitializeComponent();
         }

@@ -17,11 +17,11 @@ using HelixToolkit.Wpf;
 namespace DBGware.RobotStudioLite
 {
     /// <summary>
-    /// Interaction logic for Scene3DViewer.xaml
+    /// Interaction logic for Scene3DViewerPanel.xaml
     /// </summary>
-    public partial class Scene3DViewer : UserControl
+    public partial class Scene3DViewerPanel : UserControl
     {
-        public Scene3DViewer()
+        public Scene3DViewerPanel()
         {
             InitializeComponent();
             LoadEnvironment();

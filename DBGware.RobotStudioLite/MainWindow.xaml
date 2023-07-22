@@ -122,10 +122,10 @@
                                 <icons:AppIcon />
                             </LayoutDocument>
                             <LayoutDocument Title="Scene3DViewer">
-                                <local:Scene3DViewer />
+                                <local:Scene3DViewerPanel />
                             </LayoutDocument>
                             <LayoutDocument Title="ControllerScanner">
-                                <local:ControllerScanner />
+                                <local:ControllerScannerPanel />
                             </LayoutDocument>
                         </LayoutDocumentPane>
                     </LayoutDocumentPaneGroup>
