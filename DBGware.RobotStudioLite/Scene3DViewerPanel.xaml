@@ -291,9 +291,9 @@
 
             <ht:HelixViewport3D.DefaultCamera>
                 <PerspectiveCamera
-                    LookDirection="0,3000,-3000"
+                    LookDirection="-3000,0,-3000"
                     UpDirection="0,0,1"
-                    Position="0,-3000,3000"
+                    Position="3000,0,3000"
                     NearPlaneDistance="0.1"
                     FarPlaneDistance="Infinity"
                     FieldOfView="45" />
