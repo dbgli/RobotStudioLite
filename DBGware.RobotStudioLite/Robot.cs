@@ -13,6 +13,7 @@ namespace DBGware.RobotStudioLite
         private Timer timer = new();
 
         public Controller? Controller { get; set; } = null;
+        public Mastership? Mastership { get; set; } = null;
         public List<Joint> Joints { get; set; } = new();
         public JointTarget CurrentJointTarget { get; set; }
         public RobTarget CurrentRobTarget { get; set; }

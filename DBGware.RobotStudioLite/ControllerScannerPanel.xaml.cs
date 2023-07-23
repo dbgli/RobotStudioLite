@@ -83,10 +83,7 @@ namespace DBGware.RobotStudioLite
                                                                     MessageBoxResult.Yes);
                 if (messageBoxResult == MessageBoxResult.Yes)
                 {
-                    App.Robot.IsRobotJointAnglesSynced = false;
-                    App.Robot.Controller.Logoff();
-                    App.Robot.Controller.Dispose();
-                    App.Robot.Controller = null;
+                    DisconnectController();
                 }
                 else
                 {
@@ -105,20 +102,28 @@ namespace DBGware.RobotStudioLite
 
         private void DisconnectControllerCommandExecuted(object sender, ExecutedRoutedEventArgs e)
         {
-            if (App.Robot.Controller != null)
-            {
-                App.Robot.IsRobotJointAnglesSynced = false;
-                App.Robot.Controller.Logoff();
-                App.Robot.Controller.Dispose();
-                App.Robot.Controller = null;
-                ((MainWindow)App.Current.MainWindow).ConnectedControllerName = string.Empty;
-            }
+            DisconnectController();
         }
 
         private void DisconnectControllerCommandCanExecute(object sender, CanExecuteRoutedEventArgs e)
         {
             if (e.Parameter is not ControllerInfoWrapper controllerInfoWrapper) return;
             e.CanExecute = controllerInfoWrapper.SystemId == App.Robot.Controller?.SystemId;
+        }
+
+        private static void DisconnectController()
+        {
+            App.Robot.IsRobotJointAnglesSynced = false;
+
+            App.Robot.Mastership?.Release();
+            App.Robot.Mastership?.Dispose();
+            App.Robot.Mastership = null;
+
+            App.Robot.Controller?.Logoff();
+            App.Robot.Controller?.Dispose();
+            App.Robot.Controller = null;
+
+            ((MainWindow)App.Current.MainWindow).ConnectedControllerName = string.Empty;
         }
 
         #endregion

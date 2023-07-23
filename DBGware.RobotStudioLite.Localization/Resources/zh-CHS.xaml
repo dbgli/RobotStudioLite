@@ -76,4 +76,21 @@
     <sys:String x:Key="ChangeControllerCaption">变更控制器</sys:String>
     <sys:String x:Key="ChangeControllerMessage">您当前已连接到控制器{0}。是否断开现有连接并连接到新控制器{1}？</sys:String>
 
+    <sys:String x:Key="Motors">电机</sys:String>
+    <sys:String x:Key="Mastership">主控权</sys:String>
+    <sys:String x:Key="Program">程序</sys:String>
+    <sys:String x:Key="Speed">速度</sys:String>
+
+    <sys:String x:Key="TurnOnMotors">开启</sys:String>
+    <sys:String x:Key="TurnOffMotors">关闭</sys:String>
+    <sys:String x:Key="RequestMastership">请求</sys:String>
+    <sys:String x:Key="ReleaseMastership">释放</sys:String>
+    <sys:String x:Key="ResetProgramPointer">重置程序指针</sys:String>
+    <sys:String x:Key="StartRapidProgram">启动</sys:String>
+    <sys:String x:Key="StopRapidProgram">停止</sys:String>
+
+    <sys:String x:Key="Scene3DViewer">3D场景查看器</sys:String>
+    <sys:String x:Key="ControllerScanner">控制器扫描器</sys:String>
+    <sys:String x:Key="RobotControlPanel">机器人控制面板</sys:String>
+
 </ResourceDictionary>

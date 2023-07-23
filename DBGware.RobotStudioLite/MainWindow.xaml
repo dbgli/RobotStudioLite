@@ -46,7 +46,7 @@
 
             <Menu Grid.Column="1" Margin="0,2,0,0">
                 <MenuItem Header="{DynamicResource Controller}">
-                    <MenuItem Header="{DynamicResource ConnectController}" Click="ConnectController" />
+                    <MenuItem Header="{DynamicResource ConnectController}" />
                 </MenuItem>
                 <MenuItem Header="{DynamicResource Options}">
                     <MenuItem x:Name="languageMenuItem" Header="{DynamicResource Language}">
@@ -116,37 +116,69 @@
             ShowSystemMenu="False">
             <LayoutRoot>
                 <LayoutPanel Orientation="Horizontal">
-                    <LayoutDocumentPaneGroup>
-                        <LayoutDocumentPane>
-                            <LayoutDocument Title="AppIcon">
-                                <icons:AppIcon />
-                            </LayoutDocument>
-                            <LayoutDocument Title="Scene3DViewer">
-                                <local:Scene3DViewerPanel />
-                            </LayoutDocument>
-                            <LayoutDocument Title="ControllerScanner">
-                                <local:ControllerScannerPanel />
-                            </LayoutDocument>
-                        </LayoutDocumentPane>
-                    </LayoutDocumentPaneGroup>
-                    <LayoutAnchorablePaneGroup DockWidth="150" Orientation="Vertical">
+                    <LayoutAnchorablePaneGroup DockWidth="200" Orientation="Vertical">
                         <LayoutAnchorablePane>
-                            <LayoutAnchorable Title="Tool 1" CanShowOnHover="True" />
-                            <LayoutAnchorable Title="Tool 2" CanShowOnHover="True" />
+                            <LayoutAnchorable Title="joint">
+
+                            </LayoutAnchorable>
+                            <LayoutAnchorable Title="linear">
+
+                            </LayoutAnchorable>
                         </LayoutAnchorablePane>
                         <LayoutAnchorablePane>
-                            <LayoutAnchorable Title="Tool 3" />
-                            <LayoutAnchorable Title="Tool 4" />
+                            <LayoutAnchorable Title="layout">
+
+                            </LayoutAnchorable>
                         </LayoutAnchorablePane>
                     </LayoutAnchorablePaneGroup>
+                    <LayoutPanel Orientation="Vertical">
+                        <LayoutPanel Orientation="Horizontal">
+                            <LayoutDocumentPane>
+                                <LayoutDocument x:Name="scene3DViewerPanelLayoutDocument" Title="{DynamicResource Scene3DViewer}">
+                                    <local:Scene3DViewerPanel />
+                                </LayoutDocument>
+                                <LayoutDocument x:Name="controllerScannerPanelLayoutDocument" Title="{DynamicResource ControllerScanner}">
+                                    <local:ControllerScannerPanel />
+                                </LayoutDocument>
+                                <LayoutDocument Title="adjust">
+
+                                </LayoutDocument>
+                                <LayoutDocument Title="rapid">
+
+                                </LayoutDocument>
+                                <LayoutDocument Title="status">
+
+                                </LayoutDocument>
+                            </LayoutDocumentPane>
+                            <LayoutAnchorablePaneGroup DockWidth="200" Orientation="Vertical">
+                                <LayoutAnchorablePane>
+                                    <LayoutAnchorable Title="check">
+
+                                    </LayoutAnchorable>
+                                    <LayoutAnchorable Title="safe">
+
+                                    </LayoutAnchorable>
+                                </LayoutAnchorablePane>
+                                <LayoutAnchorablePane>
+                                    <LayoutAnchorable x:Name="robotControlPanelLayoutAnchorable" Title="{DynamicResource RobotControlPanel}">
+                                        <local:RobotControlPanel />
+                                    </LayoutAnchorable>
+                                </LayoutAnchorablePane>
+                            </LayoutAnchorablePaneGroup>
+                        </LayoutPanel>
+                        <LayoutAnchorablePane DockHeight="150">
+                            <LayoutAnchorable Title="dominoes">
+
+                            </LayoutAnchorable>
+                            <LayoutAnchorable Title="log">
+
+                            </LayoutAnchorable>
+                            <LayoutAnchorable Title="operator">
+
+                            </LayoutAnchorable>
+                        </LayoutAnchorablePane>
+                    </LayoutPanel>
                 </LayoutPanel>
-                <LayoutRoot.LeftSide>
-                    <LayoutAnchorSide>
-                        <LayoutAnchorGroup>
-                            <LayoutAnchorable Title="Autohidden Content" />
-                        </LayoutAnchorGroup>
-                    </LayoutAnchorSide>
-                </LayoutRoot.LeftSide>
             </LayoutRoot>
         </DockingManager>
     </Grid>

@@ -6,6 +6,8 @@ using System.Collections.Generic;
 
 using AvalonDock.Layout;
 using DBGware.RobotStudioLite.UI.Controls;
+using ABB.Robotics.Controllers;
+using System.Windows.Input;
 
 namespace DBGware.RobotStudioLite
 {
@@ -78,6 +80,11 @@ namespace DBGware.RobotStudioLite
                                 .ForEach(item => { if (item.IsChecked) { item.IsChecked = false; } });   // 复位
                 menuItem.IsChecked = true;
                 App.CurrentLanguage = (string)menuItem.Tag;
+
+                // DynamicResource不动态，在这里手动修改
+                scene3DViewerPanelLayoutDocument.Title = (string)App.Current.FindResource("Scene3DViewer");
+                controllerScannerPanelLayoutDocument.Title = (string)App.Current.FindResource("ControllerScanner");
+                robotControlPanelLayoutAnchorable.Title = (string)App.Current.FindResource("RobotControlPanel");
             }
         }
 
@@ -101,11 +108,6 @@ namespace DBGware.RobotStudioLite
             themeMenuItem.Items.OfType<MenuItem>().ToList()
                          .FindAll(item => (string)item.Tag == App.CurrentTheme)
                          .ForEach(item => item.IsChecked = true);
-        }
-
-        private void ConnectController(object sender, RoutedEventArgs e)
-        {
-
         }
     }
 }

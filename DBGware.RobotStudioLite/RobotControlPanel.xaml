@@ -1,0 +1,123 @@
+﻿<UserControl x:Class="DBGware.RobotStudioLite.RobotControlPanel"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:local="clr-namespace:DBGware.RobotStudioLite"
+             mc:Ignorable="d"
+             d:DesignWidth="200" d:DesignHeight="400">
+
+    <UserControl.CommandBindings>
+        <CommandBinding
+            Command="{x:Static local:RSLCommands.TurnOnMotorsCommand}"
+            Executed="TurnOnMotorsCommandExecuted"
+            CanExecute="TurnOnMotorsCommandCanExecute" />
+        <CommandBinding
+            Command="{x:Static local:RSLCommands.TurnOffMotorsCommand}"
+            Executed="TurnOffMotorsCommandExecuted"
+            CanExecute="TurnOffMotorsCommandCanExecute" />
+        <CommandBinding
+            Command="{x:Static local:RSLCommands.RequestMastershipCommand}"
+            Executed="RequestMastershipCommandExecuted"
+            CanExecute="RequestMastershipCommandCanExecute" />
+        <CommandBinding
+            Command="{x:Static local:RSLCommands.ReleaseMastershipCommand}"
+            Executed="ReleaseMastershipCommandExecuted"
+            CanExecute="ReleaseMastershipCommandCanExecute" />
+        <CommandBinding
+            Command="{x:Static local:RSLCommands.ResetProgramPointerCommand}"
+            Executed="ResetProgramPointerCommandExecuted"
+            CanExecute="ResetProgramPointerCommandCanExecute" />
+        <CommandBinding
+            Command="{x:Static local:RSLCommands.StartRapidProgramCommand}"
+            Executed="StartRapidProgramCommandExecuted"
+            CanExecute="StartRapidProgramCommandCanExecute" />
+        <CommandBinding
+            Command="{x:Static local:RSLCommands.StopRapidProgramCommand}"
+            Executed="StopRapidProgramCommandExecuted"
+            CanExecute="StopRapidProgramCommandCanExecute" />
+    </UserControl.CommandBindings>
+
+    <ScrollViewer VerticalScrollBarVisibility="Auto">
+        <Grid Margin="8">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+            <GroupBox Grid.Row="0" Header="{DynamicResource Motors}" Margin="0,0,0,8">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition />
+                        <ColumnDefinition />
+                    </Grid.ColumnDefinitions>
+                    <Button
+                        Grid.Column="0"
+                        Content="{DynamicResource TurnOnMotors}"
+                        Margin="4"
+                        Command="{x:Static local:RSLCommands.TurnOnMotorsCommand}" />
+                    <Button
+                        Grid.Column="1"
+                        Content="{DynamicResource TurnOffMotors}"
+                        Margin="4"
+                        Command="{x:Static local:RSLCommands.TurnOffMotorsCommand}" />
+                </Grid>
+            </GroupBox>
+            <GroupBox Grid.Row="1" Header="{DynamicResource Mastership}" Margin="0,0,0,8">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition />
+                        <ColumnDefinition />
+                    </Grid.ColumnDefinitions>
+                    <Button
+                        Grid.Column="0"
+                        Content="{DynamicResource RequestMastership}"
+                        Margin="4"
+                        Command="{x:Static local:RSLCommands.RequestMastershipCommand}" />
+                    <Button
+                        Grid.Column="1"
+                        Content="{DynamicResource ReleaseMastership}"
+                        Margin="4"
+                        Command="{x:Static local:RSLCommands.ReleaseMastershipCommand}" />
+                </Grid>
+            </GroupBox>
+            <GroupBox Grid.Row="2" Header="{DynamicResource Program}" Margin="0,0,0,8">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition />
+                        <RowDefinition />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition />
+                        <ColumnDefinition />
+                    </Grid.ColumnDefinitions>
+                    <Button
+                        Grid.Row="0"
+                        Grid.Column="0"
+                        Grid.ColumnSpan="2"
+                        Content="{DynamicResource ResetProgramPointer}"
+                        Margin="4"
+                        Command="{x:Static local:RSLCommands.ResetProgramPointerCommand}" />
+                    <Button
+                        Grid.Row="1"
+                        Grid.Column="0"
+                        Content="{DynamicResource StartRapidProgram}"
+                        Margin="4"
+                        Command="{x:Static local:RSLCommands.StartRapidProgramCommand}" />
+                    <Button
+                        Grid.Row="1"
+                        Grid.Column="1"
+                        Content="{DynamicResource StopRapidProgram}"
+                        Margin="4"
+                        Command="{x:Static local:RSLCommands.StopRapidProgramCommand}" />
+                </Grid>
+            </GroupBox>
+            <GroupBox Grid.Row="3" Header="{DynamicResource Speed}" Margin="0,0,0,8">
+                <Grid>
+
+                </Grid>
+            </GroupBox>
+        </Grid>
+    </ScrollViewer>
+</UserControl>

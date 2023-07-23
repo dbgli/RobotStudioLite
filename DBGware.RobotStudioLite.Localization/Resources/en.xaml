@@ -76,4 +76,21 @@
     <sys:String x:Key="ChangeControllerCaption">Change Controller</sys:String>
     <sys:String x:Key="ChangeControllerMessage">You are currently connected to controller {0}. Do you want to disconnect the existing connection and connect to the new controller {1}?</sys:String>
 
+    <sys:String x:Key="Motors">Motors</sys:String>
+    <sys:String x:Key="Mastership">Mastership</sys:String>
+    <sys:String x:Key="Program">Program</sys:String>
+    <sys:String x:Key="Speed">Speed</sys:String>
+
+    <sys:String x:Key="TurnOnMotors">Turn On</sys:String>
+    <sys:String x:Key="TurnOffMotors">Turn Off</sys:String>
+    <sys:String x:Key="RequestMastership">Request</sys:String>
+    <sys:String x:Key="ReleaseMastership">Release</sys:String>
+    <sys:String x:Key="ResetProgramPointer">Reset Program Pointer</sys:String>
+    <sys:String x:Key="StartRapidProgram">Start</sys:String>
+    <sys:String x:Key="StopRapidProgram">Stop</sys:String>
+
+    <sys:String x:Key="Scene3DViewer">3D Scene Viewer</sys:String>
+    <sys:String x:Key="ControllerScanner">Controller Scanner</sys:String>
+    <sys:String x:Key="RobotControlPanel">Robot Control Panel</sys:String>
+
 </ResourceDictionary>
