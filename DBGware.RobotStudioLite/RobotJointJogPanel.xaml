@@ -48,7 +48,7 @@
                 <TextBlock Text="&#xE949;" FontFamily="Segoe Fluent Icons" />
             </Button>
             <TextBox
-                x:Name="joint1AngleTextBox"
+                x:Name="joint1ValueTextBox"
                 Grid.Row="0"
                 Grid.Column="2"
                 Margin="0,0,0,4"
@@ -80,7 +80,7 @@
                 <TextBlock Text="&#xE949;" FontFamily="Segoe Fluent Icons" />
             </Button>
             <TextBox
-                x:Name="joint2AngleTextBox"
+                x:Name="joint2ValueTextBox"
                 Grid.Row="1"
                 Grid.Column="2"
                 Margin="0,0,0,4"
@@ -112,7 +112,7 @@
                 <TextBlock Text="&#xE949;" FontFamily="Segoe Fluent Icons" />
             </Button>
             <TextBox
-                x:Name="joint3AngleTextBox"
+                x:Name="joint3ValueTextBox"
                 Grid.Row="2"
                 Grid.Column="2"
                 Margin="0,0,0,4"
@@ -144,7 +144,7 @@
                 <TextBlock Text="&#xE949;" FontFamily="Segoe Fluent Icons" />
             </Button>
             <TextBox
-                x:Name="joint4AngleTextBox"
+                x:Name="joint4ValueTextBox"
                 Grid.Row="3"
                 Grid.Column="2"
                 Margin="0,0,0,4"
@@ -176,7 +176,7 @@
                 <TextBlock Text="&#xE949;" FontFamily="Segoe Fluent Icons" />
             </Button>
             <TextBox
-                x:Name="joint5AngleTextBox"
+                x:Name="joint5ValueTextBox"
                 Grid.Row="4"
                 Grid.Column="2"
                 Margin="0,0,0,4"
@@ -208,7 +208,7 @@
                 <TextBlock Text="&#xE949;" FontFamily="Segoe Fluent Icons" />
             </Button>
             <TextBox
-                x:Name="joint6AngleTextBox"
+                x:Name="joint6ValueTextBox"
                 Grid.Row="5"
                 Grid.Column="2"
                 Margin="0,0,0,4"
@@ -237,7 +237,7 @@
                     <ColumnDefinition Width="Auto" />
                 </Grid.ColumnDefinitions>
                 <TextBox
-                    x:Name="jogStepTextBox"
+                    x:Name="jointJogStepTextBox"
                     Grid.Column="0"
                     Margin="0,0,0,4"
                     VerticalAlignment="Stretch"
