@@ -119,7 +119,7 @@
                     <LayoutAnchorablePaneGroup DockWidth="200" Orientation="Vertical">
                         <LayoutAnchorablePane>
                             <LayoutAnchorable Title="joint">
-
+                                <local:RobotJointJogPanel x:Name="robotJointJogPanel" />
                             </LayoutAnchorable>
                             <LayoutAnchorable Title="linear">
 

@@ -21,5 +21,6 @@ namespace DBGware.RobotStudioLite
         public static RoutedCommand ResetProgramPointerCommand { get; } = new();
         public static RoutedCommand StartRapidProgramCommand { get; } = new();
         public static RoutedCommand StopRapidProgramCommand { get; } = new();
+        public static RoutedCommand RobotJointJogCommand { get; } = new();
     }
 }

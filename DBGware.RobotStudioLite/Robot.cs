@@ -44,6 +44,8 @@ namespace DBGware.RobotStudioLite
 
         private void UpdateRobotJointAngles(List<double> newAngles)
         {
+            ((MainWindow)App.Current.MainWindow).robotJointJogPanel.JointAngles = newAngles;
+
             // TODO
             for (int i = 0; i < Joints.Count; i++)
             {
