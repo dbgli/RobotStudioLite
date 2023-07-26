@@ -45,7 +45,7 @@
                 Margin="0,0,0,4"
                 Command="{x:Static local:RSLCommands.RobotJointJogCommand}"
                 CommandParameter="&quot;J1-&quot;">
-                <TextBlock Text="&#xE949;" FontFamily="Segoe Fluent Icons" />
+                <TextBlock Text="&#xF8AB;" FontFamily="Segoe Fluent Icons,Segoe MDL2 Assets" />
             </Button>
             <TextBox
                 x:Name="joint1ValueTextBox"
@@ -61,7 +61,7 @@
                 Margin="0,0,0,4"
                 Command="{x:Static local:RSLCommands.RobotJointJogCommand}"
                 CommandParameter="&quot;J1+&quot;">
-                <TextBlock Text="&#xE948;" FontFamily="Segoe Fluent Icons" />
+                <TextBlock Text="&#xF8AA;" FontFamily="Segoe Fluent Icons,Segoe MDL2 Assets" />
             </Button>
 
             <Label
@@ -77,7 +77,7 @@
                 Margin="0,0,0,4"
                 Command="{x:Static local:RSLCommands.RobotJointJogCommand}"
                 CommandParameter="&quot;J2-&quot;">
-                <TextBlock Text="&#xE949;" FontFamily="Segoe Fluent Icons" />
+                <TextBlock Text="&#xF8AB;" FontFamily="Segoe Fluent Icons,Segoe MDL2 Assets" />
             </Button>
             <TextBox
                 x:Name="joint2ValueTextBox"
@@ -93,7 +93,7 @@
                 Margin="0,0,0,4"
                 Command="{x:Static local:RSLCommands.RobotJointJogCommand}"
                 CommandParameter="&quot;J2+&quot;">
-                <TextBlock Text="&#xE948;" FontFamily="Segoe Fluent Icons" />
+                <TextBlock Text="&#xF8AA;" FontFamily="Segoe Fluent Icons,Segoe MDL2 Assets" />
             </Button>
 
             <Label
@@ -109,7 +109,7 @@
                 Margin="0,0,0,4"
                 Command="{x:Static local:RSLCommands.RobotJointJogCommand}"
                 CommandParameter="&quot;J3-&quot;">
-                <TextBlock Text="&#xE949;" FontFamily="Segoe Fluent Icons" />
+                <TextBlock Text="&#xF8AB;" FontFamily="Segoe Fluent Icons,Segoe MDL2 Assets" />
             </Button>
             <TextBox
                 x:Name="joint3ValueTextBox"
@@ -125,7 +125,7 @@
                 Margin="0,0,0,4"
                 Command="{x:Static local:RSLCommands.RobotJointJogCommand}"
                 CommandParameter="&quot;J3+&quot;">
-                <TextBlock Text="&#xE948;" FontFamily="Segoe Fluent Icons" />
+                <TextBlock Text="&#xF8AA;" FontFamily="Segoe Fluent Icons,Segoe MDL2 Assets" />
             </Button>
 
             <Label
@@ -141,7 +141,7 @@
                 Margin="0,0,0,4"
                 Command="{x:Static local:RSLCommands.RobotJointJogCommand}"
                 CommandParameter="&quot;J4-&quot;">
-                <TextBlock Text="&#xE949;" FontFamily="Segoe Fluent Icons" />
+                <TextBlock Text="&#xF8AB;" FontFamily="Segoe Fluent Icons,Segoe MDL2 Assets" />
             </Button>
             <TextBox
                 x:Name="joint4ValueTextBox"
@@ -157,7 +157,7 @@
                 Margin="0,0,0,4"
                 Command="{x:Static local:RSLCommands.RobotJointJogCommand}"
                 CommandParameter="&quot;J4+&quot;">
-                <TextBlock Text="&#xE948;" FontFamily="Segoe Fluent Icons" />
+                <TextBlock Text="&#xF8AA;" FontFamily="Segoe Fluent Icons,Segoe MDL2 Assets" />
             </Button>
 
             <Label
@@ -173,7 +173,7 @@
                 Margin="0,0,0,4"
                 Command="{x:Static local:RSLCommands.RobotJointJogCommand}"
                 CommandParameter="&quot;J5-&quot;">
-                <TextBlock Text="&#xE949;" FontFamily="Segoe Fluent Icons" />
+                <TextBlock Text="&#xF8AB;" FontFamily="Segoe Fluent Icons,Segoe MDL2 Assets" />
             </Button>
             <TextBox
                 x:Name="joint5ValueTextBox"
@@ -189,7 +189,7 @@
                 Margin="0,0,0,4"
                 Command="{x:Static local:RSLCommands.RobotJointJogCommand}"
                 CommandParameter="&quot;J5+&quot;">
-                <TextBlock Text="&#xE948;" FontFamily="Segoe Fluent Icons" />
+                <TextBlock Text="&#xF8AA;" FontFamily="Segoe Fluent Icons,Segoe MDL2 Assets" />
             </Button>
 
             <Label
@@ -205,7 +205,7 @@
                 Margin="0,0,0,4"
                 Command="{x:Static local:RSLCommands.RobotJointJogCommand}"
                 CommandParameter="&quot;J6-&quot;">
-                <TextBlock Text="&#xE949;" FontFamily="Segoe Fluent Icons" />
+                <TextBlock Text="&#xF8AB;" FontFamily="Segoe Fluent Icons,Segoe MDL2 Assets" />
             </Button>
             <TextBox
                 x:Name="joint6ValueTextBox"
@@ -221,7 +221,7 @@
                 Margin="0,0,0,4"
                 Command="{x:Static local:RSLCommands.RobotJointJogCommand}"
                 CommandParameter="&quot;J6+&quot;">
-                <TextBlock Text="&#xE948;" FontFamily="Segoe Fluent Icons" />
+                <TextBlock Text="&#xF8AA;" FontFamily="Segoe Fluent Icons,Segoe MDL2 Assets" />
             </Button>
 
             <Label

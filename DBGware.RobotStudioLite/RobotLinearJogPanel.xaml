@@ -45,7 +45,7 @@
                 Margin="0,0,0,4"
                 Command="{x:Static local:RSLCommands.RobotLinearJogCommand}"
                 CommandParameter="&quot;L1-&quot;">
-                <TextBlock Text="&#xE949;" FontFamily="Segoe Fluent Icons" />
+                <TextBlock Text="&#xF8AB;" FontFamily="Segoe Fluent Icons,Segoe MDL2 Assets" />
             </Button>
             <TextBox
                 x:Name="linear1ValueTextBox"
@@ -61,7 +61,7 @@
                 Margin="0,0,0,4"
                 Command="{x:Static local:RSLCommands.RobotLinearJogCommand}"
                 CommandParameter="&quot;L1+&quot;">
-                <TextBlock Text="&#xE948;" FontFamily="Segoe Fluent Icons" />
+                <TextBlock Text="&#xF8AA;" FontFamily="Segoe Fluent Icons,Segoe MDL2 Assets" />
             </Button>
 
             <Label
@@ -77,7 +77,7 @@
                 Margin="0,0,0,4"
                 Command="{x:Static local:RSLCommands.RobotLinearJogCommand}"
                 CommandParameter="&quot;L2-&quot;">
-                <TextBlock Text="&#xE949;" FontFamily="Segoe Fluent Icons" />
+                <TextBlock Text="&#xF8AB;" FontFamily="Segoe Fluent Icons,Segoe MDL2 Assets" />
             </Button>
             <TextBox
                 x:Name="linear2ValueTextBox"
@@ -93,7 +93,7 @@
                 Margin="0,0,0,4"
                 Command="{x:Static local:RSLCommands.RobotLinearJogCommand}"
                 CommandParameter="&quot;L2+&quot;">
-                <TextBlock Text="&#xE948;" FontFamily="Segoe Fluent Icons" />
+                <TextBlock Text="&#xF8AA;" FontFamily="Segoe Fluent Icons,Segoe MDL2 Assets" />
             </Button>
 
             <Label
@@ -109,7 +109,7 @@
                 Margin="0,0,0,4"
                 Command="{x:Static local:RSLCommands.RobotLinearJogCommand}"
                 CommandParameter="&quot;L3-&quot;">
-                <TextBlock Text="&#xE949;" FontFamily="Segoe Fluent Icons" />
+                <TextBlock Text="&#xF8AB;" FontFamily="Segoe Fluent Icons,Segoe MDL2 Assets" />
             </Button>
             <TextBox
                 x:Name="linear3ValueTextBox"
@@ -125,7 +125,7 @@
                 Margin="0,0,0,4"
                 Command="{x:Static local:RSLCommands.RobotLinearJogCommand}"
                 CommandParameter="&quot;L3+&quot;">
-                <TextBlock Text="&#xE948;" FontFamily="Segoe Fluent Icons" />
+                <TextBlock Text="&#xF8AA;" FontFamily="Segoe Fluent Icons,Segoe MDL2 Assets" />
             </Button>
 
             <Label
@@ -141,7 +141,7 @@
                 Margin="0,0,0,4"
                 Command="{x:Static local:RSLCommands.RobotLinearJogCommand}"
                 CommandParameter="&quot;L4-&quot;">
-                <TextBlock Text="&#xE949;" FontFamily="Segoe Fluent Icons" />
+                <TextBlock Text="&#xF8AB;" FontFamily="Segoe Fluent Icons,Segoe MDL2 Assets" />
             </Button>
             <TextBox
                 x:Name="linear4ValueTextBox"
@@ -157,7 +157,7 @@
                 Margin="0,0,0,4"
                 Command="{x:Static local:RSLCommands.RobotLinearJogCommand}"
                 CommandParameter="&quot;L4+&quot;">
-                <TextBlock Text="&#xE948;" FontFamily="Segoe Fluent Icons" />
+                <TextBlock Text="&#xF8AA;" FontFamily="Segoe Fluent Icons,Segoe MDL2 Assets" />
             </Button>
 
             <Label
@@ -173,7 +173,7 @@
                 Margin="0,0,0,4"
                 Command="{x:Static local:RSLCommands.RobotLinearJogCommand}"
                 CommandParameter="&quot;L5-&quot;">
-                <TextBlock Text="&#xE949;" FontFamily="Segoe Fluent Icons" />
+                <TextBlock Text="&#xF8AB;" FontFamily="Segoe Fluent Icons,Segoe MDL2 Assets" />
             </Button>
             <TextBox
                 x:Name="linear5ValueTextBox"
@@ -189,7 +189,7 @@
                 Margin="0,0,0,4"
                 Command="{x:Static local:RSLCommands.RobotLinearJogCommand}"
                 CommandParameter="&quot;L5+&quot;">
-                <TextBlock Text="&#xE948;" FontFamily="Segoe Fluent Icons" />
+                <TextBlock Text="&#xF8AA;" FontFamily="Segoe Fluent Icons,Segoe MDL2 Assets" />
             </Button>
 
             <Label
@@ -205,7 +205,7 @@
                 Margin="0,0,0,4"
                 Command="{x:Static local:RSLCommands.RobotLinearJogCommand}"
                 CommandParameter="&quot;L6-&quot;">
-                <TextBlock Text="&#xE949;" FontFamily="Segoe Fluent Icons" />
+                <TextBlock Text="&#xF8AB;" FontFamily="Segoe Fluent Icons,Segoe MDL2 Assets" />
             </Button>
             <TextBox
                 x:Name="linear6ValueTextBox"
@@ -221,7 +221,7 @@
                 Margin="0,0,0,4"
                 Command="{x:Static local:RSLCommands.RobotLinearJogCommand}"
                 CommandParameter="&quot;L6+&quot;">
-                <TextBlock Text="&#xE948;" FontFamily="Segoe Fluent Icons" />
+                <TextBlock Text="&#xF8AA;" FontFamily="Segoe Fluent Icons,Segoe MDL2 Assets" />
             </Button>
 
             <Label
