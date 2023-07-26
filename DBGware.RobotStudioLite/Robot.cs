@@ -21,10 +21,10 @@ namespace DBGware.RobotStudioLite
 
         public Robot()
         {
-            timer.Elapsed += SyncRobotJointAngles;
+            timer.Elapsed += SyncRobotPosition;
         }
 
-        private void SyncRobotJointAngles(object? sender, ElapsedEventArgs e)
+        private void SyncRobotPosition(object? sender, ElapsedEventArgs e)
         {
             // 不要用DispatcherTimer，因为同在UI线程，耗时操作影响性能
             // 用System.Timers.Timer，在独立线程中触发事件，执行耗时操作
@@ -32,26 +32,36 @@ namespace DBGware.RobotStudioLite
             if (Controller == null) return;
             CurrentJointTarget = Controller.MotionSystem.ActiveMechanicalUnit.GetPosition();
             CurrentRobTarget = Controller.MotionSystem.ActiveMechanicalUnit.GetPosition(CoordinateSystemType.World);
-            List<double> newAngles = new() { CurrentJointTarget.RobAx.Rax_1,
-                                             CurrentJointTarget.RobAx.Rax_2,
-                                             CurrentJointTarget.RobAx.Rax_3,
-                                             CurrentJointTarget.RobAx.Rax_4,
-                                             CurrentJointTarget.RobAx.Rax_5,
-                                             CurrentJointTarget.RobAx.Rax_6 };
 
-            App.Current.Dispatcher.Invoke(() => UpdateRobotJointAngles(newAngles));
+            List<double> newJointValues = new() { CurrentJointTarget.RobAx.Rax_1,
+                                                  CurrentJointTarget.RobAx.Rax_2,
+                                                  CurrentJointTarget.RobAx.Rax_3,
+                                                  CurrentJointTarget.RobAx.Rax_4,
+                                                  CurrentJointTarget.RobAx.Rax_5,
+                                                  CurrentJointTarget.RobAx.Rax_6 };
+            CurrentRobTarget.Rot.ToEulerAngles(out double rx, out double ry, out double rz);
+            List<double> newLinearValues = new() { CurrentRobTarget.Trans.X,
+                                                   CurrentRobTarget.Trans.Y,
+                                                   CurrentRobTarget.Trans.Z,
+                                                   rx,
+                                                   ry,
+                                                   rz };
+
+            App.Current.Dispatcher.Invoke(() => UpdateRobotJointValues(newJointValues));
+            App.Current.Dispatcher.Invoke(() => UpdateRobotLinearValues(newLinearValues));
         }
 
-        private void UpdateRobotJointAngles(List<double> newAngles)
+        private void UpdateRobotJointValues(List<double> newJointValues)
         {
-            ((MainWindow)App.Current.MainWindow).robotJointJogPanel.JointAngles = newAngles;
+            ((MainWindow)App.Current.MainWindow).robotJointJogPanel.JointAngles = newJointValues;
 
             // TODO
             for (int i = 0; i < Joints.Count; i++)
             {
-                Joints[i].Angle = newAngles[i];
+                Joints[i].Angle = newJointValues[i];
             }
 
+            // 注意变换矩阵的结合顺序，矩阵乘法没有交换律
             Joints[0].GlobalTransform = Joints[0].LocalTransform;
             Joints[1].GlobalTransform = Transform3DHelper.CombineTransform(Joints[1].LocalTransform,
                                                                            Joints[0].GlobalTransform);
@@ -63,6 +73,11 @@ namespace DBGware.RobotStudioLite
                                                                            Joints[3].GlobalTransform);
             Joints[5].GlobalTransform = Transform3DHelper.CombineTransform(Joints[5].LocalTransform,
                                                                            Joints[4].GlobalTransform);
+        }
+
+        private void UpdateRobotLinearValues(List<double> newLinearValues)
+        {
+            ((MainWindow)App.Current.MainWindow).robotLinearJogPanel.LinearValues = newLinearValues;
         }
 
         public Point3D CalculateForwardKinematics(List<double> angles)

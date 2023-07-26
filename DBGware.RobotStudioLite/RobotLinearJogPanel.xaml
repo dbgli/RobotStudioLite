@@ -1,0 +1,254 @@
+﻿<UserControl x:Class="DBGware.RobotStudioLite.RobotLinearJogPanel"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:local="clr-namespace:DBGware.RobotStudioLite"
+             mc:Ignorable="d"
+             d:DesignWidth="200" d:DesignHeight="400">
+
+    <UserControl.CommandBindings>
+        <CommandBinding
+            Command="{x:Static local:RSLCommands.RobotLinearJogCommand}"
+            Executed="RobotLinearJogCommandExecuted"
+            CanExecute="RobotLinearJogCommandCanExecute" />
+    </UserControl.CommandBindings>
+
+    <ScrollViewer VerticalScrollBarVisibility="Auto">
+        <Grid Margin="8">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition />
+                <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+
+            <Label
+                Grid.Row="0"
+                Grid.Column="0"
+                Content="X:"
+                Margin="0,0,0,4"
+                HorizontalContentAlignment="Right"
+                VerticalContentAlignment="Center" />
+            <Button
+                Grid.Row="0"
+                Grid.Column="1"
+                Margin="0,0,0,4"
+                Command="{x:Static local:RSLCommands.RobotLinearJogCommand}"
+                CommandParameter="&quot;L1-&quot;">
+                <TextBlock Text="&#xE949;" FontFamily="Segoe Fluent Icons" />
+            </Button>
+            <TextBox
+                x:Name="linear1ValueTextBox"
+                Grid.Row="0"
+                Grid.Column="2"
+                Margin="0,0,0,4"
+                VerticalAlignment="Stretch"
+                HorizontalContentAlignment="Center"
+                IsReadOnly="True" />
+            <Button
+                Grid.Row="0"
+                Grid.Column="3"
+                Margin="0,0,0,4"
+                Command="{x:Static local:RSLCommands.RobotLinearJogCommand}"
+                CommandParameter="&quot;L1+&quot;">
+                <TextBlock Text="&#xE948;" FontFamily="Segoe Fluent Icons" />
+            </Button>
+
+            <Label
+                Grid.Row="1"
+                Grid.Column="0"
+                Content="Y:"
+                Margin="0,0,0,4"
+                HorizontalContentAlignment="Right"
+                VerticalContentAlignment="Center" />
+            <Button
+                Grid.Row="1"
+                Grid.Column="1"
+                Margin="0,0,0,4"
+                Command="{x:Static local:RSLCommands.RobotLinearJogCommand}"
+                CommandParameter="&quot;L2-&quot;">
+                <TextBlock Text="&#xE949;" FontFamily="Segoe Fluent Icons" />
+            </Button>
+            <TextBox
+                x:Name="linear2ValueTextBox"
+                Grid.Row="1"
+                Grid.Column="2"
+                Margin="0,0,0,4"
+                VerticalAlignment="Stretch"
+                HorizontalContentAlignment="Center"
+                IsReadOnly="True" />
+            <Button
+                Grid.Row="1"
+                Grid.Column="3"
+                Margin="0,0,0,4"
+                Command="{x:Static local:RSLCommands.RobotLinearJogCommand}"
+                CommandParameter="&quot;L2+&quot;">
+                <TextBlock Text="&#xE948;" FontFamily="Segoe Fluent Icons" />
+            </Button>
+
+            <Label
+                Grid.Row="2"
+                Grid.Column="0"
+                Content="Z:"
+                Margin="0,0,0,4"
+                HorizontalContentAlignment="Right"
+                VerticalContentAlignment="Center" />
+            <Button
+                Grid.Row="2"
+                Grid.Column="1"
+                Margin="0,0,0,4"
+                Command="{x:Static local:RSLCommands.RobotLinearJogCommand}"
+                CommandParameter="&quot;L3-&quot;">
+                <TextBlock Text="&#xE949;" FontFamily="Segoe Fluent Icons" />
+            </Button>
+            <TextBox
+                x:Name="linear3ValueTextBox"
+                Grid.Row="2"
+                Grid.Column="2"
+                Margin="0,0,0,4"
+                VerticalAlignment="Stretch"
+                HorizontalContentAlignment="Center"
+                IsReadOnly="True" />
+            <Button
+                Grid.Row="2"
+                Grid.Column="3"
+                Margin="0,0,0,4"
+                Command="{x:Static local:RSLCommands.RobotLinearJogCommand}"
+                CommandParameter="&quot;L3+&quot;">
+                <TextBlock Text="&#xE948;" FontFamily="Segoe Fluent Icons" />
+            </Button>
+
+            <Label
+                Grid.Row="3"
+                Grid.Column="0"
+                Content="RX:"
+                Margin="0,0,0,4"
+                HorizontalContentAlignment="Right"
+                VerticalContentAlignment="Center" />
+            <Button
+                Grid.Row="3"
+                Grid.Column="1"
+                Margin="0,0,0,4"
+                Command="{x:Static local:RSLCommands.RobotLinearJogCommand}"
+                CommandParameter="&quot;L4-&quot;">
+                <TextBlock Text="&#xE949;" FontFamily="Segoe Fluent Icons" />
+            </Button>
+            <TextBox
+                x:Name="linear4ValueTextBox"
+                Grid.Row="3"
+                Grid.Column="2"
+                Margin="0,0,0,4"
+                VerticalAlignment="Stretch"
+                HorizontalContentAlignment="Center"
+                IsReadOnly="True" />
+            <Button
+                Grid.Row="3"
+                Grid.Column="3"
+                Margin="0,0,0,4"
+                Command="{x:Static local:RSLCommands.RobotLinearJogCommand}"
+                CommandParameter="&quot;L4+&quot;">
+                <TextBlock Text="&#xE948;" FontFamily="Segoe Fluent Icons" />
+            </Button>
+
+            <Label
+                Grid.Row="4"
+                Grid.Column="0"
+                Content="RY:"
+                Margin="0,0,0,4"
+                HorizontalContentAlignment="Right"
+                VerticalContentAlignment="Center" />
+            <Button
+                Grid.Row="4"
+                Grid.Column="1"
+                Margin="0,0,0,4"
+                Command="{x:Static local:RSLCommands.RobotLinearJogCommand}"
+                CommandParameter="&quot;L5-&quot;">
+                <TextBlock Text="&#xE949;" FontFamily="Segoe Fluent Icons" />
+            </Button>
+            <TextBox
+                x:Name="linear5ValueTextBox"
+                Grid.Row="4"
+                Grid.Column="2"
+                Margin="0,0,0,4"
+                VerticalAlignment="Stretch"
+                HorizontalContentAlignment="Center"
+                IsReadOnly="True" />
+            <Button
+                Grid.Row="4"
+                Grid.Column="3"
+                Margin="0,0,0,4"
+                Command="{x:Static local:RSLCommands.RobotLinearJogCommand}"
+                CommandParameter="&quot;L5+&quot;">
+                <TextBlock Text="&#xE948;" FontFamily="Segoe Fluent Icons" />
+            </Button>
+
+            <Label
+                Grid.Row="5"
+                Grid.Column="0"
+                Content="RZ:"
+                Margin="0,0,0,4"
+                HorizontalContentAlignment="Right"
+                VerticalContentAlignment="Center" />
+            <Button
+                Grid.Row="5"
+                Grid.Column="1"
+                Margin="0,0,0,4"
+                Command="{x:Static local:RSLCommands.RobotLinearJogCommand}"
+                CommandParameter="&quot;L6-&quot;">
+                <TextBlock Text="&#xE949;" FontFamily="Segoe Fluent Icons" />
+            </Button>
+            <TextBox
+                x:Name="linear6ValueTextBox"
+                Grid.Row="5"
+                Grid.Column="2"
+                Margin="0,0,0,4"
+                VerticalAlignment="Stretch"
+                HorizontalContentAlignment="Center"
+                IsReadOnly="True" />
+            <Button
+                Grid.Row="5"
+                Grid.Column="3"
+                Margin="0,0,0,4"
+                Command="{x:Static local:RSLCommands.RobotLinearJogCommand}"
+                CommandParameter="&quot;L6+&quot;">
+                <TextBlock Text="&#xE948;" FontFamily="Segoe Fluent Icons" />
+            </Button>
+
+            <Label
+                Grid.Row="6"
+                Grid.Column="0"
+                Content="Step:"
+                Margin="0,0,0,4"
+                HorizontalContentAlignment="Right"
+                VerticalContentAlignment="Center" />
+            <Grid Grid.Row="6" Grid.Column="1" Grid.ColumnSpan="3">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+                <TextBox
+                    x:Name="linearJogStepTextBox"
+                    Grid.Column="0"
+                    Margin="0,0,0,4"
+                    VerticalAlignment="Stretch"
+                    HorizontalContentAlignment="Center"
+                    Text="1" />
+                <Label
+                    Grid.Column="1"
+                    Content="mm/deg"
+                    Margin="0,0,0,4"
+                    VerticalContentAlignment="Center" />
+            </Grid>
+        </Grid>
+    </ScrollViewer>
+</UserControl>

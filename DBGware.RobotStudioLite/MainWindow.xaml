@@ -122,7 +122,7 @@
                                 <local:RobotJointJogPanel x:Name="robotJointJogPanel" />
                             </LayoutAnchorable>
                             <LayoutAnchorable Title="linear">
-
+                                <local:RobotLinearJogPanel x:Name="robotLinearJogPanel" />
                             </LayoutAnchorable>
                         </LayoutAnchorablePane>
                         <LayoutAnchorablePane>
