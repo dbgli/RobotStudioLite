@@ -61,7 +61,8 @@ namespace DBGware.RobotStudioLite
         private void Application_Exit(object sender, ExitEventArgs e)
         {
             // 善后处理
-            Robot.IsRobotJointAnglesSynced = false;
+            Robot.IsCachedStatusRefreshing = false;
+            Robot.CachedStatus = null;
 
             Robot.Mastership?.Release();
             Robot.Mastership?.Dispose();

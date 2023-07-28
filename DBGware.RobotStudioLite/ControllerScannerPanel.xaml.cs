@@ -59,23 +59,23 @@ namespace DBGware.RobotStudioLite
         private void ConnectControllerCommandCanExecute(object sender, CanExecuteRoutedEventArgs e)
         {
             if (e.Parameter is not ControllerInfoWrapper controllerInfoWrapper) return;
-            e.CanExecute = controllerInfoWrapper.SystemId != App.Robot.Controller?.SystemId;
+            e.CanExecute = controllerInfoWrapper.SystemId != App.Robot.CachedStatus?.SystemId;
         }
 
         private void ConnectControllerMouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
             if (sender is not ListViewItem listViewItem) return;
             if (listViewItem.Content is not ControllerInfoWrapper controllerInfoWrapper) return;
-            if (controllerInfoWrapper.SystemId == App.Robot.Controller?.SystemId) return;
+            if (controllerInfoWrapper.SystemId == App.Robot.CachedStatus?.SystemId) return;
             ConnectController(controllerInfoWrapper.ControllerInfo);
         }
 
         private static void ConnectController(ControllerInfo controllerInfo)
         {
-            if (App.Robot.Controller != null)
+            if (App.Robot.CachedStatus != null)
             {
                 MessageBoxResult messageBoxResult = MessageBox.Show(string.Format((string)App.Current.FindResource("ChangeControllerMessage"),
-                                                                                  App.Robot.Controller.Name,
+                                                                                  App.Robot.CachedStatus.Name,
                                                                                   controllerInfo.ControllerName),
                                                                     (string)App.Current.FindResource("ChangeControllerCaption"),
                                                                     MessageBoxButton.YesNo,
@@ -93,7 +93,8 @@ namespace DBGware.RobotStudioLite
             App.Robot.Controller = Controller.Connect(controllerInfo, ConnectionType.Standalone);
             App.Robot.Controller.Logon(UserInfo.DefaultUser);
             ((MainWindow)App.Current.MainWindow).ConnectedControllerName = App.Robot.Controller.Name;
-            App.Robot.IsRobotJointAnglesSynced = true;
+            App.Robot.CachedStatus = new();
+            App.Robot.IsCachedStatusRefreshing = true;
         }
 
         #endregion
@@ -108,12 +109,13 @@ namespace DBGware.RobotStudioLite
         private void DisconnectControllerCommandCanExecute(object sender, CanExecuteRoutedEventArgs e)
         {
             if (e.Parameter is not ControllerInfoWrapper controllerInfoWrapper) return;
-            e.CanExecute = controllerInfoWrapper.SystemId == App.Robot.Controller?.SystemId;
+            e.CanExecute = controllerInfoWrapper.SystemId == App.Robot.CachedStatus?.SystemId;
         }
 
         private static void DisconnectController()
         {
-            App.Robot.IsRobotJointAnglesSynced = false;
+            App.Robot.IsCachedStatusRefreshing = false;
+            App.Robot.CachedStatus = null;
 
             App.Robot.Mastership?.Release();
             App.Robot.Mastership?.Dispose();

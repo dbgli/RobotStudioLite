@@ -22,28 +22,28 @@ namespace DBGware.RobotStudioLite
     /// </summary>
     public partial class RobotLinearJogPanel : UserControl
     {
-        private List<double> linearValues = new();
+        private RobTarget linearPosition;
 
-        public List<double> LinearValues
+        public RobTarget LinearPosition
         {
-            get => linearValues;
+            get => linearPosition;
             set
             {
-                linearValues = value;
-
-                linear1ValueTextBox.Text = linearValues[0].ToString("F3");
-                linear2ValueTextBox.Text = linearValues[1].ToString("F3");
-                linear3ValueTextBox.Text = linearValues[2].ToString("F3");
-                linear4ValueTextBox.Text = linearValues[3].ToString("F3");
-                linear5ValueTextBox.Text = linearValues[4].ToString("F3");
-                linear6ValueTextBox.Text = linearValues[5].ToString("F3");
+                linearPosition = value;
+                linearPosition.Rot.ToEulerAngles(out double rx, out double ry, out double rz);
+                linear1ValueTextBox.Text = linearPosition.Trans.X.ToString("F3");
+                linear2ValueTextBox.Text = linearPosition.Trans.Y.ToString("F3");
+                linear3ValueTextBox.Text = linearPosition.Trans.Z.ToString("F3");
+                linear4ValueTextBox.Text = rx.ToString("F3");
+                linear5ValueTextBox.Text = ry.ToString("F3");
+                linear6ValueTextBox.Text = rz.ToString("F3");
             }
         }
 
         public RobotLinearJogPanel()
         {
             InitializeComponent();
-            LinearValues = new() { 0, 0, 0, 0, 0, 0 };
+            LinearPosition = new();
         }
 
         #region 机器人线性点动命令
@@ -70,10 +70,10 @@ namespace DBGware.RobotStudioLite
 
         private void RobotLinearJogCommandCanExecute(object sender, CanExecuteRoutedEventArgs e)
         {
-            e.CanExecute = App.Robot.Controller?.OperatingMode == ControllerOperatingMode.Auto
-                        && App.Robot.Controller?.IsMaster == true
-                        && App.Robot.Controller?.State == ControllerState.MotorsOn
-                        && App.Robot.Controller?.Rapid.ExecutionStatus != ExecutionStatus.Running;
+            e.CanExecute = App.Robot.CachedStatus?.OperatingMode == ControllerOperatingMode.Auto
+                        && App.Robot.CachedStatus?.IsMaster == true
+                        && App.Robot.CachedStatus?.State == ControllerState.MotorsOn
+                        && App.Robot.CachedStatus?.ExecutionStatus != ExecutionStatus.Running;
         }
 
         #endregion
