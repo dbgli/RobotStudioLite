@@ -126,6 +126,8 @@ namespace DBGware.RobotStudioLite
             App.Robot.Controller = null;
 
             ((MainWindow)App.Current.MainWindow).ConnectedControllerName = string.Empty;
+            ((MainWindow)App.Current.MainWindow).robotJointJogPanel.JointPosition = null;
+            ((MainWindow)App.Current.MainWindow).robotLinearJogPanel.LinearPosition = null;
         }
 
         #endregion

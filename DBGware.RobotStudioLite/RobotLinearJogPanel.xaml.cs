@@ -22,28 +22,40 @@ namespace DBGware.RobotStudioLite
     /// </summary>
     public partial class RobotLinearJogPanel : UserControl
     {
-        private RobTarget linearPosition;
+        private RobTarget? linearPosition;
 
-        public RobTarget LinearPosition
+        public RobTarget? LinearPosition
         {
             get => linearPosition;
             set
             {
                 linearPosition = value;
-                linearPosition.Rot.ToEulerAngles(out double rx, out double ry, out double rz);
-                linear1ValueTextBox.Text = linearPosition.Trans.X.ToString("F3");
-                linear2ValueTextBox.Text = linearPosition.Trans.Y.ToString("F3");
-                linear3ValueTextBox.Text = linearPosition.Trans.Z.ToString("F3");
-                linear4ValueTextBox.Text = rx.ToString("F3");
-                linear5ValueTextBox.Text = ry.ToString("F3");
-                linear6ValueTextBox.Text = rz.ToString("F3");
+
+                double rx = double.NaN;
+                double ry = double.NaN;
+                double rz = double.NaN;
+                linearPosition?.Rot.ToEulerAngles(out rx, out ry, out rz);
+                linear1ValueTextBox.Text = linearPosition?.Trans.X.ToString("F3") ?? "N/A";
+                linear2ValueTextBox.Text = linearPosition?.Trans.Y.ToString("F3") ?? "N/A";
+                linear3ValueTextBox.Text = linearPosition?.Trans.Z.ToString("F3") ?? "N/A";
+                linear4ValueTextBox.Text = !double.IsNaN(rx) ? rx.ToString("F3") : "N/A";
+                linear5ValueTextBox.Text = !double.IsNaN(ry) ? ry.ToString("F3") : "N/A";
+                linear6ValueTextBox.Text = !double.IsNaN(rz) ? rz.ToString("F3") : "N/A";
+
+                bool isLinearPositionNonNull = linearPosition != null;
+                linear1ValueTextBox.IsEnabled = isLinearPositionNonNull;
+                linear2ValueTextBox.IsEnabled = isLinearPositionNonNull;
+                linear3ValueTextBox.IsEnabled = isLinearPositionNonNull;
+                linear4ValueTextBox.IsEnabled = isLinearPositionNonNull;
+                linear5ValueTextBox.IsEnabled = isLinearPositionNonNull;
+                linear6ValueTextBox.IsEnabled = isLinearPositionNonNull;
             }
         }
 
         public RobotLinearJogPanel()
         {
             InitializeComponent();
-            LinearPosition = new();
+            LinearPosition = null;
         }
 
         #region 机器人线性点动命令

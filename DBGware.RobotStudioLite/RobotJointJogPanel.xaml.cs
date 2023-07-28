@@ -22,27 +22,36 @@ namespace DBGware.RobotStudioLite
     /// </summary>
     public partial class RobotJointJogPanel : UserControl
     {
-        private JointTarget jointPosition;
+        private JointTarget? jointPosition;
 
-        public JointTarget JointPosition
+        public JointTarget? JointPosition
         {
             get => jointPosition;
             set
             {
                 jointPosition = value;
-                joint1ValueTextBox.Text = jointPosition.RobAx.Rax_1.ToString("F3");
-                joint2ValueTextBox.Text = jointPosition.RobAx.Rax_2.ToString("F3");
-                joint3ValueTextBox.Text = jointPosition.RobAx.Rax_3.ToString("F3");
-                joint4ValueTextBox.Text = jointPosition.RobAx.Rax_4.ToString("F3");
-                joint5ValueTextBox.Text = jointPosition.RobAx.Rax_5.ToString("F3");
-                joint6ValueTextBox.Text = jointPosition.RobAx.Rax_6.ToString("F3");
+
+                joint1ValueTextBox.Text = jointPosition?.RobAx.Rax_1.ToString("F3") ?? "N/A";
+                joint2ValueTextBox.Text = jointPosition?.RobAx.Rax_2.ToString("F3") ?? "N/A";
+                joint3ValueTextBox.Text = jointPosition?.RobAx.Rax_3.ToString("F3") ?? "N/A";
+                joint4ValueTextBox.Text = jointPosition?.RobAx.Rax_4.ToString("F3") ?? "N/A";
+                joint5ValueTextBox.Text = jointPosition?.RobAx.Rax_5.ToString("F3") ?? "N/A";
+                joint6ValueTextBox.Text = jointPosition?.RobAx.Rax_6.ToString("F3") ?? "N/A";
+
+                bool isJointPositionNonNull = jointPosition != null;
+                joint1ValueTextBox.IsEnabled = isJointPositionNonNull;
+                joint2ValueTextBox.IsEnabled = isJointPositionNonNull;
+                joint3ValueTextBox.IsEnabled = isJointPositionNonNull;
+                joint4ValueTextBox.IsEnabled = isJointPositionNonNull;
+                joint5ValueTextBox.IsEnabled = isJointPositionNonNull;
+                joint6ValueTextBox.IsEnabled = isJointPositionNonNull;
             }
         }
 
         public RobotJointJogPanel()
         {
             InitializeComponent();
-            JointPosition = new();
+            JointPosition = null;
         }
 
         #region 机器人关节点动命令
