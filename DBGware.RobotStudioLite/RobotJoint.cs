@@ -7,7 +7,7 @@ using System.Windows.Media.Media3D;
 
 namespace DBGware.RobotStudioLite
 {
-    public class Joint
+    public class RobotJoint
     {
         public Model3D Link { get; set; }
         public double Angle { get; set; }
@@ -18,7 +18,7 @@ namespace DBGware.RobotStudioLite
         public Transform3D GlobalTransform { get => Link.Transform; set => Link.Transform = value; }
         public Transform3D LocalTransform => new RotateTransform3D(new AxisAngleRotation3D(RotationAxis, Angle), RotationPoint);
 
-        public Joint(Model3D link)
+        public RobotJoint(Model3D link)
         {
             Link = link;
         }

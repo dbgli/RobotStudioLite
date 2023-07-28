@@ -15,7 +15,7 @@ namespace DBGware.RobotStudioLite
         public Controller? Controller { get; set; } = null;
         public Mastership? Mastership { get; set; } = null;
         public RobotStatus? CachedStatus { get; set; } = null;
-        public List<Joint> Joints { get; set; } = new();
+        public List<RobotJoint> Joints { get; set; } = new();
         public bool IsCachedStatusRefreshing { get => timer.Enabled; set => timer.Enabled = value; }
 
         public Robot()
