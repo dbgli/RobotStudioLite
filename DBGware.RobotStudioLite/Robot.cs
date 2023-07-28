@@ -1,5 +1,6 @@
 ﻿using System.Timers;
 using System.Collections.Generic;
+using System.Windows.Input;
 using System.Windows.Media.Media3D;
 using ABB.Robotics.Controllers;
 using ABB.Robotics.Controllers.MotionDomain;
@@ -26,9 +27,10 @@ namespace DBGware.RobotStudioLite
         {
             // 不要用DispatcherTimer，因为同在UI线程，耗时操作影响性能
             // 用System.Timers.Timer，在独立线程中触发事件，执行耗时操作
-            // 用Dispatcher.Invoke方法处理UI线程中的事务
+            // 再用Dispatcher.Invoke方法处理UI线程中的事务
             if (Controller == null || CachedStatus == null) return;
 
+            // TODO 用事件刷新状态
             CachedStatus.Name = Controller.Name;
             CachedStatus.SystemId = Controller.SystemId;
             CachedStatus.OperatingMode = Controller.OperatingMode;
@@ -47,6 +49,9 @@ namespace DBGware.RobotStudioLite
 
             App.Current.Dispatcher.Invoke(() =>
             {
+                // 在异步操作后，手动刷新命令可用性，注意只有在UI线程中调用才起作用
+                CommandManager.InvalidateRequerySuggested();
+
                 ((MainWindow)App.Current.MainWindow).robotJointJogPanel.JointPosition = CachedStatus.JointPosition;
                 ((MainWindow)App.Current.MainWindow).robotLinearJogPanel.LinearPosition = CachedStatus.LinearPosition;
 
