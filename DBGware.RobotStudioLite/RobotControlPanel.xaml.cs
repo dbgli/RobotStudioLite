@@ -37,8 +37,8 @@ namespace DBGware.RobotStudioLite
 
         private void TurnOnMotorsCommandCanExecute(object sender, CanExecuteRoutedEventArgs e)
         {
-            e.CanExecute = App.Robot.CachedStatus?.OperatingMode == ControllerOperatingMode.Auto
-                        && App.Robot.CachedStatus?.State != ControllerState.MotorsOn;
+            e.CanExecute = App.Robot.StatusCache?.OperatingMode == ControllerOperatingMode.Auto
+                        && App.Robot.StatusCache?.State != ControllerState.MotorsOn;
         }
 
         #endregion
@@ -53,8 +53,8 @@ namespace DBGware.RobotStudioLite
 
         private void TurnOffMotorsCommandCanExecute(object sender, CanExecuteRoutedEventArgs e)
         {
-            e.CanExecute = App.Robot.CachedStatus?.OperatingMode == ControllerOperatingMode.Auto
-                        && App.Robot.CachedStatus?.State != ControllerState.MotorsOff;
+            e.CanExecute = App.Robot.StatusCache?.OperatingMode == ControllerOperatingMode.Auto
+                        && App.Robot.StatusCache?.State != ControllerState.MotorsOff;
         }
 
         #endregion
@@ -69,7 +69,7 @@ namespace DBGware.RobotStudioLite
 
         private void RequestMastershipCommandCanExecute(object sender, CanExecuteRoutedEventArgs e)
         {
-            e.CanExecute = App.Robot.CachedStatus?.IsMaster == false;
+            e.CanExecute = App.Robot.StatusCache?.IsMaster == false;
         }
 
         #endregion
@@ -85,7 +85,7 @@ namespace DBGware.RobotStudioLite
 
         private void ReleaseMastershipCommandCanExecute(object sender, CanExecuteRoutedEventArgs e)
         {
-            e.CanExecute = App.Robot.CachedStatus?.IsMaster == true;
+            e.CanExecute = App.Robot.StatusCache?.IsMaster == true;
         }
 
         #endregion
@@ -99,9 +99,9 @@ namespace DBGware.RobotStudioLite
 
         private void ResetProgramPointerCommandCanExecute(object sender, CanExecuteRoutedEventArgs e)
         {
-            e.CanExecute = App.Robot.CachedStatus?.OperatingMode == ControllerOperatingMode.Auto
-                        && App.Robot.CachedStatus?.IsMaster == true
-                        && App.Robot.CachedStatus?.ExecutionStatus != ExecutionStatus.Running;
+            e.CanExecute = App.Robot.StatusCache?.OperatingMode == ControllerOperatingMode.Auto
+                        && App.Robot.StatusCache?.IsMaster == true
+                        && App.Robot.StatusCache?.ExecutionStatus != ExecutionStatus.Running;
         }
 
         #endregion
@@ -115,10 +115,10 @@ namespace DBGware.RobotStudioLite
 
         private void StartRapidProgramCommandCanExecute(object sender, CanExecuteRoutedEventArgs e)
         {
-            e.CanExecute = App.Robot.CachedStatus?.OperatingMode == ControllerOperatingMode.Auto
-                        && App.Robot.CachedStatus?.IsMaster == true
-                        && App.Robot.CachedStatus?.State == ControllerState.MotorsOn
-                        && App.Robot.CachedStatus?.ExecutionStatus != ExecutionStatus.Running;
+            e.CanExecute = App.Robot.StatusCache?.OperatingMode == ControllerOperatingMode.Auto
+                        && App.Robot.StatusCache?.IsMaster == true
+                        && App.Robot.StatusCache?.State == ControllerState.MotorsOn
+                        && App.Robot.StatusCache?.ExecutionStatus != ExecutionStatus.Running;
         }
 
         #endregion
@@ -132,9 +132,9 @@ namespace DBGware.RobotStudioLite
 
         private void StopRapidProgramCommandCanExecute(object sender, CanExecuteRoutedEventArgs e)
         {
-            e.CanExecute = App.Robot.CachedStatus?.OperatingMode == ControllerOperatingMode.Auto
-                        && App.Robot.CachedStatus?.IsMaster == true
-                        && App.Robot.CachedStatus?.ExecutionStatus != ExecutionStatus.Stopped;
+            e.CanExecute = App.Robot.StatusCache?.OperatingMode == ControllerOperatingMode.Auto
+                        && App.Robot.StatusCache?.IsMaster == true
+                        && App.Robot.StatusCache?.ExecutionStatus != ExecutionStatus.Stopped;
         }
 
         #endregion

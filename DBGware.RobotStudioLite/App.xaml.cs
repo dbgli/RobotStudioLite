@@ -1,9 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Documents;
 using DBGware.RobotStudioLite.Properties;
-using ABB.Robotics.Controllers;
 
 namespace DBGware.RobotStudioLite
 {
@@ -58,11 +57,13 @@ namespace DBGware.RobotStudioLite
             }
         }
 
-        private void Application_Exit(object sender, ExitEventArgs e)
+        private async void Application_Exit(object sender, ExitEventArgs e)
         {
             // 善后处理
-            Robot.IsCachedStatusRefreshing = false;
-            Robot.CachedStatus = null;
+            // 定时器停止时如果有定时事件正在执行，等待定时事件结束后再释放资源
+            Robot.StatusCacheRefreshTimer.Stop();
+            while (Robot.IsStatusCacheRefreshing) await Task.Delay(100);
+            Robot.StatusCache = null;
 
             Robot.Mastership?.Release();
             Robot.Mastership?.Dispose();

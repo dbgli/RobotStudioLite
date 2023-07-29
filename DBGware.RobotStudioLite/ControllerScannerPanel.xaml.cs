@@ -1,17 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 using ABB.Robotics.Controllers;
 using ABB.Robotics.Controllers.Discovery;
 
@@ -50,32 +42,32 @@ namespace DBGware.RobotStudioLite
 
         #region 连接控制器命令
 
-        private void ConnectControllerCommandExecuted(object sender, ExecutedRoutedEventArgs e)
+        private async void ConnectControllerCommandExecuted(object sender, ExecutedRoutedEventArgs e)
         {
             if (e.Parameter is not ControllerInfoWrapper controllerInfoWrapper) return;
-            ConnectController(controllerInfoWrapper.ControllerInfo);
+            await ConnectController(controllerInfoWrapper.ControllerInfo);
         }
 
         private void ConnectControllerCommandCanExecute(object sender, CanExecuteRoutedEventArgs e)
         {
             if (e.Parameter is not ControllerInfoWrapper controllerInfoWrapper) return;
-            e.CanExecute = controllerInfoWrapper.SystemId != App.Robot.CachedStatus?.SystemId;
+            e.CanExecute = controllerInfoWrapper.SystemId != App.Robot.StatusCache?.SystemId;
         }
 
-        private void ConnectControllerMouseDoubleClick(object sender, MouseButtonEventArgs e)
+        private async void ConnectControllerMouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
             if (sender is not ListViewItem listViewItem) return;
             if (listViewItem.Content is not ControllerInfoWrapper controllerInfoWrapper) return;
-            if (controllerInfoWrapper.SystemId == App.Robot.CachedStatus?.SystemId) return;
-            ConnectController(controllerInfoWrapper.ControllerInfo);
+            if (controllerInfoWrapper.SystemId == App.Robot.StatusCache?.SystemId) return;
+            await ConnectController(controllerInfoWrapper.ControllerInfo);
         }
 
-        private static void ConnectController(ControllerInfo controllerInfo)
+        private static async Task ConnectController(ControllerInfo controllerInfo)
         {
-            if (App.Robot.CachedStatus != null)
+            if (App.Robot.StatusCache != null)
             {
                 MessageBoxResult messageBoxResult = MessageBox.Show(string.Format((string)App.Current.FindResource("ChangeControllerMessage"),
-                                                                                  App.Robot.CachedStatus.Name,
+                                                                                  App.Robot.StatusCache.Name,
                                                                                   controllerInfo.ControllerName),
                                                                     (string)App.Current.FindResource("ChangeControllerCaption"),
                                                                     MessageBoxButton.YesNo,
@@ -83,7 +75,7 @@ namespace DBGware.RobotStudioLite
                                                                     MessageBoxResult.Yes);
                 if (messageBoxResult == MessageBoxResult.Yes)
                 {
-                    DisconnectController();
+                    await DisconnectController();
                 }
                 else
                 {
@@ -93,29 +85,31 @@ namespace DBGware.RobotStudioLite
             App.Robot.Controller = Controller.Connect(controllerInfo, ConnectionType.Standalone);
             App.Robot.Controller.Logon(UserInfo.DefaultUser);
             ((MainWindow)App.Current.MainWindow).ConnectedControllerName = App.Robot.Controller.Name;
-            App.Robot.CachedStatus = new();
-            App.Robot.IsCachedStatusRefreshing = true;
+            App.Robot.StatusCache = new();
+            App.Robot.StatusCacheRefreshTimer.Start();
         }
 
         #endregion
 
         #region 断开控制器命令
 
-        private void DisconnectControllerCommandExecuted(object sender, ExecutedRoutedEventArgs e)
+        private async void DisconnectControllerCommandExecuted(object sender, ExecutedRoutedEventArgs e)
         {
-            DisconnectController();
+            await DisconnectController();
         }
 
         private void DisconnectControllerCommandCanExecute(object sender, CanExecuteRoutedEventArgs e)
         {
             if (e.Parameter is not ControllerInfoWrapper controllerInfoWrapper) return;
-            e.CanExecute = controllerInfoWrapper.SystemId == App.Robot.CachedStatus?.SystemId;
+            e.CanExecute = controllerInfoWrapper.SystemId == App.Robot.StatusCache?.SystemId;
         }
 
-        private static void DisconnectController()
+        private static async Task DisconnectController()
         {
-            App.Robot.IsCachedStatusRefreshing = false;
-            App.Robot.CachedStatus = null;
+            // 定时器停止时如果有定时事件正在执行，等待定时事件结束后再释放资源
+            App.Robot.StatusCacheRefreshTimer.Stop();
+            while (App.Robot.IsStatusCacheRefreshing) await Task.Delay(100);
+            App.Robot.StatusCache = null;
 
             App.Robot.Mastership?.Release();
             App.Robot.Mastership?.Dispose();
@@ -124,6 +118,9 @@ namespace DBGware.RobotStudioLite
             App.Robot.Controller?.Logoff();
             App.Robot.Controller?.Dispose();
             App.Robot.Controller = null;
+
+            // 由于延时的存在，命令可用性轮询会在状态更新前执行完，所以需要在状态更新后手动再次触发
+            CommandManager.InvalidateRequerySuggested();
 
             ((MainWindow)App.Current.MainWindow).ConnectedControllerName = string.Empty;
             ((MainWindow)App.Current.MainWindow).robotJointJogPanel.JointPosition = null;

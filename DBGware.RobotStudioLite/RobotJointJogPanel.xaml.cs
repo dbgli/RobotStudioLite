@@ -78,10 +78,10 @@ namespace DBGware.RobotStudioLite
 
         private void RobotJointJogCommandCanExecute(object sender, CanExecuteRoutedEventArgs e)
         {
-            e.CanExecute = App.Robot.CachedStatus?.OperatingMode == ControllerOperatingMode.Auto
-                        && App.Robot.CachedStatus?.IsMaster == true
-                        && App.Robot.CachedStatus?.State == ControllerState.MotorsOn
-                        && App.Robot.CachedStatus?.ExecutionStatus != ExecutionStatus.Running;
+            e.CanExecute = App.Robot.StatusCache?.OperatingMode == ControllerOperatingMode.Auto
+                        && App.Robot.StatusCache?.IsMaster == true
+                        && App.Robot.StatusCache?.State == ControllerState.MotorsOn
+                        && App.Robot.StatusCache?.ExecutionStatus != ExecutionStatus.Running;
         }
 
         #endregion
