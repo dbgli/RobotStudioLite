@@ -69,7 +69,7 @@ namespace DBGware.RobotStudioLite
                 MessageBoxResult messageBoxResult = MessageBox.Show(string.Format((string)App.Current.FindResource("ChangeControllerMessage"),
                                                                                   App.Robot.StatusCache.Name,
                                                                                   controllerInfo.ControllerName),
-                                                                    (string)App.Current.FindResource("ChangeControllerCaption"),
+                                                                    "RobotStudioLite",
                                                                     MessageBoxButton.YesNo,
                                                                     MessageBoxImage.Information,
                                                                     MessageBoxResult.Yes);
