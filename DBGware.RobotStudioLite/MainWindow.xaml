@@ -25,7 +25,8 @@
     TextOptions.TextRenderingMode="ClearType"
 
     Loaded="CustomChromeWindow_Loaded"
-    Activated="CustomChromeWindow_Activated">
+    Activated="CustomChromeWindow_Activated"
+    Closing="CustomChromeWindow_Closing">
 
     <CustomChromeWindow.LeftWindowCommands>
         <Grid Margin="4,6">

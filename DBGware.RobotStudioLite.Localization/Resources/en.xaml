@@ -75,6 +75,7 @@
 
     <sys:String x:Key="ChangeControllerCaption">Change Controller</sys:String>
     <sys:String x:Key="ChangeControllerMessage">You are currently connected to controller {0}. Do you want to disconnect the existing connection and connect to the new controller {1}?</sys:String>
+    <sys:String x:Key="CloseApplicationMessage">You are currently connected to controller {0}. Do you want to disconnect the existing connection and close the application?</sys:String>
 
     <sys:String x:Key="Motors">Motors</sys:String>
     <sys:String x:Key="Mastership">Mastership</sys:String>

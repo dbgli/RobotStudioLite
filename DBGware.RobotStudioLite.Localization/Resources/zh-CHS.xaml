@@ -75,6 +75,7 @@
 
     <sys:String x:Key="ChangeControllerCaption">变更控制器</sys:String>
     <sys:String x:Key="ChangeControllerMessage">您当前已连接到控制器{0}。是否断开现有连接并连接到新控制器{1}？</sys:String>
+    <sys:String x:Key="CloseApplicationMessage">您当前已连接到控制器{0}。是否断开现有连接并关闭应用程序？</sys:String>
 
     <sys:String x:Key="Motors">电机</sys:String>
     <sys:String x:Key="Mastership">主控权</sys:String>

@@ -57,22 +57,8 @@ namespace DBGware.RobotStudioLite
             }
         }
 
-        private async void Application_Exit(object sender, ExitEventArgs e)
+        private void Application_Exit(object sender, ExitEventArgs e)
         {
-            // 善后处理
-            // 定时器停止时如果有定时事件正在执行，等待定时事件结束后再释放资源
-            Robot.StatusCacheRefreshTimer.Stop();
-            while (Robot.IsStatusCacheRefreshing) await Task.Delay(100);
-            Robot.StatusCache = null;
-
-            Robot.Mastership?.Release();
-            Robot.Mastership?.Dispose();
-            Robot.Mastership = null;
-
-            Robot.Controller?.Logoff();
-            Robot.Controller?.Dispose();
-            Robot.Controller = null;
-
             try
             {
                 Settings.Default.Theme = currentTheme;
