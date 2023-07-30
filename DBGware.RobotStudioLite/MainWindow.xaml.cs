@@ -117,10 +117,8 @@ namespace DBGware.RobotStudioLite
                                                                 MessageBoxButton.YesNo,
                                                                 MessageBoxImage.Information,
                                                                 MessageBoxResult.Yes);
-            if (messageBoxResult == MessageBoxResult.Yes)
-            {
-                DisconnectAndClose();
-            }
+            if (messageBoxResult == MessageBoxResult.No) return;
+            DisconnectAndClose();
         }
 
         private async void DisconnectAndClose()

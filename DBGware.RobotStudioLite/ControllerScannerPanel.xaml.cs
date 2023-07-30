@@ -73,14 +73,8 @@ namespace DBGware.RobotStudioLite
                                                                     MessageBoxButton.YesNo,
                                                                     MessageBoxImage.Information,
                                                                     MessageBoxResult.Yes);
-                if (messageBoxResult == MessageBoxResult.Yes)
-                {
-                    await DisconnectController();
-                }
-                else
-                {
-                    return;
-                }
+                if (messageBoxResult == MessageBoxResult.No) return;
+                await DisconnectController();
             }
             App.Robot.Controller = Controller.Connect(controllerInfo, ConnectionType.Standalone);
             App.Robot.Controller.Logon(UserInfo.DefaultUser);
