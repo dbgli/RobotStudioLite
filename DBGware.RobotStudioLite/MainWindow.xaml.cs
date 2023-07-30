@@ -1,11 +1,10 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Windows.Input;
 using AvalonDock.Layout;
 using DBGware.RobotStudioLite.UI.Controls;
 
@@ -123,26 +122,7 @@ namespace DBGware.RobotStudioLite
 
         private async void DisconnectAndClose()
         {
-            // 定时器停止时如果有定时事件正在执行，等待定时事件结束后再释放资源
-            App.Robot.StatusCacheRefreshTimer.Stop();
-            while (App.Robot.IsStatusCacheRefreshing) await Task.Delay(100);
-            App.Robot.StatusCache = null;
-
-            App.Robot.Mastership?.Release();
-            App.Robot.Mastership?.Dispose();
-            App.Robot.Mastership = null;
-
-            App.Robot.Controller?.Logoff();
-            App.Robot.Controller?.Dispose();
-            App.Robot.Controller = null;
-
-            // 由于延时的存在，命令可用性轮询会在状态更新前执行完，所以需要在状态更新后手动再次触发
-            CommandManager.InvalidateRequerySuggested();
-
-            ((MainWindow)App.Current.MainWindow).ConnectedControllerName = string.Empty;
-            ((MainWindow)App.Current.MainWindow).robotJointJogPanel.JointPosition = null;
-            ((MainWindow)App.Current.MainWindow).robotLinearJogPanel.LinearPosition = null;
-
+            await App.Robot.DisconnectController();
             // 等待上一次Closing事件处理完成后再次关闭窗口，此时已断开控制器可正常关闭
             // 不加延时可能会在窗口关闭期间调用Close方法引发异常
             await Task.Delay(100);

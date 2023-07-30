@@ -1,5 +1,7 @@
-﻿using System.Timers;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using System.Threading.Tasks;
+using System.Timers;
+using System.Windows;
 using System.Windows.Input;
 using System.Windows.Media.Media3D;
 using ABB.Robotics.Controllers;
@@ -71,6 +73,50 @@ namespace DBGware.RobotStudioLite
             });
 
             IsStatusCacheRefreshing = false;
+        }
+
+        public async Task ConnectController(ControllerInfo controllerInfo)
+        {
+            if (StatusCache != null)
+            {
+                MessageBoxResult messageBoxResult = MessageBox.Show(string.Format((string)App.Current.FindResource("ChangeControllerMessage"),
+                                                                                  StatusCache.Name,
+                                                                                  controllerInfo.ControllerName),
+                                                                    "RobotStudioLite",
+                                                                    MessageBoxButton.YesNo,
+                                                                    MessageBoxImage.Information,
+                                                                    MessageBoxResult.Yes);
+                if (messageBoxResult == MessageBoxResult.No) return;
+                await DisconnectController();
+            }
+            Controller = Controller.Connect(controllerInfo, ConnectionType.Standalone);
+            Controller.Logon(UserInfo.DefaultUser);
+            ((MainWindow)App.Current.MainWindow).ConnectedControllerName = Controller.Name;
+            StatusCache = new();
+            StatusCacheRefreshTimer.Start();
+        }
+
+        public async Task DisconnectController()
+        {
+            // 定时器停止时如果有定时事件正在执行，等待定时事件结束后再释放资源
+            StatusCacheRefreshTimer.Stop();
+            while (IsStatusCacheRefreshing) await Task.Delay(100);
+            StatusCache = null;
+
+            Mastership?.Release();
+            Mastership?.Dispose();
+            Mastership = null;
+
+            Controller?.Logoff();
+            Controller?.Dispose();
+            Controller = null;
+
+            // 由于延时的存在，命令可用性轮询会在状态更新前执行完，所以需要在状态更新后手动再次触发
+            CommandManager.InvalidateRequerySuggested();
+
+            ((MainWindow)App.Current.MainWindow).ConnectedControllerName = string.Empty;
+            ((MainWindow)App.Current.MainWindow).robotJointJogPanel.JointPosition = null;
+            ((MainWindow)App.Current.MainWindow).robotLinearJogPanel.LinearPosition = null;
         }
 
         public Point3D CalculateForwardKinematics(List<double> angles)

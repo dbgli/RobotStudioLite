@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -45,7 +44,7 @@ namespace DBGware.RobotStudioLite
         private async void ConnectControllerCommandExecuted(object sender, ExecutedRoutedEventArgs e)
         {
             if (e.Parameter is not ControllerInfoWrapper controllerInfoWrapper) return;
-            await ConnectController(controllerInfoWrapper.ControllerInfo);
+            await App.Robot.ConnectController(controllerInfoWrapper.ControllerInfo);
         }
 
         private void ConnectControllerCommandCanExecute(object sender, CanExecuteRoutedEventArgs e)
@@ -59,28 +58,7 @@ namespace DBGware.RobotStudioLite
             if (sender is not ListViewItem listViewItem) return;
             if (listViewItem.Content is not ControllerInfoWrapper controllerInfoWrapper) return;
             if (controllerInfoWrapper.SystemId == App.Robot.StatusCache?.SystemId) return;
-            await ConnectController(controllerInfoWrapper.ControllerInfo);
-        }
-
-        private static async Task ConnectController(ControllerInfo controllerInfo)
-        {
-            if (App.Robot.StatusCache != null)
-            {
-                MessageBoxResult messageBoxResult = MessageBox.Show(string.Format((string)App.Current.FindResource("ChangeControllerMessage"),
-                                                                                  App.Robot.StatusCache.Name,
-                                                                                  controllerInfo.ControllerName),
-                                                                    "RobotStudioLite",
-                                                                    MessageBoxButton.YesNo,
-                                                                    MessageBoxImage.Information,
-                                                                    MessageBoxResult.Yes);
-                if (messageBoxResult == MessageBoxResult.No) return;
-                await DisconnectController();
-            }
-            App.Robot.Controller = Controller.Connect(controllerInfo, ConnectionType.Standalone);
-            App.Robot.Controller.Logon(UserInfo.DefaultUser);
-            ((MainWindow)App.Current.MainWindow).ConnectedControllerName = App.Robot.Controller.Name;
-            App.Robot.StatusCache = new();
-            App.Robot.StatusCacheRefreshTimer.Start();
+            await App.Robot.ConnectController(controllerInfoWrapper.ControllerInfo);
         }
 
         #endregion
@@ -89,36 +67,13 @@ namespace DBGware.RobotStudioLite
 
         private async void DisconnectControllerCommandExecuted(object sender, ExecutedRoutedEventArgs e)
         {
-            await DisconnectController();
+            await App.Robot.DisconnectController();
         }
 
         private void DisconnectControllerCommandCanExecute(object sender, CanExecuteRoutedEventArgs e)
         {
             if (e.Parameter is not ControllerInfoWrapper controllerInfoWrapper) return;
             e.CanExecute = controllerInfoWrapper.SystemId == App.Robot.StatusCache?.SystemId;
-        }
-
-        private static async Task DisconnectController()
-        {
-            // 定时器停止时如果有定时事件正在执行，等待定时事件结束后再释放资源
-            App.Robot.StatusCacheRefreshTimer.Stop();
-            while (App.Robot.IsStatusCacheRefreshing) await Task.Delay(100);
-            App.Robot.StatusCache = null;
-
-            App.Robot.Mastership?.Release();
-            App.Robot.Mastership?.Dispose();
-            App.Robot.Mastership = null;
-
-            App.Robot.Controller?.Logoff();
-            App.Robot.Controller?.Dispose();
-            App.Robot.Controller = null;
-
-            // 由于延时的存在，命令可用性轮询会在状态更新前执行完，所以需要在状态更新后手动再次触发
-            CommandManager.InvalidateRequerySuggested();
-
-            ((MainWindow)App.Current.MainWindow).ConnectedControllerName = string.Empty;
-            ((MainWindow)App.Current.MainWindow).robotJointJogPanel.JointPosition = null;
-            ((MainWindow)App.Current.MainWindow).robotLinearJogPanel.LinearPosition = null;
         }
 
         #endregion
