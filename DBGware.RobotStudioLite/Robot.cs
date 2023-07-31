@@ -1,11 +1,12 @@
 ﻿using System.Collections.Generic;
-using System.Threading.Tasks;
 using System.Timers;
 using System.Windows;
 using System.Windows.Input;
 using System.Windows.Media.Media3D;
+using STT = System.Threading.Tasks;
 using ABB.Robotics.Controllers;
 using ABB.Robotics.Controllers.MotionDomain;
+using ABB.Robotics.Controllers.RapidDomain;
 using HelixToolkit.Wpf;
 
 namespace DBGware.RobotStudioLite
@@ -26,6 +27,29 @@ namespace DBGware.RobotStudioLite
             StatusCacheRefreshTimer.Elapsed += RefreshStatusCache;
         }
 
+        private void SetPosition(JointTarget jointPosition)
+        {
+            Joints[0].Angle = jointPosition.RobAx.Rax_1;
+            Joints[1].Angle = jointPosition.RobAx.Rax_2;
+            Joints[2].Angle = jointPosition.RobAx.Rax_3;
+            Joints[3].Angle = jointPosition.RobAx.Rax_4;
+            Joints[4].Angle = jointPosition.RobAx.Rax_5;
+            Joints[5].Angle = jointPosition.RobAx.Rax_6;
+
+            // 注意变换矩阵的结合顺序，矩阵乘法没有交换律
+            Joints[0].GlobalTransform = Joints[0].LocalTransform;
+            Joints[1].GlobalTransform = Transform3DHelper.CombineTransform(Joints[1].LocalTransform,
+                                                                           Joints[0].GlobalTransform);
+            Joints[2].GlobalTransform = Transform3DHelper.CombineTransform(Joints[2].LocalTransform,
+                                                                           Joints[1].GlobalTransform);
+            Joints[3].GlobalTransform = Transform3DHelper.CombineTransform(Joints[3].LocalTransform,
+                                                                           Joints[2].GlobalTransform);
+            Joints[4].GlobalTransform = Transform3DHelper.CombineTransform(Joints[4].LocalTransform,
+                                                                           Joints[3].GlobalTransform);
+            Joints[5].GlobalTransform = Transform3DHelper.CombineTransform(Joints[5].LocalTransform,
+                                                                           Joints[4].GlobalTransform);
+        }
+
         private void RefreshStatusCache(object? sender, ElapsedEventArgs e)
         {
             // 防止重入
@@ -42,40 +66,23 @@ namespace DBGware.RobotStudioLite
             StatusCache.JointPosition = Controller.MotionSystem.ActiveMechanicalUnit.GetPosition();
             StatusCache.LinearPosition = Controller.MotionSystem.ActiveMechanicalUnit.GetPosition(CoordinateSystemType.World);
 
-            Joints[0].Angle = StatusCache.JointPosition.RobAx.Rax_1;
-            Joints[1].Angle = StatusCache.JointPosition.RobAx.Rax_2;
-            Joints[2].Angle = StatusCache.JointPosition.RobAx.Rax_3;
-            Joints[3].Angle = StatusCache.JointPosition.RobAx.Rax_4;
-            Joints[4].Angle = StatusCache.JointPosition.RobAx.Rax_5;
-            Joints[5].Angle = StatusCache.JointPosition.RobAx.Rax_6;
-
             // 用Dispatcher.Invoke方法处理UI线程中的事务
             App.Current.Dispatcher.Invoke(() =>
             {
                 // 在异步操作后，手动刷新命令可用性，注意只有在UI线程中调用才起作用
                 CommandManager.InvalidateRequerySuggested();
 
+                ((MainWindow)App.Current.MainWindow).ConnectedControllerName = StatusCache.Name;
                 ((MainWindow)App.Current.MainWindow).robotJointJogPanel.JointPosition = StatusCache.JointPosition;
                 ((MainWindow)App.Current.MainWindow).robotLinearJogPanel.LinearPosition = StatusCache.LinearPosition;
 
-                // 注意变换矩阵的结合顺序，矩阵乘法没有交换律
-                Joints[0].GlobalTransform = Joints[0].LocalTransform;
-                Joints[1].GlobalTransform = Transform3DHelper.CombineTransform(Joints[1].LocalTransform,
-                                                                               Joints[0].GlobalTransform);
-                Joints[2].GlobalTransform = Transform3DHelper.CombineTransform(Joints[2].LocalTransform,
-                                                                               Joints[1].GlobalTransform);
-                Joints[3].GlobalTransform = Transform3DHelper.CombineTransform(Joints[3].LocalTransform,
-                                                                               Joints[2].GlobalTransform);
-                Joints[4].GlobalTransform = Transform3DHelper.CombineTransform(Joints[4].LocalTransform,
-                                                                               Joints[3].GlobalTransform);
-                Joints[5].GlobalTransform = Transform3DHelper.CombineTransform(Joints[5].LocalTransform,
-                                                                               Joints[4].GlobalTransform);
+                SetPosition(StatusCache.JointPosition);
             });
 
             IsStatusCacheRefreshing = false;
         }
 
-        public async Task ConnectController(ControllerInfo controllerInfo)
+        public async STT.Task ConnectController(ControllerInfo controllerInfo)
         {
             if (StatusCache != null)
             {
@@ -91,16 +98,15 @@ namespace DBGware.RobotStudioLite
             }
             Controller = Controller.Connect(controllerInfo, ConnectionType.Standalone);
             Controller.Logon(UserInfo.DefaultUser);
-            ((MainWindow)App.Current.MainWindow).ConnectedControllerName = Controller.Name;
             StatusCache = new();
             StatusCacheRefreshTimer.Start();
         }
 
-        public async Task DisconnectController()
+        public async STT.Task DisconnectController()
         {
             // 定时器停止时如果有定时事件正在执行，等待定时事件结束后再释放资源
             StatusCacheRefreshTimer.Stop();
-            while (IsStatusCacheRefreshing) await Task.Delay(100);
+            while (IsStatusCacheRefreshing) await STT.Task.Delay(100);
             StatusCache = null;
 
             Mastership?.Release();
@@ -117,6 +123,8 @@ namespace DBGware.RobotStudioLite
             ((MainWindow)App.Current.MainWindow).ConnectedControllerName = string.Empty;
             ((MainWindow)App.Current.MainWindow).robotJointJogPanel.JointPosition = null;
             ((MainWindow)App.Current.MainWindow).robotLinearJogPanel.LinearPosition = null;
+
+            SetPosition(new());
         }
 
         public Point3D CalculateForwardKinematics(List<double> angles)
