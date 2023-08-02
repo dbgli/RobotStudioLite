@@ -93,4 +93,29 @@
     <sys:String x:Key="ControllerScanner">控制器扫描器</sys:String>
     <sys:String x:Key="RobotControlPanel">机器人控制面板</sys:String>
 
+    <sys:String x:Key="Settings">设置</sys:String>
+    <sys:String x:Key="Calibration">校准</sys:String>
+    <sys:String x:Key="Test">测试</sys:String>
+
+    <sys:String x:Key="LoadPreset">加载预设</sys:String>
+    <sys:String x:Key="SaveAsPreset">保存为预设</sys:String>
+    <sys:String x:Key="Tray">托盘</sys:String>
+    <sys:String x:Key="Domino">骨牌</sys:String>
+    <sys:String x:Key="Visualization">可视化</sys:String>
+    <sys:String x:Key="Queue">队列</sys:String>
+
+    <sys:String x:Key="Rows">行数：</sys:String>
+    <sys:String x:Key="Columns">列数：</sys:String>
+    <sys:String x:Key="RowSpacing">行间距：</sys:String>
+    <sys:String x:Key="ColumnSpacing">列间距：</sys:String>
+
+    <sys:String x:Key="Length">长度：</sys:String>
+    <sys:String x:Key="Width">宽度：</sys:String>
+    <sys:String x:Key="Height">高度：</sys:String>
+
+    <sys:String x:Key="Add">添加</sys:String>
+    <sys:String x:Key="Delete">删除</sys:String>
+    <sys:String x:Key="MoveUp">上移</sys:String>
+    <sys:String x:Key="MoveDown">下移</sys:String>
+
 </ResourceDictionary>

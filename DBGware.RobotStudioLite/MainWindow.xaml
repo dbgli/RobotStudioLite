@@ -141,8 +141,8 @@
                                 <LayoutDocument x:Name="controllerScannerPanelLayoutDocument" Title="{DynamicResource ControllerScanner}">
                                     <local:ControllerScannerPanel />
                                 </LayoutDocument>
-                                <LayoutDocument Title="adjust">
-
+                                <LayoutDocument Title="DominoesTaskPanel">
+                                    <local:DominoesTaskPanel />
                                 </LayoutDocument>
                                 <LayoutDocument Title="rapid">
 

@@ -1,0 +1,168 @@
+﻿<UserControl x:Class="DBGware.RobotStudioLite.DominoesTaskPanelSettingsTab"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:local="clr-namespace:DBGware.RobotStudioLite"
+             mc:Ignorable="d"
+             d:DesignWidth="800" d:DesignHeight="450"
+             DataContext="{Binding RelativeSource={RelativeSource Self}}">
+
+    <UserControl.CommandBindings>
+        <CommandBinding
+            Command="{x:Static local:RSLCommands.LoadPresetCommand}"
+            Executed="LoadPresetCommandExecuted"
+            CanExecute="LoadPresetCommandCanExecute" />
+        <CommandBinding
+            Command="{x:Static local:RSLCommands.SaveAsPresetCommand}"
+            Executed="SaveAsPresetCommandExecuted"
+            CanExecute="SaveAsPresetCommandCanExecute" />
+        <CommandBinding
+            Command="{x:Static local:RSLCommands.AddDominoCommand}"
+            Executed="AddDominoCommandExecuted"
+            CanExecute="AddDominoCommandCanExecute" />
+        <CommandBinding
+            Command="{x:Static local:RSLCommands.DeleteDominoCommand}"
+            Executed="DeleteDominoCommandExecuted"
+            CanExecute="DeleteDominoCommandCanExecute" />
+        <CommandBinding
+            Command="{x:Static local:RSLCommands.MoveDominoUpCommand}"
+            Executed="MoveDominoUpCommandExecuted"
+            CanExecute="MoveDominoUpCommandCanExecute" />
+        <CommandBinding
+            Command="{x:Static local:RSLCommands.MoveDominoDownCommand}"
+            Executed="MoveDominoDownCommandExecuted"
+            CanExecute="MoveDominoDownCommandCanExecute" />
+    </UserControl.CommandBindings>
+
+    <Grid Margin="8">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Row="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+            <Button Grid.Column="0" Content="{DynamicResource LoadPreset}" Margin="0,0,8,8" MinWidth="100" Command="{x:Static local:RSLCommands.LoadPresetCommand}" />
+            <Button Grid.Column="1" Content="{DynamicResource SaveAsPreset}" Margin="0,0,8,8" MinWidth="100" Command="{x:Static local:RSLCommands.SaveAsPresetCommand}" />
+        </Grid>
+
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+
+            <GroupBox Grid.Column="0" Header="{DynamicResource Tray}" Margin="0,0,8,8">
+                <Grid Margin="8">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition />
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
+
+                    <Label Grid.Row="0" Grid.Column="0" Content="{DynamicResource Rows}" Margin="0,0,0,4" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" />
+                    <TextBox Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="2" Margin="0,0,0,4" HorizontalContentAlignment="Center" />
+
+                    <Label Grid.Row="1" Grid.Column="0" Content="{DynamicResource Columns}" Margin="0,0,0,4" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" />
+                    <TextBox Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" Margin="0,0,0,4" HorizontalContentAlignment="Center" />
+
+                    <Label Grid.Row="2" Grid.Column="0" Content="{DynamicResource RowSpacing}" Margin="0,0,0,4" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" />
+                    <TextBox Grid.Row="2" Grid.Column="1" Margin="0,0,0,4" HorizontalContentAlignment="Center" />
+                    <Label Grid.Row="2" Grid.Column="2" Content="mm" Margin="0,0,0,4" VerticalContentAlignment="Center" />
+
+                    <Label Grid.Row="3" Grid.Column="0" Content="{DynamicResource ColumnSpacing}" Margin="0,0,0,4" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" />
+                    <TextBox Grid.Row="3" Grid.Column="1" Margin="0,0,0,4" HorizontalContentAlignment="Center" />
+                    <Label Grid.Row="3" Grid.Column="2" Content="mm" Margin="0,0,0,4" VerticalContentAlignment="Center" />
+                </Grid>
+            </GroupBox>
+
+            <GroupBox Grid.Column="1" Header="{DynamicResource Domino}" Margin="0,0,8,8">
+                <Grid Margin="8">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition />
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
+
+                    <Label Grid.Row="0" Grid.Column="0" Content="{DynamicResource Length}" Margin="0,0,0,4" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" />
+                    <TextBox Grid.Row="0" Grid.Column="1" Margin="0,0,0,4" HorizontalContentAlignment="Center" />
+                    <Label Grid.Row="0" Grid.Column="2" Content="mm" Margin="0,0,0,4" VerticalContentAlignment="Center" />
+
+                    <Label Grid.Row="1" Grid.Column="0" Content="{DynamicResource Width}" Margin="0,0,0,4" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" />
+                    <TextBox Grid.Row="1" Grid.Column="1" Margin="0,0,0,4" HorizontalContentAlignment="Center" />
+                    <Label Grid.Row="1" Grid.Column="2" Content="mm" Margin="0,0,0,4" VerticalContentAlignment="Center" />
+
+                    <Label Grid.Row="2" Grid.Column="0" Content="{DynamicResource Height}" Margin="0,0,0,4" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" />
+                    <TextBox Grid.Row="2" Grid.Column="1" Margin="0,0,0,4" HorizontalContentAlignment="Center" />
+                    <Label Grid.Row="2" Grid.Column="2" Content="mm" Margin="0,0,0,4" VerticalContentAlignment="Center" />
+                </Grid>
+            </GroupBox>
+
+            <GroupBox Grid.Column="2" Header="{DynamicResource Visualization}" Margin="0,0,0,8">
+                <Grid Margin="8">
+
+                </Grid>
+            </GroupBox>
+        </Grid>
+
+        <GroupBox Grid.Row="2" Header="{DynamicResource Queue}">
+            <Grid Margin="8">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+
+                <Grid Grid.Row="0" HorizontalAlignment="Left">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition />
+                        <ColumnDefinition />
+                    </Grid.ColumnDefinitions>
+                    <Button Grid.Column="0" Content="{DynamicResource Add}" Margin="0,0,8,0" MinWidth="80" Command="{x:Static local:RSLCommands.AddDominoCommand}" />
+                    <Button Grid.Column="1" Content="{DynamicResource Delete}" MinWidth="80" Command="{x:Static local:RSLCommands.DeleteDominoCommand}" />
+                </Grid>
+                <Grid Grid.Row="0" HorizontalAlignment="Right">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition />
+                        <ColumnDefinition />
+                    </Grid.ColumnDefinitions>
+                    <Button Grid.Column="0" Content="{DynamicResource MoveUp}" Margin="0,0,8,0" MinWidth="80" Command="{x:Static local:RSLCommands.MoveDominoUpCommand}" />
+                    <Button Grid.Column="1" Content="{DynamicResource MoveDown}" MinWidth="80" Command="{x:Static local:RSLCommands.MoveDominoDownCommand}" />
+                </Grid>
+
+                <ListView Grid.Row="1" Margin="0,8" SelectionMode="Single" ItemsSource="{Binding Path=Dominoes}">
+                    <ListView.View>
+                        <GridView AllowsColumnReorder="False">
+                            <GridView.Columns>
+                                <GridViewColumn Width="50" />
+                                <GridViewColumn Header="ID" DisplayMemberBinding="{Binding Path=ID}" Width="100" />
+                                <GridViewColumn Header="X" DisplayMemberBinding="{Binding Path=Position.X}" Width="100" />
+                                <GridViewColumn Header="Y" DisplayMemberBinding="{Binding Path=Position.Y}" Width="100" />
+                                <GridViewColumn Header="Z" DisplayMemberBinding="{Binding Path=Position.Z}" Width="100" />
+                                <GridViewColumn Header="R" DisplayMemberBinding="{Binding Path=Position.R}" Width="100" />
+                            </GridView.Columns>
+                        </GridView>
+                    </ListView.View>
+                </ListView>
+
+            </Grid>
+        </GroupBox>
+    </Grid>
+</UserControl>

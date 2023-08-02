@@ -93,4 +93,29 @@
     <sys:String x:Key="ControllerScanner">Controller Scanner</sys:String>
     <sys:String x:Key="RobotControlPanel">Robot Control Panel</sys:String>
 
+    <sys:String x:Key="Settings">Settings</sys:String>
+    <sys:String x:Key="Calibration">Calibration</sys:String>
+    <sys:String x:Key="Test">Test</sys:String>
+
+    <sys:String x:Key="LoadPreset">Load Preset</sys:String>
+    <sys:String x:Key="SaveAsPreset">Save As Preset</sys:String>
+    <sys:String x:Key="Tray">Tray</sys:String>
+    <sys:String x:Key="Domino">Domino</sys:String>
+    <sys:String x:Key="Visualization">Visualization</sys:String>
+    <sys:String x:Key="Queue">Queue</sys:String>
+
+    <sys:String x:Key="Rows">Rows:</sys:String>
+    <sys:String x:Key="Columns">Columns:</sys:String>
+    <sys:String x:Key="RowSpacing">Row Spacing:</sys:String>
+    <sys:String x:Key="ColumnSpacing">Column Spacing:</sys:String>
+
+    <sys:String x:Key="Length">Length:</sys:String>
+    <sys:String x:Key="Width">Width:</sys:String>
+    <sys:String x:Key="Height">Height:</sys:String>
+
+    <sys:String x:Key="Add">Add</sys:String>
+    <sys:String x:Key="Delete">Delete</sys:String>
+    <sys:String x:Key="MoveUp">Move Up</sys:String>
+    <sys:String x:Key="MoveDown">Move Down</sys:String>
+
 </ResourceDictionary>
