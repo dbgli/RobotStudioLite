@@ -77,7 +77,7 @@
                     <Label Grid.Row="0" Grid.Column="0" Content="{DynamicResource Rows}" Margin="0,0,0,4" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" />
                     <TextBox Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="2" Margin="0,0,0,4" HorizontalContentAlignment="Center">
                         <TextBox.Text>
-                            <Binding Path="TrayRows">
+                            <Binding Path="Tray.Rows">
                                 <Binding.ValidationRules>
                                     <vr:IntegerRangeValidationRule Minimum="1" Maximum="5" />
                                 </Binding.ValidationRules>
@@ -88,7 +88,7 @@
                     <Label Grid.Row="1" Grid.Column="0" Content="{DynamicResource Columns}" Margin="0,0,0,4" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" />
                     <TextBox Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" Margin="0,0,0,4" HorizontalContentAlignment="Center">
                         <TextBox.Text>
-                            <Binding Path="TrayColumns">
+                            <Binding Path="Tray.Columns">
                                 <Binding.ValidationRules>
                                     <vr:IntegerRangeValidationRule Minimum="1" Maximum="6" />
                                 </Binding.ValidationRules>
@@ -99,7 +99,7 @@
                     <Label Grid.Row="2" Grid.Column="0" Content="{DynamicResource RowSpacing}" Margin="0,0,0,4" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" />
                     <TextBox Grid.Row="2" Grid.Column="1" Margin="0,0,0,4" HorizontalContentAlignment="Center">
                         <TextBox.Text>
-                            <Binding Path="TrayRowSpacing">
+                            <Binding Path="Tray.RowSpacing">
                                 <Binding.ValidationRules>
                                     <vr:NumberRangeValidationRule Minimum="{x:Static sys:Double.Epsilon}" />
                                 </Binding.ValidationRules>
@@ -111,7 +111,7 @@
                     <Label Grid.Row="3" Grid.Column="0" Content="{DynamicResource ColumnSpacing}" Margin="0,0,0,4" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" />
                     <TextBox Grid.Row="3" Grid.Column="1" Margin="0,0,0,4" HorizontalContentAlignment="Center">
                         <TextBox.Text>
-                            <Binding Path="TrayColumnSpacing">
+                            <Binding Path="Tray.ColumnSpacing">
                                 <Binding.ValidationRules>
                                     <vr:NumberRangeValidationRule Minimum="{x:Static sys:Double.Epsilon}" />
                                 </Binding.ValidationRules>
@@ -138,7 +138,7 @@
                     <Label Grid.Row="0" Grid.Column="0" Content="{DynamicResource Length}" Margin="0,0,0,4" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" />
                     <TextBox Grid.Row="0" Grid.Column="1" Margin="0,0,0,4" HorizontalContentAlignment="Center">
                         <TextBox.Text>
-                            <Binding Path="DominoLength">
+                            <Binding Path="DominoSize.Length">
                                 <Binding.ValidationRules>
                                     <vr:NumberRangeValidationRule Minimum="{x:Static sys:Double.Epsilon}" />
                                 </Binding.ValidationRules>
@@ -150,7 +150,7 @@
                     <Label Grid.Row="1" Grid.Column="0" Content="{DynamicResource Width}" Margin="0,0,0,4" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" />
                     <TextBox Grid.Row="1" Grid.Column="1" Margin="0,0,0,4" HorizontalContentAlignment="Center">
                         <TextBox.Text>
-                            <Binding Path="DominoWidth">
+                            <Binding Path="DominoSize.Width">
                                 <Binding.ValidationRules>
                                     <vr:NumberRangeValidationRule Minimum="{x:Static sys:Double.Epsilon}" />
                                 </Binding.ValidationRules>
@@ -162,7 +162,7 @@
                     <Label Grid.Row="2" Grid.Column="0" Content="{DynamicResource Height}" Margin="0,0,0,4" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" />
                     <TextBox Grid.Row="2" Grid.Column="1" Margin="0,0,0,4" HorizontalContentAlignment="Center">
                         <TextBox.Text>
-                            <Binding Path="DominoHeight">
+                            <Binding Path="DominoSize.Height">
                                 <Binding.ValidationRules>
                                     <vr:NumberRangeValidationRule Minimum="{x:Static sys:Double.Epsilon}" />
                                 </Binding.ValidationRules>
