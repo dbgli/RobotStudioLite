@@ -210,11 +210,72 @@
                         <GridView AllowsColumnReorder="False">
                             <GridView.Columns>
                                 <GridViewColumn Width="50" />
+
                                 <GridViewColumn Header="ID" DisplayMemberBinding="{Binding Path=ID}" Width="100" />
-                                <GridViewColumn Header="X" DisplayMemberBinding="{Binding Path=Position.X}" Width="100" />
-                                <GridViewColumn Header="Y" DisplayMemberBinding="{Binding Path=Position.Y}" Width="100" />
-                                <GridViewColumn Header="Z" DisplayMemberBinding="{Binding Path=Position.Z}" Width="100" />
-                                <GridViewColumn Header="R" DisplayMemberBinding="{Binding Path=Position.R}" Width="100" />
+
+                                <GridViewColumn Header="X" Width="100">
+                                    <GridViewColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <TextBox>
+                                                <TextBox.Text>
+                                                    <Binding Path="Position.X">
+                                                        <Binding.ValidationRules>
+                                                            <vr:NumberRangeValidationRule />
+                                                        </Binding.ValidationRules>
+                                                    </Binding>
+                                                </TextBox.Text>
+                                            </TextBox>
+                                        </DataTemplate>
+                                    </GridViewColumn.CellTemplate>
+                                </GridViewColumn>
+
+                                <GridViewColumn Header="Y" Width="100">
+                                    <GridViewColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <TextBox>
+                                                <TextBox.Text>
+                                                    <Binding Path="Position.Y">
+                                                        <Binding.ValidationRules>
+                                                            <vr:NumberRangeValidationRule />
+                                                        </Binding.ValidationRules>
+                                                    </Binding>
+                                                </TextBox.Text>
+                                            </TextBox>
+                                        </DataTemplate>
+                                    </GridViewColumn.CellTemplate>
+                                </GridViewColumn>
+
+                                <GridViewColumn Header="Z" Width="100">
+                                    <GridViewColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <TextBox>
+                                                <TextBox.Text>
+                                                    <Binding Path="Position.Z">
+                                                        <Binding.ValidationRules>
+                                                            <vr:NumberRangeValidationRule />
+                                                        </Binding.ValidationRules>
+                                                    </Binding>
+                                                </TextBox.Text>
+                                            </TextBox>
+                                        </DataTemplate>
+                                    </GridViewColumn.CellTemplate>
+                                </GridViewColumn>
+
+                                <GridViewColumn Header="R" Width="100">
+                                    <GridViewColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <TextBox>
+                                                <TextBox.Text>
+                                                    <Binding Path="Position.R">
+                                                        <Binding.ValidationRules>
+                                                            <vr:NumberRangeValidationRule />
+                                                        </Binding.ValidationRules>
+                                                    </Binding>
+                                                </TextBox.Text>
+                                            </TextBox>
+                                        </DataTemplate>
+                                    </GridViewColumn.CellTemplate>
+                                </GridViewColumn>
                             </GridView.Columns>
                         </GridView>
                     </ListView.View>
