@@ -21,6 +21,13 @@ namespace DBGware.RobotStudioLite
     /// </summary>
     public partial class DominoesTaskPanelSettingsTab : UserControl
     {
+        public int TrayRows { get; set; } = 5;
+        public int TrayColumns { get; set; } = 6;
+        public double TrayRowSpacing { get; set; } = 65;
+        public double TrayColumnSpacing { get; set; } = 35;
+        public double DominoLength { get; set; } = 22;
+        public double DominoWidth { get; set; } = 10;
+        public double DominoHeight { get; set; } = 54;
         public ObservableCollection<Domino> Dominoes { get; set; } = new();
 
         public DominoesTaskPanelSettingsTab()

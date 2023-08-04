@@ -118,4 +118,7 @@
     <sys:String x:Key="MoveUp">Move Up</sys:String>
     <sys:String x:Key="MoveDown">Move Down</sys:String>
 
+    <sys:String x:Key="NumberRangeValidationResultErrorContent">Please enter a number between {0} and {1} (including {0} and {1})!</sys:String>
+    <sys:String x:Key="IntegerRangeValidationResultErrorContent">Please enter an integer between {0} and {1} (including {0} and {1})!</sys:String>
+
 </ResourceDictionary>
