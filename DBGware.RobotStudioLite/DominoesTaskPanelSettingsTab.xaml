@@ -211,7 +211,16 @@
                             <GridView.Columns>
                                 <GridViewColumn Width="50" />
 
-                                <GridViewColumn Header="ID" DisplayMemberBinding="{Binding Path=ID}" Width="100" />
+                                <GridViewColumn Header="ID" Width="100">
+                                    <GridViewColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <ComboBox
+                                                HorizontalAlignment="Stretch"
+                                                ItemsSource="{Binding RelativeSource={RelativeSource AncestorType=local:DominoesTaskPanelSettingsTab}, Path=Tray.IDs}"
+                                                SelectedItem="{Binding Path=ID}" />
+                                        </DataTemplate>
+                                    </GridViewColumn.CellTemplate>
+                                </GridViewColumn>
 
                                 <GridViewColumn Header="X" Width="100">
                                     <GridViewColumn.CellTemplate>
