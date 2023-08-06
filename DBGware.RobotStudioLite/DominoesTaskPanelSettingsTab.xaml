@@ -6,9 +6,10 @@
              xmlns:sys="clr-namespace:System;assembly=mscorlib"
              xmlns:local="clr-namespace:DBGware.RobotStudioLite"
              xmlns:vr="clr-namespace:DBGware.RobotStudioLite.ValidationRules"
+             xmlns:ctrls="clr-namespace:DBGware.RobotStudioLite.Controls"
              mc:Ignorable="d"
              d:DesignWidth="800" d:DesignHeight="450"
-             DataContext="{Binding RelativeSource={RelativeSource Self}}">
+             DataContext="{Binding RelativeSource={RelativeSource Mode=Self}}">
 
     <UserControl.CommandBindings>
         <CommandBinding
@@ -225,15 +226,15 @@
                                 <GridViewColumn Header="X" Width="100">
                                     <GridViewColumn.CellTemplate>
                                         <DataTemplate>
-                                            <TextBox>
-                                                <TextBox.Text>
+                                            <ctrls:CellTextBox>
+                                                <ctrls:CellTextBox.Text>
                                                     <Binding Path="Position.X">
                                                         <Binding.ValidationRules>
                                                             <vr:NumberRangeValidationRule />
                                                         </Binding.ValidationRules>
                                                     </Binding>
-                                                </TextBox.Text>
-                                            </TextBox>
+                                                </ctrls:CellTextBox.Text>
+                                            </ctrls:CellTextBox>
                                         </DataTemplate>
                                     </GridViewColumn.CellTemplate>
                                 </GridViewColumn>
@@ -241,15 +242,15 @@
                                 <GridViewColumn Header="Y" Width="100">
                                     <GridViewColumn.CellTemplate>
                                         <DataTemplate>
-                                            <TextBox>
-                                                <TextBox.Text>
+                                            <ctrls:CellTextBox>
+                                                <ctrls:CellTextBox.Text>
                                                     <Binding Path="Position.Y">
                                                         <Binding.ValidationRules>
                                                             <vr:NumberRangeValidationRule />
                                                         </Binding.ValidationRules>
                                                     </Binding>
-                                                </TextBox.Text>
-                                            </TextBox>
+                                                </ctrls:CellTextBox.Text>
+                                            </ctrls:CellTextBox>
                                         </DataTemplate>
                                     </GridViewColumn.CellTemplate>
                                 </GridViewColumn>
@@ -257,15 +258,15 @@
                                 <GridViewColumn Header="Z" Width="100">
                                     <GridViewColumn.CellTemplate>
                                         <DataTemplate>
-                                            <TextBox>
-                                                <TextBox.Text>
+                                            <ctrls:CellTextBox>
+                                                <ctrls:CellTextBox.Text>
                                                     <Binding Path="Position.Z">
                                                         <Binding.ValidationRules>
                                                             <vr:NumberRangeValidationRule />
                                                         </Binding.ValidationRules>
                                                     </Binding>
-                                                </TextBox.Text>
-                                            </TextBox>
+                                                </ctrls:CellTextBox.Text>
+                                            </ctrls:CellTextBox>
                                         </DataTemplate>
                                     </GridViewColumn.CellTemplate>
                                 </GridViewColumn>
@@ -273,15 +274,15 @@
                                 <GridViewColumn Header="R" Width="100">
                                     <GridViewColumn.CellTemplate>
                                         <DataTemplate>
-                                            <TextBox>
-                                                <TextBox.Text>
+                                            <ctrls:CellTextBox>
+                                                <ctrls:CellTextBox.Text>
                                                     <Binding Path="Position.R">
                                                         <Binding.ValidationRules>
                                                             <vr:NumberRangeValidationRule />
                                                         </Binding.ValidationRules>
                                                     </Binding>
-                                                </TextBox.Text>
-                                            </TextBox>
+                                                </ctrls:CellTextBox.Text>
+                                            </ctrls:CellTextBox>
                                         </DataTemplate>
                                     </GridViewColumn.CellTemplate>
                                 </GridViewColumn>

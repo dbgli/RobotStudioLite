@@ -62,7 +62,7 @@ namespace DBGware.RobotStudioLite
 
         private void AddDominoCommandExecuted(object sender, ExecutedRoutedEventArgs e)
         {
-
+            Dominoes.Add(new());
         }
 
         private void AddDominoCommandCanExecute(object sender, CanExecuteRoutedEventArgs e)
@@ -76,7 +76,7 @@ namespace DBGware.RobotStudioLite
 
         private void DeleteDominoCommandExecuted(object sender, ExecutedRoutedEventArgs e)
         {
-
+            MessageBox.Show(Dominoes[0].Position.X.ToString());
         }
 
         private void DeleteDominoCommandCanExecute(object sender, CanExecuteRoutedEventArgs e)

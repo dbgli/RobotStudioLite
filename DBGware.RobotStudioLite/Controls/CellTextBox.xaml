@@ -1,0 +1,43 @@
+﻿<UserControl x:Class="DBGware.RobotStudioLite.Controls.CellTextBox"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:local="clr-namespace:DBGware.RobotStudioLite.Controls"
+             mc:Ignorable="d"
+             d:DesignWidth="100" d:DesignHeight="50">
+
+    <Validation.ErrorTemplate>
+        <ControlTemplate>
+            <Border BorderBrush="{DynamicResource CommonControlsTextBoxErrorBorder}" BorderThickness="1">
+                <AdornedElementPlaceholder x:Name="Placeholder" />
+            </Border>
+        </ControlTemplate>
+    </Validation.ErrorTemplate>
+
+    <Grid>
+        <TextBlock
+            Text="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=local:CellTextBox}, Path=Text}"
+            VerticalAlignment="Center"
+            Padding="5,4"
+            MouseLeftButtonDown="TextBlock_MouseLeftButtonDown" />
+        <TextBox
+            x:Name="textBox"
+            Text="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=local:CellTextBox}, Path=Text}"
+            Visibility="Collapsed"
+            LostFocus="TextBox_LostFocus">
+            <TextBox.Style>
+                <Style TargetType="{x:Type TextBox}" BasedOn="{StaticResource TextBoxBaseStyle}">
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=local:CellTextBox}, Path=(Validation.HasError)}" Value="True">
+                            <Setter Property="ToolTip" Value="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=local:CellTextBox}, Path=(Validation.Errors)/ErrorContent}" />
+                            <Setter Property="Background" Value="{DynamicResource CommonControlsTextBoxErrorBackground}" />
+                            <Setter Property="Foreground" Value="{DynamicResource CommonControlsTextBoxErrorForeground}" />
+                            <Setter Property="BorderBrush" Value="{DynamicResource CommonControlsTextBoxErrorBackground}" />
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </TextBox.Style>
+        </TextBox>
+    </Grid>
+</UserControl>
