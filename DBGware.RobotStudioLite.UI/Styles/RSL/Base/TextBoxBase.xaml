@@ -74,16 +74,7 @@
                             <Setter Property="BorderBrush" Value="{DynamicResource CommonControlsTextBoxBorderFocused}" />
                         </Trigger>
                         <Trigger Property="Validation.HasError" Value="True">
-                            <!--
-                                OneTime is used to prevent a memory leak since ValidationError doesn't impl INotifyPropertyChanged and gets stored in a static: System.ComponentModel.ReflectTypeDescriptionProvider._propertyCache
-                                It holds a reference to the DataContext
-                            -->
-                            <!--
-                                也是因为OneTime，导致如果多次错误，错误内容始终为第一次的内容，如果错误内容里动态地显示绑定的value，将是很明显的bug，而且在需要动态切换语言的情况下也是如此。
-                                在不确定内存泄露是否修复前，先暂时改为默认，暂无明显问题。
-                            -->
-                            <!--<Setter Property="ToolTip" Value="{Binding RelativeSource={RelativeSource Self}, Mode=OneTime, Path=(Validation.Errors)[0].ErrorContent}" />-->
-                            <Setter Property="ToolTip" Value="{Binding RelativeSource={RelativeSource Self}, Path=(Validation.Errors)[0].ErrorContent}" />
+                            <Setter Property="ToolTip" Value="{Binding RelativeSource={RelativeSource Self}, Path=(Validation.Errors)/ErrorContent}" />
                             <Setter Property="Background" Value="{DynamicResource CommonControlsTextBoxErrorBackground}" />
                             <Setter Property="Foreground" Value="{DynamicResource CommonControlsTextBoxErrorForeground}" />
                             <Setter Property="BorderBrush" Value="{DynamicResource CommonControlsTextBoxErrorBackground}" />
