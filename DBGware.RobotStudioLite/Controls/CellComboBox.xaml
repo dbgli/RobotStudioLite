@@ -10,7 +10,7 @@
         <TextBlock
             Text="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=local:CellComboBox}, Path=SelectedItem}"
             VerticalAlignment="Center"
-            Padding="5,4"
+            Padding="0,4"
             MouseLeftButtonDown="TextBlock_MouseLeftButtonDown" />
         <ComboBox
             x:Name="comboBox"
