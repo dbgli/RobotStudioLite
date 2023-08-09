@@ -101,7 +101,7 @@
     <sys:String x:Key="SaveAsPreset">保存为预设</sys:String>
     <sys:String x:Key="Tray">托盘</sys:String>
     <sys:String x:Key="Domino">骨牌</sys:String>
-    <sys:String x:Key="Visualization">可视化</sys:String>
+    <sys:String x:Key="PushPosition">推倒位置</sys:String>
     <sys:String x:Key="Queue">队列</sys:String>
 
     <sys:String x:Key="Rows">行数：</sys:String>

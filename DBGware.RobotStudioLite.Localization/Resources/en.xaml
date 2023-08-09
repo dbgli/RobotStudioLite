@@ -101,7 +101,7 @@
     <sys:String x:Key="SaveAsPreset">Save As Preset</sys:String>
     <sys:String x:Key="Tray">Tray</sys:String>
     <sys:String x:Key="Domino">Domino</sys:String>
-    <sys:String x:Key="Visualization">Visualization</sys:String>
+    <sys:String x:Key="PushPosition">Push Position</sys:String>
     <sys:String x:Key="Queue">Queue</sys:String>
 
     <sys:String x:Key="Rows">Rows:</sys:String>

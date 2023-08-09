@@ -174,9 +174,67 @@
                 </Grid>
             </GroupBox>
 
-            <GroupBox Grid.Column="2" Header="{DynamicResource Visualization}" Margin="0,0,0,8">
+            <GroupBox Grid.Column="2" Header="{DynamicResource PushPosition}" Margin="0,0,0,8">
                 <Grid Margin="8">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition />
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
 
+                    <Label Grid.Row="0" Grid.Column="0" Content="X:" Margin="0,0,0,4" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" />
+                    <TextBox Grid.Row="0" Grid.Column="1" Margin="0,0,0,4" HorizontalContentAlignment="Center">
+                        <TextBox.Text>
+                            <Binding Path="PushPosition.X">
+                                <Binding.ValidationRules>
+                                    <vr:NumberRangeValidationRule />
+                                </Binding.ValidationRules>
+                            </Binding>
+                        </TextBox.Text>
+                    </TextBox>
+                    <Label Grid.Row="0" Grid.Column="2" Content="mm" Margin="0,0,0,4" VerticalContentAlignment="Center" />
+
+                    <Label Grid.Row="1" Grid.Column="0" Content="Y:" Margin="0,0,0,4" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" />
+                    <TextBox Grid.Row="1" Grid.Column="1" Margin="0,0,0,4" HorizontalContentAlignment="Center">
+                        <TextBox.Text>
+                            <Binding Path="PushPosition.Y">
+                                <Binding.ValidationRules>
+                                    <vr:NumberRangeValidationRule />
+                                </Binding.ValidationRules>
+                            </Binding>
+                        </TextBox.Text>
+                    </TextBox>
+                    <Label Grid.Row="1" Grid.Column="2" Content="mm" Margin="0,0,0,4" VerticalContentAlignment="Center" />
+
+                    <Label Grid.Row="2" Grid.Column="0" Content="Z:" Margin="0,0,0,4" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" />
+                    <TextBox Grid.Row="2" Grid.Column="1" Margin="0,0,0,4" HorizontalContentAlignment="Center">
+                        <TextBox.Text>
+                            <Binding Path="PushPosition.Z">
+                                <Binding.ValidationRules>
+                                    <vr:NumberRangeValidationRule />
+                                </Binding.ValidationRules>
+                            </Binding>
+                        </TextBox.Text>
+                    </TextBox>
+                    <Label Grid.Row="2" Grid.Column="2" Content="mm" Margin="0,0,0,4" VerticalContentAlignment="Center" />
+
+                    <Label Grid.Row="3" Grid.Column="0" Content="R:" Margin="0,0,0,4" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" />
+                    <TextBox Grid.Row="3" Grid.Column="1" Margin="0,0,0,4" HorizontalContentAlignment="Center">
+                        <TextBox.Text>
+                            <Binding Path="PushPosition.R">
+                                <Binding.ValidationRules>
+                                    <vr:NumberRangeValidationRule />
+                                </Binding.ValidationRules>
+                            </Binding>
+                        </TextBox.Text>
+                    </TextBox>
+                    <Label Grid.Row="3" Grid.Column="2" Content="deg" Margin="0,0,0,4" VerticalContentAlignment="Center" />
                 </Grid>
             </GroupBox>
         </Grid>
@@ -186,7 +244,6 @@
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto" />
                     <RowDefinition />
-                    <RowDefinition Height="Auto" />
                 </Grid.RowDefinitions>
 
                 <Grid Grid.Row="0" HorizontalAlignment="Left">
@@ -206,7 +263,7 @@
                     <Button Grid.Column="1" Content="{DynamicResource MoveDown}" MinWidth="80" Command="{x:Static local:RSLCommands.MoveDominoDownCommand}" CommandParameter="{Binding ElementName=dominoListView, Path=SelectedIndex}" />
                 </Grid>
 
-                <ListView x:Name="dominoListView" Grid.Row="1" Margin="0,8" SelectionMode="Single" ItemsSource="{Binding Path=Dominoes}">
+                <ListView x:Name="dominoListView" Grid.Row="1" Margin="0,8,0,0" SelectionMode="Single" ItemsSource="{Binding Path=Dominoes}">
                     <ListView.View>
                         <GridView AllowsColumnReorder="False">
                             <GridView.Columns>
@@ -293,7 +350,6 @@
                         </GridView>
                     </ListView.View>
                 </ListView>
-
             </Grid>
         </GroupBox>
     </Grid>

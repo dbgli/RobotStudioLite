@@ -12,6 +12,7 @@ namespace DBGware.RobotStudioLite
     {
         public Tray Tray { get; set; } = new() { Rows = 5, Columns = 6, RowSpacing = 65, ColumnSpacing = 35 };
         public DominoSize DominoSize { get; set; } = new() { Length = 22, Width = 10, Height = 54 };
+        public DominoPosition PushPosition { get; set; } = new();
         public ObservableCollection<Domino> Dominoes { get; set; } = new();
 
         public DominoesTaskPanelSettingsTab()
