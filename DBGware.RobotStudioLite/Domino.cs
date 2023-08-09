@@ -8,7 +8,7 @@ namespace DBGware.RobotStudioLite
 {
     public class Domino
     {
-        public int ID { get; set; }
+        public int ID { get; set; } = 1;
         public DominoSize Size { get; set; } = new();
         public DominoPosition Position { get; set; } = new();
     }

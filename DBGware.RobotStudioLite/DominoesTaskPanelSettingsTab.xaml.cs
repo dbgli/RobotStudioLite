@@ -1,18 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
+﻿using System.Collections.ObjectModel;
 using System.Windows.Controls;
 using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace DBGware.RobotStudioLite
 {
@@ -67,7 +56,7 @@ namespace DBGware.RobotStudioLite
 
         private void AddDominoCommandCanExecute(object sender, CanExecuteRoutedEventArgs e)
         {
-            e.CanExecute = true;
+            e.CanExecute = Dominoes.Count < 10;
         }
 
         #endregion
@@ -76,12 +65,15 @@ namespace DBGware.RobotStudioLite
 
         private void DeleteDominoCommandExecuted(object sender, ExecutedRoutedEventArgs e)
         {
-            MessageBox.Show(Dominoes[0].Position.X.ToString());
+            Domino selectedDomino = (Domino)e.Parameter;
+            Dominoes.Remove(selectedDomino);
+            // 行号不会自动更新，删除后手动刷新
+            CollectionViewSource.GetDefaultView(dominoListView.ItemsSource).Refresh();
         }
 
         private void DeleteDominoCommandCanExecute(object sender, CanExecuteRoutedEventArgs e)
         {
-            e.CanExecute = true;
+            e.CanExecute = e.Parameter is Domino;
         }
 
         #endregion
@@ -90,12 +82,16 @@ namespace DBGware.RobotStudioLite
 
         private void MoveDominoUpCommandExecuted(object sender, ExecutedRoutedEventArgs e)
         {
-
+            int selectedIndex = (int)e.Parameter;
+            (Dominoes[selectedIndex], Dominoes[selectedIndex - 1]) = (Dominoes[selectedIndex - 1], Dominoes[selectedIndex]);
+            dominoListView.SelectedIndex = selectedIndex - 1;
         }
 
         private void MoveDominoUpCommandCanExecute(object sender, CanExecuteRoutedEventArgs e)
         {
-            e.CanExecute = true;
+            e.CanExecute = e.Parameter is int selectedIndex
+                           && selectedIndex != -1
+                           && selectedIndex != 0;
         }
 
         #endregion
@@ -104,12 +100,16 @@ namespace DBGware.RobotStudioLite
 
         private void MoveDominoDownCommandExecuted(object sender, ExecutedRoutedEventArgs e)
         {
-
+            int selectedIndex = (int)e.Parameter;
+            (Dominoes[selectedIndex], Dominoes[selectedIndex + 1]) = (Dominoes[selectedIndex + 1], Dominoes[selectedIndex]);
+            dominoListView.SelectedIndex = selectedIndex + 1;
         }
 
         private void MoveDominoDownCommandCanExecute(object sender, CanExecuteRoutedEventArgs e)
         {
-            e.CanExecute = true;
+            e.CanExecute = e.Parameter is int selectedIndex
+                           && selectedIndex != -1
+                           && selectedIndex != Dominoes.Count - 1;
         }
 
         #endregion

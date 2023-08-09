@@ -195,18 +195,18 @@
                         <ColumnDefinition />
                     </Grid.ColumnDefinitions>
                     <Button Grid.Column="0" Content="{DynamicResource Add}" Margin="0,0,8,0" MinWidth="80" Command="{x:Static local:RSLCommands.AddDominoCommand}" />
-                    <Button Grid.Column="1" Content="{DynamicResource Delete}" MinWidth="80" Command="{x:Static local:RSLCommands.DeleteDominoCommand}" />
+                    <Button Grid.Column="1" Content="{DynamicResource Delete}" MinWidth="80" Command="{x:Static local:RSLCommands.DeleteDominoCommand}" CommandParameter="{Binding ElementName=dominoListView, Path=SelectedItem}" />
                 </Grid>
                 <Grid Grid.Row="0" HorizontalAlignment="Right">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition />
                         <ColumnDefinition />
                     </Grid.ColumnDefinitions>
-                    <Button Grid.Column="0" Content="{DynamicResource MoveUp}" Margin="0,0,8,0" MinWidth="80" Command="{x:Static local:RSLCommands.MoveDominoUpCommand}" />
-                    <Button Grid.Column="1" Content="{DynamicResource MoveDown}" MinWidth="80" Command="{x:Static local:RSLCommands.MoveDominoDownCommand}" />
+                    <Button Grid.Column="0" Content="{DynamicResource MoveUp}" Margin="0,0,8,0" MinWidth="80" Command="{x:Static local:RSLCommands.MoveDominoUpCommand}" CommandParameter="{Binding ElementName=dominoListView, Path=SelectedIndex}" />
+                    <Button Grid.Column="1" Content="{DynamicResource MoveDown}" MinWidth="80" Command="{x:Static local:RSLCommands.MoveDominoDownCommand}" CommandParameter="{Binding ElementName=dominoListView, Path=SelectedIndex}" />
                 </Grid>
 
-                <ListView Grid.Row="1" Margin="0,8" SelectionMode="Single" ItemsSource="{Binding Path=Dominoes}">
+                <ListView x:Name="dominoListView" Grid.Row="1" Margin="0,8" SelectionMode="Single" ItemsSource="{Binding Path=Dominoes}">
                     <ListView.View>
                         <GridView AllowsColumnReorder="False">
                             <GridView.Columns>
