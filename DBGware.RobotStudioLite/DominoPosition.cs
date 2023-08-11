@@ -1,16 +1,63 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.ComponentModel;
 
 namespace DBGware.RobotStudioLite
 {
-    public class DominoPosition
+    public class DominoPosition : INotifyPropertyChanged
     {
-        public double X { get; set; }
-        public double Y { get; set; }
-        public double Z { get; set; }
-        public double R { get; set; }
+        private double x;
+        private double y;
+        private double z;
+        private double r;
+
+        public double X
+        {
+            get => x;
+            set
+            {
+                if (x == value) return;
+                x = value;
+                OnPropertyChanged(nameof(X));
+            }
+        }
+
+        public double Y
+        {
+            get => y;
+            set
+            {
+                if (y == value) return;
+                y = value;
+                OnPropertyChanged(nameof(Y));
+            }
+        }
+
+        public double Z
+        {
+            get => z;
+            set
+            {
+                if (z == value) return;
+                z = value;
+                OnPropertyChanged(nameof(Z));
+            }
+        }
+
+        public double R
+        {
+            get => r;
+            set
+            {
+                if (r == value) return;
+                r = value;
+                OnPropertyChanged(nameof(R));
+            }
+        }
+
+        public event PropertyChangedEventHandler? PropertyChanged;
+
+        protected virtual void OnPropertyChanged(string propertyName)
+        {
+            PropertyChanged?.Invoke(this, new(propertyName));
+        }
     }
 }
