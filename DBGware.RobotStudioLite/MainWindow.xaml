@@ -6,6 +6,7 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:local="clr-namespace:DBGware.RobotStudioLite"
     xmlns:icons="clr-namespace:DBGware.RobotStudioLite.Resources.Icons.XAML"
+    xmlns:ctrls="clr-namespace:DBGware.RobotStudioLite.Controls"
     mc:Ignorable="d"
 
     Title="RobotStudioLite"
@@ -145,7 +146,7 @@
                                     <local:DominoesTaskPanel />
                                 </LayoutDocument>
                                 <LayoutDocument Title="rapid">
-
+                                    <ctrls:RapidEditor />
                                 </LayoutDocument>
                                 <LayoutDocument Title="status">
 

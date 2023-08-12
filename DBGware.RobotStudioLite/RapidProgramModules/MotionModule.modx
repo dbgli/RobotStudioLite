@@ -1,0 +1,117 @@
+MODULE MotionModule
+    !***********************************************************
+    !
+    ! Module: MotionModule
+    !
+    ! Description: 运动模块
+    !
+    ! Author: dbgli
+    !
+    ! Version: 1.0
+    !
+    !***********************************************************
+
+    ! 点动最大步长
+    LOCAL CONST num JogMaxStep:=15;
+    ! 点动最小步长
+    LOCAL CONST num JogMinStep:=0.1;
+    ! 点动指令
+    LOCAL PERS string JogCommand:="J1+";
+    ! 关节点动步长
+    LOCAL PERS num JointJogStep:=1;
+    ! 线性点动步长
+    LOCAL PERS num LinearJogStep:=1;
+    ! 是否为连续点动
+    LOCAL PERS bool IsContinuousJog:=FALSE;
+    ! 当前关节目标点
+    LOCAL VAR jointtarget CurrentJointTarget;
+    ! 当前线性目标点
+    LOCAL VAR robtarget CurrentRobTarget;
+
+    !***********************************************************
+    ! 关节偏移函数：
+    !     基于jointtarget类型移动机器人位置。
+    !***********************************************************
+    FUNC jointtarget OffsJoint(jointtarget Point,num Angle_1,num Angle_2,num Angle_3,num Angle_4,num Angle_5,num Angle_6)
+        Add Point.robax.rax_1,Angle_1;
+        Add Point.robax.rax_2,Angle_2;
+        Add Point.robax.rax_3,Angle_3;
+        Add Point.robax.rax_4,Angle_4;
+        Add Point.robax.rax_5,Angle_5;
+        Add Point.robax.rax_6,Angle_6;
+        RETURN Point;
+    ENDFUNC
+
+    !***********************************************************
+    ! 点动函数：
+    !     根据点动指令执行相应的点动运动。
+    !***********************************************************
+    PROC Jog()
+        Loop:
+
+        JointJogStep:=Min(JointJogStep,JogMaxStep);
+        JointJogStep:=Max(JointJogStep,JogMinStep);
+        LinearJogStep:=Min(LinearJogStep,JogMaxStep);
+        LinearJogStep:=Max(LinearJogStep,JogMinStep);
+
+        CurrentJointTarget:=CJointT();
+        CurrentRobTarget:=CRobT();
+
+        TEST JogCommand
+        CASE "J1+":
+            MoveAbsJ OffsJoint(CurrentJointTarget,JointJogStep,0,0,0,0,0)\NoEOffs,v200,fine,tool0\WObj:=wobj0;
+        CASE "J1-":
+            MoveAbsJ OffsJoint(CurrentJointTarget,-JointJogStep,0,0,0,0,0)\NoEOffs,v200,fine,tool0\WObj:=wobj0;
+        CASE "J2+":
+            MoveAbsJ OffsJoint(CurrentJointTarget,0,JointJogStep,0,0,0,0)\NoEOffs,v200,fine,tool0\WObj:=wobj0;
+        CASE "J2-":
+            MoveAbsJ OffsJoint(CurrentJointTarget,0,-JointJogStep,0,0,0,0)\NoEOffs,v200,fine,tool0\WObj:=wobj0;
+        CASE "J3+":
+            MoveAbsJ OffsJoint(CurrentJointTarget,0,0,JointJogStep,0,0,0)\NoEOffs,v200,fine,tool0\WObj:=wobj0;
+        CASE "J3-":
+            MoveAbsJ OffsJoint(CurrentJointTarget,0,0,-JointJogStep,0,0,0)\NoEOffs,v200,fine,tool0\WObj:=wobj0;
+        CASE "J4+":
+            MoveAbsJ OffsJoint(CurrentJointTarget,0,0,0,JointJogStep,0,0)\NoEOffs,v200,fine,tool0\WObj:=wobj0;
+        CASE "J4-":
+            MoveAbsJ OffsJoint(CurrentJointTarget,0,0,0,-JointJogStep,0,0)\NoEOffs,v200,fine,tool0\WObj:=wobj0;
+        CASE "J5+":
+            MoveAbsJ OffsJoint(CurrentJointTarget,0,0,0,0,JointJogStep,0)\NoEOffs,v200,fine,tool0\WObj:=wobj0;
+        CASE "J5-":
+            MoveAbsJ OffsJoint(CurrentJointTarget,0,0,0,0,-JointJogStep,0)\NoEOffs,v200,fine,tool0\WObj:=wobj0;
+        CASE "J6+":
+            MoveAbsJ OffsJoint(CurrentJointTarget,0,0,0,0,0,JointJogStep)\NoEOffs,v200,fine,tool0\WObj:=wobj0;
+        CASE "J6-":
+            MoveAbsJ OffsJoint(CurrentJointTarget,0,0,0,0,0,-JointJogStep)\NoEOffs,v200,fine,tool0\WObj:=wobj0;
+        CASE "L1+":
+            MoveL Offs(CurrentRobTarget,LinearJogStep,0,0),v200,fine,tool0\WObj:=wobj0;
+        CASE "L1-":
+            MoveL Offs(CurrentRobTarget,-LinearJogStep,0,0),v200,fine,tool0\WObj:=wobj0;
+        CASE "L2+":
+            MoveL Offs(CurrentRobTarget,0,LinearJogStep,0),v200,fine,tool0\WObj:=wobj0;
+        CASE "L2-":
+            MoveL Offs(CurrentRobTarget,0,-LinearJogStep,0),v200,fine,tool0\WObj:=wobj0;
+        CASE "L3+":
+            MoveL Offs(CurrentRobTarget,0,0,LinearJogStep),v200,fine,tool0\WObj:=wobj0;
+        CASE "L3-":
+            MoveL Offs(CurrentRobTarget,0,0,-LinearJogStep),v200,fine,tool0\WObj:=wobj0;
+        CASE "L4+":
+            MoveL RelTool(CurrentRobTarget,0,0,0\Rx:=LinearJogStep\Ry:=0\Rz:=0),v200,fine,tool0\WObj:=wobj0;
+        CASE "L4-":
+            MoveL RelTool(CurrentRobTarget,0,0,0\Rx:=-LinearJogStep\Ry:=0\Rz:=0),v200,fine,tool0\WObj:=wobj0;
+        CASE "L5+":
+            MoveL RelTool(CurrentRobTarget,0,0,0\Rx:=0\Ry:=LinearJogStep\Rz:=0),v200,fine,tool0\WObj:=wobj0;
+        CASE "L5-":
+            MoveL RelTool(CurrentRobTarget,0,0,0\Rx:=0\Ry:=-LinearJogStep\Rz:=0),v200,fine,tool0\WObj:=wobj0;
+        CASE "L6+":
+            MoveL RelTool(CurrentRobTarget,0,0,0\Rx:=0\Ry:=0\Rz:=LinearJogStep),v200,fine,tool0\WObj:=wobj0;
+        CASE "L6-":
+            MoveL RelTool(CurrentRobTarget,0,0,0\Rx:=0\Ry:=0\Rz:=-LinearJogStep),v200,fine,tool0\WObj:=wobj0;
+        DEFAULT:
+
+        ENDTEST
+
+        IF IsContinuousJog GOTO Loop;
+        Stop;
+    ENDPROC
+
+ENDMODULE

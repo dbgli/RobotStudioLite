@@ -124,5 +124,6 @@
     <sys:String x:Key="SaveAsPresetDialogFilter">RobotStudioLite预设文件 (*.rslps)|*.rslps|所有文件 (*.*)|*.*</sys:String>
 
     <sys:String x:Key="LoadPresetFailedMessage">加载预设失败！请检查它是否为有效的RobotStudioLite预设文件。</sys:String>
+    <sys:String x:Key="LoadProgramFailedMessage">加载程序失败！请检查它是否为有效的RobotStudioLite程序文件。</sys:String>
 
 </ResourceDictionary>

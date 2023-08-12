@@ -1,0 +1,91 @@
+MODULE ToolModule
+    !***********************************************************
+    !
+    ! Module: ToolModule
+    !
+    ! Description: 工具模块
+    !
+    ! Author: dbgli
+    !
+    ! Version: 1.0
+    !
+    !***********************************************************
+
+    LOCAL PERS tooldata CurrentTool:=[TRUE,[[-115,0,124],[1,0,0,0]],[1,[0,0,10],[1,0,0,0],0,0,0]];
+    LOCAL PERS wobjdata CurrentWorkObject:=[FALSE,TRUE,"",[[476.652,41.487,24.113],[2.5715E-5,0,0,-1]],[[0,0,0],[1,0,0,0]]];
+    LOCAL VAR robtarget CurrentTarget;
+    LOCAL VAR num RetryCount;
+
+    !***********************************************************
+    ! 拾取函数：
+    !     将真空吸盘开信号置一，拾取骨牌。当处于开环模式时，不接收吸盘
+    ! 的反馈信号。当处于闭环模式时，等待吸盘反馈信号，若超过五秒未拾取
+    ! 成功，则重试四次，若第四次重试仍失败，则机器人复位并结束运行。
+    !***********************************************************
+    PROC Pick()
+        WaitTime\inpos,0.5;
+        Set do0_VacOn;
+        WaitTime\inpos,0.5;
+
+        IF IsClosedLoopMode THEN
+            RetryCount:=0;
+            WaitDI di0_Vac,1\MaxTime:=5;
+        ENDIF
+    ERROR
+        CurrentTool:=CTool();
+        CurrentWorkObject:=CWObj();
+        CurrentTarget:=CRobT();
+
+        IF ERRNO=ERR_WAIT_MAXTIME AND RetryCount<4 THEN
+            Reset do0_VacOn;
+            MoveL RelTool(CurrentTarget,0,0,-10),v50,fine,CurrentTool\WObj:=CurrentWorkObject;
+            MoveL CurrentTarget,v50,fine,CurrentTool\WObj:=CurrentWorkObject;
+            WaitTime\inpos,0.5;
+            Set do0_VacOn;
+
+            Incr RetryCount;
+            RETRY;
+        ENDIF
+
+        MoveL RelTool(CurrentTarget,0,0,-50),v50,fine,CurrentTool\WObj:=CurrentWorkObject;
+        Init;
+        Stop;
+    ENDPROC
+
+    !***********************************************************
+    ! 放置函数：
+    !     将真空吸盘开信号置零，放置骨牌。当处于开环模式时，不接收吸盘
+    ! 的反馈信号。当处于闭环模式时，等待吸盘反馈信号，若超过五秒未放置
+    ! 成功，则重试四次，若第四次重试仍失败，则机器人复位并结束运行。
+    !***********************************************************
+    PROC Put()
+        WaitTime\inpos,0.5;
+        Reset do0_VacOn;
+        WaitTime\inpos,0.5;
+
+        IF IsClosedLoopMode THEN
+            RetryCount:=0;
+            WaitDI di0_Vac,0\MaxTime:=5;
+        ENDIF
+    ERROR
+        CurrentTool:=CTool();
+        CurrentWorkObject:=CWObj();
+        CurrentTarget:=CRobT();
+
+        IF ERRNO=ERR_WAIT_MAXTIME AND RetryCount<4 THEN
+            Set do0_VacOn;
+            MoveL RelTool(CurrentTarget,0,0,-10),v50,fine,CurrentTool\WObj:=CurrentWorkObject;
+            MoveL CurrentTarget,v50,fine,CurrentTool\WObj:=CurrentWorkObject;
+            WaitTime\inpos,0.5;
+            Reset do0_VacOn;
+
+            Incr RetryCount;
+            RETRY;
+        ENDIF
+
+        MoveL RelTool(CurrentTarget,0,0,-50),v50,fine,CurrentTool\WObj:=CurrentWorkObject;
+        Init;
+        Stop;
+    ENDPROC
+
+ENDMODULE

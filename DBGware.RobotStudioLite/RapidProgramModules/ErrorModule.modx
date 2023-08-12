@@ -1,0 +1,31 @@
+MODULE ErrorModule
+    !***********************************************************
+    !
+    ! Module: ErrorModule
+    !
+    ! Description: 错误模块
+    !
+    ! Author: dbgli
+    !
+    ! Version: 1.0
+    !
+    !***********************************************************
+    
+    CONST errnum ERROR_ROWS_NOT_INT:=1;
+    CONST errnum ERROR_COLUMNS_NOT_INT:=2;
+    CONST errnum ERROR_MAXNUMBER_NOT_INT:=3;
+    CONST errnum ERROR_NUMBER_NOT_INT:=4;
+    CONST errnum ERROR_ID_NOT_INT:=5;
+    
+    CONST errnum ERROR_ROWS_OUT_OF_RANGE:=6;
+    CONST errnum ERROR_COLUMNS_OUT_OF_RANGE:=7;
+    CONST errnum ERROR_SPACINGX_OUT_OF_RANGE:=8;
+    CONST errnum ERROR_SPACINGY_OUT_OF_RANGE:=9;
+    CONST errnum ERROR_MAXNUMBER_OUT_OF_RANGE:=10;
+    CONST errnum ERROR_NUMBER_OUT_OF_RANGE:=11;
+    CONST errnum ERROR_ID_OUT_OF_RANGE:=12;
+    CONST errnum ERROR_LENGTH_OUT_OF_RANGE:=13;
+    CONST errnum ERROR_WIDTH_OUT_OF_RANGE:=14;
+    CONST errnum ERROR_HEIGHT_OUT_OF_RANGE:=15;
+    
+ENDMODULE

@@ -124,5 +124,6 @@
     <sys:String x:Key="SaveAsPresetDialogFilter">RobotStudioLite Preset Files (*.rslps)|*.rslps|All Files (*.*)|*.*</sys:String>
 
     <sys:String x:Key="LoadPresetFailedMessage">Loading preset failed! Please check whether it is a valid RobotStudioLite preset file.</sys:String>
+    <sys:String x:Key="LoadProgramFailedMessage">Loading program failed! Please check whether it is a valid RobotStudioLite program file.</sys:String>
 
 </ResourceDictionary>

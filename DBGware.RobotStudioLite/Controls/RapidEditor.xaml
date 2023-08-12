@@ -1,0 +1,29 @@
+﻿<UserControl x:Class="DBGware.RobotStudioLite.Controls.RapidEditor"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:local="clr-namespace:DBGware.RobotStudioLite.Controls"
+             xmlns:main="clr-namespace:DBGware.RobotStudioLite"
+             mc:Ignorable="d"
+             d:DesignWidth="800" d:DesignHeight="450"
+             DataContext="{Binding RelativeSource={RelativeSource Mode=Self}}">
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="150" />
+            <ColumnDefinition Width="5" />
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+
+        <TreeView Grid.Column="0">
+            <TreeViewItem Header="RAPID" IsExpanded="True">
+                <TreeViewItem Header="T_ROB1" IsExpanded="True" ItemsSource="{Binding Path=ProgramModuleItems}" Tag="{x:Static main:RapidItemType.Task}" />
+            </TreeViewItem>
+        </TreeView>
+
+        <GridSplitter Grid.Column="1" Width="5" HorizontalAlignment="Stretch" />
+
+        <TabControl x:Name="programModuleTabControl" Grid.Column="2" ItemsSource="{Binding Path=ProgramModuleTabs}" />
+    </Grid>
+</UserControl>
