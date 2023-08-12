@@ -121,4 +121,8 @@
     <sys:String x:Key="NumberRangeValidationResultErrorContent">请输入一个介于{0}和{1}之间（包括{0}和{1}）的数字！</sys:String>
     <sys:String x:Key="IntegerRangeValidationResultErrorContent">请输入一个介于{0}和{1}之间（包括{0}和{1}）的整数！</sys:String>
 
+    <sys:String x:Key="SaveAsPresetDialogFilter">RobotStudioLite预设文件 (*.rslps)|*.rslps|所有文件 (*.*)|*.*</sys:String>
+
+    <sys:String x:Key="LoadPresetFailedMessage">加载预设失败！请检查它是否为有效的RobotStudioLite预设文件。</sys:String>
+
 </ResourceDictionary>

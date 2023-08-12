@@ -121,4 +121,8 @@
     <sys:String x:Key="NumberRangeValidationResultErrorContent">Please enter a number between {0} and {1} (including {0} and {1})!</sys:String>
     <sys:String x:Key="IntegerRangeValidationResultErrorContent">Please enter an integer between {0} and {1} (including {0} and {1})!</sys:String>
 
+    <sys:String x:Key="SaveAsPresetDialogFilter">RobotStudioLite Preset Files (*.rslps)|*.rslps|All Files (*.*)|*.*</sys:String>
+
+    <sys:String x:Key="LoadPresetFailedMessage">Loading preset failed! Please check whether it is a valid RobotStudioLite preset file.</sys:String>
+
 </ResourceDictionary>

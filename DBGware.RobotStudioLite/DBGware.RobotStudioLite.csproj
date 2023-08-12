@@ -123,6 +123,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="Presets\" />
     <Folder Include="Resources\Icons\PNG\" />
     <Folder Include="Resources\Icons\SVG\" />
   </ItemGroup>
