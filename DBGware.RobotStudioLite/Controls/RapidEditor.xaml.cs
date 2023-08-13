@@ -6,7 +6,6 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Xml.Linq;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace DBGware.RobotStudioLite.Controls
 {
@@ -23,6 +22,20 @@ namespace DBGware.RobotStudioLite.Controls
             InitializeComponent();
             LoadProgram();
         }
+
+        #region 关闭程序模块选项卡命令
+
+        private void CloseProgramModuleTabCommandExecuted(object sender, ExecutedRoutedEventArgs e)
+        {
+            ProgramModuleTabs.Remove((TabItem)e.Parameter);
+        }
+
+        private void CloseProgramModuleTabCommandCanExecute(object sender, CanExecuteRoutedEventArgs e)
+        {
+            e.CanExecute = true;
+        }
+
+        #endregion
 
         private void LoadProgram()
         {

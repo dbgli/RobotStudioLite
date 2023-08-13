@@ -412,4 +412,8 @@
         <GradientStop Color="#FFD1D3D6" Offset="1" />
     </LinearGradientBrush>
 
+    <SolidColorBrush x:Key="ProgramModuleTabCloseButtonForeground" Color="#FF444444" />
+    <SolidColorBrush x:Key="ProgramModuleTabCloseButtonMouseOverForeground" Color="#FF444444" />
+    <SolidColorBrush x:Key="ProgramModuleTabCloseButtonBackground" Color="#FFFFFFFF" />
+
 </ResourceDictionary>

@@ -25,10 +25,8 @@ namespace DBGware.RobotStudioLite.Controls
         {
             InitializeComponent();
 
-            using (StreamReader streamReader = new(filePath))
-            {
-                textEditor.Text = streamReader.ReadToEnd();
-            }
+            using StreamReader streamReader = new(filePath);
+            textEditor.Text = streamReader.ReadToEnd();
         }
     }
 }

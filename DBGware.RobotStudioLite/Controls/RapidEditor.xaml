@@ -9,7 +9,14 @@
              d:DesignWidth="800" d:DesignHeight="450"
              DataContext="{Binding RelativeSource={RelativeSource Mode=Self}}">
 
-    <Grid>
+    <UserControl.CommandBindings>
+        <CommandBinding
+            Command="{x:Static main:RSLCommands.CloseProgramModuleTabCommand}"
+            Executed="CloseProgramModuleTabCommandExecuted"
+            CanExecute="CloseProgramModuleTabCommandCanExecute" />
+    </UserControl.CommandBindings>
+
+    <Grid Margin="8">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="150" />
             <ColumnDefinition Width="5" />
@@ -24,6 +31,46 @@
 
         <GridSplitter Grid.Column="1" Width="5" HorizontalAlignment="Stretch" />
 
-        <TabControl x:Name="programModuleTabControl" Grid.Column="2" ItemsSource="{Binding Path=ProgramModuleTabs}" />
+        <TabControl x:Name="programModuleTabControl" Grid.Column="2" ItemsSource="{Binding Path=ProgramModuleTabs}">
+            <TabControl.Resources>
+                <Style BasedOn="{StaticResource TabItemBaseStyle}" TargetType="{x:Type TabItem}">
+                    <Setter Property="HeaderTemplate">
+                        <Setter.Value>
+                            <DataTemplate>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="{Binding}" Margin="0,0,8,0" />
+                                    <GlyphButton
+                                        Padding="0"
+                                        HoverBackground="{DynamicResource ProgramModuleTabCloseButtonBackground}"
+                                        Command="{x:Static main:RSLCommands.CloseProgramModuleTabCommand}"
+                                        CommandParameter="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=TabItem}}">
+                                        <GlyphButton.Style>
+                                            <Style BasedOn="{StaticResource GlyphButtonBaseStyle}" TargetType="{x:Type GlyphButton}">
+                                                <Style.Triggers>
+                                                    <DataTrigger Binding="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=TabItem}, Path=IsSelected}" Value="True">
+                                                        <Setter Property="Foreground" Value="{DynamicResource ProgramModuleTabCloseButtonForeground}" />
+                                                    </DataTrigger>
+                                                    <DataTrigger Binding="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=TabItem}, Path=IsMouseOver}" Value="True">
+                                                        <Setter Property="Foreground" Value="{DynamicResource ProgramModuleTabCloseButtonForeground}" />
+                                                    </DataTrigger>
+                                                    <DataTrigger Binding="{Binding RelativeSource={RelativeSource Mode=Self}, Path=IsMouseOver}" Value="True">
+                                                        <Setter Property="Foreground" Value="{DynamicResource ProgramModuleTabCloseButtonMouseOverForeground}" />
+                                                        <Setter Property="Background" Value="{DynamicResource ProgramModuleTabCloseButtonBackground}" />
+                                                    </DataTrigger>
+                                                    <DataTrigger Binding="{Binding RelativeSource={RelativeSource Mode=Self}, Path=IsPressed}" Value="True">
+                                                        <Setter Property="Foreground" Value="{DynamicResource ProgramModuleTabCloseButtonForeground}" />
+                                                    </DataTrigger>
+                                                </Style.Triggers>
+                                            </Style>
+                                        </GlyphButton.Style>
+                                        <TextBlock Text="&#xE8BB;" FontSize="8" FontWeight="Bold" FontFamily="Segoe Fluent Icons,Segoe MDL2 Assets" />
+                                    </GlyphButton>
+                                </StackPanel>
+                            </DataTemplate>
+                        </Setter.Value>
+                    </Setter>
+                </Style>
+            </TabControl.Resources>
+        </TabControl>
     </Grid>
 </UserControl>
