@@ -45,7 +45,20 @@ namespace DBGware.RobotStudioLite.Controls
                 foreach (XElement module in rapidProgramModules.Root!.Elements())
                 {
                     string moduleName = module.Value;
-                    TreeViewItem programModuleItem = new() { Header = Regex.Replace(moduleName, @"\.modx$", string.Empty), Tag = RapidItemType.ProgramModule };
+
+                    TextBlock iconTextBlock = new()
+                    {
+                        Text = "\uF000",
+                        FontFamily = new("Segoe Fluent Icons,Segoe MDL2 Assets"),
+                        Margin = new(0, 0, 4, 0),
+                        VerticalAlignment = VerticalAlignment.Center
+                    };
+                    TextBlock headerTextBlock = new() { Text = Regex.Replace(moduleName, @"\.modx$", string.Empty) };
+                    StackPanel stackPanel = new() { Orientation = Orientation.Horizontal };
+                    stackPanel.Children.Add(iconTextBlock);
+                    stackPanel.Children.Add(headerTextBlock);
+
+                    TreeViewItem programModuleItem = new() { Header = stackPanel, Tag = RapidItemType.ProgramModule };
                     programModuleItem.MouseDoubleClick += ProgramModuleItem_MouseDoubleClick;
                     ProgramModuleItems.Add(programModuleItem);
                 }
@@ -64,7 +77,7 @@ namespace DBGware.RobotStudioLite.Controls
         {
             if (e.ChangedButton != MouseButton.Left) return;
 
-            string fileName = ((TreeViewItem)sender).Header.ToString()!;
+            string fileName = ((TextBlock)((StackPanel)((TreeViewItem)sender).Header).Children[1]).Text;
             string filePath = AppDomain.CurrentDomain.BaseDirectory + @"RapidProgramModules\" + fileName + ".modx";
 
             TabItem? tabItem = ProgramModuleTabs.ToList().Find(t => t.Header.ToString() == fileName);

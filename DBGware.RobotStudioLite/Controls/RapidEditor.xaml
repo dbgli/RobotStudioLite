@@ -18,14 +18,27 @@
 
     <Grid Margin="8">
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="150" />
+            <ColumnDefinition Width="100" />
             <ColumnDefinition Width="5" />
             <ColumnDefinition />
         </Grid.ColumnDefinitions>
 
         <TreeView Grid.Column="0">
-            <TreeViewItem Header="RAPID" IsExpanded="True">
-                <TreeViewItem Header="T_ROB1" IsExpanded="True" ItemsSource="{Binding Path=ProgramModuleItems}" Tag="{x:Static main:RapidItemType.Task}" />
+            <TreeViewItem IsExpanded="True">
+                <TreeViewItem.Header>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="&#xE912;" FontFamily="Segoe Fluent Icons,Segoe MDL2 Assets" Margin="0,0,4,0" VerticalAlignment="Center" />
+                        <TextBlock Text="RAPID" />
+                    </StackPanel>
+                </TreeViewItem.Header>
+                <TreeViewItem IsExpanded="True" ItemsSource="{Binding Path=ProgramModuleItems}" Tag="{x:Static main:RapidItemType.Task}">
+                    <TreeViewItem.Header>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="&#xE9F5;" FontFamily="Segoe Fluent Icons,Segoe MDL2 Assets" Margin="0,0,4,0" VerticalAlignment="Center" />
+                            <TextBlock Text="T_ROB1" />
+                        </StackPanel>
+                    </TreeViewItem.Header>
+                </TreeViewItem>
             </TreeViewItem>
         </TreeView>
 
