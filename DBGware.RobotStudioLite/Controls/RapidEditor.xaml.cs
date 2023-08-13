@@ -62,6 +62,8 @@ namespace DBGware.RobotStudioLite.Controls
 
         private void ProgramModuleItem_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
+            if (e.ChangedButton != MouseButton.Left) return;
+
             string fileName = ((TreeViewItem)sender).Header.ToString()!;
             string filePath = AppDomain.CurrentDomain.BaseDirectory + @"RapidProgramModules\" + fileName + ".modx";
 
