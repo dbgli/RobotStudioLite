@@ -91,7 +91,7 @@ namespace DBGware.RobotStudioLite
                 themeMenuItem.Items.OfType<MenuItem>().ToList()
                              .ForEach(item => { if (item.IsChecked) { item.IsChecked = false; } });   // 复位
                 menuItem.IsChecked = true;
-                App.CurrentTheme = (string)menuItem.Tag;
+                ((App)App.Current).CurrentTheme = (string)menuItem.Tag;
             }
         }
 
@@ -102,7 +102,7 @@ namespace DBGware.RobotStudioLite
                             .ForEach(item => item.IsChecked = true);
 
             themeMenuItem.Items.OfType<MenuItem>().ToList()
-                         .FindAll(item => (string)item.Tag == App.CurrentTheme)
+                         .FindAll(item => (string)item.Tag == ((App)App.Current).CurrentTheme)
                          .ForEach(item => item.IsChecked = true);
         }
 

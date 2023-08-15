@@ -10,6 +10,15 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <EmbeddedResource Include="HighlightingDefinitions\RapidDarkHighlighting.xshd">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="HighlightingDefinitions\RapidLightHighlighting.xshd">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedResource>
+  </ItemGroup>
+
+  <ItemGroup>
     <Content Include="Models\AdjustmentArea_Model.mtl">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>

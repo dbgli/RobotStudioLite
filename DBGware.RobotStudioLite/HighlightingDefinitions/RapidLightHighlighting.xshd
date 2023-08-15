@@ -1,0 +1,211 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<SyntaxDefinition name="RapidLight" xmlns="http://icsharpcode.net/sharpdevelop/syntaxdefinition/2008">
+  <!-- 预定义颜色 -->
+  <Color name="Default" foreground="#FF000000" background="#FFFFFFFF" fontWeight="normal" fontStyle="normal" />
+  <Color name="Installed_Built-in_Identifier" foreground="#FF1E6E91" background="#FFFFFFFF" fontWeight="normal" fontStyle="normal" />
+  <Color name="Other_Identifier" foreground="#FF000000" background="#FFFFFFFF" fontWeight="normal" fontStyle="normal" />
+  <Color name="Reserved_Word" foreground="#FF0000FF" background="#FFFFFFFF" fontWeight="normal" fontStyle="normal" />
+  <Color name="Comment" foreground="#FF008000" background="#FFFFFFFF" fontWeight="normal" fontStyle="normal" />
+  <Color name="String" foreground="#FF800000" background="#FFFFFFFF" fontWeight="normal" fontStyle="normal" />
+  <Color name="Number" foreground="#FF000000" background="#FFFFFFFF" fontWeight="normal" fontStyle="normal" />
+  <Color name="Placeholder" foreground="#FFC80000" background="#FFC8F0D2" fontWeight="normal" fontStyle="italic" />
+
+  <!-- 主规则集 -->
+  <RuleSet>
+    <!-- 注释 -->
+    <Span color="Comment" begin="!" />
+
+    <!-- 字符串 -->
+    <Span color="String" begin="&quot;" end="&quot;" />
+
+    <!-- 数字 -->
+    <Rule color="Number">
+      \b0[xX][0-9a-fA-F]+   # 十六进制数字
+      |    \b
+      (    \d+(\.[0-9]+)?   # 带有可选小数点的
+      |    \.[0-9]+         # 或直接以小数点开始的数字
+      )
+      ([eE][+-]?[0-9]+)?    # 可选的指数部分
+    </Rule>
+
+    <!-- 保留字 -->
+    <Keywords color="Reserved_Word">
+      <Word>ALIAS</Word>
+      <Word>AND</Word>
+      <Word>BACKWARD</Word>
+      <Word>CASE</Word>
+      <Word>CONNECT</Word>
+      <Word>CONST</Word>
+      <Word>DEFAULT</Word>
+      <Word>DIV</Word>
+      <Word>DO</Word>
+      <Word>ELSE</Word>
+      <Word>ELSEIF</Word>
+      <Word>ENDFOR</Word>
+      <Word>ENDFUNC</Word>
+      <Word>ENDIF</Word>
+      <Word>ENDMODULE</Word>
+      <Word>ENDPROC</Word>
+      <Word>ENDRECORD</Word>
+      <Word>ENDTEST</Word>
+      <Word>ENDTRAP</Word>
+      <Word>ENDWHILE</Word>
+      <Word>ERROR</Word>
+      <Word>EXIT</Word>
+      <Word>FALSE</Word>
+      <Word>FOR</Word>
+      <Word>FROM</Word>
+      <Word>FUNC</Word>
+      <Word>GOTO</Word>
+      <Word>IF</Word>
+      <Word>INOUT</Word>
+      <Word>LOCAL</Word>
+      <Word>MOD</Word>
+      <Word>MODULE</Word>
+      <Word>NOSTEPIN</Word>
+      <Word>NOT</Word>
+      <Word>NOVIEW</Word>
+      <Word>OR</Word>
+      <Word>PERS</Word>
+      <Word>PROC</Word>
+      <Word>RAISE</Word>
+      <Word>READONLY</Word>
+      <Word>RECORD</Word>
+      <Word>RETRY</Word>
+      <Word>RETURN</Word>
+      <Word>STEP</Word>
+      <Word>SYSMODULE</Word>
+      <Word>TEST</Word>
+      <Word>THEN</Word>
+      <Word>TO</Word>
+      <Word>TRAP</Word>
+      <Word>TRUE</Word>
+      <Word>TRYNEXT</Word>
+      <Word>UNDO</Word>
+      <Word>VAR</Word>
+      <Word>VIEWONLY</Word>
+      <Word>WHILE</Word>
+      <Word>WITH</Word>
+      <Word>XOR</Word>
+    </Keywords>
+
+    <!-- 安装的或内置的标识符 -->
+    <Keywords color="Installed_Built-in_Identifier">
+      <Word>accdata</Word>
+      <Word>aiotrigg</Word>
+      <Word>bool</Word>
+      <Word>btnres</Word>
+      <Word>buttondata</Word>
+      <Word>byte</Word>
+      <Word>cameradev</Word>
+      <Word>camerastatus</Word>
+      <Word>cameratarget</Word>
+      <Word>cfgdomain</Word>
+      <Word>clock</Word>
+      <Word>cnvcmd</Word>
+      <Word>confdata</Word>
+      <Word>confsupdata</Word>
+      <Word>corrdescr</Word>
+      <Word>cssframe</Word>
+      <Word>datapos</Word>
+      <Word>dionum</Word>
+      <Word>dir</Word>
+      <Word>dnum</Word>
+      <Word>errdomain</Word>
+      <Word>errnum</Word>
+      <Word>errstr</Word>
+      <Word>errtype</Word>
+      <Word>event_type</Word>
+      <Word>exec_level</Word>
+      <Word>extjoint</Word>
+      <Word>handler_type</Word>
+      <Word>icondata</Word>
+      <Word>identno</Word>
+      <Word>indcnvdata</Word>
+      <Word>inposdata</Word>
+      <Word>intnum</Word>
+      <Word>inttypes</Word>
+      <Word>iodev</Word>
+      <Word>iodevice_state</Word>
+      <Word>ionetwork_state</Word>
+      <Word>jointtarget</Word>
+      <Word>listitem</Word>
+      <Word>loaddata</Word>
+      <Word>loadidnum</Word>
+      <Word>loadsession</Word>
+      <Word>mecunit</Word>
+      <Word>motionprocessmode</Word>
+      <Word>motsetdata</Word>
+      <Word>num</Word>
+      <Word>opnum</Word>
+      <Word>orient</Word>
+      <Word>paridnum</Word>
+      <Word>paridvalidnum</Word>
+      <Word>pathrecid</Word>
+      <Word>pos</Word>
+      <Word>pose</Word>
+      <Word>progdisp</Word>
+      <Word>rawbytes</Word>
+      <Word>restartdata</Word>
+      <Word>rmqheader</Word>
+      <Word>rmqmessage</Word>
+      <Word>rmqslot</Word>
+      <Word>robjoint</Word>
+      <Word>robtarget</Word>
+      <Word>shapedata</Word>
+      <Word>signalai</Word>
+      <Word>signalao</Word>
+      <Word>signaldi</Word>
+      <Word>signaldo</Word>
+      <Word>signalgi</Word>
+      <Word>signalgo</Word>
+      <Word>signalorigin</Word>
+      <Word>singdata</Word>
+      <Word>socketdev</Word>
+      <Word>socketstatus</Word>
+      <Word>speeddata</Word>
+      <Word>stopmovestartmove_mem</Word>
+      <Word>stoppoint</Word>
+      <Word>stoppointdata</Word>
+      <Word>string</Word>
+      <Word>symnum</Word>
+      <Word>syncident</Word>
+      <Word>taskid</Word>
+      <Word>tasks</Word>
+      <Word>tasksatstart</Word>
+      <Word>testsignal</Word>
+      <Word>tooldata</Word>
+      <Word>tpnum</Word>
+      <Word>trapdata</Word>
+      <Word>triggdata</Word>
+      <Word>triggios</Word>
+      <Word>triggiosdnum</Word>
+      <Word>triggmode</Word>
+      <Word>tsp_status</Word>
+      <Word>tunetype</Word>
+      <Word>uishownum</Word>
+      <Word>veldata</Word>
+      <Word>wobjdata</Word>
+      <Word>wzstationary</Word>
+      <Word>wztemporary</Word>
+      <Word>zonedata</Word>
+    </Keywords>
+
+    <!-- 占位符 -->
+    <Keywords color="Placeholder">
+      <Word>&lt;TDN&gt;</Word>
+      <Word>&lt;DDN&gt;</Word>
+      <Word>&lt;RDN&gt;</Word>
+      <Word>&lt;PAR&gt;</Word>
+      <Word>&lt;ALT&gt;</Word>
+      <Word>&lt;DIM&gt;</Word>
+      <Word>&lt;SMT&gt;</Word>
+      <Word>&lt;VAR&gt;</Word>
+      <Word>&lt;EIT&gt;</Word>
+      <Word>&lt;CSE&gt;</Word>
+      <Word>&lt;EXP&gt;</Word>
+      <Word>&lt;ARG&gt;</Word>
+      <Word>&lt;ID&gt;</Word>
+    </Keywords>
+  </RuleSet>
+</SyntaxDefinition>

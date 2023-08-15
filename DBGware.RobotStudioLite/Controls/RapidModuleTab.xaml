@@ -8,8 +8,17 @@
              mc:Ignorable="d"
              d:DesignWidth="800" d:DesignHeight="450">
     <Grid>
-        <ae:TextEditor x:Name="textEditor">
-            
+        <ae:TextEditor
+            x:Name="textEditor"
+            Foreground="{DynamicResource AvalonEditTextEditorForeground}"
+            Background="{DynamicResource AvalonEditTextEditorBackground}"
+            FontFamily="Consolas"
+            ShowLineNumbers="True">
+            <ae:TextEditor.Options>
+                <ae:TextEditorOptions
+                    ConvertTabsToSpaces="True"
+                    HighlightCurrentLine="True" />
+            </ae:TextEditor.Options>
         </ae:TextEditor>
     </Grid>
 </UserControl>

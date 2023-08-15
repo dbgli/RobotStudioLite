@@ -416,4 +416,7 @@
     <SolidColorBrush x:Key="ProgramModuleTabCloseButtonMouseOverForeground" Color="#FF4D5887" />
     <SolidColorBrush x:Key="ProgramModuleTabCloseButtonBackground" Color="#FFFFFFFF" />
 
+    <SolidColorBrush x:Key="AvalonEditTextEditorForeground" Color="#FF000000" />
+    <SolidColorBrush x:Key="AvalonEditTextEditorBackground" Color="#FFFFFFFF" />
+
 </ResourceDictionary>
