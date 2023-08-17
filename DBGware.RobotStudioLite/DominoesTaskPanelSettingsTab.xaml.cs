@@ -77,10 +77,10 @@ namespace DBGware.RobotStudioLite
             catch
             {
                 MessageBox.Show((string)App.Current.FindResource("LoadPresetFailedMessage"),
-                                                                 "RobotStudioLite",
-                                                                 MessageBoxButton.OK,
-                                                                 MessageBoxImage.Warning,
-                                                                 MessageBoxResult.OK);
+                                "RobotStudioLite",
+                                MessageBoxButton.OK,
+                                MessageBoxImage.Warning,
+                                MessageBoxResult.OK);
             }
         }
 

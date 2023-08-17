@@ -103,28 +103,28 @@
     <Content Include="Models\UnloadingArea_Model.obj">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="RapidProgramModules\CalibDataModule.modx">
+    <Content Include="RapidPrograms\Dominoes\CalibDataModule.modx">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="RapidProgramModules\DominoModule.modx">
+    <Content Include="RapidPrograms\Dominoes\DominoModule.modx">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="RapidProgramModules\ErrorModule.modx">
+    <Content Include="RapidPrograms\Dominoes\ErrorModule.modx">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="RapidProgramModules\InterfaceModule.modx">
+    <Content Include="RapidPrograms\Dominoes\InterfaceModule.modx">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="RapidProgramModules\MainModule.modx">
+    <Content Include="RapidPrograms\Dominoes\MainModule.modx">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="RapidProgramModules\MotionModule.modx">
+    <Content Include="RapidPrograms\Dominoes\MotionModule.modx">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="RapidProgramModules\RapidProgramModules.pgf">
+    <Content Include="RapidPrograms\Dominoes\Dominoes.pgf">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="RapidProgramModules\ToolModule.modx">
+    <Content Include="RapidPrograms\Dominoes\ToolModule.modx">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>

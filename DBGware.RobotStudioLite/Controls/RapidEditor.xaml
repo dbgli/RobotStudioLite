@@ -14,33 +14,58 @@
             Command="{x:Static main:RSLCommands.CloseProgramModuleTabCommand}"
             Executed="CloseProgramModuleTabCommandExecuted"
             CanExecute="CloseProgramModuleTabCommandCanExecute" />
+        <CommandBinding
+            Command="{x:Static main:RSLCommands.LoadProgramCommand}"
+            Executed="LoadProgramCommandExecuted"
+            CanExecute="LoadProgramCommandCanExecute" />
+        <CommandBinding
+            Command="{x:Static main:RSLCommands.SynchronizeToRobotCommand}"
+            Executed="SynchronizeToRobotCommandExecuted"
+            CanExecute="SynchronizeToRobotCommandCanExecute" />
+        <CommandBinding
+            Command="{x:Static main:RSLCommands.CreateBackupCommand}"
+            Executed="CreateBackupCommandExecuted"
+            CanExecute="CreateBackupCommandCanExecute" />
     </UserControl.CommandBindings>
 
     <Grid Margin="8">
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="100" MaxWidth="200" />
+            <ColumnDefinition Width="150" MaxWidth="200" />
             <ColumnDefinition Width="5" />
             <ColumnDefinition />
         </Grid.ColumnDefinitions>
 
-        <TreeView Grid.Column="0">
-            <TreeViewItem IsExpanded="True">
-                <TreeViewItem.Header>
-                    <StackPanel Orientation="Horizontal">
-                        <TextBlock Text="&#xE912;" FontFamily="Segoe Fluent Icons,Segoe MDL2 Assets" Margin="0,0,4,0" VerticalAlignment="Center" />
-                        <TextBlock Text="RAPID" />
-                    </StackPanel>
-                </TreeViewItem.Header>
-                <TreeViewItem IsExpanded="True" ItemsSource="{Binding Path=ProgramModuleItems}" Tag="{x:Static main:RapidItemType.Task}">
+        <Grid Grid.Column="0">
+            <Grid.RowDefinitions>
+                <RowDefinition />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+
+            <TreeView Grid.Row="0">
+                <TreeViewItem IsExpanded="True">
                     <TreeViewItem.Header>
                         <StackPanel Orientation="Horizontal">
-                            <TextBlock Text="&#xE9F5;" FontFamily="Segoe Fluent Icons,Segoe MDL2 Assets" Margin="0,0,4,0" VerticalAlignment="Center" />
-                            <TextBlock Text="T_ROB1" />
+                            <TextBlock Text="&#xE912;" FontFamily="Segoe Fluent Icons,Segoe MDL2 Assets" Margin="0,0,4,0" VerticalAlignment="Center" />
+                            <TextBlock Text="RAPID" />
                         </StackPanel>
                     </TreeViewItem.Header>
+                    <TreeViewItem IsExpanded="True" ItemsSource="{Binding Path=ProgramModuleItems}" Tag="{x:Static main:RapidItemType.Task}">
+                        <TreeViewItem.Header>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text="&#xE9F5;" FontFamily="Segoe Fluent Icons,Segoe MDL2 Assets" Margin="0,0,4,0" VerticalAlignment="Center" />
+                                <TextBlock Text="T_ROB1" />
+                            </StackPanel>
+                        </TreeViewItem.Header>
+                    </TreeViewItem>
                 </TreeViewItem>
-            </TreeViewItem>
-        </TreeView>
+            </TreeView>
+
+            <Button Grid.Row="1" Content="{DynamicResource LoadProgram}" Margin="0,8,0,0" Command="{x:Static main:RSLCommands.LoadProgramCommand}" />
+            <Button Grid.Row="2" Content="{DynamicResource SynchronizeToRobot}" Margin="0,8,0,0" Command="{x:Static main:RSLCommands.SynchronizeToRobotCommand}" />
+            <Button Grid.Row="3" Content="{DynamicResource CreateBackup}" Margin="0,8,0,0" Command="{x:Static main:RSLCommands.CreateBackupCommand}" />
+        </Grid>
 
         <GridSplitter Grid.Column="1" Width="5" HorizontalAlignment="Stretch" />
 

@@ -34,5 +34,8 @@ namespace DBGware.RobotStudioLite
         public static RoutedCommand MoveDominoDownCommand { get; } = new();
 
         public static RoutedCommand CloseProgramModuleTabCommand { get; } = new();
+        public static RoutedCommand LoadProgramCommand { get; } = new();
+        public static RoutedCommand SynchronizeToRobotCommand { get; } = new();
+        public static RoutedCommand CreateBackupCommand { get; } = new();
     }
 }

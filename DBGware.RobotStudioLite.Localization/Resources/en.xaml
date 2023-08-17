@@ -122,8 +122,14 @@
     <sys:String x:Key="IntegerRangeValidationResultErrorContent">Please enter an integer between {0} and {1} (including {0} and {1})!</sys:String>
 
     <sys:String x:Key="SaveAsPresetDialogFilter">RobotStudioLite Preset Files (*.rslps)|*.rslps|All Files (*.*)|*.*</sys:String>
+    <sys:String x:Key="LoadProgramDialogFilter">IRC5 Program Files (*.pgf)|*.pgf|S4 Program Files (*.prg)|*.prg|All Files (*.*)|*.*</sys:String>
 
+    <sys:String x:Key="ProgramModuleExistsMessage">There are already program modules in this task which will be removed if a new program is loaded. Do you wish to continue loading a new program and lose the old program and its modules?</sys:String>
     <sys:String x:Key="LoadPresetFailedMessage">Loading preset failed! Please check whether it is a valid RobotStudioLite preset file.</sys:String>
-    <sys:String x:Key="LoadProgramFailedMessage">Loading program failed! Please check whether it is a valid RobotStudioLite program file.</sys:String>
+    <sys:String x:Key="LoadProgramFailedMessage">Loading program failed! Please check whether it is a valid IRC5 or S4 program file.</sys:String>
+
+    <sys:String x:Key="LoadProgram">Load Program</sys:String>
+    <sys:String x:Key="SynchronizeToRobot">Synchronize to Robot</sys:String>
+    <sys:String x:Key="CreateBackup">Create Backup</sys:String>
 
 </ResourceDictionary>

@@ -122,8 +122,14 @@
     <sys:String x:Key="IntegerRangeValidationResultErrorContent">请输入一个介于{0}和{1}之间（包括{0}和{1}）的整数！</sys:String>
 
     <sys:String x:Key="SaveAsPresetDialogFilter">RobotStudioLite预设文件 (*.rslps)|*.rslps|所有文件 (*.*)|*.*</sys:String>
+    <sys:String x:Key="LoadProgramDialogFilter">IRC5程序文件 (*.pgf)|*.pgf|S4程序文件 (*.prg)|*.prg|所有文件 (*.*)|*.*</sys:String>
 
+    <sys:String x:Key="ProgramModuleExistsMessage">新程序模块加载后，当前任务中的程序模块将被移除。是否继续加载新的程序模块？</sys:String>
     <sys:String x:Key="LoadPresetFailedMessage">加载预设失败！请检查它是否为有效的RobotStudioLite预设文件。</sys:String>
-    <sys:String x:Key="LoadProgramFailedMessage">加载程序失败！请检查它是否为有效的RobotStudioLite程序文件。</sys:String>
+    <sys:String x:Key="LoadProgramFailedMessage">加载程序失败！请检查它是否为有效的IRC5或S4程序文件。</sys:String>
+
+    <sys:String x:Key="LoadProgram">加载程序</sys:String>
+    <sys:String x:Key="SynchronizeToRobot">同步到机器人</sys:String>
+    <sys:String x:Key="CreateBackup">创建备份</sys:String>
 
 </ResourceDictionary>
