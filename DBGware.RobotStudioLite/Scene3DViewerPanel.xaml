@@ -204,14 +204,20 @@
                                     x:Name="PART_ViewCubeViewport"
                                     Width="{TemplateBinding ViewCubeWidth}"
                                     Height="{TemplateBinding ViewCubeHeight}"
-                                    Margin="0"
+                                    Margin="10"
+                                    ClipToBounds="False"
                                     HorizontalAlignment="{TemplateBinding ViewCubeHorizontalPosition}"
                                     VerticalAlignment="{TemplateBinding ViewCubeVerticalPosition}"
                                     Opacity="0.5"
                                     Visibility="{TemplateBinding ShowViewCube,
                                                                  Converter={StaticResource BooleanToVisibilityConverter}}">
-                                    <ht:ViewCubeVisual3D
+                                    <Viewport3D.Effect>
+                                        <DropShadowEffect ShadowDepth="0" BlurRadius="10" Opacity="0.2" />
+                                    </Viewport3D.Effect>
+                                    <!-- 注意：替换成自己的ViewCubeVisual3D后要手动设置Viewport属性，绑定到HelixViewport3D上的Viewport上，否则默认为null -->
+                                    <g:ViewCubeVisual3D
                                         x:Name="PART_ViewCube"
+                                        Viewport="{Binding Viewport, RelativeSource={RelativeSource TemplatedParent}}"
                                         BackText="{Binding ViewCubeBackText, RelativeSource={RelativeSource TemplatedParent}}"
                                         BottomText="{Binding ViewCubeBottomText, RelativeSource={RelativeSource TemplatedParent}}"
                                         EnableEdgeClicks="{Binding IsViewCubeEdgeClicksEnabled, RelativeSource={RelativeSource TemplatedParent}}"
