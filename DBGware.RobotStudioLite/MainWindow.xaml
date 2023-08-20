@@ -137,13 +137,13 @@
                         <LayoutPanel Orientation="Horizontal">
                             <LayoutDocumentPane>
                                 <LayoutDocument x:Name="scene3DViewerPanelLayoutDocument" Title="{DynamicResource Scene3DViewer}">
-                                    <local:Scene3DViewerPanel />
+                                    <local:Scene3DViewerPanel x:Name="scene3DViewerPanel" />
                                 </LayoutDocument>
                                 <LayoutDocument x:Name="controllerScannerPanelLayoutDocument" Title="{DynamicResource ControllerScanner}">
                                     <local:ControllerScannerPanel />
                                 </LayoutDocument>
                                 <LayoutDocument Title="DominoesTaskPanel">
-                                    <local:DominoesTaskPanel />
+                                    <local:DominoesTaskPanel x:Name="dominoesTaskPanel" />
                                 </LayoutDocument>
                                 <LayoutDocument Title="rapid">
                                     <ctrls:RapidEditor />

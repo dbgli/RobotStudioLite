@@ -1,17 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
+using System.Collections.ObjectModel;
+using System.Collections.Specialized;
+using System.ComponentModel;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
 using System.Windows.Media.Media3D;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 using HelixToolkit.Wpf;
 
 namespace DBGware.RobotStudioLite
@@ -21,19 +14,22 @@ namespace DBGware.RobotStudioLite
     /// </summary>
     public partial class Scene3DViewerPanel : UserControl
     {
+        public List<ModelVisual3D> DominoModels { get; set; } = new();
+        public List<ModelVisual3D> DominoPreviewModels { get; set; } = new();
+
         public Scene3DViewerPanel()
         {
             InitializeComponent();
             LoadEnvironment();
             LoadRobot();
+            LoadDominoes();
         }
 
         private void LoadEnvironment()
         {
-            string basePath = @".\Models\";
+            string basePath = @$"{AppDomain.CurrentDomain.BaseDirectory}Models\";
             List<string> fileNames = new() { "AdjustmentArea_Model.obj",
                                              "CalibrationDomino_Model.obj",
-                                             "Domino_Model.obj",
                                              "LoadingArea_Model.obj",
                                              "OmniCore_Model.obj",
                                              "RobotBase_Model.obj",
@@ -50,7 +46,7 @@ namespace DBGware.RobotStudioLite
 
         private void LoadRobot()
         {
-            string basePath = @".\Models\";
+            string basePath = @$"{AppDomain.CurrentDomain.BaseDirectory}Models\";
             List<string> fileNames = new() { "RobotLink1_Model.obj",
                                              "RobotLink2_Model.obj",
                                              "RobotLink3_Model.obj",
@@ -96,6 +92,97 @@ namespace DBGware.RobotStudioLite
             App.Robot.Joints[5].MaxAngle = 400;
             App.Robot.Joints[5].RotationAxis = new(0, 1, 0);
             App.Robot.Joints[5].RotationPoint = new(-310, 176, 627);
+        }
+
+        private void LoadDominoes()
+        {
+            // 借用Tray_PropertyChanged函数加载多米诺骨牌作为初始状态
+            Tray tray = new() { Rows = 5, Columns = 6, RowSpacing = 65, ColumnSpacing = 35 };
+            Tray_PropertyChanged(tray, new("Rows"));
+        }
+
+        public void Tray_PropertyChanged(object? sender, PropertyChangedEventArgs e)
+        {
+            if (e.PropertyName != "Rows"
+             && e.PropertyName != "Columns"
+             && e.PropertyName != "RowSpacing"
+             && e.PropertyName != "ColumnSpacing") return;
+
+            Tray tray = (sender as Tray)!;
+
+            // 清空上一次的骨牌模型
+            DominoModels.ForEach(d => sortingVisual3D.Children.Remove(d));
+            DominoModels.Clear();
+
+            ModelImporter modelImporter = new();
+            for (int row = 0; row < tray.Rows; row++)
+            {
+                for (int column = 0; column < tray.Columns; column++)
+                {
+                    Model3DGroup model3DGroup = modelImporter.Load(@$"{AppDomain.CurrentDomain.BaseDirectory}Models\Domino_Model.obj");
+                    ModelVisual3D modelVisual3D = new()
+                    {
+                        Content = model3DGroup,
+                        Transform = new TranslateTransform3D(row * tray.RowSpacing, -column * tray.ColumnSpacing, 0)
+                    };
+                    sortingVisual3D.Children.Add(modelVisual3D);
+                    DominoModels.Add(modelVisual3D);
+                }
+            }
+        }
+
+        public void Dominoes_CollectionChanged(object? sender, NotifyCollectionChangedEventArgs e)
+        {
+            ObservableCollection<Domino> dominoes = (sender as ObservableCollection<Domino>)!;
+
+            // 清空上一次的骨牌预览模型
+            DominoPreviewModels.ForEach(d => sortingVisual3D.Children.Remove(d));
+            DominoPreviewModels.Clear();
+
+            ModelImporter modelImporter = new();
+            foreach (Domino domino in dominoes)
+            {
+                Model3DGroup model3DGroup = modelImporter.Load(@$"{AppDomain.CurrentDomain.BaseDirectory}Models\DominoPreview_Model.obj");
+                ModelVisual3D modelVisual3D = new()
+                {
+                    Content = model3DGroup,
+                    Transform = Transform3DHelper.CombineTransform(new RotateTransform3D(new AxisAngleRotation3D(new(0, 0, 1), domino.Position.R), new(10, -234.26, 42.5)),
+                                                                   new TranslateTransform3D(domino.Position.X, domino.Position.Y, domino.Position.Z))
+                };
+                sortingVisual3D.Children.Add(modelVisual3D);
+                DominoPreviewModels.Add(modelVisual3D);
+
+                // 为每一个骨牌订阅位置属性更改事件
+                // 注意：先退订上一次的事件，再订阅这一次的事件，避免重复订阅
+                // TODO 在Dominoes集合里移出Domino时，仍然保留着一个事件订阅，导致GC无法回收，考虑在Domino类里增加清除所有订阅方法，并在移出集合时调用
+                domino.Position.PropertyChanged -= DominoPosition_PropertyChanged;
+                domino.Position.PropertyChanged += DominoPosition_PropertyChanged;
+                // 如果直接修改Domino类的Position属性而不是修改DominoPosition类的X、Y、Z、R属性也能触发事件
+                // TODO 可以用事件转发代替
+                domino.PropertyChanged -= DominoPosition_PropertyChanged;
+                domino.PropertyChanged += DominoPosition_PropertyChanged;
+            }
+        }
+
+        private void DominoPosition_PropertyChanged(object? sender, PropertyChangedEventArgs e)
+        {
+            if (e.PropertyName != "X"
+             && e.PropertyName != "Y"
+             && e.PropertyName != "Z"
+             && e.PropertyName != "R"
+             && e.PropertyName != "Position") return;
+
+            ObservableCollection<Domino> dominoes = ((MainWindow)App.Current.MainWindow)
+                                                                            .dominoesTaskPanel
+                                                                            .dominoesTaskPanelSettingsTab
+                                                                            .Dominoes;
+
+            for (int i = 0; i < dominoes.Count; i++)
+            {
+                // 先旋转后平移，在原点处旋转可以避免在非原点处旋转而引入的额外的平移分量
+                DominoPreviewModels[i].Transform = Transform3DHelper.CombineTransform(new RotateTransform3D(new AxisAngleRotation3D(new(0, 0, 1), dominoes[i].Position.R), new(10, -234.26, 42.5)),
+                                                                                      new TranslateTransform3D(dominoes[i].Position.X, dominoes[i].Position.Y, dominoes[i].Position.Z));
+            }
         }
     }
 }

@@ -29,6 +29,8 @@ namespace DBGware.RobotStudioLite
         public MainWindow()
         {
             InitializeComponent();
+            dominoesTaskPanel.dominoesTaskPanelSettingsTab.Tray.PropertyChanged += scene3DViewerPanel.Tray_PropertyChanged;
+            dominoesTaskPanel.dominoesTaskPanelSettingsTab.Dominoes.CollectionChanged += scene3DViewerPanel.Dominoes_CollectionChanged;
         }
 
         private void CustomChromeWindow_Activated(object sender, EventArgs e)

@@ -9,7 +9,7 @@
     <Grid Margin="8">
         <TabControl TabStripPlacement="Left">
             <TabItem Header="{DynamicResource Settings}" MinWidth="100">
-                <local:DominoesTaskPanelSettingsTab />
+                <local:DominoesTaskPanelSettingsTab x:Name="dominoesTaskPanelSettingsTab" />
             </TabItem>
             <TabItem Header="{DynamicResource Calibration}" MinWidth="100">
 
