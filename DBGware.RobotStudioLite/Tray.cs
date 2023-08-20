@@ -1,9 +1,10 @@
 ﻿using System.Collections.ObjectModel;
 using System.ComponentModel;
+using DBGware.RobotStudioLite.Utilities;
 
 namespace DBGware.RobotStudioLite
 {
-    public class Tray : INotifyPropertyChanged
+    public class Tray : INotifyPropertyChanging, INotifyPropertyChanged
     {
         private int rows;
         private int columns;
@@ -17,6 +18,7 @@ namespace DBGware.RobotStudioLite
             set
             {
                 if (rows == value) return;
+                if (OnPropertyChanging(nameof(Rows), rows, value)) return;
                 rows = value;
                 OnPropertyChanged(nameof(Rows));
             }
@@ -28,6 +30,7 @@ namespace DBGware.RobotStudioLite
             set
             {
                 if (columns == value) return;
+                if (OnPropertyChanging(nameof(Columns), columns, value)) return;
                 columns = value;
                 OnPropertyChanged(nameof(Columns));
             }
@@ -66,7 +69,15 @@ namespace DBGware.RobotStudioLite
             }
         }
 
+        public event PropertyChangingEventHandler? PropertyChanging;
         public event PropertyChangedEventHandler? PropertyChanged;
+
+        protected virtual bool OnPropertyChanging<T>(string propertyName, T oldValue, T newValue)
+        {
+            CancellablePropertyChangingEventArgs<T> cancellablePropertyChangingEventArgs = new(propertyName, oldValue, newValue);
+            PropertyChanging?.Invoke(this, cancellablePropertyChangingEventArgs);
+            return cancellablePropertyChangingEventArgs.IsCancelled;
+        }
 
         protected virtual void OnPropertyChanged(string propertyName)
         {

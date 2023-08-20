@@ -127,6 +127,7 @@
     <sys:String x:Key="ProgramModuleExistsMessage">There are already program modules in this task which will be removed if a new program is loaded. Do you wish to continue loading a new program and lose the old program and its modules?</sys:String>
     <sys:String x:Key="LoadPresetFailedMessage">Loading preset failed! Please check whether it is a valid RobotStudioLite preset file.</sys:String>
     <sys:String x:Key="LoadProgramFailedMessage">Loading program failed! Please check whether it is a valid IRC5 or S4 program file.</sys:String>
+    <sys:String x:Key="ChangeRowsOrColumnsMessage">Changing the number of rows or columns in the tray will empty the domino queue. Do you want to continue?</sys:String>
 
     <sys:String x:Key="LoadProgram">Load Program</sys:String>
     <sys:String x:Key="SynchronizeToRobot">Synchronize to Robot</sys:String>

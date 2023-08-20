@@ -1,11 +1,13 @@
 ﻿using System;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Input;
 using System.Xml.Linq;
 using Microsoft.Win32;
+using DBGware.RobotStudioLite.Utilities;
 
 namespace DBGware.RobotStudioLite
 {
@@ -22,6 +24,7 @@ namespace DBGware.RobotStudioLite
         public DominoesTaskPanelSettingsTab()
         {
             InitializeComponent();
+            Tray.PropertyChanging += Tray_PropertyChanging;
         }
 
         #region 加载预设命令
@@ -34,6 +37,9 @@ namespace DBGware.RobotStudioLite
                 Filter = (string)App.Current.FindResource("SaveAsPresetDialogFilter")
             };
             if (openFileDialog.ShowDialog() != true) return;
+
+            // 先清空骨牌队列，避免执行Tray_PropertyChanging事件
+            Dominoes.Clear();
 
             try
             {
@@ -57,7 +63,6 @@ namespace DBGware.RobotStudioLite
                 PushPosition.R = double.Parse(pushPosition.Attribute("R")!.Value);
 
                 XElement dominoes = preset.Root!.Element("Dominoes")!;
-                Dominoes.Clear();
                 foreach (XElement domino in dominoes.Elements())
                 {
                     XElement position = domino.Element("Position")!;
@@ -207,5 +212,21 @@ namespace DBGware.RobotStudioLite
         }
 
         #endregion
+
+        private void Tray_PropertyChanging(object? sender, PropertyChangingEventArgs e)
+        {
+            if (e.PropertyName != "Rows" && e.PropertyName != "Columns" || Dominoes.Count == 0) return;
+            MessageBoxResult messageBoxResult = MessageBox.Show((string)App.Current.FindResource("ChangeRowsOrColumnsMessage"),
+                                                                "RobotStudioLite",
+                                                                MessageBoxButton.YesNo,
+                                                                MessageBoxImage.Information,
+                                                                MessageBoxResult.Yes);
+            if (messageBoxResult != MessageBoxResult.Yes)
+            {
+                ((CancellablePropertyChangingEventArgs<int>)e).IsCancelled = true;
+                return;
+            }
+            Dominoes.Clear();
+        }
     }
 }
