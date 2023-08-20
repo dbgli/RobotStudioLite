@@ -4,6 +4,7 @@ using System.Collections.ObjectModel;
 using System.Collections.Specialized;
 using System.ComponentModel;
 using System.Windows.Controls;
+using System.Windows.Media;
 using System.Windows.Media.Media3D;
 using HelixToolkit.Wpf;
 
@@ -143,6 +144,14 @@ namespace DBGware.RobotStudioLite
             foreach (Domino domino in dominoes)
             {
                 Model3DGroup model3DGroup = modelImporter.Load(@$"{AppDomain.CurrentDomain.BaseDirectory}Models\DominoPreview_Model.obj");
+                // obj模型的mtl文件自带透明度，但似乎HelixToolkit不认，所以手动修改材质
+                Material material = MaterialHelper.CreateMaterial(Colors.Blue, 0.25);
+                foreach (Model3D model3D in model3DGroup.Children)
+                {
+                    ((GeometryModel3D)model3D).Material = material;
+                    ((GeometryModel3D)model3D).BackMaterial = material;
+                }
+
                 ModelVisual3D modelVisual3D = new()
                 {
                     Content = model3DGroup,
