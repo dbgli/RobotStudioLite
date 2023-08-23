@@ -6,6 +6,7 @@ using System.ComponentModel;
 using System.Windows.Controls;
 using System.Windows.Media;
 using System.Windows.Media.Media3D;
+using ABB.Robotics.Controllers.RapidDomain;
 using HelixToolkit.Wpf;
 
 namespace DBGware.RobotStudioLite
@@ -15,8 +16,28 @@ namespace DBGware.RobotStudioLite
     /// </summary>
     public partial class Scene3DViewerPanel : UserControl
     {
+        /// <summary>
+        /// 骨牌模型初始位姿到机器人末端TCP初始位姿的水平变换。
+        /// </summary>
+        private static readonly Transform3D attachedDominoModelOriginalTransformHorizontal
+            = Transform3DHelper.CombineTransform(new RotateTransform3D(new AxisAngleRotation3D(new(1, 0, 0), 90), new(-351.49, 296.66, 34.11)),
+                                                 new TranslateTransform3D(41.49, 11.34, 707.89));
+
+        /// <summary>
+        /// 骨牌模型初始位姿到机器人末端TCP初始位姿的垂直变换。
+        /// </summary>
+        private static readonly Transform3D attachedDominoModelOriginalTransformVertical
+            = Transform3DHelper.CombineTransform(new RotateTransform3D(new AxisAngleRotation3D(new(0, 0, 1), 90), new(-351.49, 296.66, 34.11)),
+                                                 attachedDominoModelOriginalTransformHorizontal);
+
+        /// <summary>
+        /// 指示当前拾取或放置是否为第一次，用于判断应用水平变换还是垂直变换。
+        /// </summary>
+        private bool isFirstPickOrPut = false;
+
         public List<ModelVisual3D> DominoModels { get; set; } = new();
         public List<ModelVisual3D> DominoPreviewModels { get; set; } = new();
+        public ModelVisual3D? AttachedDominoModel { get; set; } = null;
 
         public Scene3DViewerPanel()
         {
@@ -192,6 +213,72 @@ namespace DBGware.RobotStudioLite
                 DominoPreviewModels[i].Transform = Transform3DHelper.CombineTransform(new RotateTransform3D(new AxisAngleRotation3D(new(0, 0, 1), dominoes[i].Position.R), new(10, -234.26, 42.5)),
                                                                                       new TranslateTransform3D(dominoes[i].Position.X, dominoes[i].Position.Y, dominoes[i].Position.Z));
             }
+        }
+
+        public void RdIsAttached_ValueChanged(object? sender, DataValueChangedEventArgs e)
+        {
+            if (sender is not RapidData rdIsAttached) return;
+
+            if (bool.Parse(rdIsAttached.StringValue)) // 拾取
+            {
+                Point3D tcp = new(App.Robot.StatusCache!.LinearPosition.Trans.X,
+                                  App.Robot.StatusCache!.LinearPosition.Trans.Y,
+                                  App.Robot.StatusCache!.LinearPosition.Trans.Z);
+
+                // 即使GetPosition(CoordinateSystemType.World)，也仍然是wobj0的基坐标系，手动将tcp从基坐标系转换到世界坐标系
+                Transform3D transform3D = Transform3DHelper.CombineTransform(new RotateTransform3D(new AxisAngleRotation3D(new(0, 0, 1), 90), new(0, 0, 0)),
+                                                                             new TranslateTransform3D(-310, -180, 10));
+                tcp = transform3D.Transform(tcp);
+
+                foreach (ModelVisual3D dominoModel in DominoModels)
+                {
+                    Rect3D dominoModelBoundingBox = dominoModel.FindBounds(Transform3D.Identity);
+                    // 向上偏移一点确保拾取成功
+                    dominoModelBoundingBox.Offset(0, 0, 5);
+
+                    if (dominoModelBoundingBox.Contains(tcp))
+                    {
+                        isFirstPickOrPut = !isFirstPickOrPut;
+                        AttachedDominoModel = dominoModel;
+                        App.Robot.Joints[5].PropertyChanged += GlobalTransform_Changed;
+                        return;
+                    }
+                }
+            }
+            else // 放置
+            {
+                try
+                {
+                    App.Robot.Joints[5].PropertyChanged -= GlobalTransform_Changed;
+                }
+                catch (ArgumentException)
+                {
+                    // 如果RAPID里IsAttached变量没有复位为FALSE，在初始化时会复位，引发一次值更改事件
+                    // 但此时没有任何订阅，所以抛异常，不影响运行
+                    // 常发生于运行中途停止机器人程序运行
+                }
+
+                if (isFirstPickOrPut)
+                {
+                    AttachedDominoModel!.Transform = Transform3DHelper.CombineTransform(AttachedDominoModel.Transform,
+                                                                                        new TranslateTransform3D(0, -6.2, -12.75));
+                }
+
+                AttachedDominoModel = null;
+            }
+        }
+
+        private void GlobalTransform_Changed(object? sender, PropertyChangedEventArgs e)
+        {
+            if (sender is not RobotJoint robotJoint
+                || e.PropertyName != "GlobalTransform"
+                || AttachedDominoModel is null) return;
+
+            Transform3D attachedDominoModelOriginalTransform = isFirstPickOrPut ? attachedDominoModelOriginalTransformHorizontal
+                                                                                : attachedDominoModelOriginalTransformVertical;
+
+            AttachedDominoModel.Transform = Transform3DHelper.CombineTransform(attachedDominoModelOriginalTransform,
+                                                                               robotJoint.GlobalTransform);
         }
     }
 }

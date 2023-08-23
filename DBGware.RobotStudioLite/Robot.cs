@@ -13,12 +13,13 @@ namespace DBGware.RobotStudioLite
 {
     public class Robot
     {
-        public Controller? Controller { get; set; } = null;
+        public Controller? Controller { get; private set; } = null;
         public Mastership? Mastership { get; set; } = null;
-        public RobotStatus? StatusCache { get; set; } = null;
-        public Timer StatusCacheRefreshTimer { get; set; } = new();
+        public RobotStatus? StatusCache { get; private set; } = null;
+        public Timer StatusCacheRefreshTimer { get; private set; } = new();
         public List<RobotJoint> Joints { get; set; } = new();
         public bool IsStatusCacheRefreshing { get; private set; } = false;
+        public RapidData? RdIsAttached { get; private set; } = null;
 
         public Robot()
         {
@@ -77,6 +78,17 @@ namespace DBGware.RobotStudioLite
                 ((MainWindow)App.Current.MainWindow).robotLinearJogPanel.LinearPosition = StatusCache.LinearPosition;
 
                 SetPosition(StatusCache.JointPosition);
+
+                if (RdIsAttached != null) return;
+                try
+                {
+                    RdIsAttached = Controller.Rapid.GetRapidData("T_ROB1", "ToolModule", "IsAttached");
+                    RdIsAttached.ValueChanged += ((MainWindow)App.Current.MainWindow).scene3DViewerPanel.RdIsAttached_ValueChanged;
+                }
+                catch
+                {
+                    // 没有IsAttached变量
+                }
             });
 
             IsStatusCacheRefreshing = false;
@@ -112,6 +124,13 @@ namespace DBGware.RobotStudioLite
             Mastership?.Release();
             Mastership?.Dispose();
             Mastership = null;
+
+            if (RdIsAttached != null)
+            {
+                RdIsAttached.ValueChanged -= ((MainWindow)App.Current.MainWindow).scene3DViewerPanel.RdIsAttached_ValueChanged;
+                RdIsAttached.Dispose();
+                RdIsAttached = null;
+            }
 
             Controller?.Logoff();
             Controller?.Dispose();
