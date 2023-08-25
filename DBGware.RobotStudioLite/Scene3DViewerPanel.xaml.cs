@@ -5,9 +5,11 @@ using System.Collections.Specialized;
 using System.ComponentModel;
 using System.Windows.Controls;
 using System.Windows.Media;
+using System.Windows.Input;
 using System.Windows.Media.Media3D;
 using ABB.Robotics.Controllers.RapidDomain;
 using HelixToolkit.Wpf;
+using DBGware.RobotStudioLite.UI.Controls;
 
 namespace DBGware.RobotStudioLite
 {
@@ -44,7 +46,7 @@ namespace DBGware.RobotStudioLite
             InitializeComponent();
             LoadEnvironment();
             LoadRobot();
-            LoadDominoes();
+            LoadDominoes(new() { Rows = 5, Columns = 6, RowSpacing = 65, ColumnSpacing = 35 });
         }
 
         private void LoadEnvironment()
@@ -116,23 +118,9 @@ namespace DBGware.RobotStudioLite
             App.Robot.Joints[5].RotationPoint = new(-310, 176, 627);
         }
 
-        private void LoadDominoes()
+        private void LoadDominoes(Tray tray)
         {
-            // 借用Tray_PropertyChanged函数加载多米诺骨牌作为初始状态
-            Tray tray = new() { Rows = 5, Columns = 6, RowSpacing = 65, ColumnSpacing = 35 };
-            Tray_PropertyChanged(tray, new("Rows"));
-        }
-
-        public void Tray_PropertyChanged(object? sender, PropertyChangedEventArgs e)
-        {
-            if (e.PropertyName != "Rows"
-             && e.PropertyName != "Columns"
-             && e.PropertyName != "RowSpacing"
-             && e.PropertyName != "ColumnSpacing") return;
-
-            Tray tray = (sender as Tray)!;
-
-            // 清空上一次的骨牌模型
+            // 如果有的话，清空上一次的骨牌模型
             DominoModels.ForEach(d => sortingVisual3D.Children.Remove(d));
             DominoModels.Clear();
 
@@ -151,6 +139,17 @@ namespace DBGware.RobotStudioLite
                     DominoModels.Add(modelVisual3D);
                 }
             }
+        }
+
+        public void Tray_PropertyChanged(object? sender, PropertyChangedEventArgs e)
+        {
+            if (e.PropertyName != "Rows"
+             && e.PropertyName != "Columns"
+             && e.PropertyName != "RowSpacing"
+             && e.PropertyName != "ColumnSpacing"
+             || sender is not Tray tray) return;
+
+            LoadDominoes(tray);
         }
 
         public void Dominoes_CollectionChanged(object? sender, NotifyCollectionChangedEventArgs e)
@@ -256,6 +255,7 @@ namespace DBGware.RobotStudioLite
                     // 如果RAPID里IsAttached变量没有复位为FALSE，在初始化时会复位，引发一次值更改事件
                     // 但此时没有任何订阅，所以抛异常，不影响运行
                     // 常发生于运行中途停止机器人程序运行
+                    // TODO 在RobotJoint类中自定义事件访问器，判断事件订阅是否为空
                 }
 
                 if (isFirstPickOrPut)
@@ -280,5 +280,70 @@ namespace DBGware.RobotStudioLite
             AttachedDominoModel.Transform = Transform3DHelper.CombineTransform(attachedDominoModelOriginalTransform,
                                                                                robotJoint.GlobalTransform);
         }
+
+        private void GlyphButton_MouseEnter(object sender, MouseEventArgs e)
+        {
+            if (sender is not GlyphButton glyphButton) return;
+            glyphButton.AnimateOpacity(1.0, 200);
+
+            if (glyphButton.Content is not TextBlock textBlock) return;
+            textBlock.FontSize = 20;
+        }
+
+        private void GlyphButton_MouseLeave(object sender, MouseEventArgs e)
+        {
+            if (sender is not GlyphButton glyphButton) return;
+            glyphButton.AnimateOpacity(0.5, 200);
+
+            if (glyphButton.Content is not TextBlock textBlock) return;
+            textBlock.FontSize = 16;
+        }
+
+        #region 重置场景命令
+
+        private void ResetSceneCommandExecuted(object sender, ExecutedRoutedEventArgs e)
+        {
+            isFirstPickOrPut = false;
+            try
+            {
+                App.Robot.Joints[5].PropertyChanged -= GlobalTransform_Changed;
+            }
+            catch (ArgumentException)
+            {
+                // 同上
+            }
+            AttachedDominoModel = null;
+            Tray tray = ((MainWindow)App.Current.MainWindow).dominoesTaskPanel.dominoesTaskPanelSettingsTab.Tray;
+            LoadDominoes(tray);
+        }
+
+        private void ResetSceneCommandCanExecute(object sender, CanExecuteRoutedEventArgs e)
+        {
+            e.CanExecute = App.Robot.StatusCache?.ExecutionStatus != ExecutionStatus.Running;
+        }
+
+        #endregion
+
+        #region 显示或隐藏场景信息命令
+
+        private void ShowOrHideSceneInfoCommandExecuted(object sender, ExecutedRoutedEventArgs e)
+        {
+            helixViewport3D.ShowCameraInfo = !helixViewport3D.ShowCameraInfo;
+            helixViewport3D.ShowTriangleCountInfo = !helixViewport3D.ShowTriangleCountInfo;
+            helixViewport3D.ShowFrameRate = !helixViewport3D.ShowFrameRate;
+
+            if (e.Parameter is not GlyphButton glyphButton) return;
+            SolidColorBrush solidColorBrush = helixViewport3D.ShowCameraInfo ? new(new() { A = 255, R = 241, G = 175, B = 119 })
+                                                                             : new(new() { A = 255, R = 246, G = 246, B = 246 });
+            glyphButton.Background = solidColorBrush;
+            glyphButton.HoverBackground = solidColorBrush;
+        }
+
+        private void ShowOrHideSceneInfoCommandCanExecute(object sender, CanExecuteRoutedEventArgs e)
+        {
+            e.CanExecute = true;
+        }
+
+        #endregion
     }
 }

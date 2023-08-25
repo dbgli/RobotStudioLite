@@ -133,4 +133,7 @@
     <sys:String x:Key="SynchronizeToRobot">Synchronize to Robot</sys:String>
     <sys:String x:Key="CreateBackup">Create Backup</sys:String>
 
+    <sys:String x:Key="ResetScene">Reset Scene</sys:String>
+    <sys:String x:Key="ShowOrHideSceneInfo">Show/Hide Scene Info</sys:String>
+
 </ResourceDictionary>

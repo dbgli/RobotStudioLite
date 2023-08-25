@@ -133,4 +133,7 @@
     <sys:String x:Key="SynchronizeToRobot">同步到机器人</sys:String>
     <sys:String x:Key="CreateBackup">创建备份</sys:String>
 
+    <sys:String x:Key="ResetScene">重置场景</sys:String>
+    <sys:String x:Key="ShowOrHideSceneInfo">显示/隐藏场景信息</sys:String>
+
 </ResourceDictionary>

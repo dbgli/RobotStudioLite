@@ -37,5 +37,8 @@ namespace DBGware.RobotStudioLite
         public static RoutedCommand LoadProgramCommand { get; } = new();
         public static RoutedCommand SynchronizeToRobotCommand { get; } = new();
         public static RoutedCommand CreateBackupCommand { get; } = new();
+
+        public static RoutedCommand ResetSceneCommand { get; } = new();
+        public static RoutedCommand ShowOrHideSceneInfoCommand { get; } = new();
     }
 }
