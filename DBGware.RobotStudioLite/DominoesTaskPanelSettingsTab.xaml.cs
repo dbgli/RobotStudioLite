@@ -7,6 +7,8 @@ using System.Windows.Data;
 using System.Windows.Input;
 using System.Xml.Linq;
 using Microsoft.Win32;
+using ABB.Robotics;
+using ABB.Robotics.Controllers.RapidDomain;
 using DBGware.RobotStudioLite.Utilities;
 
 namespace DBGware.RobotStudioLite
@@ -142,6 +144,54 @@ namespace DBGware.RobotStudioLite
         private void SaveAsPresetCommandCanExecute(object sender, CanExecuteRoutedEventArgs e)
         {
             e.CanExecute = true;
+        }
+
+        #endregion
+
+        #region 部署任务命令
+
+        private void DeployTaskCommandExecuted(object sender, ExecutedRoutedEventArgs e)
+        {
+            if (App.Robot.Controller?.Rapid is not Rapid rapid) return;
+
+            try
+            {
+                RapidData rdTray = rapid.GetRapidData("T_ROB1", "MainModule", "Tray");
+                RapidData rdNumber = rapid.GetRapidData("T_ROB1", "MainModule", "Number");
+                RapidData rdDominoes = rapid.GetRapidData("T_ROB1", "MainModule", "Dominoes");
+                RapidData rdPushPosition = rapid.GetRapidData("T_ROB1", "MainModule", "PushPosition");
+
+                rdTray.StringValue = $"[{Tray.Rows},{Tray.Columns},{Tray.RowSpacing},{Tray.ColumnSpacing}]";
+                rdNumber.StringValue = $"{Dominoes.Count}";
+
+                string rdDominoesStringValue = "[";
+                for (int i = 0; i < 10; i++)
+                {
+                    rdDominoesStringValue += i < Dominoes.Count ? $"[{Dominoes[i].ID}," +
+                                                                  $"[{DominoSize.Length},{DominoSize.Width},{DominoSize.Height}]," +
+                                                                  $"[{Dominoes[i].Position.X},{Dominoes[i].Position.Y},{Dominoes[i].Position.Z},{Dominoes[i].Position.R}]],"
+                                                                : "[0,[0,0,0],[0,0,0,0]],";
+                }
+                // 范围运算符，先去除最后一个多余的逗号，再加上数组外围的方括号
+                rdDominoesStringValue = rdDominoesStringValue[..^1] + "]";
+                rdDominoes.StringValue = rdDominoesStringValue;
+
+                rdPushPosition.StringValue = $"[{PushPosition.X},{PushPosition.Y},{PushPosition.Z},{PushPosition.R}]";
+            }
+            catch (GenericControllerException)
+            {
+                MessageBox.Show((string)App.Current.FindResource("DeployTaskFailedMessage"),
+                                "RobotStudioLite",
+                                MessageBoxButton.OK,
+                                MessageBoxImage.Warning,
+                                MessageBoxResult.OK);
+            }
+        }
+
+        private void DeployTaskCommandCanExecute(object sender, CanExecuteRoutedEventArgs e)
+        {
+            e.CanExecute = App.Robot.StatusCache?.IsMaster == true
+                        && App.Robot.StatusCache?.ExecutionStatus != ExecutionStatus.Running;
         }
 
         #endregion

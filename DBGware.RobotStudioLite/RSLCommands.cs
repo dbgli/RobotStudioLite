@@ -28,6 +28,7 @@ namespace DBGware.RobotStudioLite
 
         public static RoutedCommand LoadPresetCommand { get; } = new();
         public static RoutedCommand SaveAsPresetCommand { get; } = new();
+        public static RoutedCommand DeployTaskCommand { get; } = new();
         public static RoutedCommand AddDominoCommand { get; } = new();
         public static RoutedCommand DeleteDominoCommand { get; } = new();
         public static RoutedCommand MoveDominoUpCommand { get; } = new();

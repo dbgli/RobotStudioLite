@@ -21,6 +21,10 @@
             Executed="SaveAsPresetCommandExecuted"
             CanExecute="SaveAsPresetCommandCanExecute" />
         <CommandBinding
+            Command="{x:Static local:RSLCommands.DeployTaskCommand}"
+            Executed="DeployTaskCommandExecuted"
+            CanExecute="DeployTaskCommandCanExecute" />
+        <CommandBinding
             Command="{x:Static local:RSLCommands.AddDominoCommand}"
             Executed="AddDominoCommandExecuted"
             CanExecute="AddDominoCommandCanExecute" />
@@ -49,9 +53,12 @@
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="Auto" />
                 <ColumnDefinition Width="Auto" />
+                <ColumnDefinition />
+                <ColumnDefinition Width="Auto" />
             </Grid.ColumnDefinitions>
             <Button Grid.Column="0" Content="{DynamicResource LoadPreset}" Margin="0,0,8,8" MinWidth="100" Command="{x:Static local:RSLCommands.LoadPresetCommand}" />
             <Button Grid.Column="1" Content="{DynamicResource SaveAsPreset}" Margin="0,0,8,8" MinWidth="100" Command="{x:Static local:RSLCommands.SaveAsPresetCommand}" />
+            <Button Grid.Column="3" Content="{DynamicResource DeployTask}" Margin="0,0,0,8" MinWidth="100" Command="{x:Static local:RSLCommands.DeployTaskCommand}" />
         </Grid>
 
         <Grid Grid.Row="1">

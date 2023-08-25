@@ -99,6 +99,7 @@
 
     <sys:String x:Key="LoadPreset">加载预设</sys:String>
     <sys:String x:Key="SaveAsPreset">保存为预设</sys:String>
+    <sys:String x:Key="DeployTask">部署任务</sys:String>
     <sys:String x:Key="Tray">托盘</sys:String>
     <sys:String x:Key="Domino">骨牌</sys:String>
     <sys:String x:Key="PushPosition">推倒位置</sys:String>
@@ -126,6 +127,7 @@
 
     <sys:String x:Key="ProgramModuleExistsMessage">新程序模块加载后，当前任务中的程序模块将被移除。是否继续加载新的程序模块？</sys:String>
     <sys:String x:Key="LoadPresetFailedMessage">加载预设失败！请检查它是否为有效的RobotStudioLite预设文件。</sys:String>
+    <sys:String x:Key="DeployTaskFailedMessage">部署任务失败！找不到RAPID符号。请先将RAPID程序同步到机器人，然后重试。</sys:String>
     <sys:String x:Key="LoadProgramFailedMessage">加载程序失败！请检查它是否为有效的IRC5或S4程序文件。</sys:String>
     <sys:String x:Key="ChangeRowsOrColumnsMessage">更改托盘的行数或列数将清空多米诺骨牌队列，是否继续？</sys:String>
 
