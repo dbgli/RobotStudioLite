@@ -28,6 +28,12 @@ namespace DBGware.RobotStudioLite
 
         public MainWindow()
         {
+            SignInWindow signInWindow = new();
+            if (signInWindow.ShowDialog() != true)
+            {
+                Environment.Exit(0);
+            }
+
             InitializeComponent();
             dominoesTaskPanel.dominoesTaskPanelSettingsTab.Tray.PropertyChanged += scene3DViewerPanel.Tray_PropertyChanged;
             dominoesTaskPanel.dominoesTaskPanelSettingsTab.Dominoes.CollectionChanged += scene3DViewerPanel.Dominoes_CollectionChanged;

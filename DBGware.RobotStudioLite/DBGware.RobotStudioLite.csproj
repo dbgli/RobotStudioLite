@@ -140,6 +140,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\DBGware.RobotStudioLite.SQLite\DBGware.RobotStudioLite.SQLite.csproj" />
     <ProjectReference Include="..\DBGware.RobotStudioLite.UI\DBGware.RobotStudioLite.UI.csproj" />
     <ProjectReference Include="..\DBGware.RobotStudioLite.UI.Themes.AvalonDock\DBGware.RobotStudioLite.UI.Themes.AvalonDock.csproj" />
     <ProjectReference Include="..\DBGware.RobotStudioLite.Localization\DBGware.RobotStudioLite.Localization.csproj" />
@@ -162,6 +163,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="Users\" />
     <Folder Include="Presets\" />
     <Folder Include="Resources\Icons\PNG\" />
     <Folder Include="Resources\Icons\SVG\" />

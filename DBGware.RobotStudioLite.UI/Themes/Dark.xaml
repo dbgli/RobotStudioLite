@@ -419,4 +419,8 @@
     <SolidColorBrush x:Key="AvalonEditTextEditorForeground" Color="#FFFFFFFF" />
     <SolidColorBrush x:Key="AvalonEditTextEditorBackground" Color="#FF141414" />
 
+    <SolidColorBrush x:Key="SignInButtonForeground" Color="#FFC0C0C0" />
+    <SolidColorBrush x:Key="SignInButtonHoverForeground" Color="#FFFFFFFF" />
+    <SolidColorBrush x:Key="SignInButtonPressedForeground" Color="#FFFFFFFF" />
+
 </ResourceDictionary>

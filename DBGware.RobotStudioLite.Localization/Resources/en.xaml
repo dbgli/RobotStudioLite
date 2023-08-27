@@ -138,4 +138,10 @@
     <sys:String x:Key="ResetScene">Reset Scene</sys:String>
     <sys:String x:Key="ShowOrHideSceneInfo">Show/Hide Scene Info</sys:String>
 
+    <sys:String x:Key="Username">Username:</sys:String>
+    <sys:String x:Key="Password">Password:</sys:String>
+    <sys:String x:Key="SignIn">Sign In</sys:String>
+    <sys:String x:Key="SignOut">Sign Out</sys:String>
+    <sys:String x:Key="UsernameOrPasswordIncorrectMessage">Your username or password is incorrect. Please try again.</sys:String>
+
 </ResourceDictionary>

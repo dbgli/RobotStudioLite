@@ -138,4 +138,10 @@
     <sys:String x:Key="ResetScene">重置场景</sys:String>
     <sys:String x:Key="ShowOrHideSceneInfo">显示/隐藏场景信息</sys:String>
 
+    <sys:String x:Key="Username">用户名：</sys:String>
+    <sys:String x:Key="Password">密码：</sys:String>
+    <sys:String x:Key="SignIn">登录</sys:String>
+    <sys:String x:Key="SignOut">登出</sys:String>
+    <sys:String x:Key="UsernameOrPasswordIncorrectMessage">您的用户名或密码不正确。请重试。</sys:String>
+
 </ResourceDictionary>
