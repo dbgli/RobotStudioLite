@@ -39,6 +39,7 @@ namespace DBGware.RobotStudioLite
 
         public List<ModelVisual3D> DominoModels { get; set; } = new();
         public List<ModelVisual3D> DominoPreviewModels { get; set; } = new();
+        public List<BillboardTextVisual3D> DominoQueueOrderLabels { get; set; } = new();
         public ModelVisual3D? AttachedDominoModel { get; set; } = null;
 
         public Scene3DViewerPanel()
@@ -141,6 +142,43 @@ namespace DBGware.RobotStudioLite
             }
         }
 
+        private void UpdateDominoQueueOrderLabels()
+        {
+            // 清空上一次的骨牌队列顺序标签
+            DominoQueueOrderLabels.ForEach(l => sortingVisual3D.Children.Remove(l));
+            DominoQueueOrderLabels.Clear();
+
+            Tray tray = ((MainWindow)App.Current.MainWindow)
+                                                .dominoesTaskPanel
+                                                .dominoesTaskPanelSettingsTab
+                                                .Tray;
+            ObservableCollection<Domino> dominoes = ((MainWindow)App.Current.MainWindow)
+                                                                            .dominoesTaskPanel
+                                                                            .dominoesTaskPanelSettingsTab
+                                                                            .Dominoes;
+
+            Point3D originalPoint = new(-351.49, 296.66, 44.11);
+            for (int i = 0; i < dominoes.Count; i++)
+            {
+                int row = (dominoes[i].ID - 1) / tray.Columns;
+                int column = (dominoes[i].ID - 1) % tray.Columns;
+                Vector3D offset = new(row * tray.RowSpacing, -column * tray.ColumnSpacing, 0);
+                Point3D point = originalPoint + offset;
+                BillboardTextVisual3D dominoQueueOrderLabel = new()
+                {
+                    Text = (i + 1).ToString(),
+                    Foreground = Brushes.Black,
+                    Background = new SolidColorBrush(new() { A = 255, R = 255, G = 255, B = 192 }),
+                    BorderBrush = Brushes.Black,
+                    BorderThickness = new(1),
+                    Padding = new(2),
+                    Position = point
+                };
+                sortingVisual3D.Children.Add(dominoQueueOrderLabel);
+                DominoQueueOrderLabels.Add(dominoQueueOrderLabel);
+            }
+        }
+
         public void Tray_PropertyChanged(object? sender, PropertyChangedEventArgs e)
         {
             if (e.PropertyName != "Rows"
@@ -150,6 +188,7 @@ namespace DBGware.RobotStudioLite
              || sender is not Tray tray) return;
 
             LoadDominoes(tray);
+            UpdateDominoQueueOrderLabels();
         }
 
         public void Dominoes_CollectionChanged(object? sender, NotifyCollectionChangedEventArgs e)
@@ -190,7 +229,11 @@ namespace DBGware.RobotStudioLite
                 // TODO 可以用事件转发代替
                 domino.PropertyChanged -= DominoPosition_PropertyChanged;
                 domino.PropertyChanged += DominoPosition_PropertyChanged;
+                // 当骨牌ID属性更改时，更新骨牌队列顺序标签
+                domino.PropertyChanged -= DominoID_PropertyChanged;
+                domino.PropertyChanged += DominoID_PropertyChanged;
             }
+            UpdateDominoQueueOrderLabels();
         }
 
         private void DominoPosition_PropertyChanged(object? sender, PropertyChangedEventArgs e)
@@ -212,6 +255,12 @@ namespace DBGware.RobotStudioLite
                 DominoPreviewModels[i].Transform = Transform3DHelper.CombineTransform(new RotateTransform3D(new AxisAngleRotation3D(new(0, 0, 1), dominoes[i].Position.R), new(10, -234.26, 42.5)),
                                                                                       new TranslateTransform3D(dominoes[i].Position.X, dominoes[i].Position.Y, dominoes[i].Position.Z));
             }
+        }
+
+        private void DominoID_PropertyChanged(object? sender, PropertyChangedEventArgs e)
+        {
+            if (e.PropertyName != "ID") return;
+            UpdateDominoQueueOrderLabels();
         }
 
         public void RdIsAttached_ValueChanged(object? sender, DataValueChangedEventArgs e)
