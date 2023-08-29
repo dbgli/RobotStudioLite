@@ -21,7 +21,11 @@
             <TreeViewItem IsExpanded="True">
                 <TreeViewItem.Header>
                     <StackPanel Orientation="Horizontal">
-                        <TextBlock Text="&#xF156;" FontFamily="Segoe Fluent Icons,Segoe MDL2 Assets" Margin="0,0,4,0" VerticalAlignment="Center" />
+                        <TextBlock
+                            Text="&#xF156;"
+                            FontFamily="Segoe Fluent Icons,Segoe MDL2 Assets"
+                            Margin="0,0,4,0"
+                            VerticalAlignment="Center" />
                         <TextBlock Text="{DynamicResource DominoesWorkstation}" />
                     </StackPanel>
                 </TreeViewItem.Header>
@@ -29,13 +33,19 @@
                 <TreeViewItem IsExpanded="True">
                     <TreeViewItem.Header>
                         <StackPanel Orientation="Horizontal">
-                            <TextBlock Text="&#xF158;" FontFamily="Segoe Fluent Icons,Segoe MDL2 Assets" Margin="0,0,4,0" VerticalAlignment="Center" />
+                            <TextBlock
+                                Text="&#xF158;"
+                                FontFamily="Segoe Fluent Icons,Segoe MDL2 Assets"
+                                Margin="0,0,4,0"
+                                VerticalAlignment="Center"
+                                Opacity="{Binding ElementName=robotVisibilityMenuItem, Path=IsChecked, Converter={StaticResource BoolToOpacityConverter}}" />
                             <TextBlock Text="{DynamicResource Robot}" />
                         </StackPanel>
                     </TreeViewItem.Header>
                     <TreeViewItem.ContextMenu>
                         <ContextMenu>
                             <MenuItem
+                                x:Name="robotVisibilityMenuItem"
                                 Header="{DynamicResource Visible}"
                                 IsCheckable="True"
                                 IsChecked="True"
@@ -49,13 +59,19 @@
                 <TreeViewItem IsExpanded="True">
                     <TreeViewItem.Header>
                         <StackPanel Orientation="Horizontal">
-                            <TextBlock Text="&#xF158;" FontFamily="Segoe Fluent Icons,Segoe MDL2 Assets" Margin="0,0,4,0" VerticalAlignment="Center" />
+                            <TextBlock
+                                Text="&#xF158;"
+                                FontFamily="Segoe Fluent Icons,Segoe MDL2 Assets"
+                                Margin="0,0,4,0"
+                                VerticalAlignment="Center"
+                                Opacity="{Binding ElementName=adjustmentAreaVisibilityMenuItem, Path=IsChecked, Converter={StaticResource BoolToOpacityConverter}}" />
                             <TextBlock Text="{DynamicResource AdjustmentArea}" />
                         </StackPanel>
                     </TreeViewItem.Header>
                     <TreeViewItem.ContextMenu>
                         <ContextMenu>
                             <MenuItem
+                                x:Name="adjustmentAreaVisibilityMenuItem"
                                 Header="{DynamicResource Visible}"
                                 IsCheckable="True"
                                 IsChecked="True"
@@ -69,13 +85,19 @@
                 <TreeViewItem IsExpanded="True">
                     <TreeViewItem.Header>
                         <StackPanel Orientation="Horizontal">
-                            <TextBlock Text="&#xF158;" FontFamily="Segoe Fluent Icons,Segoe MDL2 Assets" Margin="0,0,4,0" VerticalAlignment="Center" />
+                            <TextBlock
+                                Text="&#xF158;"
+                                FontFamily="Segoe Fluent Icons,Segoe MDL2 Assets"
+                                Margin="0,0,4,0"
+                                VerticalAlignment="Center"
+                                Opacity="{Binding ElementName=calibrationDominoesVisibilityMenuItem, Path=IsChecked, Converter={StaticResource BoolToOpacityConverter}}" />
                             <TextBlock Text="{DynamicResource CalibrationDominoes}" />
                         </StackPanel>
                     </TreeViewItem.Header>
                     <TreeViewItem.ContextMenu>
                         <ContextMenu>
                             <MenuItem
+                                x:Name="calibrationDominoesVisibilityMenuItem"
                                 Header="{DynamicResource Visible}"
                                 IsCheckable="True"
                                 IsChecked="False"
@@ -89,13 +111,19 @@
                 <TreeViewItem IsExpanded="True">
                     <TreeViewItem.Header>
                         <StackPanel Orientation="Horizontal">
-                            <TextBlock Text="&#xF158;" FontFamily="Segoe Fluent Icons,Segoe MDL2 Assets" Margin="0,0,4,0" VerticalAlignment="Center" />
+                            <TextBlock
+                                Text="&#xF158;"
+                                FontFamily="Segoe Fluent Icons,Segoe MDL2 Assets"
+                                Margin="0,0,4,0"
+                                VerticalAlignment="Center"
+                                Opacity="{Binding ElementName=loadingAreaVisibilityMenuItem, Path=IsChecked, Converter={StaticResource BoolToOpacityConverter}}" />
                             <TextBlock Text="{DynamicResource LoadingArea}" />
                         </StackPanel>
                     </TreeViewItem.Header>
                     <TreeViewItem.ContextMenu>
                         <ContextMenu>
                             <MenuItem
+                                x:Name="loadingAreaVisibilityMenuItem"
                                 Header="{DynamicResource Visible}"
                                 IsCheckable="True"
                                 IsChecked="True"
@@ -109,13 +137,19 @@
                 <TreeViewItem IsExpanded="True">
                     <TreeViewItem.Header>
                         <StackPanel Orientation="Horizontal">
-                            <TextBlock Text="&#xF158;" FontFamily="Segoe Fluent Icons,Segoe MDL2 Assets" Margin="0,0,4,0" VerticalAlignment="Center" />
+                            <TextBlock
+                                Text="&#xF158;"
+                                FontFamily="Segoe Fluent Icons,Segoe MDL2 Assets"
+                                Margin="0,0,4,0"
+                                VerticalAlignment="Center"
+                                Opacity="{Binding ElementName=omniCoreVisibilityMenuItem, Path=IsChecked, Converter={StaticResource BoolToOpacityConverter}}" />
                             <TextBlock Text="{DynamicResource OmniCore}" />
                         </StackPanel>
                     </TreeViewItem.Header>
                     <TreeViewItem.ContextMenu>
                         <ContextMenu>
                             <MenuItem
+                                x:Name="omniCoreVisibilityMenuItem"
                                 Header="{DynamicResource Visible}"
                                 IsCheckable="True"
                                 IsChecked="True"
@@ -129,13 +163,19 @@
                 <TreeViewItem IsExpanded="True">
                     <TreeViewItem.Header>
                         <StackPanel Orientation="Horizontal">
-                            <TextBlock Text="&#xF158;" FontFamily="Segoe Fluent Icons,Segoe MDL2 Assets" Margin="0,0,4,0" VerticalAlignment="Center" />
+                            <TextBlock
+                                Text="&#xF158;"
+                                FontFamily="Segoe Fluent Icons,Segoe MDL2 Assets"
+                                Margin="0,0,4,0"
+                                VerticalAlignment="Center"
+                                Opacity="{Binding ElementName=tableVisibilityMenuItem, Path=IsChecked, Converter={StaticResource BoolToOpacityConverter}}" />
                             <TextBlock Text="{DynamicResource Table}" />
                         </StackPanel>
                     </TreeViewItem.Header>
                     <TreeViewItem.ContextMenu>
                         <ContextMenu>
                             <MenuItem
+                                x:Name="tableVisibilityMenuItem"
                                 Header="{DynamicResource Visible}"
                                 IsCheckable="True"
                                 IsChecked="True"
@@ -149,13 +189,19 @@
                 <TreeViewItem IsExpanded="True">
                     <TreeViewItem.Header>
                         <StackPanel Orientation="Horizontal">
-                            <TextBlock Text="&#xF158;" FontFamily="Segoe Fluent Icons,Segoe MDL2 Assets" Margin="0,0,4,0" VerticalAlignment="Center" />
+                            <TextBlock
+                                Text="&#xF158;"
+                                FontFamily="Segoe Fluent Icons,Segoe MDL2 Assets"
+                                Margin="0,0,4,0"
+                                VerticalAlignment="Center"
+                                Opacity="{Binding ElementName=unloadingAreaVisibilityMenuItem, Path=IsChecked, Converter={StaticResource BoolToOpacityConverter}}" />
                             <TextBlock Text="{DynamicResource UnloadingArea}" />
                         </StackPanel>
                     </TreeViewItem.Header>
                     <TreeViewItem.ContextMenu>
                         <ContextMenu>
                             <MenuItem
+                                x:Name="unloadingAreaVisibilityMenuItem"
                                 Header="{DynamicResource Visible}"
                                 IsCheckable="True"
                                 IsChecked="True"
@@ -170,7 +216,12 @@
                 <TreeViewItem IsExpanded="True">
                     <TreeViewItem.Header>
                         <StackPanel Orientation="Horizontal">
-                            <TextBlock Text="&#xF158;" FontFamily="Segoe Fluent Icons,Segoe MDL2 Assets" Margin="0,0,4,0" VerticalAlignment="Center" />
+                            <TextBlock
+                                Text="&#xF158;"
+                                FontFamily="Segoe Fluent Icons,Segoe MDL2 Assets"
+                                Margin="0,0,4,0"
+                                VerticalAlignment="Center"
+                                Opacity="{Binding ElementName=dominoesVisibilityMenuItem, Path=IsChecked, Converter={StaticResource BoolToOpacityConverter}}" />
                             <TextBlock Text="{DynamicResource Dominoes}" />
                         </StackPanel>
                     </TreeViewItem.Header>
@@ -191,7 +242,12 @@
                 <TreeViewItem IsExpanded="True">
                     <TreeViewItem.Header>
                         <StackPanel Orientation="Horizontal">
-                            <TextBlock Text="&#xF158;" FontFamily="Segoe Fluent Icons,Segoe MDL2 Assets" Margin="0,0,4,0" VerticalAlignment="Center" />
+                            <TextBlock
+                                Text="&#xF158;"
+                                FontFamily="Segoe Fluent Icons,Segoe MDL2 Assets"
+                                Margin="0,0,4,0"
+                                VerticalAlignment="Center"
+                                Opacity="{Binding ElementName=dominoesPreviewVisibilityMenuItem, Path=IsChecked, Converter={StaticResource BoolToOpacityConverter}}" />
                             <TextBlock Text="{DynamicResource DominoesPreview}" />
                         </StackPanel>
                     </TreeViewItem.Header>
@@ -212,7 +268,12 @@
                 <TreeViewItem IsExpanded="True">
                     <TreeViewItem.Header>
                         <StackPanel Orientation="Horizontal">
-                            <TextBlock Text="&#xF158;" FontFamily="Segoe Fluent Icons,Segoe MDL2 Assets" Margin="0,0,4,0" VerticalAlignment="Center" />
+                            <TextBlock
+                                Text="&#xF158;"
+                                FontFamily="Segoe Fluent Icons,Segoe MDL2 Assets"
+                                Margin="0,0,4,0"
+                                VerticalAlignment="Center"
+                                Opacity="{Binding ElementName=dominoQueueOrderLabelsVisibilityMenuItem, Path=IsChecked, Converter={StaticResource BoolToOpacityConverter}}" />
                             <TextBlock Text="{DynamicResource DominoQueueOrderLabels}" />
                         </StackPanel>
                     </TreeViewItem.Header>

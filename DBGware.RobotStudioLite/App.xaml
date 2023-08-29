@@ -17,6 +17,7 @@
             </ResourceDictionary.MergedDictionaries>
 
             <conv:IndexToRowNumberConverter x:Key="IndexToRowNumberConverter" />
+            <conv:BoolToOpacityConverter x:Key="BoolToOpacityConverter" />
 
             <Style x:Key="CustomizeDocumentFloatingWindowStyle" TargetType="{x:Type LayoutDocumentFloatingWindowControl}">
                 <Setter Property="AllowMinimize" Value="True" />
