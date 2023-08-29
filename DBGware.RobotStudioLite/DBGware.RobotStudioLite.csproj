@@ -25,10 +25,10 @@
     <Content Include="Models\AdjustmentArea_Model.obj">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Models\CalibrationDomino_Model.mtl">
+    <Content Include="Models\CalibrationDominoes_Model.mtl">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Models\CalibrationDomino_Model.obj">
+    <Content Include="Models\CalibrationDominoes_Model.obj">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Models\DominoPreview_Model.mtl">

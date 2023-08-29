@@ -55,7 +55,7 @@ namespace DBGware.RobotStudioLite
         {
             string basePath = @$"{AppDomain.CurrentDomain.BaseDirectory}Models\";
             List<string> fileNames = new() { "AdjustmentArea_Model.obj",
-                                             "CalibrationDomino_Model.obj",
+                                             "CalibrationDominoes_Model.obj",
                                              "LoadingArea_Model.obj",
                                              "OmniCore_Model.obj",
                                              "RobotBase_Model.obj",
@@ -66,7 +66,12 @@ namespace DBGware.RobotStudioLite
             {
                 Model3DGroup model3DGroup = modelImporter.Load(basePath + fileName);
                 ModelVisual3D modelVisual3D = new() { Content = model3DGroup };
-                sortingVisual3D.Children.Add(modelVisual3D);
+
+                // 校准骨牌默认不显示
+                if (fileName != "CalibrationDominoes_Model.obj")
+                {
+                    sortingVisual3D.Children.Add(modelVisual3D);
+                }
 
                 // 将模型记录在布局面板中
                 LayoutPanel layoutPanel = ((MainWindow)App.Current.MainWindow).layoutPanel;
@@ -75,7 +80,7 @@ namespace DBGware.RobotStudioLite
                     case "AdjustmentArea_Model.obj":
                         layoutPanel.AdjustmentAreaModels.Add(modelVisual3D);
                         break;
-                    case "CalibrationDomino_Model.obj":
+                    case "CalibrationDominoes_Model.obj":
                         layoutPanel.CalibrationDominoesModels.Add(modelVisual3D);
                         break;
                     case "LoadingArea_Model.obj":
