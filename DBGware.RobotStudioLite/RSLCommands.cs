@@ -43,5 +43,7 @@ namespace DBGware.RobotStudioLite
         public static RoutedCommand ShowOrHideSceneInfoCommand { get; } = new();
 
         public static RoutedCommand SignInCommand { get; } = new();
+
+        public static RoutedCommand ToggleModelVisibilityCommand { get; } = new();
     }
 }

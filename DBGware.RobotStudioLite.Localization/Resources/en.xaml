@@ -144,4 +144,17 @@
     <sys:String x:Key="SignOut">Sign Out</sys:String>
     <sys:String x:Key="UsernameOrPasswordIncorrectMessage">Your username or password is incorrect. Please try again.</sys:String>
 
+    <sys:String x:Key="Visible">Visible</sys:String>
+
+    <sys:String x:Key="DominoesWorkstation">Dominoes Workstation</sys:String>
+    <sys:String x:Key="Robot">CRB1100_4_58__01</sys:String>
+    <sys:String x:Key="AdjustmentArea">Adjustment Area</sys:String>
+    <sys:String x:Key="CalibrationDominoes">Calibration Dominoes</sys:String>
+    <sys:String x:Key="LoadingArea">Loading Area</sys:String>
+    <sys:String x:Key="OmniCore">OmniCore</sys:String>
+    <sys:String x:Key="Table">Table</sys:String>
+    <sys:String x:Key="UnloadingArea">Unloading Area</sys:String>
+    <sys:String x:Key="DominoesPreview">Dominoes Preview</sys:String>
+    <sys:String x:Key="DominoQueueOrderLabels">Domino Queue Order Labels</sys:String>
+
 </ResourceDictionary>

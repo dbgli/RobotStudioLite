@@ -1,0 +1,236 @@
+﻿<UserControl x:Class="DBGware.RobotStudioLite.Controls.LayoutPanel"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:local="clr-namespace:DBGware.RobotStudioLite.Controls"
+             xmlns:main="clr-namespace:DBGware.RobotStudioLite"
+             mc:Ignorable="d"
+             d:DesignWidth="800" d:DesignHeight="450"
+             DataContext="{Binding RelativeSource={RelativeSource Mode=Self}}">
+
+    <UserControl.CommandBindings>
+        <CommandBinding
+            Command="{x:Static main:RSLCommands.ToggleModelVisibilityCommand}"
+            Executed="ToggleModelVisibilityCommandExecuted"
+            CanExecute="ToggleModelVisibilityCommandCanExecute" />
+    </UserControl.CommandBindings>
+    
+    <Grid>
+        <TreeView>
+            <TreeViewItem IsExpanded="True">
+                <TreeViewItem.Header>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="&#xF156;" FontFamily="Segoe Fluent Icons,Segoe MDL2 Assets" Margin="0,0,4,0" VerticalAlignment="Center" />
+                        <TextBlock Text="{DynamicResource DominoesWorkstation}" />
+                    </StackPanel>
+                </TreeViewItem.Header>
+                
+                <TreeViewItem IsExpanded="True">
+                    <TreeViewItem.Header>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="&#xF158;" FontFamily="Segoe Fluent Icons,Segoe MDL2 Assets" Margin="0,0,4,0" VerticalAlignment="Center" />
+                            <TextBlock Text="{DynamicResource Robot}" />
+                        </StackPanel>
+                    </TreeViewItem.Header>
+                    <TreeViewItem.ContextMenu>
+                        <ContextMenu>
+                            <MenuItem
+                                Header="{DynamicResource Visible}"
+                                IsCheckable="True"
+                                IsChecked="True"
+                                Command="{x:Static main:RSLCommands.ToggleModelVisibilityCommand}"
+                                CommandParameter="{Binding RelativeSource={RelativeSource Mode=Self}}"
+                                Tag="{Binding Path=RobotModels}" />
+                        </ContextMenu>
+                    </TreeViewItem.ContextMenu>
+                </TreeViewItem>
+
+                <TreeViewItem IsExpanded="True">
+                    <TreeViewItem.Header>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="&#xF158;" FontFamily="Segoe Fluent Icons,Segoe MDL2 Assets" Margin="0,0,4,0" VerticalAlignment="Center" />
+                            <TextBlock Text="{DynamicResource AdjustmentArea}" />
+                        </StackPanel>
+                    </TreeViewItem.Header>
+                    <TreeViewItem.ContextMenu>
+                        <ContextMenu>
+                            <MenuItem
+                                Header="{DynamicResource Visible}"
+                                IsCheckable="True"
+                                IsChecked="True"
+                                Command="{x:Static main:RSLCommands.ToggleModelVisibilityCommand}"
+                                CommandParameter="{Binding RelativeSource={RelativeSource Mode=Self}}"
+                                Tag="{Binding Path=AdjustmentAreaModels}" />
+                        </ContextMenu>
+                    </TreeViewItem.ContextMenu>
+                </TreeViewItem>
+
+                <TreeViewItem IsExpanded="True">
+                    <TreeViewItem.Header>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="&#xF158;" FontFamily="Segoe Fluent Icons,Segoe MDL2 Assets" Margin="0,0,4,0" VerticalAlignment="Center" />
+                            <TextBlock Text="{DynamicResource CalibrationDominoes}" />
+                        </StackPanel>
+                    </TreeViewItem.Header>
+                    <TreeViewItem.ContextMenu>
+                        <ContextMenu>
+                            <MenuItem
+                                Header="{DynamicResource Visible}"
+                                IsCheckable="True"
+                                IsChecked="True"
+                                Command="{x:Static main:RSLCommands.ToggleModelVisibilityCommand}"
+                                CommandParameter="{Binding RelativeSource={RelativeSource Mode=Self}}"
+                                Tag="{Binding Path=CalibrationDominoesModels}" />
+                        </ContextMenu>
+                    </TreeViewItem.ContextMenu>
+                </TreeViewItem>
+
+                <TreeViewItem IsExpanded="True">
+                    <TreeViewItem.Header>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="&#xF158;" FontFamily="Segoe Fluent Icons,Segoe MDL2 Assets" Margin="0,0,4,0" VerticalAlignment="Center" />
+                            <TextBlock Text="{DynamicResource LoadingArea}" />
+                        </StackPanel>
+                    </TreeViewItem.Header>
+                    <TreeViewItem.ContextMenu>
+                        <ContextMenu>
+                            <MenuItem
+                                Header="{DynamicResource Visible}"
+                                IsCheckable="True"
+                                IsChecked="True"
+                                Command="{x:Static main:RSLCommands.ToggleModelVisibilityCommand}"
+                                CommandParameter="{Binding RelativeSource={RelativeSource Mode=Self}}"
+                                Tag="{Binding Path=LoadingAreaModels}" />
+                        </ContextMenu>
+                    </TreeViewItem.ContextMenu>
+                </TreeViewItem>
+
+                <TreeViewItem IsExpanded="True">
+                    <TreeViewItem.Header>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="&#xF158;" FontFamily="Segoe Fluent Icons,Segoe MDL2 Assets" Margin="0,0,4,0" VerticalAlignment="Center" />
+                            <TextBlock Text="{DynamicResource OmniCore}" />
+                        </StackPanel>
+                    </TreeViewItem.Header>
+                    <TreeViewItem.ContextMenu>
+                        <ContextMenu>
+                            <MenuItem
+                                Header="{DynamicResource Visible}"
+                                IsCheckable="True"
+                                IsChecked="True"
+                                Command="{x:Static main:RSLCommands.ToggleModelVisibilityCommand}"
+                                CommandParameter="{Binding RelativeSource={RelativeSource Mode=Self}}"
+                                Tag="{Binding Path=OmniCoreModels}" />
+                        </ContextMenu>
+                    </TreeViewItem.ContextMenu>
+                </TreeViewItem>
+
+                <TreeViewItem IsExpanded="True">
+                    <TreeViewItem.Header>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="&#xF158;" FontFamily="Segoe Fluent Icons,Segoe MDL2 Assets" Margin="0,0,4,0" VerticalAlignment="Center" />
+                            <TextBlock Text="{DynamicResource Table}" />
+                        </StackPanel>
+                    </TreeViewItem.Header>
+                    <TreeViewItem.ContextMenu>
+                        <ContextMenu>
+                            <MenuItem
+                                Header="{DynamicResource Visible}"
+                                IsCheckable="True"
+                                IsChecked="True"
+                                Command="{x:Static main:RSLCommands.ToggleModelVisibilityCommand}"
+                                CommandParameter="{Binding RelativeSource={RelativeSource Mode=Self}}"
+                                Tag="{Binding Path=TableModels}" />
+                        </ContextMenu>
+                    </TreeViewItem.ContextMenu>
+                </TreeViewItem>
+
+                <TreeViewItem IsExpanded="True">
+                    <TreeViewItem.Header>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="&#xF158;" FontFamily="Segoe Fluent Icons,Segoe MDL2 Assets" Margin="0,0,4,0" VerticalAlignment="Center" />
+                            <TextBlock Text="{DynamicResource UnloadingArea}" />
+                        </StackPanel>
+                    </TreeViewItem.Header>
+                    <TreeViewItem.ContextMenu>
+                        <ContextMenu>
+                            <MenuItem
+                                Header="{DynamicResource Visible}"
+                                IsCheckable="True"
+                                IsChecked="True"
+                                Command="{x:Static main:RSLCommands.ToggleModelVisibilityCommand}"
+                                CommandParameter="{Binding RelativeSource={RelativeSource Mode=Self}}"
+                                Tag="{Binding Path=UnloadingAreaModels}" />
+                        </ContextMenu>
+                    </TreeViewItem.ContextMenu>
+                </TreeViewItem>
+
+                <!--#region 动态内容-->
+                <TreeViewItem IsExpanded="True">
+                    <TreeViewItem.Header>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="&#xF158;" FontFamily="Segoe Fluent Icons,Segoe MDL2 Assets" Margin="0,0,4,0" VerticalAlignment="Center" />
+                            <TextBlock Text="{DynamicResource Dominoes}" />
+                        </StackPanel>
+                    </TreeViewItem.Header>
+                    <TreeViewItem.ContextMenu>
+                        <ContextMenu>
+                            <MenuItem
+                                x:Name="dominoesVisibilityMenuItem"
+                                Header="{DynamicResource Visible}"
+                                IsCheckable="True"
+                                IsChecked="True"
+                                Command="{x:Static main:RSLCommands.ToggleModelVisibilityCommand}"
+                                CommandParameter="{Binding RelativeSource={RelativeSource Mode=Self}}"
+                                Tag="{Binding Path=DominoesModels}" />
+                        </ContextMenu>
+                    </TreeViewItem.ContextMenu>
+                </TreeViewItem>
+
+                <TreeViewItem IsExpanded="True">
+                    <TreeViewItem.Header>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="&#xF158;" FontFamily="Segoe Fluent Icons,Segoe MDL2 Assets" Margin="0,0,4,0" VerticalAlignment="Center" />
+                            <TextBlock Text="{DynamicResource DominoesPreview}" />
+                        </StackPanel>
+                    </TreeViewItem.Header>
+                    <TreeViewItem.ContextMenu>
+                        <ContextMenu>
+                            <MenuItem
+                                x:Name="dominoesPreviewVisibilityMenuItem"
+                                Header="{DynamicResource Visible}"
+                                IsCheckable="True"
+                                IsChecked="True"
+                                Command="{x:Static main:RSLCommands.ToggleModelVisibilityCommand}"
+                                CommandParameter="{Binding RelativeSource={RelativeSource Mode=Self}}"
+                                Tag="{Binding Path=DominoesPreviewModels}" />
+                        </ContextMenu>
+                    </TreeViewItem.ContextMenu>
+                </TreeViewItem>
+
+                <TreeViewItem IsExpanded="True">
+                    <TreeViewItem.Header>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="&#xF158;" FontFamily="Segoe Fluent Icons,Segoe MDL2 Assets" Margin="0,0,4,0" VerticalAlignment="Center" />
+                            <TextBlock Text="{DynamicResource DominoQueueOrderLabels}" />
+                        </StackPanel>
+                    </TreeViewItem.Header>
+                    <TreeViewItem.ContextMenu>
+                        <ContextMenu>
+                            <MenuItem
+                                x:Name="dominoQueueOrderLabelsVisibilityMenuItem"
+                                Header="{DynamicResource Visible}"
+                                IsCheckable="True"
+                                IsChecked="True"
+                                Command="{x:Static main:RSLCommands.ToggleModelVisibilityCommand}"
+                                CommandParameter="{Binding RelativeSource={RelativeSource Mode=Self}}"
+                                Tag="{Binding Path=DominoQueueOrderLabelsModels}" />
+                        </ContextMenu>
+                    </TreeViewItem.ContextMenu>
+                </TreeViewItem>
+                <!--#endregion-->
+            </TreeViewItem>
+        </TreeView>
+    </Grid>
+</UserControl>

@@ -144,4 +144,17 @@
     <sys:String x:Key="SignOut">登出</sys:String>
     <sys:String x:Key="UsernameOrPasswordIncorrectMessage">您的用户名或密码不正确。请重试。</sys:String>
 
+    <sys:String x:Key="Visible">可见的</sys:String>
+
+    <sys:String x:Key="DominoesWorkstation">多米诺骨牌工作站</sys:String>
+    <sys:String x:Key="Robot">CRB1100_4_58__01</sys:String>
+    <sys:String x:Key="AdjustmentArea">规整区</sys:String>
+    <sys:String x:Key="CalibrationDominoes">校准用多米诺骨牌</sys:String>
+    <sys:String x:Key="LoadingArea">取料区</sys:String>
+    <sys:String x:Key="OmniCore">OmniCore</sys:String>
+    <sys:String x:Key="Table">桌子</sys:String>
+    <sys:String x:Key="UnloadingArea">放料区</sys:String>
+    <sys:String x:Key="DominoesPreview">多米诺骨牌预览</sys:String>
+    <sys:String x:Key="DominoQueueOrderLabels">骨牌队列顺序标签</sys:String>
+
 </ResourceDictionary>

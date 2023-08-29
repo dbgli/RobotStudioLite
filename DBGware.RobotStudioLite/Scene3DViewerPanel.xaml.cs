@@ -4,11 +4,12 @@ using System.Collections.ObjectModel;
 using System.Collections.Specialized;
 using System.ComponentModel;
 using System.Windows.Controls;
-using System.Windows.Media;
 using System.Windows.Input;
+using System.Windows.Media;
 using System.Windows.Media.Media3D;
 using ABB.Robotics.Controllers.RapidDomain;
 using HelixToolkit.Wpf;
+using DBGware.RobotStudioLite.Controls;
 using DBGware.RobotStudioLite.UI.Controls;
 
 namespace DBGware.RobotStudioLite
@@ -66,6 +67,35 @@ namespace DBGware.RobotStudioLite
                 Model3DGroup model3DGroup = modelImporter.Load(basePath + fileName);
                 ModelVisual3D modelVisual3D = new() { Content = model3DGroup };
                 sortingVisual3D.Children.Add(modelVisual3D);
+
+                // 将模型记录在布局面板中
+                LayoutPanel layoutPanel = ((MainWindow)App.Current.MainWindow).layoutPanel;
+                switch (fileName)
+                {
+                    case "AdjustmentArea_Model.obj":
+                        layoutPanel.AdjustmentAreaModels.Add(modelVisual3D);
+                        break;
+                    case "CalibrationDomino_Model.obj":
+                        layoutPanel.CalibrationDominoesModels.Add(modelVisual3D);
+                        break;
+                    case "LoadingArea_Model.obj":
+                        layoutPanel.LoadingAreaModels.Add(modelVisual3D);
+                        break;
+                    case "OmniCore_Model.obj":
+                        layoutPanel.OmniCoreModels.Add(modelVisual3D);
+                        break;
+                    case "RobotBase_Model.obj":
+                        layoutPanel.RobotModels.Add(modelVisual3D);
+                        break;
+                    case "Table_Model.obj":
+                        layoutPanel.TableModels.Add(modelVisual3D);
+                        break;
+                    case "UnloadingArea_Model.obj":
+                        layoutPanel.UnloadingAreaModels.Add(modelVisual3D);
+                        break;
+                    default:
+                        break;
+                }
             }
         }
 
@@ -85,6 +115,10 @@ namespace DBGware.RobotStudioLite
                 App.Robot.Joints.Add(new(link));
                 ModelVisual3D linkVisual3D = new() { Content = link };
                 sortingVisual3D.Children.Add(linkVisual3D);
+
+                // 将模型记录在布局面板中
+                LayoutPanel layoutPanel = ((MainWindow)App.Current.MainWindow).layoutPanel;
+                layoutPanel.RobotModels.Add(linkVisual3D);
             }
 
             // 旋转轴如果是X轴，要取反才能与ABB旋转正方向一致
@@ -124,6 +158,9 @@ namespace DBGware.RobotStudioLite
             // 如果有的话，清空上一次的骨牌模型
             DominoModels.ForEach(d => sortingVisual3D.Children.Remove(d));
             DominoModels.Clear();
+            // 将模型从布局面板中删除
+            LayoutPanel layoutPanel = ((MainWindow)App.Current.MainWindow).layoutPanel;
+            layoutPanel.DominoesModels.Clear();
 
             ModelImporter modelImporter = new();
             for (int row = 0; row < tray.Rows; row++)
@@ -136,17 +173,26 @@ namespace DBGware.RobotStudioLite
                         Content = model3DGroup,
                         Transform = new TranslateTransform3D(row * tray.RowSpacing, -column * tray.ColumnSpacing, 0)
                     };
-                    sortingVisual3D.Children.Add(modelVisual3D);
+                    // 根据可见性设置确定是否加入到3D场景中
+                    if (((MainWindow)App.Current.MainWindow).layoutPanel.dominoesVisibilityMenuItem.IsChecked)
+                    {
+                        sortingVisual3D.Children.Add(modelVisual3D);
+                    }
                     DominoModels.Add(modelVisual3D);
+                    // 将模型记录在布局面板中
+                    layoutPanel.DominoesModels.Add(modelVisual3D);
                 }
             }
         }
 
         private void UpdateDominoQueueOrderLabels()
         {
-            // 清空上一次的骨牌队列顺序标签
+            // 如果有的话，清空上一次的骨牌队列顺序标签
             DominoQueueOrderLabels.ForEach(l => sortingVisual3D.Children.Remove(l));
             DominoQueueOrderLabels.Clear();
+            // 将模型从布局面板中删除
+            LayoutPanel layoutPanel = ((MainWindow)App.Current.MainWindow).layoutPanel;
+            layoutPanel.DominoQueueOrderLabelsModels.Clear();
 
             Tray tray = ((MainWindow)App.Current.MainWindow)
                                                 .dominoesTaskPanel
@@ -174,8 +220,14 @@ namespace DBGware.RobotStudioLite
                     Padding = new(2),
                     Position = point
                 };
-                sortingVisual3D.Children.Add(dominoQueueOrderLabel);
+                // 根据可见性设置确定是否加入到3D场景中
+                if (((MainWindow)App.Current.MainWindow).layoutPanel.dominoQueueOrderLabelsVisibilityMenuItem.IsChecked)
+                {
+                    sortingVisual3D.Children.Add(dominoQueueOrderLabel);
+                }
                 DominoQueueOrderLabels.Add(dominoQueueOrderLabel);
+                // 将模型记录在布局面板中
+                layoutPanel.DominoQueueOrderLabelsModels.Add(dominoQueueOrderLabel);
             }
         }
 
@@ -195,9 +247,12 @@ namespace DBGware.RobotStudioLite
         {
             ObservableCollection<Domino> dominoes = (sender as ObservableCollection<Domino>)!;
 
-            // 清空上一次的骨牌预览模型
+            // 如果有的话，清空上一次的骨牌预览模型
             DominoPreviewModels.ForEach(d => sortingVisual3D.Children.Remove(d));
             DominoPreviewModels.Clear();
+            // 将模型从布局面板中删除
+            LayoutPanel layoutPanel = ((MainWindow)App.Current.MainWindow).layoutPanel;
+            layoutPanel.DominoesPreviewModels.Clear();
 
             ModelImporter modelImporter = new();
             foreach (Domino domino in dominoes)
@@ -217,8 +272,14 @@ namespace DBGware.RobotStudioLite
                     Transform = Transform3DHelper.CombineTransform(new RotateTransform3D(new AxisAngleRotation3D(new(0, 0, 1), domino.Position.R), new(10, -234.26, 42.5)),
                                                                    new TranslateTransform3D(domino.Position.X, domino.Position.Y, domino.Position.Z))
                 };
-                sortingVisual3D.Children.Add(modelVisual3D);
+                // 根据可见性设置确定是否加入到3D场景中
+                if (((MainWindow)App.Current.MainWindow).layoutPanel.dominoesPreviewVisibilityMenuItem.IsChecked)
+                {
+                    sortingVisual3D.Children.Add(modelVisual3D);
+                }
                 DominoPreviewModels.Add(modelVisual3D);
+                // 将模型记录在布局面板中
+                layoutPanel.DominoesPreviewModels.Add(modelVisual3D);
 
                 // 为每一个骨牌订阅位置属性更改事件
                 // 注意：先退订上一次的事件，再订阅这一次的事件，避免重复订阅
