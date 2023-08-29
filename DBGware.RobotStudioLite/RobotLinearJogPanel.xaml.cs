@@ -1,17 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
+﻿using System.Windows.Controls;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 using ABB.Robotics.Controllers;
 using ABB.Robotics.Controllers.RapidDomain;
 
@@ -51,6 +39,7 @@ namespace DBGware.RobotStudioLite
                 linear6ValueTextBox.IsEnabled = isLinearPositionNonNull;
             }
         }
+        public double LinearJogStep { get; set; } = 1.0;
 
         public RobotLinearJogPanel()
         {
@@ -71,7 +60,7 @@ namespace DBGware.RobotStudioLite
             // 注意：字符串类型的Rapid数据写入时要加双引号！
             // 注意：常量类型的Rapid数据不能写入！
             rdJogCommand.StringValue = (string)e.Parameter;
-            rdLinearJogStep.StringValue = linearJogStepTextBox.Text;
+            rdLinearJogStep.StringValue = LinearJogStep.ToString();
 
             // 设置程序指针到点动例行程序
             App.Robot.Controller?.Rapid.GetTask("T_ROB1").SetProgramPointer("MotionModule", "Jog");
