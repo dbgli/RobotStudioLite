@@ -11,23 +11,51 @@ MODULE MainModule
     !
     !***********************************************************
 
+    ! 归位点
     CONST jointtarget HomePoint_1:=[[0,0,0,0,90,0],[9E+09,9E+09,9E+09,9E+09,9E+09,9E+09]];
     CONST jointtarget HomePoint_2:=[[-104.123187632,14.056880213,20.882541821,81.800053047,101.538541598,54.230697972],[9E+09,9E+09,9E+09,9E+09,9E+09,9E+09]];
-
+    ! 拾取原点
     CONST robtarget PickOriginPoint_1:=[[0,0,0],[0,1,0,0],[0,-1,0,0],[9E+09,9E+09,9E+09,9E+09,9E+09,9E+09]];
+    ! 拾取原点
     CONST robtarget PickOriginPoint_2:=[[104.987822703,-0.006148794,-0.000384409],[0.000000003,0.000000002,1,-0.00000002],[0,-1,-2,0],[9E+09,9E+09,9E+09,9E+09,9E+09,9E+09]];
+    ! 拾取待命点
     CONST robtarget PickStandbyPoint:=[[104.99802306,130.000999518,216.105993219],[0.000000005,1,0,0.000000013],[-1,0,-1,0],[9E+09,9E+09,9E+09,9E+09,9E+09,9E+09]];
+    ! 规整点
     CONST robtarget AdjustmentPoint_1:=[[10,10,0],[1,0,0,0],[-1,1,0,0],[9E+09,9E+09,9E+09,9E+09,9E+09,9E+09]];
+    ! 规整点
     CONST robtarget AdjustmentPoint_2:=[[0,0,0],[0.707106781,0,0,0.707106781],[0,0,0,0],[9E+09,9E+09,9E+09,9E+09,9E+09,9E+09]];
+    ! 放置原点
     CONST robtarget PutOriginPoint:=[[0,0,0],[0.5,-0.5,-0.5,-0.5],[-2,0,0,0],[9E+09,9E+09,9E+09,9E+09,9E+09,9E+09]];
 
-    CONST TPosition PushPosition:=IPushPosition;
-    CONST bool IsClosedLoopMode:=IIsClosedLoopMode;
-
+    ! 托盘
+    PERS TTray Tray:=[5,6,65,35];
+    ! 骨牌组最大数量
+    CONST num MaxNumber:=10;
+    ! 骨牌组数量
+    PERS num Number:=6;
+    ! 骨牌组
+    PERS TDomino Dominoes{MaxNumber}:=[[1,[22,10,54],[60,200,0,0]],
+                                       [2,[22,10,54],[60,170,0,0]],
+                                       [3,[22,10,54],[60,140,0,0]],
+                                       [4,[22,10,54],[60,110,0,0]],
+                                       [5,[22,10,54],[60,80,0,0]],
+                                       [6,[22,10,54],[60,50,0,0]],
+                                       [0,[0,0,0],[0,0,0,0]],
+                                       [0,[0,0,0],[0,0,0,0]],
+                                       [0,[0,0,0],[0,0,0,0]],
+                                       [0,[0,0,0],[0,0,0,0]]];
+    ! 推倒位置
+    PERS TPosition PushPosition:=[60,40,0,0];
+    
+    ! 拾取行
     VAR num PickRow;
+    ! 拾取列
     VAR num PickColumn;
+    ! 拾取点
     VAR robtarget PickPoint;
+    ! 放置点
     VAR robtarget PutPoint;
+    ! 推倒点
     VAR robtarget PushPoint;
 
     !***********************************************************
@@ -37,6 +65,8 @@ MODULE MainModule
     PROC Init()
         Reset do0_VacOn;
         Reset do1_VacBlow;
+        
+        IsAttached:=FALSE;
 
         MoveAbsJ HomePoint_1\NoEOffs,v200,fine,tool0\WObj:=wobj0;
     ENDPROC
@@ -46,24 +76,21 @@ MODULE MainModule
     !     判断任务数据是否符合要求。
     !***********************************************************
     PROC ValidityCheck()
-        IF Rows<>Round(Rows) RAISE ERROR_ROWS_NOT_INT;
-        IF Rows<1 RAISE ERROR_ROWS_OUT_OF_RANGE;
+        IF Tray.Rows<>Round(Tray.Rows) RAISE ERROR_ROWS_NOT_INT;
+        IF Tray.Rows<1 OR Tray.Rows>5 RAISE ERROR_ROWS_OUT_OF_RANGE;
 
-        IF Columns<>Round(Columns) RAISE ERROR_COLUMNS_NOT_INT;
-        IF Columns<1 RAISE ERROR_COLUMNS_OUT_OF_RANGE;
+        IF Tray.Columns<>Round(Tray.Columns) RAISE ERROR_COLUMNS_NOT_INT;
+        IF Tray.Columns<1 OR Tray.Columns>6 RAISE ERROR_COLUMNS_OUT_OF_RANGE;
 
-        IF SpacingX<=0 RAISE ERROR_SPACINGX_OUT_OF_RANGE;
-        IF SpacingY<=0 RAISE ERROR_SPACINGY_OUT_OF_RANGE;
-
-        IF MaxNumber<>Round(MaxNumber) RAISE ERROR_MAXNUMBER_NOT_INT;
-        IF MaxNumber<1 OR MaxNumber>Rows*Columns RAISE ERROR_MAXNUMBER_OUT_OF_RANGE;
+        IF Tray.RowSpacing<=0 RAISE ERROR_ROWSPACING_OUT_OF_RANGE;
+        IF Tray.ColumnSpacing<=0 RAISE ERROR_COLUMNSPACING_OUT_OF_RANGE;
 
         IF Number<>Round(Number) RAISE ERROR_NUMBER_NOT_INT;
         IF Number<1 OR Number>MaxNumber RAISE ERROR_NUMBER_OUT_OF_RANGE;
 
         FOR Index FROM 1 TO Number DO
             IF Dominoes{Index}.ID<>Round(Dominoes{Index}.ID) RAISE ERROR_ID_NOT_INT;
-            IF Dominoes{Index}.ID<1 OR Dominoes{Index}.ID>Rows*Columns RAISE ERROR_ID_OUT_OF_RANGE;
+            IF Dominoes{Index}.ID<1 OR Dominoes{Index}.ID>Tray.Rows*Tray.Columns RAISE ERROR_ID_OUT_OF_RANGE;
 
             IF Dominoes{Index}.Size.Length<=0 RAISE ERROR_LENGTH_OUT_OF_RANGE;
             IF Dominoes{Index}.Size.Width<=0 RAISE ERROR_WIDTH_OUT_OF_RANGE;
@@ -77,7 +104,7 @@ MODULE MainModule
 
     !***********************************************************
     ! 主函数：
-    !     骨牌任务进入点。
+    !     多米诺骨牌任务进入点。
     !***********************************************************
     PROC Main()
         Init;
@@ -85,13 +112,13 @@ MODULE MainModule
 
         FOR Index FROM 1 TO Number DO
             ! 计算拾取点
-            PickRow:=(Dominoes{Index}.ID-1) DIV Columns;
-            PickColumn:=(Dominoes{Index}.ID-1) MOD Columns;
+            PickRow:=(Dominoes{Index}.ID-1) DIV Tray.Columns;
+            PickColumn:=(Dominoes{Index}.ID-1) MOD Tray.Columns;
 
             IF PickColumn<3 THEN
-                PickPoint:=Offs(PickOriginPoint_1,PickColumn*SpacingX,PickRow*SpacingY,0);
+                PickPoint:=Offs(PickOriginPoint_1,PickColumn*Tray.ColumnSpacing,PickRow*Tray.RowSpacing,0);
             ELSE
-                PickPoint:=Offs(PickOriginPoint_2,(PickColumn-3)*SpacingX,PickRow*SpacingY,0);
+                PickPoint:=Offs(PickOriginPoint_2,(PickColumn-3)*Tray.ColumnSpacing,PickRow*Tray.RowSpacing,0);
             ENDIF
 
             ! 拾取骨牌
@@ -115,7 +142,7 @@ MODULE MainModule
             ! 计算摆放点
             ! (*) 左乘四元数围绕工件坐标系旋转。
             ! ( ) 右乘四元数围绕工具坐标系旋转。
-            PutPoint:=Offs(PutOriginPoint,Dominoes{Index}.Position.X,Dominoes{Index}.Position.Y,0);
+            PutPoint:=Offs(PutOriginPoint,Dominoes{Index}.Position.X,Dominoes{Index}.Position.Y,Dominoes{Index}.Position.Z);
             PutPoint.rot:=OrientZYX(Dominoes{Index}.Position.R,0,0)*PutPoint.rot;
 
             ! 摆放骨牌

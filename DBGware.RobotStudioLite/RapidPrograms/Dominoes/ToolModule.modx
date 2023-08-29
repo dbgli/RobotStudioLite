@@ -11,10 +11,12 @@ MODULE ToolModule
     !
     !***********************************************************
 
-    LOCAL PERS tooldata CurrentTool:=[TRUE,[[-115,0,124],[1,0,0,0]],[1,[0,0,10],[1,0,0,0],0,0,0]];
+    LOCAL PERS tooldata CurrentTool:=[TRUE,[[-115,0,124],[1,0,0,0]],[0.2,[5,0,120],[1,0,0,0],0,0,0]];
     LOCAL PERS wobjdata CurrentWorkObject:=[FALSE,TRUE,"",[[476.652,41.487,24.113],[2.5715E-5,0,0,-1]],[[0,0,0],[1,0,0,0]]];
     LOCAL VAR robtarget CurrentTarget;
     LOCAL VAR num RetryCount;
+    LOCAL PERS bool IsClosedLoopMode:=TRUE;
+    PERS bool IsAttached:=FALSE;
 
     !***********************************************************
     ! 拾取函数：
@@ -31,6 +33,9 @@ MODULE ToolModule
             RetryCount:=0;
             WaitDI di0_Vac,1\MaxTime:=5;
         ENDIF
+        
+        IsAttached:=TRUE;
+        WaitTime\inpos,0.5;
     ERROR
         CurrentTool:=CTool();
         CurrentWorkObject:=CWObj();
@@ -67,6 +72,9 @@ MODULE ToolModule
             RetryCount:=0;
             WaitDI di0_Vac,0\MaxTime:=5;
         ENDIF
+        
+        IsAttached:=FALSE;
+        WaitTime\inpos,0.5;
     ERROR
         CurrentTool:=CTool();
         CurrentWorkObject:=CWObj();

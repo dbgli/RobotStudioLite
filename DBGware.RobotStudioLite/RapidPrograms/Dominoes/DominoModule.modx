@@ -11,7 +11,19 @@ MODULE DominoModule
     !
     !***********************************************************
 
-    ! 表示骨牌的尺寸
+    ! 托盘类型
+    RECORD TTray
+        ! 托盘行数
+        num Rows;
+        ! 托盘列数
+        num Columns;
+        ! 托盘行间距
+        num RowSpacing;
+        ! 托盘列间距
+        num ColumnSpacing;
+    ENDRECORD
+
+    ! 骨牌尺寸类型
     RECORD TSize
         ! 长度
         num Length;
@@ -21,39 +33,26 @@ MODULE DominoModule
         num Height;
     ENDRECORD
 
-    ! 表示骨牌的摆放位置
+    ! 骨牌位置类型
     RECORD TPosition
         ! X轴坐标
         num X;
         ! Y轴坐标
         num Y;
+        ! Z轴坐标
+        num Z;
         ! 旋转角度
         num R;
     ENDRECORD
 
-    ! 表示一块多米诺骨牌
+    ! 骨牌类型
     RECORD TDomino
-        ! 骨牌取料位编号
+        ! 骨牌编号
         num ID;
         ! 骨牌尺寸
         TSize Size;
-        ! 骨牌摆放位置
+        ! 骨牌位置
         TPosition Position;
     ENDRECORD
-
-    ! 托盘行数
-    CONST num Rows:=IRows;
-    ! 托盘列数
-    CONST num Columns:=IColumns;
-    ! 托盘X轴间距
-    CONST num SpacingX:=ISpacingX;
-    ! 托盘Y轴间距
-    CONST num SpacingY:=ISpacingY;
-    ! 骨牌最大数量
-    CONST num MaxNumber:=IMaxNumber;
-    ! 骨牌数量
-    CONST num Number:=INumber;
-    ! 骨牌组
-    CONST TDomino Dominoes{MaxNumber}:=IDominoes;
 
 ENDMODULE

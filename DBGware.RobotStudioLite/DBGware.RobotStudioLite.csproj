@@ -118,9 +118,6 @@
     <Content Include="RapidPrograms\Dominoes\ErrorModule.modx">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="RapidPrograms\Dominoes\InterfaceModule.modx">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
     <Content Include="RapidPrograms\Dominoes\MainModule.modx">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
