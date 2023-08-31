@@ -51,22 +51,29 @@ namespace DBGware.RobotStudioLite
 
         private void RobotLinearJogCommandExecuted(object sender, ExecutedRoutedEventArgs e)
         {
-            // 访问Rapid数据
-            RapidData? rdJogCommand = App.Robot.Controller?.Rapid.GetRapidData("T_ROB1", "MotionModule", "JogCommand");
-            RapidData? rdLinearJogStep = App.Robot.Controller?.Rapid.GetRapidData("T_ROB1", "MotionModule", "LinearJogStep");
-            if (rdJogCommand == null || rdLinearJogStep == null) return;
+            try
+            {
+                // 访问Rapid数据
+                RapidData? rdJogCommand = App.Robot.Controller?.Rapid.GetRapidData("T_ROB1", "MotionModule", "JogCommand");
+                RapidData? rdLinearJogStep = App.Robot.Controller?.Rapid.GetRapidData("T_ROB1", "MotionModule", "LinearJogStep");
+                if (rdJogCommand == null || rdLinearJogStep == null) return;
 
-            // 写入Rapid数据
-            // 注意：字符串类型的Rapid数据写入时要加双引号！
-            // 注意：常量类型的Rapid数据不能写入！
-            rdJogCommand.StringValue = (string)e.Parameter;
-            rdLinearJogStep.StringValue = LinearJogStep.ToString();
+                // 写入Rapid数据
+                // 注意：字符串类型的Rapid数据写入时要加双引号！
+                // 注意：常量类型的Rapid数据不能写入！
+                rdJogCommand.StringValue = (string)e.Parameter;
+                rdLinearJogStep.StringValue = LinearJogStep.ToString();
 
-            // 设置程序指针到点动例行程序
-            App.Robot.Controller?.Rapid.GetTask("T_ROB1").SetProgramPointer("MotionModule", "Jog");
+                // 设置程序指针到点动例行程序
+                App.Robot.Controller?.Rapid.GetTask("T_ROB1").SetProgramPointer("MotionModule", "Jog");
 
-            // 启动Rapid程序
-            _ = App.Robot.Controller?.Rapid.Start(true);
+                // 启动Rapid程序
+                _ = App.Robot.Controller?.Rapid.Start(true);
+            }
+            catch
+            {
+                // 请勿频繁操作，并确保先同步RAPID程序到机器人
+            }
         }
 
         private void RobotLinearJogCommandCanExecute(object sender, CanExecuteRoutedEventArgs e)
