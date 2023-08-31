@@ -21,6 +21,8 @@ namespace DBGware.RobotStudioLite.Controls
         public List<ModelVisual3D> DominoesModels { get; set; } = new();
         public List<ModelVisual3D> DominoesPreviewModels { get; set; } = new();
         public List<ModelVisual3D> DominoQueueOrderLabelsModels { get; set; } = new();
+        public List<ModelVisual3D> SafeZoneModels { get; set; } = new();
+        public List<ModelVisual3D> ForbiddenZoneModels { get; set; } = new();
 
         public LayoutPanel()
         {

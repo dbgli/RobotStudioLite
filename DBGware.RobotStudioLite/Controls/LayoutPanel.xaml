@@ -212,6 +212,58 @@
                     </TreeViewItem.ContextMenu>
                 </TreeViewItem>
 
+                <TreeViewItem IsExpanded="True">
+                    <TreeViewItem.Header>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock
+                                Text="&#xF158;"
+                                FontFamily="Segoe Fluent Icons,Segoe MDL2 Assets"
+                                Margin="0,0,4,0"
+                                VerticalAlignment="Center"
+                                Opacity="{Binding ElementName=safeZoneVisibilityMenuItem, Path=IsChecked, Converter={StaticResource BoolToOpacityConverter}}" />
+                            <TextBlock Text="{DynamicResource SafeZone}" />
+                        </StackPanel>
+                    </TreeViewItem.Header>
+                    <TreeViewItem.ContextMenu>
+                        <ContextMenu>
+                            <MenuItem
+                                x:Name="safeZoneVisibilityMenuItem"
+                                Header="{DynamicResource Visible}"
+                                IsCheckable="True"
+                                IsChecked="True"
+                                Command="{x:Static main:RSLCommands.ToggleModelVisibilityCommand}"
+                                CommandParameter="{Binding RelativeSource={RelativeSource Mode=Self}}"
+                                Tag="{Binding Path=SafeZoneModels}" />
+                        </ContextMenu>
+                    </TreeViewItem.ContextMenu>
+                </TreeViewItem>
+
+                <TreeViewItem IsExpanded="True">
+                    <TreeViewItem.Header>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock
+                                Text="&#xF158;"
+                                FontFamily="Segoe Fluent Icons,Segoe MDL2 Assets"
+                                Margin="0,0,4,0"
+                                VerticalAlignment="Center"
+                                Opacity="{Binding ElementName=forbiddenZoneVisibilityMenuItem, Path=IsChecked, Converter={StaticResource BoolToOpacityConverter}}" />
+                            <TextBlock Text="{DynamicResource ForbiddenZone}" />
+                        </StackPanel>
+                    </TreeViewItem.Header>
+                    <TreeViewItem.ContextMenu>
+                        <ContextMenu>
+                            <MenuItem
+                                x:Name="forbiddenZoneVisibilityMenuItem"
+                                Header="{DynamicResource Visible}"
+                                IsCheckable="True"
+                                IsChecked="True"
+                                Command="{x:Static main:RSLCommands.ToggleModelVisibilityCommand}"
+                                CommandParameter="{Binding RelativeSource={RelativeSource Mode=Self}}"
+                                Tag="{Binding Path=ForbiddenZoneModels}" />
+                        </ContextMenu>
+                    </TreeViewItem.ContextMenu>
+                </TreeViewItem>
+
                 <!--#region 动态内容-->
                 <TreeViewItem IsExpanded="True">
                     <TreeViewItem.Header>

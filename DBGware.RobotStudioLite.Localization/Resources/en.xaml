@@ -167,6 +167,8 @@
     <sys:String x:Key="UnloadingArea">Unloading Area</sys:String>
     <sys:String x:Key="DominoesPreview">Dominoes Preview</sys:String>
     <sys:String x:Key="DominoQueueOrderLabels">Domino Queue Order Labels</sys:String>
+    <sys:String x:Key="SafeZone">Safe Zone</sys:String>
+    <sys:String x:Key="ForbiddenZone">Forbidden Zone</sys:String>
 
     <sys:String x:Key="ControllerStatus">Controller Status</sys:String>
     <sys:String x:Key="ControllerOperatingMode" xml:space="preserve">Controller Operating Mode: </sys:String>

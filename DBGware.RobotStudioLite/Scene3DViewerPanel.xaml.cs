@@ -60,7 +60,9 @@ namespace DBGware.RobotStudioLite
                                              "OmniCore_Model.obj",
                                              "RobotBase_Model.obj",
                                              "Table_Model.obj",
-                                             "UnloadingArea_Model.obj" };
+                                             "UnloadingArea_Model.obj",
+                                             "SafeZone_Model.obj",
+                                             "ForbiddenZone_Model.obj"};
             ModelImporter modelImporter = new();
             foreach (string fileName in fileNames)
             {
@@ -71,6 +73,28 @@ namespace DBGware.RobotStudioLite
                 if (fileName != "CalibrationDominoes_Model.obj")
                 {
                     sortingVisual3D.Children.Add(modelVisual3D);
+                }
+
+                // 安全区域模型
+                if (fileName == "SafeZone_Model.obj")
+                {
+                    Material material = MaterialHelper.CreateMaterial(Colors.Green, 0.2);
+                    foreach (Model3D model3D in model3DGroup.Children)
+                    {
+                        ((GeometryModel3D)model3D).Material = material;
+                        ((GeometryModel3D)model3D).BackMaterial = material;
+                    }
+                }
+
+                // 禁止区域模型
+                if (fileName == "ForbiddenZone_Model.obj")
+                {
+                    Material material = MaterialHelper.CreateMaterial(Colors.Red, 0.2);
+                    foreach (Model3D model3D in model3DGroup.Children)
+                    {
+                        ((GeometryModel3D)model3D).Material = material;
+                        ((GeometryModel3D)model3D).BackMaterial = material;
+                    }
                 }
 
                 // 将模型记录在布局面板中
@@ -97,6 +121,12 @@ namespace DBGware.RobotStudioLite
                         break;
                     case "UnloadingArea_Model.obj":
                         layoutPanel.UnloadingAreaModels.Add(modelVisual3D);
+                        break;
+                    case "SafeZone_Model.obj":
+                        layoutPanel.SafeZoneModels.Add(modelVisual3D);
+                        break;
+                    case "ForbiddenZone_Model.obj":
+                        layoutPanel.ForbiddenZoneModels.Add(modelVisual3D);
                         break;
                     default:
                         break;

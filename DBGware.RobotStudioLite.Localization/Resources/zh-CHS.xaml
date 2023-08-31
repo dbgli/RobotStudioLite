@@ -167,6 +167,8 @@
     <sys:String x:Key="UnloadingArea">放料区</sys:String>
     <sys:String x:Key="DominoesPreview">多米诺骨牌预览</sys:String>
     <sys:String x:Key="DominoQueueOrderLabels">骨牌队列顺序标签</sys:String>
+    <sys:String x:Key="SafeZone">安全区域</sys:String>
+    <sys:String x:Key="ForbiddenZone">禁止区域</sys:String>
 
     <sys:String x:Key="ControllerStatus">控制器状态</sys:String>
     <sys:String x:Key="ControllerOperatingMode">控制器操作模式：</sys:String>
