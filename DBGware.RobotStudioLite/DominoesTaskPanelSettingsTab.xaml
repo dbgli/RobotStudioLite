@@ -109,7 +109,7 @@
                         <TextBox.Text>
                             <Binding Path="Tray.RowSpacing">
                                 <Binding.ValidationRules>
-                                    <vr:NumberRangeValidationRule Minimum="{x:Static sys:Double.Epsilon}" />
+                                    <vr:NumberRangeValidationRule Minimum="{x:Static sys:Double.Epsilon}" Maximum="1000" />
                                 </Binding.ValidationRules>
                             </Binding>
                         </TextBox.Text>
@@ -121,7 +121,7 @@
                         <TextBox.Text>
                             <Binding Path="Tray.ColumnSpacing">
                                 <Binding.ValidationRules>
-                                    <vr:NumberRangeValidationRule Minimum="{x:Static sys:Double.Epsilon}" />
+                                    <vr:NumberRangeValidationRule Minimum="{x:Static sys:Double.Epsilon}" Maximum="1000" />
                                 </Binding.ValidationRules>
                             </Binding>
                         </TextBox.Text>
@@ -148,7 +148,7 @@
                         <TextBox.Text>
                             <Binding Path="DominoSize.Length">
                                 <Binding.ValidationRules>
-                                    <vr:NumberRangeValidationRule Minimum="{x:Static sys:Double.Epsilon}" />
+                                    <vr:NumberRangeValidationRule Minimum="{x:Static sys:Double.Epsilon}" Maximum="1000" />
                                 </Binding.ValidationRules>
                             </Binding>
                         </TextBox.Text>
@@ -160,7 +160,7 @@
                         <TextBox.Text>
                             <Binding Path="DominoSize.Width">
                                 <Binding.ValidationRules>
-                                    <vr:NumberRangeValidationRule Minimum="{x:Static sys:Double.Epsilon}" />
+                                    <vr:NumberRangeValidationRule Minimum="{x:Static sys:Double.Epsilon}" Maximum="1000" />
                                 </Binding.ValidationRules>
                             </Binding>
                         </TextBox.Text>
@@ -172,7 +172,7 @@
                         <TextBox.Text>
                             <Binding Path="DominoSize.Height">
                                 <Binding.ValidationRules>
-                                    <vr:NumberRangeValidationRule Minimum="{x:Static sys:Double.Epsilon}" />
+                                    <vr:NumberRangeValidationRule Minimum="{x:Static sys:Double.Epsilon}" Maximum="1000" />
                                 </Binding.ValidationRules>
                             </Binding>
                         </TextBox.Text>
@@ -200,7 +200,7 @@
                         <TextBox.Text>
                             <Binding Path="PushPosition.X">
                                 <Binding.ValidationRules>
-                                    <vr:NumberRangeValidationRule />
+                                    <vr:NumberRangeValidationRule Minimum="-1000" Maximum="1000" />
                                 </Binding.ValidationRules>
                             </Binding>
                         </TextBox.Text>
@@ -212,7 +212,7 @@
                         <TextBox.Text>
                             <Binding Path="PushPosition.Y">
                                 <Binding.ValidationRules>
-                                    <vr:NumberRangeValidationRule />
+                                    <vr:NumberRangeValidationRule Minimum="-1000" Maximum="1000" />
                                 </Binding.ValidationRules>
                             </Binding>
                         </TextBox.Text>
@@ -224,7 +224,7 @@
                         <TextBox.Text>
                             <Binding Path="PushPosition.Z">
                                 <Binding.ValidationRules>
-                                    <vr:NumberRangeValidationRule />
+                                    <vr:NumberRangeValidationRule Minimum="-1000" Maximum="1000" />
                                 </Binding.ValidationRules>
                             </Binding>
                         </TextBox.Text>
@@ -236,7 +236,7 @@
                         <TextBox.Text>
                             <Binding Path="PushPosition.R">
                                 <Binding.ValidationRules>
-                                    <vr:NumberRangeValidationRule />
+                                    <vr:NumberRangeValidationRule Minimum="-360" Maximum="360" />
                                 </Binding.ValidationRules>
                             </Binding>
                         </TextBox.Text>
@@ -297,7 +297,7 @@
                                                 <ctrls:CellTextBox.Text>
                                                     <Binding Path="Position.X">
                                                         <Binding.ValidationRules>
-                                                            <vr:NumberRangeValidationRule />
+                                                            <vr:NumberRangeValidationRule Minimum="-1000" Maximum="1000" />
                                                         </Binding.ValidationRules>
                                                     </Binding>
                                                 </ctrls:CellTextBox.Text>
@@ -313,7 +313,7 @@
                                                 <ctrls:CellTextBox.Text>
                                                     <Binding Path="Position.Y">
                                                         <Binding.ValidationRules>
-                                                            <vr:NumberRangeValidationRule />
+                                                            <vr:NumberRangeValidationRule Minimum="-1000" Maximum="1000" />
                                                         </Binding.ValidationRules>
                                                     </Binding>
                                                 </ctrls:CellTextBox.Text>
@@ -329,7 +329,7 @@
                                                 <ctrls:CellTextBox.Text>
                                                     <Binding Path="Position.Z">
                                                         <Binding.ValidationRules>
-                                                            <vr:NumberRangeValidationRule />
+                                                            <vr:NumberRangeValidationRule Minimum="-1000" Maximum="1000" />
                                                         </Binding.ValidationRules>
                                                     </Binding>
                                                 </ctrls:CellTextBox.Text>
@@ -345,7 +345,7 @@
                                                 <ctrls:CellTextBox.Text>
                                                     <Binding Path="Position.R">
                                                         <Binding.ValidationRules>
-                                                            <vr:NumberRangeValidationRule />
+                                                            <vr:NumberRangeValidationRule Minimum="-360" Maximum="360" />
                                                         </Binding.ValidationRules>
                                                     </Binding>
                                                 </ctrls:CellTextBox.Text>
