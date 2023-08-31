@@ -47,5 +47,10 @@ namespace DBGware.RobotStudioLite
         public static RoutedCommand ToggleModelVisibilityCommand { get; } = new();
 
         public static RoutedCommand CloseControllerStatusPanelCommand { get; } = new();
+
+        public static RoutedCommand RecordCurrentPositionToX1Command { get; } = new();
+        public static RoutedCommand RecordCurrentPositionToX2Command { get; } = new();
+        public static RoutedCommand RecordCurrentPositionToY1Command { get; } = new();
+        public static RoutedCommand CalculateFrameCommand { get; } = new();
     }
 }

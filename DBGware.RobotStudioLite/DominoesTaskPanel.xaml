@@ -12,11 +12,11 @@
                 <local:DominoesTaskPanelSettingsTab x:Name="dominoesTaskPanelSettingsTab" />
             </TabItem>
             <TabItem Header="{DynamicResource Calibration}" MinWidth="100">
-
+                <local:DominoesTaskPanelCalibrationTab x:Name="dominoesTaskPanelCalibrationTab" />
             </TabItem>
-            <TabItem Header="{DynamicResource Test}" MinWidth="100">
+            <!--<TabItem Header="{DynamicResource Test}" MinWidth="100">
 
-            </TabItem>
+            </TabItem>-->
         </TabControl>
     </Grid>
 </UserControl>

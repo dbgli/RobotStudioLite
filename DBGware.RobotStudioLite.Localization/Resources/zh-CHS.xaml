@@ -184,4 +184,12 @@
     <sys:String x:Key="Holding">持有</sys:String>
     <sys:String x:Key="NotHolding">不持有</sys:String>
 
+    <sys:String x:Key="CalibrationObject">校准对象：</sys:String>
+    <sys:String x:Key="LoadingAreaWorkObject">取料区工作对象</sys:String>
+    <sys:String x:Key="AdjustmentAreaWorkObject">规整区工作对象</sys:String>
+    <sys:String x:Key="UnloadingAreaWorkObject">放料区工作对象</sys:String>
+
+    <sys:String x:Key="Record">记录</sys:String>
+    <sys:String x:Key="Calculate">计算</sys:String>
+
 </ResourceDictionary>

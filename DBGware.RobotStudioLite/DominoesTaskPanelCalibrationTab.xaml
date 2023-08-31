@@ -1,0 +1,84 @@
+﻿<UserControl x:Class="DBGware.RobotStudioLite.DominoesTaskPanelCalibrationTab"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:local="clr-namespace:DBGware.RobotStudioLite"
+             mc:Ignorable="d"
+             d:DesignWidth="800" d:DesignHeight="450">
+
+    <UserControl.CommandBindings>
+        <CommandBinding
+            Command="{x:Static local:RSLCommands.RecordCurrentPositionToX1Command}"
+            Executed="RecordCurrentPositionToX1CommandExecuted"
+            CanExecute="RecordCurrentPositionToX1CommandCanExecute" />
+        <CommandBinding
+            Command="{x:Static local:RSLCommands.RecordCurrentPositionToX2Command}"
+            Executed="RecordCurrentPositionToX2CommandExecuted"
+            CanExecute="RecordCurrentPositionToX2CommandCanExecute" />
+        <CommandBinding
+            Command="{x:Static local:RSLCommands.RecordCurrentPositionToY1Command}"
+            Executed="RecordCurrentPositionToY1CommandExecuted"
+            CanExecute="RecordCurrentPositionToY1CommandCanExecute" />
+        <CommandBinding
+            Command="{x:Static local:RSLCommands.CalculateFrameCommand}"
+            Executed="CalculateFrameCommandExecuted"
+            CanExecute="CalculateFrameCommandCanExecute" />
+    </UserControl.CommandBindings>
+
+    <Grid Margin="8">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+
+        <StackPanel Grid.Row="0" Orientation="Horizontal" Margin="0,0,0,8">
+            <Label Content="{DynamicResource CalibrationObject}" VerticalAlignment="Center" />
+            <ComboBox x:Name="calibrationObjectComboBox" MinWidth="200">
+                <ComboBoxItem Content="{DynamicResource LoadingAreaWorkObject}" Tag="" IsSelected="True" />
+                <ComboBoxItem Content="{DynamicResource AdjustmentAreaWorkObject}" Tag="" />
+                <ComboBoxItem Content="{DynamicResource UnloadingAreaWorkObject}" Tag="" />
+            </ComboBox>
+        </StackPanel>
+
+        <Border Grid.Row="1" BorderBrush="{DynamicResource ControllerStatusPanelBorderBrush}" BorderThickness="0,1,0,0">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+
+                <Label Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="2" Content="" Margin="0,8,0,0" IsEnabled="False" />
+                <Label Grid.Row="1" Grid.Column="0" Content="X1:" HorizontalAlignment="Right" />
+                <TextBox x:Name="x1TextBox" Grid.Row="1" Grid.Column="1" Text="" Margin="0,0,8,0" />
+                <Button Grid.Row="1" Grid.Column="2" Content="{DynamicResource Record}" MinWidth="100" Command="{x:Static local:RSLCommands.RecordCurrentPositionToX1Command}" />
+
+                <Label Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2" Content="" Margin="0,8,0,0" IsEnabled="False" />
+                <Label Grid.Row="3" Grid.Column="0" Content="X2:" HorizontalAlignment="Right" />
+                <TextBox x:Name="x2TextBox" Grid.Row="3" Grid.Column="1" Text="" Margin="0,0,8,0" />
+                <Button Grid.Row="3" Grid.Column="2" Content="{DynamicResource Record}" MinWidth="100" Command="{x:Static local:RSLCommands.RecordCurrentPositionToX2Command}" />
+
+                <Label Grid.Row="4" Grid.Column="1" Grid.ColumnSpan="2" Content="" Margin="0,8,0,0" IsEnabled="False" />
+                <Label Grid.Row="5" Grid.Column="0" Content="Y1:" HorizontalAlignment="Right" />
+                <TextBox x:Name="y1TextBox" Grid.Row="5" Grid.Column="1" Text="" Margin="0,0,8,0" />
+                <Button Grid.Row="5" Grid.Column="2" Content="{DynamicResource Record}" MinWidth="100" Command="{x:Static local:RSLCommands.RecordCurrentPositionToY1Command}" />
+
+                <Label Grid.Row="6" Grid.Column="1" Grid.ColumnSpan="2" Content="" Margin="0,8,0,0" IsEnabled="False" />
+                <Label Grid.Row="7" Grid.Column="0" Content="Frame:" HorizontalAlignment="Right" />
+                <TextBox x:Name="frameTextBox" Grid.Row="7" Grid.Column="1" Text="" Margin="0,0,8,0" />
+                <Button Grid.Row="7" Grid.Column="2" Content="{DynamicResource Calculate}" MinWidth="100" Command="{x:Static local:RSLCommands.CalculateFrameCommand}" />
+            </Grid>
+        </Border>
+    </Grid>
+</UserControl>

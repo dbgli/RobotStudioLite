@@ -184,4 +184,12 @@
     <sys:String x:Key="Holding">Holding</sys:String>
     <sys:String x:Key="NotHolding">Not Holding</sys:String>
 
+    <sys:String x:Key="CalibrationObject">Calibration Object:</sys:String>
+    <sys:String x:Key="LoadingAreaWorkObject">Loading Area Work Object</sys:String>
+    <sys:String x:Key="AdjustmentAreaWorkObject">Adjustment Area Work Object</sys:String>
+    <sys:String x:Key="UnloadingAreaWorkObject">Unloading Area Work Object</sys:String>
+
+    <sys:String x:Key="Record">Record</sys:String>
+    <sys:String x:Key="Calculate">Calculate</sys:String>
+
 </ResourceDictionary>
