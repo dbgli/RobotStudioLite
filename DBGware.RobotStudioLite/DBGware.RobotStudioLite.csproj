@@ -112,6 +112,9 @@
     <Content Include="RapidPrograms\Dominoes\CalibDataModule.modx">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="RapidPrograms\Dominoes\CalibrationModule.modx">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="RapidPrograms\Dominoes\DominoModule.modx">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>

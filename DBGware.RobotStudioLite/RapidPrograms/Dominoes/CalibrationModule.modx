@@ -1,0 +1,45 @@
+MODULE CalibrationModule
+    !***********************************************************
+    !
+    ! Module: CalibrationModule
+    !
+    ! Description: 校准模块
+    !
+    ! Author: dbgli
+    !
+    ! Version: 1.0
+    !
+    !***********************************************************
+
+    ! 第一个点
+    LOCAL PERS robtarget X1:=[[415,-2.85947E-7,429],[3.6853E-8,-1.24325E-9,-1,4.58174E-17],[0,0,0,0],[0,0,0,0,0,0]];
+    ! 第二个点
+    LOCAL PERS robtarget X2:=[[115,-2.85947E-7,429],[3.6853E-8,-1.24325E-9,-1,4.58174E-17],[0,0,0,0],[0,0,0,0,0,0]];
+    ! 第三个点
+    LOCAL PERS robtarget Y1:=[[415,-20.8595,429],[3.6853E-8,-1.24325E-9,-1,4.58174E-17],[0,0,0,0],[0,0,0,0,0,0]];
+    ! 待校准的工件坐标系编号
+    LOCAL PERS num CalibrationObject:=0;
+    ! 计算出的工件坐标系框架
+    LOCAL PERS pose Frame:=[[415,-2.85947E-7,429],[0,0,0,1]];
+
+    !***********************************************************
+    ! 校准函数：
+    !     利用三点法，根据给定的三个点计算出工件坐标系的框架，并赋值
+    ! 到其中的用户框架。
+    !***********************************************************
+    PROC Calibrate()
+        Frame:=DefFrame(X1,X2,Y1\Origin:=3);
+
+        TEST CalibrationObject
+        CASE 0:
+            WorkObject_1.uframe:=Frame;
+        CASE 1:
+            WorkObject_2.uframe:=Frame;
+        CASE 2:
+            WorkObject_3.uframe:=Frame;
+        DEFAULT:
+
+        ENDTEST
+    ENDPROC
+
+ENDMODULE
