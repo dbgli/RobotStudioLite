@@ -39,14 +39,17 @@
 
     <!--#endregion-->
 
-    <sys:String x:Key="Controller">控制器</sys:String>
-    <sys:String x:Key="ConnectController">连接控制器</sys:String>
+    <sys:String x:Key="Window">窗口</sys:String>
+    <sys:String x:Key="ResetWindowLayout">重置窗口布局</sys:String>
     <sys:String x:Key="Options">选项</sys:String>
     <sys:String x:Key="Theme">主题</sys:String>
     <sys:String x:Key="Language">语言</sys:String>
     <sys:String x:Key="Blue">蓝色</sys:String>
     <sys:String x:Key="Dark">深色</sys:String>
     <sys:String x:Key="Light">浅色</sys:String>
+    <sys:String x:Key="Help">帮助</sys:String>
+    <sys:String x:Key="Documentations">文档</sys:String>
+    <sys:String x:Key="AboutRobotStudioLite">关于RobotStudioLite</sys:String>
 
     <sys:String x:Key="Front">前</sys:String>
     <sys:String x:Key="Back">后</sys:String>
@@ -92,6 +95,14 @@
     <sys:String x:Key="Scene3DViewer">3D场景查看器</sys:String>
     <sys:String x:Key="ControllerScanner">控制器扫描器</sys:String>
     <sys:String x:Key="RobotControlPanel">机器人控制面板</sys:String>
+    <sys:String x:Key="RobotJointJogPanel">机器人关节点动面板</sys:String>
+    <sys:String x:Key="RobotLinearJogPanel">机器人线性点动面板</sys:String>
+    <sys:String x:Key="LayoutPanel">布局面板</sys:String>
+    <sys:String x:Key="DominoesTaskPanel">多米诺骨牌任务面板</sys:String>
+    <sys:String x:Key="RapidEditor">RAPID编辑器</sys:String>
+    <sys:String x:Key="SafeMovePanel">安全移动面板</sys:String>
+    <sys:String x:Key="OperatorWindow">操作者窗口</sys:String>
+    <sys:String x:Key="EventsPanel">事件面板</sys:String>
 
     <sys:String x:Key="Settings">设置</sys:String>
     <sys:String x:Key="Calibration">校准</sys:String>

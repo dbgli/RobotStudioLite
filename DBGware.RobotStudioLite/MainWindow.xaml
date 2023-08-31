@@ -47,8 +47,8 @@
             </Viewbox>
 
             <Menu Grid.Column="1" Margin="0,2,0,0">
-                <MenuItem Header="{DynamicResource Controller}">
-                    <MenuItem Header="{DynamicResource ConnectController}" />
+                <MenuItem Header="{DynamicResource Window}">
+                    <MenuItem Header="{DynamicResource ResetWindowLayout}" />
                 </MenuItem>
                 <MenuItem Header="{DynamicResource Options}">
                     <MenuItem x:Name="languageMenuItem" Header="{DynamicResource Language}">
@@ -85,6 +85,10 @@
                         <MenuItem Header="{DynamicResource Dark}" Tag="Dark" Click="ChangeTheme" />
                         <MenuItem Header="{DynamicResource Light}" Tag="Light" Click="ChangeTheme" />
                     </MenuItem>
+                </MenuItem>
+                <MenuItem Header="{DynamicResource Help}">
+                    <MenuItem Header="{DynamicResource Documentations}" />
+                    <MenuItem Header="{DynamicResource AboutRobotStudioLite}" />
                 </MenuItem>
             </Menu>
 
@@ -140,15 +144,15 @@
                 <LayoutPanel Orientation="Horizontal">
                     <LayoutAnchorablePaneGroup DockWidth="200" Orientation="Vertical">
                         <LayoutAnchorablePane>
-                            <LayoutAnchorable Title="joint">
+                            <LayoutAnchorable x:Name="robotJointJogPanelLayoutAnchorable" Title="{DynamicResource RobotJointJogPanel}">
                                 <local:RobotJointJogPanel x:Name="robotJointJogPanel" />
                             </LayoutAnchorable>
-                            <LayoutAnchorable Title="linear">
+                            <LayoutAnchorable x:Name="robotLinearJogPanelLayoutAnchorable" Title="{DynamicResource RobotLinearJogPanel}">
                                 <local:RobotLinearJogPanel x:Name="robotLinearJogPanel" />
                             </LayoutAnchorable>
                         </LayoutAnchorablePane>
                         <LayoutAnchorablePane>
-                            <LayoutAnchorable Title="layout">
+                            <LayoutAnchorable x:Name="layoutPanelLayoutAnchorable" Title="{DynamicResource LayoutPanel}">
                                 <!-- 布局面板一定要在3D场景查看器面板之前初始化，因为后者在初始化时调用了前者，也可以等到全部加载完成后再统一调用 -->
                                 <ctrls:LayoutPanel x:Name="layoutPanel" />
                             </LayoutAnchorable>
@@ -163,22 +167,16 @@
                                 <LayoutDocument x:Name="controllerScannerPanelLayoutDocument" Title="{DynamicResource ControllerScanner}">
                                     <local:ControllerScannerPanel />
                                 </LayoutDocument>
-                                <LayoutDocument Title="DominoesTaskPanel">
+                                <LayoutDocument x:Name="dominoesTaskPanelLayoutDocument" Title="{DynamicResource DominoesTaskPanel}">
                                     <local:DominoesTaskPanel x:Name="dominoesTaskPanel" />
                                 </LayoutDocument>
-                                <LayoutDocument Title="rapid">
+                                <LayoutDocument x:Name="rapidEditorLayoutDocument" Title="{DynamicResource RapidEditor}">
                                     <ctrls:RapidEditor />
-                                </LayoutDocument>
-                                <LayoutDocument Title="status">
-
                                 </LayoutDocument>
                             </LayoutDocumentPane>
                             <LayoutAnchorablePaneGroup DockWidth="200" Orientation="Vertical">
-                                <LayoutAnchorablePane>
-                                    <LayoutAnchorable Title="check">
-
-                                    </LayoutAnchorable>
-                                    <LayoutAnchorable Title="safe">
+                                <LayoutAnchorablePane DockHeight="100">
+                                    <LayoutAnchorable x:Name="safeMovePanelLayoutAnchorable" Title="{DynamicResource SafeMovePanel}">
 
                                     </LayoutAnchorable>
                                 </LayoutAnchorablePane>
@@ -190,13 +188,10 @@
                             </LayoutAnchorablePaneGroup>
                         </LayoutPanel>
                         <LayoutAnchorablePane DockHeight="150">
-                            <LayoutAnchorable Title="dominoes">
+                            <LayoutAnchorable x:Name="eventsPanelLayoutAnchorable" Title="{DynamicResource EventsPanel}">
 
                             </LayoutAnchorable>
-                            <LayoutAnchorable Title="log">
-
-                            </LayoutAnchorable>
-                            <LayoutAnchorable Title="operator">
+                            <LayoutAnchorable x:Name="operatorWindowLayoutAnchorable" Title="{DynamicResource OperatorWindow}">
 
                             </LayoutAnchorable>
                         </LayoutAnchorablePane>

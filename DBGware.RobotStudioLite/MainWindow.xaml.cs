@@ -92,10 +92,18 @@ namespace DBGware.RobotStudioLite
                 menuItem.IsChecked = true;
                 App.CurrentLanguage = (string)menuItem.Tag;
 
-                // DynamicResource不动态，在这里手动修改
+                // DynamicResource不动态，在这里手动修改标题
                 scene3DViewerPanelLayoutDocument.Title = (string)App.Current.FindResource("Scene3DViewer");
                 controllerScannerPanelLayoutDocument.Title = (string)App.Current.FindResource("ControllerScanner");
                 robotControlPanelLayoutAnchorable.Title = (string)App.Current.FindResource("RobotControlPanel");
+                robotJointJogPanelLayoutAnchorable.Title= (string)App.Current.FindResource("RobotJointJogPanel");
+                robotLinearJogPanelLayoutAnchorable.Title = (string)App.Current.FindResource("RobotLinearJogPanel");
+                layoutPanelLayoutAnchorable.Title = (string)App.Current.FindResource("LayoutPanel");
+                dominoesTaskPanelLayoutDocument.Title = (string)App.Current.FindResource("DominoesTaskPanel");
+                rapidEditorLayoutDocument.Title = (string)App.Current.FindResource("RapidEditor");
+                safeMovePanelLayoutAnchorable.Title = (string)App.Current.FindResource("SafeMovePanel");
+                eventsPanelLayoutAnchorable.Title = (string)App.Current.FindResource("EventsPanel");
+                operatorWindowLayoutAnchorable.Title = (string)App.Current.FindResource("OperatorWindow");
             }
         }
 

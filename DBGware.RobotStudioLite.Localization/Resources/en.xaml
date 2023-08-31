@@ -39,14 +39,17 @@
 
     <!--#endregion-->
 
-    <sys:String x:Key="Controller">Controller</sys:String>
-    <sys:String x:Key="ConnectController">Connect Controller</sys:String>
+    <sys:String x:Key="Window">Window</sys:String>
+    <sys:String x:Key="ResetWindowLayout">Reset Window Layout</sys:String>
     <sys:String x:Key="Options">Options</sys:String>
     <sys:String x:Key="Theme">Theme</sys:String>
     <sys:String x:Key="Language">Language</sys:String>
     <sys:String x:Key="Blue">Blue</sys:String>
     <sys:String x:Key="Dark">Dark</sys:String>
     <sys:String x:Key="Light">Light</sys:String>
+    <sys:String x:Key="Help">Help</sys:String>
+    <sys:String x:Key="Documentations">Documentations</sys:String>
+    <sys:String x:Key="AboutRobotStudioLite">About RobotStudioLite</sys:String>
 
     <sys:String x:Key="Front">F</sys:String>
     <sys:String x:Key="Back">B</sys:String>
@@ -92,6 +95,14 @@
     <sys:String x:Key="Scene3DViewer">3D Scene Viewer</sys:String>
     <sys:String x:Key="ControllerScanner">Controller Scanner</sys:String>
     <sys:String x:Key="RobotControlPanel">Robot Control Panel</sys:String>
+    <sys:String x:Key="RobotJointJogPanel">Robot Joint Jog Panel</sys:String>
+    <sys:String x:Key="RobotLinearJogPanel">Robot Linear Jog Panel</sys:String>
+    <sys:String x:Key="LayoutPanel">Layout Panel</sys:String>
+    <sys:String x:Key="DominoesTaskPanel">Dominoes Task Panel</sys:String>
+    <sys:String x:Key="RapidEditor">RAPID Editor</sys:String>
+    <sys:String x:Key="SafeMovePanel">Safe Move Panel</sys:String>
+    <sys:String x:Key="OperatorWindow">Operator Window</sys:String>
+    <sys:String x:Key="EventsPanel">Events Panel</sys:String>
 
     <sys:String x:Key="Settings">Settings</sys:String>
     <sys:String x:Key="Calibration">Calibration</sys:String>
