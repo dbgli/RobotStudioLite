@@ -121,6 +121,9 @@
     <Content Include="Models\UnloadingArea_Model.obj">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="Presets\1-6.rslps">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="RapidPrograms\Dominoes\CalibDataModule.modx">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -178,7 +181,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Presets\" />
     <Folder Include="Resources\Icons\PNG\" />
     <Folder Include="Resources\Icons\SVG\" />
   </ItemGroup>

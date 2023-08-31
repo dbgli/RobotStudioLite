@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<DominoesTaskSettings>
+  <Tray Rows="5" Columns="6" RowSpacing="65" ColumnSpacing="35" />
+  <DominoSize Length="22" Width="10" Height="54" />
+  <PushPosition X="60" Y="40" Z="0" R="0" />
+  <Dominoes>
+    <Domino ID="1">
+      <Position X="60" Y="200" Z="0" R="0" />
+    </Domino>
+    <Domino ID="2">
+      <Position X="60" Y="170" Z="0" R="0" />
+    </Domino>
+    <Domino ID="3">
+      <Position X="60" Y="140" Z="0" R="0" />
+    </Domino>
+    <Domino ID="4">
+      <Position X="60" Y="110" Z="0" R="0" />
+    </Domino>
+    <Domino ID="5">
+      <Position X="60" Y="80" Z="0" R="0" />
+    </Domino>
+    <Domino ID="6">
+      <Position X="60" Y="50" Z="0" R="0" />
+    </Domino>
+  </Dominoes>
+</DominoesTaskSettings>
