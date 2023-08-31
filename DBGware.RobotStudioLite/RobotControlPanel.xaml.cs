@@ -1,17 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 using ABB.Robotics.Controllers;
 using ABB.Robotics.Controllers.RapidDomain;
 
@@ -138,5 +127,12 @@ namespace DBGware.RobotStudioLite
         }
 
         #endregion
+
+        private void Slider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
+        {
+            if (App.Robot.Controller == null) return;
+            if (!App.Robot.StatusCache!.IsMaster) return;
+            App.Robot.Controller.MotionSystem.SpeedRatio = (int)((Slider)sender).Value;
+        }
     }
 }

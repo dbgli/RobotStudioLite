@@ -26,6 +26,12 @@ namespace DBGware.RobotStudioLite
             }
         }
 
+        public TextBlock ConnectedControllerNameTextBlock
+        {
+            get => connectedControllerNameTextBlock;
+            set => connectedControllerNameTextBlock = value;
+        }
+
         public MainWindow()
         {
             // 打开登录窗口，密码正确才能打开主窗口

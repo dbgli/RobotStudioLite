@@ -114,8 +114,19 @@
                 </Grid>
             </GroupBox>
             <GroupBox Grid.Row="3" Header="{DynamicResource Speed}" Margin="0,0,0,8">
-                <Grid>
-
+                <Grid Margin="4">
+                    <Slider
+                        Value="100"
+                        Minimum="0"
+                        Maximum="100"
+                        SmallChange="1"
+                        LargeChange="10"
+                        TickFrequency="10"
+                        TickPlacement="BottomRight"
+                        IsEnabled="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=local:MainWindow},
+                                            Path=ConnectedControllerNameTextBlock.Visibility,
+                                            Converter={StaticResource VisibilityToBooleanConverter}}"
+                        ValueChanged="Slider_ValueChanged" />
                 </Grid>
             </GroupBox>
         </Grid>
