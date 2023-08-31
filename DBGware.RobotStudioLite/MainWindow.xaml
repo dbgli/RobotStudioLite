@@ -58,7 +58,7 @@
                                 FontFamily="Segoe Fluent Icons,Segoe MDL2 Assets"
                                 Margin="4,0,0,0" />
                         </MenuItem.Icon>
-                        
+
                         <MenuItem Header="Deutsch" Tag="de" Click="ChangeLanguage" />
                         <MenuItem Header="English" Tag="en" Click="ChangeLanguage" />
                         <MenuItem Header="Español" Tag="es" Click="ChangeLanguage" />
@@ -127,8 +127,14 @@
     </CustomChromeWindow.LeftWindowCommands>
 
     <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
         <DockingManager
             x:Name="dockingManager"
+            Grid.Row="0"
             ShowSystemMenu="False">
             <LayoutRoot>
                 <LayoutPanel Orientation="Horizontal">
@@ -198,5 +204,29 @@
                 </LayoutPanel>
             </LayoutRoot>
         </DockingManager>
+
+        <ctrls:ControllerStatusPanel
+            x:Name="controllerStatusPanel"
+            Grid.Row="0"
+            HorizontalAlignment="Right"
+            VerticalAlignment="Bottom"
+            Visibility="{Binding ElementName=controllerStatusPanelToggleButton,
+                                 Path=IsChecked,
+                                 Converter={StaticResource BooleanToVisibilityConverter}}" />
+
+        <StatusBar Grid.Row="1">
+            <StatusBarItem HorizontalAlignment="Right">
+                <ToggleButton
+                    x:Name="controllerStatusPanelToggleButton"
+                    Content="{DynamicResource ControllerStatus}"
+                    MinWidth="100"
+                    Margin="0,0,16,0"
+                    Foreground="#FF000000"
+                    Background="#FF3CB371"
+                    BorderThickness="0"
+                    IsChecked="False"
+                    Visibility="Hidden" />
+            </StatusBarItem>
+        </StatusBar>
     </Grid>
 </CustomChromeWindow>

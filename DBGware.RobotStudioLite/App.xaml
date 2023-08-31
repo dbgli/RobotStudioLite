@@ -3,6 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:local="clr-namespace:DBGware.RobotStudioLite"
              xmlns:conv="clr-namespace:DBGware.RobotStudioLite.Converters"
+             xmlns:ht="http://helix-toolkit.org/wpf"
              StartupUri="MainWindow.xaml"
              Startup="Application_Startup"
              Exit="Application_Exit"
@@ -16,8 +17,15 @@
                 <ResourceDictionary Source="/DBGware.RobotStudioLite.Localization;Component/Resources/en.xaml" />
             </ResourceDictionary.MergedDictionaries>
 
+            <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
+            <ht:NotNullToVisibilityConverter x:Key="NotNullToVisibilityConverter" />
             <conv:IndexToRowNumberConverter x:Key="IndexToRowNumberConverter" />
             <conv:BoolToOpacityConverter x:Key="BoolToOpacityConverter" />
+            <conv:ControllerOperatingModeToStringConverter x:Key="ControllerOperatingModeToStringConverter" />
+            <conv:ControllerStateToStringConverter x:Key="ControllerStateToStringConverter" />
+            <conv:ExecutionStatusToStringConverter x:Key="ExecutionStatusToStringConverter" />
+            <conv:SpeedRatioToStringConverter x:Key="SpeedRatioToStringConverter" />
+            <conv:IsMasterToStringConverter x:Key="IsMasterToStringConverter" />
 
             <Style x:Key="CustomizeDocumentFloatingWindowStyle" TargetType="{x:Type LayoutDocumentFloatingWindowControl}">
                 <Setter Property="AllowMinimize" Value="True" />

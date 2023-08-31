@@ -157,4 +157,31 @@
     <sys:String x:Key="DominoesPreview">多米诺骨牌预览</sys:String>
     <sys:String x:Key="DominoQueueOrderLabels">骨牌队列顺序标签</sys:String>
 
+    <sys:String x:Key="ControllerStatus">控制器状态</sys:String>
+    <sys:String x:Key="ControllerOperatingMode">控制器操作模式：</sys:String>
+    <sys:String x:Key="ControllerOperatingMode_Auto">自动</sys:String>
+    <sys:String x:Key="ControllerOperatingMode_AutoChange">更改到自动</sys:String>
+    <sys:String x:Key="ControllerOperatingMode_Init">初始化</sys:String>
+    <sys:String x:Key="ControllerOperatingMode_ManualFullSpeed">手动全速</sys:String>
+    <sys:String x:Key="ControllerOperatingMode_ManualFullSpeedChange">更改到手动全速</sys:String>
+    <sys:String x:Key="ControllerOperatingMode_ManualReducedSpeed">手动减速</sys:String>
+    <sys:String x:Key="ControllerOperatingMode_NotApplicable">不适用</sys:String>
+    <sys:String x:Key="ControllerState">控制器状态：</sys:String>
+    <sys:String x:Key="ControllerState_EmergencyStop">紧急停止</sys:String>
+    <sys:String x:Key="ControllerState_EmergencyStopReset">紧急停止复位</sys:String>
+    <sys:String x:Key="ControllerState_GuardStop">防护停止</sys:String>
+    <sys:String x:Key="ControllerState_Init">初始化</sys:String>
+    <sys:String x:Key="ControllerState_MotorsOff">电机关闭</sys:String>
+    <sys:String x:Key="ControllerState_MotorsOn">电机开启</sys:String>
+    <sys:String x:Key="ControllerState_SystemFailure">系统故障</sys:String>
+    <sys:String x:Key="ControllerState_Unknown">未知</sys:String>
+    <sys:String x:Key="ExecutionStatus">执行状态：</sys:String>
+    <sys:String x:Key="ExecutionStatus_Unknown">未知</sys:String>
+    <sys:String x:Key="ExecutionStatus_Running">运行中</sys:String>
+    <sys:String x:Key="ExecutionStatus_Stopped">已停止</sys:String>
+    <sys:String x:Key="SpeedRatio">速度比率：</sys:String>
+    <sys:String x:Key="IsMaster">主控权：</sys:String>
+    <sys:String x:Key="Holding">持有</sys:String>
+    <sys:String x:Key="NotHolding">不持有</sys:String>
+
 </ResourceDictionary>

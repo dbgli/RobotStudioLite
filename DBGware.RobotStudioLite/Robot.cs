@@ -66,6 +66,7 @@ namespace DBGware.RobotStudioLite
             StatusCache.ExecutionStatus = Controller.Rapid.ExecutionStatus;
             StatusCache.JointPosition = Controller.MotionSystem.ActiveMechanicalUnit.GetPosition();
             StatusCache.LinearPosition = Controller.MotionSystem.ActiveMechanicalUnit.GetPosition(CoordinateSystemType.World);
+            StatusCache.SpeedRatio = Controller.MotionSystem.SpeedRatio;
 
             // 用Dispatcher.Invoke方法处理UI线程中的事务
             App.Current.Dispatcher.Invoke(() =>
@@ -76,6 +77,11 @@ namespace DBGware.RobotStudioLite
                 ((MainWindow)App.Current.MainWindow).ConnectedControllerName = StatusCache.Name;
                 ((MainWindow)App.Current.MainWindow).robotJointJogPanel.JointPosition = StatusCache.JointPosition;
                 ((MainWindow)App.Current.MainWindow).robotLinearJogPanel.LinearPosition = StatusCache.LinearPosition;
+                ((MainWindow)App.Current.MainWindow).controllerStatusPanel.ControllerOperatingMode = StatusCache.OperatingMode;
+                ((MainWindow)App.Current.MainWindow).controllerStatusPanel.IsMaster = StatusCache.IsMaster;
+                ((MainWindow)App.Current.MainWindow).controllerStatusPanel.ControllerState = StatusCache.State;
+                ((MainWindow)App.Current.MainWindow).controllerStatusPanel.ExecutionStatus = StatusCache.ExecutionStatus;
+                ((MainWindow)App.Current.MainWindow).controllerStatusPanel.SpeedRatio = StatusCache.SpeedRatio;
 
                 SetPosition(StatusCache.JointPosition);
 
@@ -112,6 +118,7 @@ namespace DBGware.RobotStudioLite
             Controller.Logon(UserInfo.DefaultUser);
             StatusCache = new();
             StatusCacheRefreshTimer.Start();
+            ((MainWindow)App.Current.MainWindow).controllerStatusPanelToggleButton.Visibility = Visibility.Visible;
         }
 
         public async STT.Task DisconnectController()
@@ -142,6 +149,8 @@ namespace DBGware.RobotStudioLite
             ((MainWindow)App.Current.MainWindow).ConnectedControllerName = string.Empty;
             ((MainWindow)App.Current.MainWindow).robotJointJogPanel.JointPosition = null;
             ((MainWindow)App.Current.MainWindow).robotLinearJogPanel.LinearPosition = null;
+            ((MainWindow)App.Current.MainWindow).controllerStatusPanelToggleButton.IsChecked = false;
+            ((MainWindow)App.Current.MainWindow).controllerStatusPanelToggleButton.Visibility = Visibility.Hidden;
 
             SetPosition(new());
         }

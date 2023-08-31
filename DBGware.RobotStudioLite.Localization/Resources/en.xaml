@@ -157,4 +157,31 @@
     <sys:String x:Key="DominoesPreview">Dominoes Preview</sys:String>
     <sys:String x:Key="DominoQueueOrderLabels">Domino Queue Order Labels</sys:String>
 
+    <sys:String x:Key="ControllerStatus">Controller Status</sys:String>
+    <sys:String x:Key="ControllerOperatingMode" xml:space="preserve">Controller Operating Mode: </sys:String>
+    <sys:String x:Key="ControllerOperatingMode_Auto">Automatic</sys:String>
+    <sys:String x:Key="ControllerOperatingMode_AutoChange">Change to Automatic</sys:String>
+    <sys:String x:Key="ControllerOperatingMode_Init">Initialize</sys:String>
+    <sys:String x:Key="ControllerOperatingMode_ManualFullSpeed">Manual Full Speed</sys:String>
+    <sys:String x:Key="ControllerOperatingMode_ManualFullSpeedChange">Change to Manual Full Speed</sys:String>
+    <sys:String x:Key="ControllerOperatingMode_ManualReducedSpeed">Manual Reduced Speed</sys:String>
+    <sys:String x:Key="ControllerOperatingMode_NotApplicable">Not Applicable</sys:String>
+    <sys:String x:Key="ControllerState" xml:space="preserve">Controller State: </sys:String>
+    <sys:String x:Key="ControllerState_EmergencyStop">Emergency Stop</sys:String>
+    <sys:String x:Key="ControllerState_EmergencyStopReset">Emergency Stop Reset</sys:String>
+    <sys:String x:Key="ControllerState_GuardStop">Guard Stop</sys:String>
+    <sys:String x:Key="ControllerState_Init">Initialize</sys:String>
+    <sys:String x:Key="ControllerState_MotorsOff">Motors Off</sys:String>
+    <sys:String x:Key="ControllerState_MotorsOn">Motors On</sys:String>
+    <sys:String x:Key="ControllerState_SystemFailure">System Failure</sys:String>
+    <sys:String x:Key="ControllerState_Unknown">Unknown</sys:String>
+    <sys:String x:Key="ExecutionStatus" xml:space="preserve">Execution Status: </sys:String>
+    <sys:String x:Key="ExecutionStatus_Unknown">Unknown</sys:String>
+    <sys:String x:Key="ExecutionStatus_Running">Running</sys:String>
+    <sys:String x:Key="ExecutionStatus_Stopped">Stopped</sys:String>
+    <sys:String x:Key="SpeedRatio" xml:space="preserve">Speed Ratio: </sys:String>
+    <sys:String x:Key="IsMaster" xml:space="preserve">Mastership: </sys:String>
+    <sys:String x:Key="Holding">Holding</sys:String>
+    <sys:String x:Key="NotHolding">Not Holding</sys:String>
+
 </ResourceDictionary>

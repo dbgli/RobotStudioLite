@@ -423,4 +423,12 @@
     <SolidColorBrush x:Key="SignInButtonHoverForeground" Color="#FF203D77" />
     <SolidColorBrush x:Key="SignInButtonPressedForeground" Color="#FF203D77" />
 
+    <SolidColorBrush x:Key="ControllerStatusPanelBackground" Color="#FFFFFFFF" />
+    <SolidColorBrush x:Key="ControllerStatusPanelBorderBrush" Color="#FF5D6B99" />
+    <SolidColorBrush x:Key="ControllerStatusPanelTitleForeground" Color="#FF1E1E1E" />
+    <SolidColorBrush x:Key="ControllerStatusPanelTitleBackground" Color="#FFF5CC84" />
+    <SolidColorBrush x:Key="ControllerStatusPanelCloseButtonForeground" Color="#FF4D5887" />
+    <SolidColorBrush x:Key="ControllerStatusPanelCloseButtonMouseOverForeground" Color="#FF4D5887" />
+    <SolidColorBrush x:Key="ControllerStatusPanelCloseButtonBackground" Color="#FFFFFFFF" />
+
 </ResourceDictionary>

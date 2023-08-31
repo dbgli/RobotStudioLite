@@ -11,12 +11,13 @@ namespace DBGware.RobotStudioLite
     public class RobotStatus
     {
         public string Name { get; set; } = string.Empty;
-        public Guid SystemId { get; set; }
+        public Guid SystemId { get; set; } = Guid.Empty;
         public ControllerOperatingMode OperatingMode { get; set; }
         public bool IsMaster { get; set; }
         public ControllerState State { get; set; }
         public ExecutionStatus ExecutionStatus { get; set; }
         public JointTarget JointPosition { get; set; }
         public RobTarget LinearPosition { get; set; }
+        public int SpeedRatio { get; set; }
     }
 }
