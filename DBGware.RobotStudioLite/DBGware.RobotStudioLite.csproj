@@ -145,6 +145,9 @@
     <Content Include="RapidPrograms\Dominoes\ToolModule.modx">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="Users\Users.db">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
 
   <ItemGroup>
@@ -175,7 +178,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Users\" />
     <Folder Include="Presets\" />
     <Folder Include="Resources\Icons\PNG\" />
     <Folder Include="Resources\Icons\SVG\" />
