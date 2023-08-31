@@ -4,7 +4,7 @@
 
     <!--#region AvalonDock-->
 
-    <sys:String x:Key="Active_Files">激活文件</sys:String>
+    <sys:String x:Key="Active_Files">活动文件</sys:String>
     <sys:String x:Key="Active_ToolWindows">活动工具窗口</sys:String>
     <sys:String x:Key="Anchorable_AutoHide">自动隐藏</sys:String>
     <sys:String x:Key="Anchorable_BtnAutoHide_Hint">自动隐藏</sys:String>
