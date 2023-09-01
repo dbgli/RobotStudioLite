@@ -53,7 +53,20 @@ namespace DBGware.RobotStudioLite
         private void RequestMastershipCommandExecuted(object sender, ExecutedRoutedEventArgs e)
         {
             if (App.Robot.Controller == null) return;
-            App.Robot.Mastership = Mastership.Request(App.Robot.Controller);
+
+            try
+            {
+                App.Robot.Mastership = Mastership.Request(App.Robot.Controller);
+            }
+            catch
+            {
+                // 当控制器处于手动模式时，主动拒绝或超时未处理就会使得请求主控权失败
+                MessageBox.Show((string)App.Current.FindResource("RequestMastershipFailedMessage"),
+                                "RobotStudioLite",
+                                MessageBoxButton.OK,
+                                MessageBoxImage.Warning,
+                                MessageBoxResult.OK);
+            }
         }
 
         private void RequestMastershipCommandCanExecute(object sender, CanExecuteRoutedEventArgs e)

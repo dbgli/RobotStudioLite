@@ -220,5 +220,6 @@
     <sys:String x:Key="SynchronizeToRobotSuccessfullyMessage">已成功同步到机器人。</sys:String>
     <sys:String x:Key="CreateBackupSuccessfullyMessage">已成功创建备份。</sys:String>
     <sys:String x:Key="DeployTaskSuccessfullyMessage">已成功部署任务。</sys:String>
+    <sys:String x:Key="RequestMastershipFailedMessage">请求主控权失败！请求可能已被拒绝或未在指定时间内得到处理。</sys:String>
 
 </ResourceDictionary>

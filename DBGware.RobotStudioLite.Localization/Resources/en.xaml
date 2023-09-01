@@ -220,5 +220,6 @@
     <sys:String x:Key="SynchronizeToRobotSuccessfullyMessage">Synchronized to the robot successfully.</sys:String>
     <sys:String x:Key="CreateBackupSuccessfullyMessage">Created the backup successfully.</sys:String>
     <sys:String x:Key="DeployTaskSuccessfullyMessage">Deployed the task successfully.</sys:String>
+    <sys:String x:Key="RequestMastershipFailedMessage">Requesting the mastership failed! The request may have been denied or not processed within the specified time.</sys:String>
 
 </ResourceDictionary>
