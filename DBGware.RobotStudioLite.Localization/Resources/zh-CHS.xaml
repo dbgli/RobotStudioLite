@@ -217,4 +217,8 @@
     <sys:String x:Key="Causes">原因</sys:String>
     <sys:String x:Key="Actions">动作</sys:String>
 
+    <sys:String x:Key="SynchronizeToRobotSuccessfullyMessage">已成功同步到机器人。</sys:String>
+    <sys:String x:Key="CreateBackupSuccessfullyMessage">已成功创建备份。</sys:String>
+    <sys:String x:Key="DeployTaskSuccessfullyMessage">已成功部署任务。</sys:String>
+
 </ResourceDictionary>

@@ -121,6 +121,12 @@ namespace DBGware.RobotStudioLite.Controls
 
             App.Robot.Controller?.FileSystem.PutDirectory(localDirectory, remoteDirectory, true);
             App.Robot.Controller?.Rapid.GetTask("T_ROB1").LoadProgramFromFile($"{remoteDirectory}/{programFileName}", RapidLoadMode.Replace);
+
+            MessageBox.Show((string)App.Current.FindResource("SynchronizeToRobotSuccessfullyMessage"),
+                            "RobotStudioLite",
+                            MessageBoxButton.OK,
+                            MessageBoxImage.Information,
+                            MessageBoxResult.OK);
         }
 
         private void SynchronizeToRobotCommandCanExecute(object sender, CanExecuteRoutedEventArgs e)
@@ -192,6 +198,12 @@ namespace DBGware.RobotStudioLite.Controls
             // 不用SaveProgramToFile方法是因为这个方法只能保存有名程序，而一般程序默认是无名的
             // 要想使用必须在RobotStudio里重命名程序赋予名称才行，PC SDK没有提供命名程序的接口
             // App.Robot.Controller?.Rapid.GetTask("T_ROB1").SaveProgramToFile($"RapidPrograms/{folderName}");
+
+            MessageBox.Show((string)App.Current.FindResource("CreateBackupSuccessfullyMessage"),
+                            "RobotStudioLite",
+                            MessageBoxButton.OK,
+                            MessageBoxImage.Information,
+                            MessageBoxResult.OK);
         }
 
         private void CreateBackupCommandCanExecute(object sender, CanExecuteRoutedEventArgs e)

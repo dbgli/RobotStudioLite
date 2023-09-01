@@ -177,6 +177,12 @@ namespace DBGware.RobotStudioLite
                 rdDominoes.StringValue = rdDominoesStringValue;
 
                 rdPushPosition.StringValue = $"[{PushPosition.X},{PushPosition.Y},{PushPosition.Z},{PushPosition.R}]";
+
+                MessageBox.Show((string)App.Current.FindResource("DeployTaskSuccessfullyMessage"),
+                                "RobotStudioLite",
+                                MessageBoxButton.OK,
+                                MessageBoxImage.Information,
+                                MessageBoxResult.OK);
             }
             catch (GenericControllerException)
             {
