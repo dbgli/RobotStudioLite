@@ -19,6 +19,42 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Content Include="Documentations\en\3HAC050917_TRM_RAPID_RW_6-en.chm">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Documentations\en\3HAC050946_TRM_RAPID_kernel_RW_6-en.chm">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Documentations\en\3HAC050947_TRM_RAPID_overview_RW_6-en.chm">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Documentations\en\3HAC065038_TRM_RAPID_RW_7-en.chm">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Documentations\en\3HAC065039_TRM_RAPID_Kernel_RW_7-en.chm">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Documentations\en\3HAC065040_RAPID_Overview_RW_7-en.chm">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Documentations\zh-CN\3HAC050917_TRM_RAPID_RW_6-zh-cn.chm">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Documentations\zh-CN\3HAC050946_TRM_RAPID_Kernel_RW_6-zh-cn.chm">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Documentations\zh-CN\3HAC050947_TRM_RAPID_overview_RW_6-zh-cn.chm">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Documentations\zh-CN\3HAC065038_TRM_RAPID_RW_7-zh-cn.chm">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Documentations\zh-CN\3HAC065039_TRM_RAPID_Kernel_RW_7-zh-cn.chm">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Documentations\zh-CN\3HAC065040_RAPID_Overview_RW_7-zh-cn.chm">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="Models\AdjustmentArea_Model.mtl">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>

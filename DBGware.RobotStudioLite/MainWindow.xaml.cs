@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
+using System.Diagnostics;
 using AvalonDock.Layout;
 using DBGware.RobotStudioLite.UI.Controls;
 
@@ -67,6 +68,28 @@ namespace DBGware.RobotStudioLite
         private void ResetWindowLayoutCommandCanExecute(object sender, CanExecuteRoutedEventArgs e)
         {
             e.CanExecute = false;
+        }
+
+        #endregion
+
+        #region 打开文档命令
+
+        private void OpenDocumentationsCommandExecuted(object sender, ExecutedRoutedEventArgs e)
+        {
+            try
+            {
+                string explorerPath = Environment.GetFolderPath(Environment.SpecialFolder.Windows) + "\\explorer.exe";
+                Process.Start(explorerPath, $"{AppDomain.CurrentDomain.BaseDirectory}Documentations");
+            }
+            catch
+            {
+                // 文件夹不存在
+            }
+        }
+
+        private void OpenDocumentationsCommandCanExecute(object sender, CanExecuteRoutedEventArgs e)
+        {
+            e.CanExecute = true;
         }
 
         #endregion

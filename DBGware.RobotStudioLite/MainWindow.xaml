@@ -34,6 +34,10 @@
             Command="{x:Static local:RSLCommands.ResetWindowLayoutCommand}"
             Executed="ResetWindowLayoutCommandExecuted"
             CanExecute="ResetWindowLayoutCommandCanExecute" />
+        <CommandBinding
+            Command="{x:Static local:RSLCommands.OpenDocumentationsCommand}"
+            Executed="OpenDocumentationsCommandExecuted"
+            CanExecute="OpenDocumentationsCommandCanExecute" />
     </CustomChromeWindow.CommandBindings>
 
     <CustomChromeWindow.LeftWindowCommands>
@@ -94,7 +98,7 @@
                     </MenuItem>
                 </MenuItem>
                 <MenuItem Header="{DynamicResource Help}">
-                    <MenuItem Header="{DynamicResource Documentations}" />
+                    <MenuItem Header="{DynamicResource Documentations}" Command="{x:Static local:RSLCommands.OpenDocumentationsCommand}" />
                     <MenuItem Header="{DynamicResource AboutRobotStudioLite}" />
                 </MenuItem>
             </Menu>
