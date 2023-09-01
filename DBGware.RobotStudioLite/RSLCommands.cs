@@ -54,5 +54,7 @@ namespace DBGware.RobotStudioLite
         public static RoutedCommand CalculateFrameCommand { get; } = new();
 
         public static RoutedCommand SortEventLogMessagesCommand { get; } = new();
+
+        public static RoutedCommand ResetWindowLayoutCommand { get; } = new();
     }
 }

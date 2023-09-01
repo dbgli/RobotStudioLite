@@ -29,6 +29,13 @@
     Activated="CustomChromeWindow_Activated"
     Closing="CustomChromeWindow_Closing">
 
+    <CustomChromeWindow.CommandBindings>
+        <CommandBinding
+            Command="{x:Static local:RSLCommands.ResetWindowLayoutCommand}"
+            Executed="ResetWindowLayoutCommandExecuted"
+            CanExecute="ResetWindowLayoutCommandCanExecute" />
+    </CustomChromeWindow.CommandBindings>
+
     <CustomChromeWindow.LeftWindowCommands>
         <Grid Margin="4,6">
             <Grid.ColumnDefinitions>
@@ -48,7 +55,7 @@
 
             <Menu Grid.Column="1" Margin="0,2,0,0">
                 <MenuItem Header="{DynamicResource Window}">
-                    <MenuItem Header="{DynamicResource ResetWindowLayout}" />
+                    <MenuItem Header="{DynamicResource ResetWindowLayout}" Command="{x:Static local:RSLCommands.ResetWindowLayoutCommand}" />
                 </MenuItem>
                 <MenuItem Header="{DynamicResource Options}">
                     <MenuItem x:Name="languageMenuItem" Header="{DynamicResource Language}">

@@ -5,6 +5,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Input;
 using AvalonDock.Layout;
 using DBGware.RobotStudioLite.UI.Controls;
 
@@ -15,6 +16,9 @@ namespace DBGware.RobotStudioLite
     /// </summary>
     public partial class MainWindow : CustomChromeWindow
     {
+        //private XmlLayoutSerializer xmlLayoutSerializer;
+        //private MemoryStream avalonDockLayoutStream = new();
+
         public string ConnectedControllerName
         {
             get => connectedControllerNameTextBlock.Text;
@@ -42,9 +46,30 @@ namespace DBGware.RobotStudioLite
             }
 
             InitializeComponent();
+
             dominoesTaskPanel.dominoesTaskPanelSettingsTab.Tray.PropertyChanged += scene3DViewerPanel.Tray_PropertyChanged;
             dominoesTaskPanel.dominoesTaskPanelSettingsTab.Dominoes.CollectionChanged += scene3DViewerPanel.Dominoes_CollectionChanged;
+
+            //xmlLayoutSerializer = new(dockingManager);
+            //xmlLayoutSerializer.Serialize(avalonDockLayoutStream);
+            //avalonDockLayoutStream.Position = 0;
         }
+
+        #region 重置窗口布局命令
+
+        private void ResetWindowLayoutCommandExecuted(object sender, ExecutedRoutedEventArgs e)
+        {
+            // TODO 布局不能完全恢复
+            //xmlLayoutSerializer.Deserialize(avalonDockLayoutStream);
+            //avalonDockLayoutStream.Position = 0;
+        }
+
+        private void ResetWindowLayoutCommandCanExecute(object sender, CanExecuteRoutedEventArgs e)
+        {
+            e.CanExecute = false;
+        }
+
+        #endregion
 
         private void CustomChromeWindow_Activated(object sender, EventArgs e)
         {
