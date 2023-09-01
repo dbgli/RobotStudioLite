@@ -119,10 +119,19 @@ namespace DBGware.RobotStudioLite
             StatusCache = new();
             StatusCacheRefreshTimer.Start();
             ((MainWindow)App.Current.MainWindow).controllerStatusPanelToggleButton.Visibility = Visibility.Visible;
+
+            // 初次先主动获取全部事件日志
+            Controller.EventLog.GetAllMessages(0).ForEach(m => ((MainWindow)App.Current.MainWindow).eventsPanel.EventLogMessages.Add(m));
+            // 订阅事件日志
+            Controller.EventLog.MessageWritten += ((MainWindow)App.Current.MainWindow).eventsPanel.EventLog_MessageWritten;
         }
 
         public async STT.Task DisconnectController()
         {
+            // 退订事件日志
+            Controller!.EventLog.MessageWritten -= ((MainWindow)App.Current.MainWindow).eventsPanel.EventLog_MessageWritten;
+            ((MainWindow)App.Current.MainWindow).eventsPanel.EventLogMessages.Clear();
+
             // 定时器停止时如果有定时事件正在执行，等待定时事件结束后再释放资源
             StatusCacheRefreshTimer.Stop();
             while (IsStatusCacheRefreshing) await STT.Task.Delay(100);

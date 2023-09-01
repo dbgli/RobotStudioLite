@@ -27,6 +27,7 @@
             <conv:SpeedRatioToStringConverter x:Key="SpeedRatioToStringConverter" />
             <conv:IsMasterToStringConverter x:Key="IsMasterToStringConverter" />
             <conv:VisibilityToBooleanConverter x:Key="VisibilityToBooleanConverter" />
+            <conv:CategoryIdToCategoryTypeExConverter x:Key="CategoryIdToCategoryTypeExConverter" />
 
             <Style x:Key="CustomizeDocumentFloatingWindowStyle" TargetType="{x:Type LayoutDocumentFloatingWindowControl}">
                 <Setter Property="AllowMinimize" Value="True" />

@@ -205,4 +205,16 @@
     <sys:String x:Key="Record">记录</sys:String>
     <sys:String x:Key="Calculate">计算</sys:String>
 
+    <sys:String x:Key="Type">类型</sys:String>
+    <sys:String x:Key="Code">代码</sys:String>
+    <sys:String x:Key="Title">标题</sys:String>
+    <sys:String x:Key="Category">种类</sys:String>
+    <sys:String x:Key="SequenceNumber">排序号</sys:String>
+    <sys:String x:Key="DateAndTime">日期和时间</sys:String>
+
+    <sys:String x:Key="Description">描述</sys:String>
+    <sys:String x:Key="Consequences">后果</sys:String>
+    <sys:String x:Key="Causes">原因</sys:String>
+    <sys:String x:Key="Actions">动作</sys:String>
+
 </ResourceDictionary>

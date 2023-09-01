@@ -189,7 +189,7 @@
                         </LayoutPanel>
                         <LayoutAnchorablePane DockHeight="150">
                             <LayoutAnchorable x:Name="eventsPanelLayoutAnchorable" Title="{DynamicResource EventsPanel}">
-
+                                <ctrls:EventsPanel x:Name="eventsPanel" />
                             </LayoutAnchorable>
                             <LayoutAnchorable x:Name="operatorWindowLayoutAnchorable" Title="{DynamicResource OperatorWindow}">
 

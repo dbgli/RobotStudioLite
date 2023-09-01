@@ -205,4 +205,16 @@
     <sys:String x:Key="Record">Record</sys:String>
     <sys:String x:Key="Calculate">Calculate</sys:String>
 
+    <sys:String x:Key="Type">Type</sys:String>
+    <sys:String x:Key="Code">Code</sys:String>
+    <sys:String x:Key="Title">Title</sys:String>
+    <sys:String x:Key="Category">Category</sys:String>
+    <sys:String x:Key="SequenceNumber">Seq. Number</sys:String>
+    <sys:String x:Key="DateAndTime">Date and Time</sys:String>
+
+    <sys:String x:Key="Description">Description</sys:String>
+    <sys:String x:Key="Consequences">Consequences</sys:String>
+    <sys:String x:Key="Causes">Causes</sys:String>
+    <sys:String x:Key="Actions">Actions</sys:String>
+
 </ResourceDictionary>

@@ -52,5 +52,7 @@ namespace DBGware.RobotStudioLite
         public static RoutedCommand RecordCurrentPositionToX2Command { get; } = new();
         public static RoutedCommand RecordCurrentPositionToY1Command { get; } = new();
         public static RoutedCommand CalculateFrameCommand { get; } = new();
+
+        public static RoutedCommand SortEventLogMessagesCommand { get; } = new();
     }
 }

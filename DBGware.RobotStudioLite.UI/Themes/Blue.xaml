@@ -431,4 +431,7 @@
     <SolidColorBrush x:Key="ControllerStatusPanelCloseButtonMouseOverForeground" Color="#FF4D5887" />
     <SolidColorBrush x:Key="ControllerStatusPanelCloseButtonBackground" Color="#FFFFFFFF" />
 
+    <SolidColorBrush x:Key="EventLogMessageDetailsRichTextBoxForeground" Color="#FF1E1E1E" />
+    <SolidColorBrush x:Key="EventLogMessageDetailsRichTextBoxBackground" Color="#FFFFFFFF" />
+
 </ResourceDictionary>
