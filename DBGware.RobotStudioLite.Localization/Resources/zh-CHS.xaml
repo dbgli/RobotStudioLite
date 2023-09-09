@@ -222,4 +222,9 @@
     <sys:String x:Key="DeployTaskSuccessfullyMessage">已成功部署任务。</sys:String>
     <sys:String x:Key="RequestMastershipFailedMessage">请求主控权失败！请求可能已被拒绝或未在指定时间内得到处理。</sys:String>
 
+    <sys:String x:Key="LoginAsDefaultUser">以默认用户身份登录</sys:String>
+    <sys:String x:Key="LoginAsLocalClient">本地客户端登录</sys:String>
+    <sys:String x:Key="Login">登录</sys:String>
+    <sys:String x:Key="LoginControllerFailedMessage" xml:space="preserve">无法作为 '{0}' 登录。&#x000A;请为 '{1}' 提供有效凭据。</sys:String>
+
 </ResourceDictionary>

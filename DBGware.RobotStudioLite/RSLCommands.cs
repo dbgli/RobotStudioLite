@@ -57,5 +57,9 @@ namespace DBGware.RobotStudioLite
 
         public static RoutedCommand ResetWindowLayoutCommand { get; } = new();
         public static RoutedCommand OpenDocumentationsCommand { get; } = new();
+
+        public static RoutedCommand LoginAsDefaultUserCommand { get; } = new();
+        public static RoutedCommand LoginControllerCommand { get; } = new();
+        public static RoutedCommand CancelLoginControllerCommand { get; } = new();
     }
 }

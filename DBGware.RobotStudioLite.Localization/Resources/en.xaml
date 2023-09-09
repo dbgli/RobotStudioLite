@@ -222,4 +222,9 @@
     <sys:String x:Key="DeployTaskSuccessfullyMessage">Deployed the task successfully.</sys:String>
     <sys:String x:Key="RequestMastershipFailedMessage">Requesting the mastership failed! The request may have been denied or not processed within the specified time.</sys:String>
 
+    <sys:String x:Key="LoginAsDefaultUser">Login as Default User</sys:String>
+    <sys:String x:Key="LoginAsLocalClient">Login as local client</sys:String>
+    <sys:String x:Key="Login">Login</sys:String>
+    <sys:String x:Key="LoginControllerFailedMessage" xml:space="preserve">Failed to login as '{0}'.&#x000A;Please provide valid credentials for '{1}'.</sys:String>
+
 </ResourceDictionary>

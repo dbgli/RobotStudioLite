@@ -4,6 +4,7 @@ using System.Windows;
 using System.Windows.Input;
 using System.Windows.Media.Media3D;
 using STT = System.Threading.Tasks;
+using ABB.Robotics;
 using ABB.Robotics.Controllers;
 using ABB.Robotics.Controllers.MotionDomain;
 using ABB.Robotics.Controllers.RapidDomain;
@@ -114,14 +115,43 @@ namespace DBGware.RobotStudioLite
                 if (messageBoxResult == MessageBoxResult.No) return;
                 await DisconnectController();
             }
-            Controller = Controller.Connect(controllerInfo, ConnectionType.Standalone);
-            Controller.Logon(UserInfo.DefaultUser);
+
+            bool isLoginSuccessful = false;
+
+            // 控制器登录窗口
+            do
+            {
+                ControllerLoginWindow controllerLoginWindow = new(controllerInfo.ControllerName);
+                if (controllerLoginWindow.ShowDialog() != true) return;
+
+                try
+                {
+                    Controller = Controller.Connect(controllerInfo, ConnectionType.Standalone);
+                    Controller.Logon(controllerLoginWindow.UserInfo);
+                    isLoginSuccessful = true;
+                }
+                catch (GenericControllerException)
+                {
+                    Controller?.Dispose();
+                    Controller = null;
+                    MessageBoxResult messageBoxResult = MessageBox.Show(string.Format((string)App.Current.FindResource("LoginControllerFailedMessage"),
+                                                                                      controllerLoginWindow.UserInfo.Name,
+                                                                                      controllerInfo.ControllerName),
+                                                                        "RobotStudioLite",
+                                                                        MessageBoxButton.OKCancel,
+                                                                        MessageBoxImage.Warning,
+                                                                        MessageBoxResult.OK);
+                    if (messageBoxResult == MessageBoxResult.Cancel) return;
+                }
+            }
+            while (!isLoginSuccessful);
+
             StatusCache = new();
             StatusCacheRefreshTimer.Start();
             ((MainWindow)App.Current.MainWindow).controllerStatusPanelToggleButton.Visibility = Visibility.Visible;
 
             // 初次先主动获取全部事件日志
-            Controller.EventLog.GetAllMessages(0).ForEach(m => ((MainWindow)App.Current.MainWindow).eventsPanel.EventLogMessages.Add(m));
+            Controller!.EventLog.GetAllMessages(0).ForEach(m => ((MainWindow)App.Current.MainWindow).eventsPanel.EventLogMessages.Add(m));
             // 订阅事件日志
             Controller.EventLog.MessageWritten += ((MainWindow)App.Current.MainWindow).eventsPanel.EventLog_MessageWritten;
         }
