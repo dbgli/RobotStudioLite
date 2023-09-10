@@ -335,35 +335,261 @@
 
             <!--#endregion-->
 
+            <!--#region 坐标系-->
+
+            <!-- 世界坐标系 WCS -->
+            <ModelVisual3D x:Name="worldCoordinateSystem">
+                <ht:LinesVisual3D Thickness="2" Color="#FFFF0000">
+                    <ht:LinesVisual3D.Points>
+                        <Point3D X="0" Y="0" Z="0" />
+                        <Point3D X="100" Y="0" Z="0" />
+                    </ht:LinesVisual3D.Points>
+                </ht:LinesVisual3D>
+
+                <ht:LinesVisual3D Thickness="2" Color="#FF00FF00">
+                    <ht:LinesVisual3D.Points>
+                        <Point3D X="0" Y="0" Z="0" />
+                        <Point3D X="0" Y="100" Z="0" />
+                    </ht:LinesVisual3D.Points>
+                </ht:LinesVisual3D>
+
+                <ht:LinesVisual3D Thickness="2" Color="#FF0000FF">
+                    <ht:LinesVisual3D.Points>
+                        <Point3D X="0" Y="0" Z="0" />
+                        <Point3D X="0" Y="0" Z="100" />
+                    </ht:LinesVisual3D.Points>
+                </ht:LinesVisual3D>
+            </ModelVisual3D>
+
+            <!-- 工件坐标系 wobj0 -->
+            <ModelVisual3D>
+                <ModelVisual3D.Transform>
+                    <Transform3DGroup>
+                        <RotateTransform3D CenterX="0" CenterY="0" CenterZ="0">
+                            <RotateTransform3D.Rotation>
+                                <AxisAngleRotation3D Axis="0,0,1" Angle="90" />
+                            </RotateTransform3D.Rotation>
+                        </RotateTransform3D>
+                        <TranslateTransform3D OffsetX="-310" OffsetY="-180" OffsetZ="10" />
+                    </Transform3DGroup>
+                </ModelVisual3D.Transform>
+
+                <ht:LinesVisual3D Thickness="2" Color="#FFFF0000">
+                    <ht:LinesVisual3D.Points>
+                        <Point3D X="0" Y="0" Z="0" />
+                        <Point3D X="100" Y="0" Z="0" />
+                    </ht:LinesVisual3D.Points>
+                </ht:LinesVisual3D>
+
+                <ht:LinesVisual3D Thickness="2" Color="#FF00FF00">
+                    <ht:LinesVisual3D.Points>
+                        <Point3D X="0" Y="0" Z="0" />
+                        <Point3D X="0" Y="100" Z="0" />
+                    </ht:LinesVisual3D.Points>
+                </ht:LinesVisual3D>
+
+                <ht:LinesVisual3D Thickness="2" Color="#FF0000FF">
+                    <ht:LinesVisual3D.Points>
+                        <Point3D X="0" Y="0" Z="0" />
+                        <Point3D X="0" Y="0" Z="100" />
+                    </ht:LinesVisual3D.Points>
+                </ht:LinesVisual3D>
+            </ModelVisual3D>
+
+            <!-- 工件坐标系 Workobject_1 -->
+            <ModelVisual3D>
+                <ModelVisual3D.Transform>
+                    <Transform3DGroup>
+                        <RotateTransform3D CenterX="0" CenterY="0" CenterZ="0">
+                            <RotateTransform3D.Rotation>
+                                <AxisAngleRotation3D Axis="0,0,1" Angle="-89.997" />
+                            </RotateTransform3D.Rotation>
+                        </RotateTransform3D>
+                        <TranslateTransform3D OffsetX="-351.487" OffsetY="296.652" OffsetZ="34.113" />
+                    </Transform3DGroup>
+                </ModelVisual3D.Transform>
+
+                <ht:LinesVisual3D Thickness="2" Color="#FFFF0000">
+                    <ht:LinesVisual3D.Points>
+                        <Point3D X="0" Y="0" Z="0" />
+                        <Point3D X="100" Y="0" Z="0" />
+                    </ht:LinesVisual3D.Points>
+                </ht:LinesVisual3D>
+
+                <ht:LinesVisual3D Thickness="2" Color="#FF00FF00">
+                    <ht:LinesVisual3D.Points>
+                        <Point3D X="0" Y="0" Z="0" />
+                        <Point3D X="0" Y="100" Z="0" />
+                    </ht:LinesVisual3D.Points>
+                </ht:LinesVisual3D>
+
+                <ht:LinesVisual3D Thickness="2" Color="#FF0000FF">
+                    <ht:LinesVisual3D.Points>
+                        <Point3D X="0" Y="0" Z="0" />
+                        <Point3D X="0" Y="0" Z="100" />
+                    </ht:LinesVisual3D.Points>
+                </ht:LinesVisual3D>
+            </ModelVisual3D>
+
+            <!-- 工件坐标系 Workobject_2 -->
+            <ModelVisual3D>
+                <ModelVisual3D.Transform>
+                    <Transform3DGroup>
+                        <RotateTransform3D CenterX="0" CenterY="0" CenterZ="0">
+                            <RotateTransform3D.Rotation>
+                                <AxisAngleRotation3D Axis="1,0,0" Angle="129.226" />
+                            </RotateTransform3D.Rotation>
+                        </RotateTransform3D>
+                        <RotateTransform3D CenterX="0" CenterY="0" CenterZ="0">
+                            <RotateTransform3D.Rotation>
+                                <AxisAngleRotation3D Axis="0,1,0" Angle="-37.762" />
+                            </RotateTransform3D.Rotation>
+                        </RotateTransform3D>
+                        <RotateTransform3D CenterX="0" CenterY="0" CenterZ="0">
+                            <RotateTransform3D.Rotation>
+                                <AxisAngleRotation3D Axis="0,0,1" Angle="153.439" />
+                            </RotateTransform3D.Rotation>
+                        </RotateTransform3D>
+                        <TranslateTransform3D OffsetX="65.124" OffsetY="167.335" OffsetZ="152.95" />
+                    </Transform3DGroup>
+                </ModelVisual3D.Transform>
+
+                <ht:LinesVisual3D Thickness="2" Color="#FFFF0000">
+                    <ht:LinesVisual3D.Points>
+                        <Point3D X="0" Y="0" Z="0" />
+                        <Point3D X="100" Y="0" Z="0" />
+                    </ht:LinesVisual3D.Points>
+                </ht:LinesVisual3D>
+
+                <ht:LinesVisual3D Thickness="2" Color="#FF00FF00">
+                    <ht:LinesVisual3D.Points>
+                        <Point3D X="0" Y="0" Z="0" />
+                        <Point3D X="0" Y="100" Z="0" />
+                    </ht:LinesVisual3D.Points>
+                </ht:LinesVisual3D>
+
+                <ht:LinesVisual3D Thickness="2" Color="#FF0000FF">
+                    <ht:LinesVisual3D.Points>
+                        <Point3D X="0" Y="0" Z="0" />
+                        <Point3D X="0" Y="0" Z="100" />
+                    </ht:LinesVisual3D.Points>
+                </ht:LinesVisual3D>
+            </ModelVisual3D>
+
+            <!-- 工件坐标系 Workobject_3 -->
+            <ModelVisual3D>
+                <ModelVisual3D.Transform>
+                    <TranslateTransform3D OffsetX="10" OffsetY="-234.458" OffsetZ="42.5" />
+                </ModelVisual3D.Transform>
+
+                <ht:LinesVisual3D Thickness="2" Color="#FFFF0000">
+                    <ht:LinesVisual3D.Points>
+                        <Point3D X="0" Y="0" Z="0" />
+                        <Point3D X="100" Y="0" Z="0" />
+                    </ht:LinesVisual3D.Points>
+                </ht:LinesVisual3D>
+
+                <ht:LinesVisual3D Thickness="2" Color="#FF00FF00">
+                    <ht:LinesVisual3D.Points>
+                        <Point3D X="0" Y="0" Z="0" />
+                        <Point3D X="0" Y="100" Z="0" />
+                    </ht:LinesVisual3D.Points>
+                </ht:LinesVisual3D>
+
+                <ht:LinesVisual3D Thickness="2" Color="#FF0000FF">
+                    <ht:LinesVisual3D.Points>
+                        <Point3D X="0" Y="0" Z="0" />
+                        <Point3D X="0" Y="0" Z="100" />
+                    </ht:LinesVisual3D.Points>
+                </ht:LinesVisual3D>
+            </ModelVisual3D>
+
+            <!-- 工具坐标系 tool0 -->
+            <ModelVisual3D x:Name="tool0">
+                <ModelVisual3D.Transform>
+                    <Transform3DGroup>
+                        <RotateTransform3D CenterX="0" CenterY="0" CenterZ="0">
+                            <RotateTransform3D.Rotation>
+                                <AxisAngleRotation3D Axis="0,1,0" Angle="90" />
+                            </RotateTransform3D.Rotation>
+                        </RotateTransform3D>
+                        <RotateTransform3D CenterX="0" CenterY="0" CenterZ="0">
+                            <RotateTransform3D.Rotation>
+                                <AxisAngleRotation3D Axis="0,0,1" Angle="90" />
+                            </RotateTransform3D.Rotation>
+                        </RotateTransform3D>
+                        <TranslateTransform3D OffsetX="-310" OffsetY="184" OffsetZ="627" />
+                    </Transform3DGroup>
+                </ModelVisual3D.Transform>
+
+                <ht:LinesVisual3D Thickness="2" Color="#FFFF0000">
+                    <ht:LinesVisual3D.Points>
+                        <Point3D X="0" Y="0" Z="0" />
+                        <Point3D X="100" Y="0" Z="0" />
+                    </ht:LinesVisual3D.Points>
+                </ht:LinesVisual3D>
+
+                <ht:LinesVisual3D Thickness="2" Color="#FF00FF00">
+                    <ht:LinesVisual3D.Points>
+                        <Point3D X="0" Y="0" Z="0" />
+                        <Point3D X="0" Y="100" Z="0" />
+                    </ht:LinesVisual3D.Points>
+                </ht:LinesVisual3D>
+
+                <ht:LinesVisual3D Thickness="2" Color="#FF0000FF">
+                    <ht:LinesVisual3D.Points>
+                        <Point3D X="0" Y="0" Z="0" />
+                        <Point3D X="0" Y="0" Z="100" />
+                    </ht:LinesVisual3D.Points>
+                </ht:LinesVisual3D>
+            </ModelVisual3D>
+
+            <!-- 工具坐标系 SuctionCup -->
+            <ModelVisual3D x:Name="suctionCup">
+                <ModelVisual3D.Transform>
+                    <Transform3DGroup>
+                        <RotateTransform3D CenterX="0" CenterY="0" CenterZ="0">
+                            <RotateTransform3D.Rotation>
+                                <AxisAngleRotation3D Axis="0,1,0" Angle="90" />
+                            </RotateTransform3D.Rotation>
+                        </RotateTransform3D>
+                        <RotateTransform3D CenterX="0" CenterY="0" CenterZ="0">
+                            <RotateTransform3D.Rotation>
+                                <AxisAngleRotation3D Axis="0,0,1" Angle="90" />
+                            </RotateTransform3D.Rotation>
+                        </RotateTransform3D>
+                        <TranslateTransform3D OffsetX="-310" OffsetY="308" OffsetZ="742" />
+                    </Transform3DGroup>
+                </ModelVisual3D.Transform>
+
+                <ht:LinesVisual3D Thickness="2" Color="#FFFF0000">
+                    <ht:LinesVisual3D.Points>
+                        <Point3D X="0" Y="0" Z="0" />
+                        <Point3D X="100" Y="0" Z="0" />
+                    </ht:LinesVisual3D.Points>
+                </ht:LinesVisual3D>
+
+                <ht:LinesVisual3D Thickness="2" Color="#FF00FF00">
+                    <ht:LinesVisual3D.Points>
+                        <Point3D X="0" Y="0" Z="0" />
+                        <Point3D X="0" Y="100" Z="0" />
+                    </ht:LinesVisual3D.Points>
+                </ht:LinesVisual3D>
+
+                <ht:LinesVisual3D Thickness="2" Color="#FF0000FF">
+                    <ht:LinesVisual3D.Points>
+                        <Point3D X="0" Y="0" Z="0" />
+                        <Point3D X="0" Y="0" Z="100" />
+                    </ht:LinesVisual3D.Points>
+                </ht:LinesVisual3D>
+            </ModelVisual3D>
+
+            <!--#endregion-->
+
             <!--#region 场景主体-->
 
             <!-- 在这里插入3D模型 -->
             <ht:SortingVisual3D x:Name="sortingVisual3D" SortingFrequency="10" />
-
-            <!--#endregion-->
-
-            <!--#region 世界坐标系-->
-
-            <ht:LinesVisual3D Thickness="2" Color="#FFFF0000">
-                <ht:LinesVisual3D.Points>
-                    <Point3D X="0" Y="0" Z="0" />
-                    <Point3D X="100" Y="0" Z="0" />
-                </ht:LinesVisual3D.Points>
-            </ht:LinesVisual3D>
-
-            <ht:LinesVisual3D Thickness="2" Color="#FF00FF00">
-                <ht:LinesVisual3D.Points>
-                    <Point3D X="0" Y="0" Z="0" />
-                    <Point3D X="0" Y="100" Z="0" />
-                </ht:LinesVisual3D.Points>
-            </ht:LinesVisual3D>
-
-            <ht:LinesVisual3D Thickness="2" Color="#FF0000FF">
-                <ht:LinesVisual3D.Points>
-                    <Point3D X="0" Y="0" Z="0" />
-                    <Point3D X="0" Y="0" Z="100" />
-                </ht:LinesVisual3D.Points>
-            </ht:LinesVisual3D>
 
             <!--#endregion-->
 

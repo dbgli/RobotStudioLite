@@ -14,6 +14,11 @@ namespace DBGware.RobotStudioLite
 {
     public class Robot
     {
+        private static readonly Transform3D tool0_LocalTransform = Transform3DHelper.CombineTransform(new RotateTransform3D(new QuaternionRotation3D(new(0.5, -0.5, -0.5, -0.5)), new(0, 0, 0)),
+                                                                                                     new TranslateTransform3D(-310, 184, 627));
+        private static readonly Transform3D suctionCup_LocalTransform = Transform3DHelper.CombineTransform(new RotateTransform3D(new QuaternionRotation3D(new(0.5, -0.5, -0.5, -0.5)), new(0, 0, 0)),
+                                                                                                          new TranslateTransform3D(-310, 308, 742));
+
         public Controller? Controller { get; private set; } = null;
         public Mastership? Mastership { get; set; } = null;
         public RobotStatus? StatusCache { get; private set; } = null;
@@ -50,6 +55,12 @@ namespace DBGware.RobotStudioLite
                                                                            Joints[3].GlobalTransform);
             Joints[5].GlobalTransform = Transform3DHelper.CombineTransform(Joints[5].LocalTransform,
                                                                            Joints[4].GlobalTransform);
+
+            // 工具坐标系
+            ((MainWindow)App.Current.MainWindow).scene3DViewerPanel.tool0.Transform = Transform3DHelper.CombineTransform(tool0_LocalTransform,
+                                                                                                                         Joints[5].GlobalTransform);
+            ((MainWindow)App.Current.MainWindow).scene3DViewerPanel.suctionCup.Transform = Transform3DHelper.CombineTransform(suctionCup_LocalTransform,
+                                                                                                                              Joints[5].GlobalTransform);
         }
 
         private void RefreshStatusCache(object? sender, ElapsedEventArgs e)
